@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public abstract class Bullet : MonoBehaviour
 {
@@ -57,12 +56,8 @@ public abstract class Bullet : MonoBehaviour
 
             if (hit.collider.tag == "Ground")
             {
-                Tilemap tilemap= LevelGenerator.SingleTon.Tilemap;
-                Vector3Int tilePosition = tilemap.WorldToCell(hitInside);
-
-                TileDestructionManager manager = tilemap.GetComponent<TileDestructionManager>();
-                if (manager != null)
-                    manager.DestroyTileAt(tilePosition);
+                ChunkedLevelGenerator generator = Object.FindFirstObjectByType<ChunkedLevelGenerator>();
+                generator.DestroyTileAtWorldCell(hitInside);
             }
         }
 

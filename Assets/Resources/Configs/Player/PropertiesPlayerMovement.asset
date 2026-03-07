@@ -17,7 +17,7 @@ MonoBehaviour:
   <fallSpeed>k__BackingField: 1
   <gravityForce>k__BackingField: 40
   <stepHeight>k__BackingField: 0.3
-  <stepCheckDistance>k__BackingField: 0.33
+  <stepCheckDistance>k__BackingField: 0.335
   <checkGroundMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 521
