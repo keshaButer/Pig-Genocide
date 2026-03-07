@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthPlayer : MonoBehaviour, IDamagable
 {
@@ -88,8 +89,11 @@ public class HealthPlayer : MonoBehaviour, IDamagable
     {
         //SceneManager.LoadScene(0);
         Destroy(gameObject);
+        SceneManager.LoadScene(0);
+        Invoke(nameof(RestartGame), 4);
         print("ваще смерть");
     }
+    private void RestartGame() => SceneManager.LoadScene(0);
 
     public void ApplyDamage(int damage)
     {

@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 112}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 15859
+  controlID: 21437
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 112}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 15860
+  controlID: 21438
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 56}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 15861
+  controlID: 21439
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -582,7 +582,7 @@ MonoBehaviour:
       sizeOverridden: 0
     - dockPosition: 1
       containerId: overlay-container--left
-      displayed: 1
+      displayed: 0
       id: Scene View/Tilemap Focus
       index: 0
       contents: '{"m_Layout":4,"m_Collapsed":false,"m_Folded":false,"m_Floating":false,"m_FloatingSnapOffset":{"x":-143.0,"y":-43.0},"m_SnapOffsetDelta":{"x":0.0,"y":0.0},"m_FloatingSnapCorner":3,"m_Size":{"x":0.0,"y":0.0},"m_SizeOverridden":false}'
@@ -721,9 +721,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 61.849545, y: 10.530472, z: 0.34195146}
+    m_Target: {x: 60.28116, y: 12.522797, z: 0.30876815}
     speed: 2
-    m_Value: {x: 33.012238, y: -35.86637, z: 0}
+    m_Value: {x: 60.28116, y: 12.522797, z: 0.30876815}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -773,9 +773,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 3.5479443
+    m_Target: 6.8662734
     speed: 2
-    m_Value: 10
+    m_Value: 6.8662734
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1022,6 +1022,17 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
+      - m_Data: -2469058
+      - m_Data: -2468864
+      - m_Data: -2467320
+      - m_Data: -2466436
+      - m_Data: -2466132
+      - m_Data: -2452104
+      - m_Data: -2449744
+      - m_Data: -2449580
+      - m_Data: -2448040
+      - m_Data: -2443290
+      - m_Data: -2439610
       - m_Data: -2402718
       - m_Data: -2393030
       - m_Data: -2390998
@@ -1030,6 +1041,9 @@ MonoBehaviour:
       - m_Data: 53432
       - m_Data: 233364
       - m_Data: 233406
+      - m_Data: 284052
+      - m_Data: 284246
+      - m_Data: 284396
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1129,8 +1143,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SkipHidden: 0
     m_SearchArea: 1
-    m_Folders:
-    - Assets/Items/Weapons/Granade
+    m_Folders: []
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1177,13 +1190,15 @@ MonoBehaviour:
     - m_Data: 53746
     - m_Data: 53748
     - m_Data: 53750
-    - m_Data: 53752
     - m_Data: 53754
     - m_Data: 53756
     - m_Data: 53758
-    - m_Data: 54328
+    - m_Data: 53760
+    - m_Data: 54304
     - m_Data: 54332
     - m_Data: 71636
+    - m_Data: 241554
+    - m_Data: 241558
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1243,6 +1258,7 @@ MonoBehaviour:
     - m_Data: 53754
     - m_Data: 53756
     - m_Data: 53758
+    - m_Data: 53760
     - m_Data: 54304
     - m_Data: 54332
     - m_Data: 71636
@@ -1250,8 +1266,8 @@ MonoBehaviour:
     - m_Data: 241558
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Chunk
-      m_OriginalName: Chunk
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
@@ -1259,10 +1275,10 @@ MonoBehaviour:
         width: 0
         height: 0
       m_UserData:
-        m_Data: 191980
+        m_Data: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
       m_ClientGUIView: {fileID: 10}
@@ -1485,7 +1501,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 108
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
