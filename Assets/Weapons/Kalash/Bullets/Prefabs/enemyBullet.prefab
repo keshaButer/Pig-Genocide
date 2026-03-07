@@ -107,12 +107,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   delayDestroy: 8
-  radius: 0
+  radius: 0.2
   damage: 1
-  force: 0.2
+  force: 10
   layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1929
   isParry: 0
 --- !u!95 &242226173273381723
 Animator:

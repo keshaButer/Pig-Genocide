@@ -7,12 +7,14 @@ public class BulletEnemy : Bullet
         if (isExplode)
             return;
 
+        other.GetComponent<ParryCheckBox>()?.HandleBullet(this);
+
         if (other.GetComponent<Bullet>()) Explosion();
-        if (!other.GetComponent<CheckForCollisions>() && other.gameObject.layer != 2 && other.gameObject.layer != 6)
+        if (other.gameObject.layer != 10 && other.gameObject.layer != 2 && other.gameObject.layer != 6)
         {
             if (isParry)
             {
-                other.GetComponent<IDamagable>()?.ApplyDamage(damage);
+                other.GetComponent<IDamagable>()?.ApplyDamage(damage * 2);
                 if (other.GetComponent<Rigidbody2D>())
                 {
                     other.GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * force,
@@ -32,7 +34,7 @@ public class BulletEnemy : Bullet
                      transform.position, ForceMode2D.Impulse);
                 }
 
-                if(!other.gameObject.GetComponent<Enemy>())
+                if(!other.gameObject.GetComponent<Enemy>() && !other.GetComponent<ParryCheckBox>())
                     Explosion();
             }
         } 

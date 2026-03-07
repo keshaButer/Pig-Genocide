@@ -16,13 +16,12 @@ GameObject:
   - component: {fileID: 1771613362496141323}
   - component: {fileID: 1731098289306790927}
   - component: {fileID: 4977481328209433324}
-  - component: {fileID: 4970571076175893002}
   - component: {fileID: 7228036054544551411}
   - component: {fileID: 2042985354204472515}
   - component: {fileID: 5112265296653720291}
   - component: {fileID: 153794534284919663}
   - component: {fileID: 6968208398589707688}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -185,18 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recoverMultiplier: 1
---- !u!114 &4970571076175893002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 76852695540339604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d53d76dbf7336c4438ec11d9b7b331c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7228036054544551411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +358,7 @@ GameObject:
   - component: {fileID: 7203985130990943130}
   - component: {fileID: 2119823008326273823}
   - component: {fileID: 6887868598287265738}
-  m_Layer: 2
+  m_Layer: 6
   m_Name: Weapon Slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4019411804421733937}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: pointCheckGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +483,7 @@ GameObject:
   - component: {fileID: 7443237144719529702}
   - component: {fileID: 5052297226488548787}
   - component: {fileID: 1656778024400424394}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Sprites
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -620,7 +607,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6965500046509417043}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: circleCeiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -652,7 +639,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4224393621115932587}
   - component: {fileID: 1385179072154524322}
-  m_Layer: 2
+  - component: {fileID: 5174677584443271935}
+  m_Layer: 10
   m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,6 +708,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5, y: 2.5}
   m_EdgeRadius: 0
+--- !u!114 &5174677584443271935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6261115257972592357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3167df0f18720008a75ed9bbe1cc2e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParryCheckBox
 --- !u!1 &6407221031514720428
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +729,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5073410988154837726}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: knifeRay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,8 +760,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4359049598271611936}
-  - component: {fileID: 4540092322530602058}
-  m_Layer: 2
+  - component: {fileID: 4187816352521043378}
+  m_Layer: 10
   m_Name: parryPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +785,7 @@ Transform:
   - {fileID: 4224393621115932587}
   m_Father: {fileID: 2682810260283462058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4540092322530602058
+--- !u!114 &4187816352521043378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -794,10 +794,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6573404069399800122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c1e2d2a4e27ede4d8b83edf9d427519, type: 3}
+  m_Script: {fileID: 11500000, guid: cf4da62e7857bd5c8985cd11974bd695, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  inputConfig: {fileID: 0}
+  m_EditorClassIdentifier: '::'
+  inputConfig: {fileID: 11400000, guid: e3a9cca92edf25b1280cc266fe443186, type: 2}
+  intervalPress: 0.1
 --- !u!1 &7019173394406307041
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,7 +808,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6860826849439895626}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: pointRayLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +839,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7052883582581583286}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: pointRayRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -869,7 +870,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7071654890307461364}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -906,7 +907,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3381041178450407138}
   - component: {fileID: 5519410822569785313}
-  m_Layer: 2
+  - component: {fileID: 6403668027906978268}
+  m_Layer: 10
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,3 +976,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5, y: 2.5}
   m_EdgeRadius: 0
+--- !u!114 &6403668027906978268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9007072641730154371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3167df0f18720008a75ed9bbe1cc2e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParryCheckBox

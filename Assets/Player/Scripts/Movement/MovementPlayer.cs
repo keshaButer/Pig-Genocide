@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovementPlayer : MonoBehaviour
 {
@@ -56,6 +57,10 @@ public class MovementPlayer : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+            SceneManager.LoadScene(0);
+
+
         CheckCircles();
         DashInput();
         if (isInput) GetInput();
@@ -184,7 +189,7 @@ public class MovementPlayer : MonoBehaviour
 
     private void CheckCircles()
     {
-        if (Physics2D.Raycast(checkCirclePoint.position, Vector2.down, config.checkCircleRadius, config.checkGroundMask))
+        if (Physics2D.OverlapCircle(checkCirclePoint.position, config.checkCircleRadius, config.checkGroundMask))
         {
             isGrounded = true;
         }

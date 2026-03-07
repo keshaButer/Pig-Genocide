@@ -6,6 +6,7 @@ public abstract class Bullet : MonoBehaviour
     [SerializeField] public int damage;
     [SerializeField] protected float force;
     [SerializeField] private LayerMask layerMask;
+    public float Speed { get; set; }
     private Vector2 previousPosition;
     private Animator animator;
     protected bool isExplode;
@@ -56,8 +57,7 @@ public abstract class Bullet : MonoBehaviour
 
             if (hit.collider.tag == "Ground")
             {
-                ChunkedLevelGenerator generator = Object.FindFirstObjectByType<ChunkedLevelGenerator>();
-                generator.DestroyTileAtWorldPosition(hitInside);
+                ChunkedLevelGenerator.SingleTon.DestroyTileAtWorldPosition(hitInside);
             }
         }
 

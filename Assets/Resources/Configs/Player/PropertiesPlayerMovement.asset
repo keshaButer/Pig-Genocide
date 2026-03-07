@@ -26,7 +26,7 @@ MonoBehaviour:
     m_Bits: 1
   <jupmHeight>k__BackingField: 0.6
   <crouchJupmHeight>k__BackingField: 1
-  <checkCircleRadius>k__BackingField: 0.4
+  <checkCircleRadius>k__BackingField: 0.2
   <delayFalseIsGrounded>k__BackingField: 0.1
   <minJumpTime>k__BackingField: 0.1
   <minDelayStopFall>k__BackingField: 0.2
