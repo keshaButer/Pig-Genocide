@@ -963,6 +963,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2115580975}
     m_Modifications:
+    - target: {fileID: 2488673416757951370, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4108450419802349056, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 51.683968
@@ -2422,6 +2426,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2115580975}
     m_Modifications:
+    - target: {fileID: 2488673416757951370, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4108450419802349056, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.7735863
@@ -2465,6 +2473,10 @@ PrefabInstance:
     - target: {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_Name
       value: EnemyShooter (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5660121821233564600, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: baseAlgorithmPoint
@@ -2641,10 +2653,11 @@ GameObject:
   - component: {fileID: 799206841}
   - component: {fileID: 799206845}
   - component: {fileID: 799206844}
-  - component: {fileID: 799206843}
+  - component: {fileID: 799206846}
+  - component: {fileID: 799206847}
   m_Layer: 0
   m_Name: Ground Tile Map
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2758,7 +2771,72 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1050968677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!66 &799206843
+--- !u!50 &799206844
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799206839}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!19719996 &799206845
+TilemapCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799206839}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: f92774a5f3f37fe4ca427167b744b87a, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_CompositeOperation: 1
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_MaximumTileChangeCount: 1000
+  m_ExtrusionFactor: 0
+  m_UseDelaunayMesh: 0
+--- !u!66 &799206846
 CompositeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2801,75 +2879,22 @@ CompositeCollider2D:
     m_ColliderPaths: []
   m_CompositePaths:
     m_Paths: []
-  m_VertexDistance: 0.2
-  m_OffsetDistance: 0.00005
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.01
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 799206839}
---- !u!50 &799206844
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 799206839}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!19719996 &799206845
-TilemapCollider2D:
+--- !u!114 &799206847
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799206839}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
-  m_CompositeOperation: 1
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_MaximumTileChangeCount: 1000
-  m_ExtrusionFactor: 0
-  m_UseDelaunayMesh: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e38c00bf02958cf78837d9ecc33e1179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TileDestructionManager
 --- !u!1 &810698865
 GameObject:
   m_ObjectHideFlags: 0
@@ -3445,6 +3470,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2115580975}
     m_Modifications:
+    - target: {fileID: 2488673416757951370, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4108450419802349056, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.42
@@ -3489,6 +3518,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShooter (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5660121821233564600, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: baseAlgorithmPoint
       value: 
@@ -3506,6 +3539,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2115580975}
     m_Modifications:
+    - target: {fileID: 2488673416757951370, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4108450419802349056, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.38
@@ -3550,6 +3587,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShooter (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5660121821233564600, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: baseAlgorithmPoint
       value: 
@@ -3576,7 +3617,7 @@ GameObject:
   - component: {fileID: 1050968678}
   m_Layer: 0
   m_Name: Grid
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4153,7 +4194,7 @@ Transform:
   m_GameObject: {fileID: 1321037736}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.306784, y: 3.8069553, z: 6749.522}
+  m_LocalPosition: {x: 23.306784, y: -3, z: 6749.522}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4674,7 +4715,7 @@ GameObject:
   - component: {fileID: 1434720302}
   m_Layer: 0
   m_Name: Level Generator
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4688,7 +4729,7 @@ Transform:
   m_GameObject: {fileID: 1434720299}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 75.25776, y: -594.1336, z: 0}
+  m_LocalPosition: {x: 108.27, y: -30, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4707,12 +4748,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e047eaadfcf9dd620a0f0fd4f6625e71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelGenerator
-  _width: 525
+  _width: 2000
   _height: 2000
-  _noiseScale: 20
+  _noiseScale: 25
   _porog: 0.5
-  _terreinHeight: 104.2
-  _tilemap: {fileID: 799206840}
+  _terreinHeight: 25
+  _islandStartHeight: 100
+  _surfaceStartHeight: 100
+  Tilemap: {fileID: 799206840}
   _platformTile: {fileID: 11400000, guid: 13aaa28934819b1848c984b449d74124, type: 2}
 --- !u!4 &1438138301 stripped
 Transform:
@@ -5750,6 +5793,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2115580975}
     m_Modifications:
+    - target: {fileID: 2488673416757951370, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4108450419802349056, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 19.37
@@ -5793,6 +5840,10 @@ PrefabInstance:
     - target: {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_Name
       value: EnemyShooter (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5660121821233564600, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: baseAlgorithmPoint
@@ -6004,6 +6055,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2115580975}
     m_Modifications:
+    - target: {fileID: 2488673416757951370, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4108450419802349056, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 76.98
@@ -6048,6 +6103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShooter (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5660121821233564600, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: baseAlgorithmPoint
       value: 
@@ -6065,6 +6124,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2115580975}
     m_Modifications:
+    - target: {fileID: 2488673416757951370, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4108450419802349056, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.25
@@ -6108,6 +6171,10 @@ PrefabInstance:
     - target: {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_Name
       value: EnemyShooter (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5660121821233564600, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: baseAlgorithmPoint
@@ -6327,7 +6394,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2115580975
 Transform:
   m_ObjectHideFlags: 0
@@ -6361,6 +6428,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2115580975}
     m_Modifications:
+    - target: {fileID: 2488673416757951370, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4108450419802349056, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 17.563587
@@ -6405,6 +6476,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShooter (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5660121821233564600, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: baseAlgorithmPoint
       value: 
@@ -6422,6 +6497,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2115580975}
     m_Modifications:
+    - target: {fileID: 2488673416757951370, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4108450419802349056, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.363586
@@ -6466,6 +6545,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyShooter (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5660121821233564600, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: baseAlgorithmPoint
       value: 
@@ -6483,6 +6566,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2115580975}
     m_Modifications:
+    - target: {fileID: 2488673416757951370, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4108450419802349056, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 38.96
@@ -6526,6 +6613,10 @@ PrefabInstance:
     - target: {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: m_Name
       value: EnemyShooter (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5660121821233564600, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
       propertyPath: baseAlgorithmPoint

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public abstract class Bullet : MonoBehaviour
 {
@@ -6,11 +7,16 @@ public abstract class Bullet : MonoBehaviour
     [SerializeField] public int damage;
     [SerializeField] protected float force;
     [SerializeField] private LayerMask layerMask;
+    private Vector2 previousPosition;
     private Animator animator;
     protected bool isExplode;
     public bool isParry;
     private float timer;
     private void Awake() => animator = GetComponent<Animator>();
+    private void Start()
+    {
+        previousPosition = transform.position;
+    }
     private void Update()
     {
         CheckHit();
@@ -38,12 +44,29 @@ public abstract class Bullet : MonoBehaviour
     }
     private void CheckHit()
     {
-        Collider2D other = Physics2D.OverlapCircle(transform.position, radius);
-        if (other != null)
+        Vector2 direction = ((Vector2)transform.position - previousPosition).normalized;
+        float distance = Vector2.Distance(transform.position, previousPosition);
+
+        RaycastHit2D hit = Physics2D.Raycast(previousPosition, direction, distance, layerMask);
+
+        if (hit.collider != null)
         {
-            print($"BULLET HIT {other.gameObject.name}");
-            HandleHit(other.transform);
+            print($"BULLET HIT {hit.collider.gameObject.name}");
+            Vector2 hitInside = hit.point + direction * 0.15f;
+            HandleHit(hit.collider.transform);
+
+            if (hit.collider.tag == "Ground")
+            {
+                Tilemap tilemap= LevelGenerator.SingleTon.Tilemap;
+                Vector3Int tilePosition = tilemap.WorldToCell(hitInside);
+
+                TileDestructionManager manager = tilemap.GetComponent<TileDestructionManager>();
+                if (manager != null)
+                    manager.DestroyTileAt(tilePosition);
+            }
         }
+
+        previousPosition = transform.position;
     }
     protected abstract void HandleHit(Transform other);
 }
