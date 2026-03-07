@@ -17,8 +17,9 @@ public abstract class Explosives : MonoBehaviour
     protected virtual void DealDamage()
     {
         isExploded = true;
-
         EventManager.OnExplosion();
+
+        ChunkedLevelGenerator.SingleTon.DestroyTilesInRadius(transform.position, radiusExplosion);
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radiusExplosion, damagableMask);
 

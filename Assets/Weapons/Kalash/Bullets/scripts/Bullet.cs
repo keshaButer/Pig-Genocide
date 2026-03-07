@@ -57,7 +57,7 @@ public abstract class Bullet : MonoBehaviour
             if (hit.collider.tag == "Ground")
             {
                 ChunkedLevelGenerator generator = Object.FindFirstObjectByType<ChunkedLevelGenerator>();
-                generator.DestroyTileAtWorldCell(hitInside);
+                generator.DestroyTileAtWorldPosition(hitInside);
             }
         }
 

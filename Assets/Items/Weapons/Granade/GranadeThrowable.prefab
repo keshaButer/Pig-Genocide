@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  radiusExplosion: 2
+  radiusExplosion: 1
   force: 5
   damagableMask:
     serializedVersion: 2
@@ -115,7 +115,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 1
-  delayExplode: 3
+  delayExplode: 1
   delayDestroyVfx: 1
   vfxPrefab: {fileID: 1148100095273426946, guid: 11fac573aa7824f4ab01e53fe6b2e880, type: 3}
 --- !u!50 &3546088847479539002

@@ -74,7 +74,23 @@ public class ChunkedLevelGenerator : MonoBehaviour
         return false;
     }
 
-    public void DestroyTileAtWorldCell(Vector3 worldPos)
+    public void DestroyTileAtWorldPosition(Vector3Int cellPos)
+    {
+        int chunkX = Mathf.FloorToInt((float)cellPos.x / chunkSize);
+        int chunkY = Mathf.FloorToInt((float)cellPos.y / chunkSize);
+        Vector2Int chunkKey = new Vector2Int(chunkX, chunkY);
+
+        if (chunks.TryGetValue(chunkKey, out Tilemap chunkTilemap))
+        {
+            Vector3Int localCell = new Vector3Int(
+                cellPos.x - chunkX * chunkSize,
+                cellPos.y - chunkY * chunkSize,
+                0
+            );
+            chunkTilemap.SetTile(localCell, null);
+        }
+    }
+    public void DestroyTileAtWorldPosition(Vector3 worldPos)
     {
         int cellX = Mathf.FloorToInt(worldPos.x / cellSize);
         int cellY = Mathf.FloorToInt(worldPos.y / cellSize);
@@ -91,6 +107,29 @@ public class ChunkedLevelGenerator : MonoBehaviour
                 0
             );
             chunkTilemap.SetTile(localCell, null);
+        }
+    }
+    public void DestroyTilesInRadius(Vector3 worldCenter, float radius)
+    {
+        // Радиус в клетках (с учётом cellSize)
+        int radiusInCells = Mathf.CeilToInt(radius / cellSize);
+        
+        // Центр в клеточных координатах
+        int centerX = Mathf.FloorToInt(worldCenter.x / cellSize);
+        int centerY = Mathf.FloorToInt(worldCenter.y / cellSize);
+
+        for (int x = -radiusInCells; x <= radiusInCells; x++)
+        {
+            for (int y = -radiusInCells; y <= radiusInCells; y++)
+            {
+                // Проверяем, попадает ли клетка в круг (по мировым координатам)
+                Vector3 cellWorldPos = new Vector3((centerX + x) * cellSize, (centerY + y) * cellSize, 0);
+                if (Vector3.Distance(worldCenter, cellWorldPos) <= radius)
+                {
+                    Vector3Int cellPos = new Vector3Int(centerX + x, centerY + y);
+                    DestroyTileAtWorldPosition(cellPos);
+                }
+            }
         }
     }
 }
