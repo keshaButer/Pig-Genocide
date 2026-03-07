@@ -124,7 +124,7 @@ public class MovementPlayer : MonoBehaviour
         float targetSpeed = IsCrouch ? config.crouchSpeed : config.speed;
         float horizontalMove = horizontalInputDirection * targetSpeed;
 
-        if (horizontalInputDirection != 0 && isGrounded)
+        if (horizontalInputDirection != 0)
         {
             float direction = Mathf.Sign(horizontalInputDirection);
             float rayDistance = config.stepCheckDistance;

@@ -4,6 +4,9 @@ public class BulletEnemy : Bullet
 {
     protected override void HandleHit(Transform other)
     {
+        if (isExplode)
+            return;
+
         if (other.GetComponent<Bullet>()) Explosion();
         if (!other.GetComponent<CheckForCollisions>() && other.gameObject.layer != 2 && other.gameObject.layer != 6)
         {

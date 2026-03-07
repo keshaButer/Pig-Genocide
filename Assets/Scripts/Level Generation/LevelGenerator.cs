@@ -3,6 +3,16 @@ using UnityEngine.Tilemaps;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public static LevelGenerator SingleTon;
+
+    private void Awake()
+    {
+        if (SingleTon == null)
+            SingleTon = this;
+        else if (SingleTon != null)
+            Destroy(this);
+    }
+
     [Header("Настройки сеточки")]
     [Range(1, 2000)]
     [SerializeField] private int _width = 20;
@@ -25,29 +35,6 @@ public class LevelGenerator : MonoBehaviour
         GenerateLevel();
     }
 
-    // private void GenerateLevel()
-    // {
-    //     _tilemap.ClearAllTiles();
-    //
-    //     _walkableGrid = new bool[_width, _height];
-    //
-    //     for (int x = 0; x < _width; x++)
-    //     {
-    //         for (int y = 0; y < _height; y++)
-    //         {
-    //             float noiseValue = Mathf.PerlinNoise(x / _noiseScale, y / _noiseScale);
-    //
-    //             bool isWalkableCell = noiseValue > _porog;
-    //             _walkableGrid[x, y] = isWalkableCell;
-    //
-    //             if (isWalkableCell)
-    //             {
-    //                 _tilemap.SetTile(new Vector3Int(x, y, 0), _platformTile);
-    //             }
-    //         }
-    //     }
-    // }
-
     private void GenerateLevel()
     {
         _tilemap.ClearAllTiles();
@@ -56,16 +43,39 @@ public class LevelGenerator : MonoBehaviour
 
         for (int x = 0; x < _width; x++)
         {
-            float noiseValue = Mathf.PerlinNoise(x / _noiseScale, x / _noiseScale);
-            float surfaceHeight = Mathf.RoundToInt(noiseValue * _terreinHeight);
-
-            for (int y = 0; y <= surfaceHeight; y++)
+            for (int y = 0; y < _height; y++)
             {
-                _walkableGrid[x, y] = true;
-                _tilemap.SetTile(new Vector3Int(x, y, 0), _platformTile);
+                float noiseValue = Mathf.PerlinNoise(x / _noiseScale, y / _noiseScale);
+
+                bool isWalkableCell = noiseValue > _porog;
+                _walkableGrid[x, y] = isWalkableCell;
+
+                if (isWalkableCell)
+                {
+                    _tilemap.SetTile(new Vector3Int(x, y, 0), _platformTile);
+                }
             }
         }
     }
+
+    // private void GenerateLevel()
+    // {
+    //     _tilemap.ClearAllTiles();
+    //
+    //     _walkableGrid = new bool[_width, _height];
+    //
+    //     for (int x = 0; x < _width; x++)
+    //     {
+    //         float noiseValue = Mathf.PerlinNoise(x / _noiseScale, x / _noiseScale);
+    //         float surfaceHeight = Mathf.RoundToInt(noiseValue * _terreinHeight);
+    //
+    //         for (int y = 0; y <= surfaceHeight; y++)
+    //         {
+    //             _walkableGrid[x, y] = true;
+    //             _tilemap.SetTile(new Vector3Int(x, y, 0), _platformTile);
+    //         }
+    //     }
+    // }
 
     public bool IsWalkableCell(int x, int y)
     {

@@ -7,7 +7,7 @@ public abstract class Bullet : MonoBehaviour
     [SerializeField] protected float force;
     [SerializeField] private LayerMask layerMask;
     private Animator animator;
-    private bool isExplode;
+    protected bool isExplode;
     public bool isParry;
     private float timer;
     private void Awake() => animator = GetComponent<Animator>();
