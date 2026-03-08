@@ -233,13 +233,6 @@ public class ChunkedLevelGenerator : MonoBehaviour
     }
     public bool IsDistanceSuitable(Vector2 pos, float minDistance)
     {
-        foreach (Vector2 cell in occupiedCells)
-        {
-            if (Vector2.Distance(pos, cell) < minDistance)
-            {
-                return false;
-            }
-        }
-        return true;
+        return !Physics2D.OverlapCircle(pos, minDistance, LayerMask.GetMask("Occupied"));;
     }
 }

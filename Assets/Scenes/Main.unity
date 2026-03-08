@@ -4494,8 +4494,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BarrelSpawner
   barrelPrefab: {fileID: 1763627242864465371, guid: 9dcd60eb6852533948e233d1aa3bc975, type: 3}
-  minDistanceBetweenBarrels: 20
+  minDistanceBetweenBarrels: 10
   count: 1500
+  maxAttempts: 200000
+  distanceToDisable: 40
+  disableFarRate: 2
 --- !u!114 &1434720303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4511,8 +4514,11 @@ MonoBehaviour:
   ropePrefab: {fileID: 8604899275477625610, guid: b8700b852fb88d979a86ab253e3b80c9, type: 3}
   minDistanceBetweenGrabers: 10
   maxDistanceBetweenGrabers: 20
-  minDistanceBetweenRopes: 30
-  count: 1000
+  minDistanceBetweenRopes: 3
+  spawnCount: 1000
+  maxTotalAttempts: 200000
+  distanceToDisable: 40
+  disableFarRate: 2
 --- !u!4 &1452438497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5921323870032956098, guid: 03e7c5d6851cf8548ae060c54b346f05, type: 3}

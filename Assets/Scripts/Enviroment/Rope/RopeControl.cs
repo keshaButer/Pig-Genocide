@@ -32,11 +32,10 @@ public class RopeControl : MonoBehaviour
     {
         while (Vector2.Distance(playerTransform.position, _target) > _offset)
         {
-            //Vector2.MoveTowards(_rider, _target, _rideSpeed);
             Vector3 _direction = _target - playerTransform.position;
             playerTransform.Translate(_direction.normalized * _rideSpeed * Time.deltaTime);
 
-            yield return null;
+            yield return new WaitForEndOfFrame();
         }
         playerTransform.GetComponent<ControlDisabler>().EnableControl();
     }
