@@ -757,3 +757,19 @@ Memory consumption went from 216.8 MB to 212.2 MB.
 Total: 7.512982 ms (FindLiveObjects: 0.371793 ms CreateObjectMapping: 0.396365 ms MarkObjects: 5.369932 ms  DeleteObjects: 1.374290 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 4902.051955 seconds.
+  path: Assets/Scripts/Level Generation/ChunkedLevelGenerator.cs
+  artifactKey: Guid(84a38870b17274b64afeba3f81efb15a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Level Generation/ChunkedLevelGenerator.cs using Guid(84a38870b17274b64afeba3f81efb15a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e75fd854b29e6cce9bf1ddb63056bd3b') in 0.050224961 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000010 seconds.
+  path: Assets/Scenes/Main.unity
+  artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Main.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '09ec2e4627d76332e29f0bb728c704f3') in 0.005147129 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+

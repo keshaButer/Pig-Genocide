@@ -846,3 +846,19 @@ Memory consumption went from 218.2 MB to 213.5 MB.
 Total: 7.556412 ms (FindLiveObjects: 0.374348 ms CreateObjectMapping: 0.398594 ms MarkObjects: 5.434023 ms  DeleteObjects: 1.348932 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 1308.431671 seconds.
+  path: Assets/Scripts/Level Generation/Chunk.prefab
+  artifactKey: Guid(6ae491820aef99fccaae843b81b28c28) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Level Generation/Chunk.prefab using Guid(6ae491820aef99fccaae843b81b28c28) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7370579b1979e38d54f83d31b68b6936') in 0.063030386 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 12
+
+========================================================================
+Received Import Request.
+  Time since last request: 42.794269 seconds.
+  path: Assets/Scenes/Main.unity
+  artifactKey: Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scenes/Main.unity using Guid(8c9cfa26abfee488c85f1582747f6a02) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '37b271fb6fe6590ed385a18369d0bce8') in 0.003627787 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+

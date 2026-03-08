@@ -4652,11 +4652,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChunkedLevelGenerator
   chunkSize: 50
-  worldWidthInChunks: 100
-  worldHeightInChunks: 100
+  worldWidthInChunks: 40
+  worldHeightInChunks: 40
   platformTile: {fileID: 11400000, guid: 13aaa28934819b1848c984b449d74124, type: 2}
   chunkPrefab: {fileID: 8107286441514308303, guid: 6ae491820aef99fccaae843b81b28c28, type: 3}
-  seed: 123124
+  seed: 0
   noiseScale: 20
   porog: 0.5
   cellSize: 0.3
