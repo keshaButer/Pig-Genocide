@@ -27,6 +27,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
     [SerializeField] private float disableChunkRate = 5;
     [SerializeField] private float distanceDisableChunk = 10;
     [SerializeField] private BarrelSpawner barrelSpawner;
+    [SerializeField] private RopeSpawner ropeSpawner;
     private float xOffset, yOffset;
 
     private Dictionary<Vector3, GameObject> chunkObjects = new Dictionary<Vector3, GameObject>();
@@ -47,6 +48,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
         SetFreeSurfaceCells();
 
         barrelSpawner.SpawnBarrels(surfaceCells);
+        ropeSpawner.SpawnRopes(surfaceCells);
 
         InvokeRepeating(nameof(DisableFarChunks), 0f, disableChunkRate);
     }
