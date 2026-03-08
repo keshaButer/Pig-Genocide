@@ -189,7 +189,7 @@ public class MovementPlayer : MonoBehaviour
 
     private void CheckCircles()
     {
-        if (Physics2D.OverlapCircle(checkCirclePoint.position, config.checkCircleRadius, config.checkGroundMask))
+        if (Physics2D.CircleCast(checkCirclePoint.position, config.checkCircleRadius, Vector2.down, config.checkCircleRadius, config.checkGroundMask))
         {
             isGrounded = true;
         }

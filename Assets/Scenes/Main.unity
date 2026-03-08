@@ -595,11 +595,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 231540699060057677, guid: e472a837b3734304c818afdace07e8d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.835968
+      value: 19.425972
       objectReference: {fileID: 0}
     - target: {fileID: 231540699060057677, guid: e472a837b3734304c818afdace07e8d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.358551
+      value: 22.35855
       objectReference: {fileID: 0}
     - target: {fileID: 231540699060057677, guid: e472a837b3734304c818afdace07e8d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2775,11 +2775,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 231540699060057677, guid: f07fcad5a9f021642a85a3bd76748e60, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 31.869995
+      value: 17.46
       objectReference: {fileID: 0}
     - target: {fileID: 231540699060057677, guid: f07fcad5a9f021642a85a3bd76748e60, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.940002
+      value: 22.94
       objectReference: {fileID: 0}
     - target: {fileID: 231540699060057677, guid: f07fcad5a9f021642a85a3bd76748e60, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3969,11 +3969,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2682810260283462058, guid: b56e974fd1264484abb6ad7de0963fdc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 55.36
+      value: 43.97
       objectReference: {fileID: 0}
     - target: {fileID: 2682810260283462058, guid: b56e974fd1264484abb6ad7de0963fdc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.66
+      value: 19.71
       objectReference: {fileID: 0}
     - target: {fileID: 2682810260283462058, guid: b56e974fd1264484abb6ad7de0963fdc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4652,13 +4652,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChunkedLevelGenerator
   chunkSize: 50
-  worldWidthInChunks: 30
-  worldHeightInChunks: 30
+  worldWidthInChunks: 100
+  worldHeightInChunks: 100
   platformTile: {fileID: 11400000, guid: 13aaa28934819b1848c984b449d74124, type: 2}
   chunkPrefab: {fileID: 8107286441514308303, guid: 6ae491820aef99fccaae843b81b28c28, type: 3}
+  seed: 123124
   noiseScale: 20
   porog: 0.5
   cellSize: 0.3
+  disableChunkRate: 5
+  distanceDisableChunk: 60
 --- !u!4 &1438138301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5400938385436457515, guid: 9dcd60eb6852533948e233d1aa3bc975, type: 3}

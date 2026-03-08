@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 464720965659035825}
   - component: {fileID: 5275247846620227908}
   - component: {fileID: 1240228186092118881}
-  - component: {fileID: 4227414752182480393}
   m_Layer: 9
   m_Name: Tilemap
   m_TagString: Ground
@@ -243,18 +242,6 @@ CompositeCollider2D:
   m_OffsetDistance: 0.01
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 4653860295516025948}
---- !u!114 &4227414752182480393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4653860295516025948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e38c00bf02958cf78837d9ecc33e1179, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TileDestructionManager
 --- !u!1 &8107286441514308303
 GameObject:
   m_ObjectHideFlags: 0

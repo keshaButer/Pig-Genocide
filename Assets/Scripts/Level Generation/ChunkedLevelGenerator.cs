@@ -20,17 +20,54 @@ public class ChunkedLevelGenerator : MonoBehaviour
     public int worldHeightInChunks = 3;       // сколько чанков по Y
     public TileBase platformTile;              // тайл платформы
     public GameObject chunkPrefab;             // префаб с Tilemap, CompositeCollider и т.д.
+    [SerializeField] private int seed = 0;
     [SerializeField] private float noiseScale = 20;
     [SerializeField] private float porog = 0.5f;
     [SerializeField] private float cellSize = 0.3f;
+    [SerializeField] private float disableChunkRate = 5;
+    [SerializeField] private float distanceDisableChunk = 10;
+    private float xOffset, yOffset;
 
+    private Dictionary<Vector3, GameObject> chunkObjects = new Dictionary<Vector3, GameObject>();
     private Dictionary<Vector2Int, Tilemap> chunks = new Dictionary<Vector2Int, Tilemap>();
+
+    private Transform playerTransform;
 
     void Start()
     {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+        SetRandomOffset();
+
         GenerateWorld();
+
+        InvokeRepeating(nameof(DisableFarChunks), 0f, disableChunkRate);
+    }
+    void SetRandomOffset()
+    {
+        if (seed == 0)
+            seed = Random.Range(1, 10000);
+            
+        Random.InitState(seed);
+        xOffset = Random.Range(0f, 1000f);
+        yOffset = Random.Range(0f, 1000f);
     }
 
+    void DisableFarChunks()
+    {
+        if (playerTransform == null) return;
+
+        Vector3 playerPos = playerTransform.position;
+
+        foreach (var kvp in chunkObjects)
+        {
+            GameObject obj = kvp.Value;
+
+            Vector2 chunkCenter =  obj.transform.position + Vector3.one * chunkSize * cellSize * 0.5f;
+            float distance = Vector2.Distance(playerPos, chunkCenter);
+            obj.SetActive(distance <= distanceDisableChunk);
+        }
+    }
     void GenerateWorld()
     {
         for (int cx = 0; cx < worldWidthInChunks; cx++)
@@ -40,10 +77,12 @@ public class ChunkedLevelGenerator : MonoBehaviour
                 // Создаём чанк
                 GameObject chunkObj = Instantiate(chunkPrefab, transform);
                 chunkObj.name = $"Chunk_{cx}_{cy}";
-                chunkObj.transform.position = new Vector3(cx * chunkSize * cellSize, cy * chunkSize * cellSize, 0);
+                Vector3 chunkObjPosition = new Vector3(cx * chunkSize * cellSize, cy * chunkSize * cellSize, 0);
+                chunkObj.transform.position = chunkObjPosition;
 
                 Tilemap tilemap = chunkObj.GetComponentInChildren<Tilemap>();
                 chunks[new Vector2Int(cx, cy)] = tilemap;
+                chunkObjects[chunkObjPosition] = chunkObj;
 
                 // Генерируем тайлы внутри этого чанка (можно PerlinNoise)
                 for (int x = 0; x < chunkSize; x++)
@@ -65,7 +104,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
 
     bool ShouldPlaceTile(int x, int y)
     {
-        float noiseValue = Mathf.PerlinNoise(x / noiseScale, y / noiseScale);
+        float noiseValue = Mathf.PerlinNoise(x / noiseScale + xOffset, y / noiseScale + yOffset);
         if (noiseValue > porog)
         {
             return true;
