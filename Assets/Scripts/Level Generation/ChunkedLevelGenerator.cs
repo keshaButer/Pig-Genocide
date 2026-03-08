@@ -15,7 +15,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
     }
 
     [Header("Настройки")]
-    public int chunkSize = 20;               // размер чанка в тайлах
+    public int chunkSizeInCells = 20;               // размер чанка в тайлах
     public int worldWidthInChunks = 5;        // сколько чанков по X
     public int worldHeightInChunks = 3;       // сколько чанков по Y
     public TileBase platformTile;              // тайл платформы
@@ -26,10 +26,13 @@ public class ChunkedLevelGenerator : MonoBehaviour
     [SerializeField] private float cellSize = 0.3f;
     [SerializeField] private float disableChunkRate = 5;
     [SerializeField] private float distanceDisableChunk = 10;
+    [SerializeField] private BarrelSpawner barrelSpawner;
     private float xOffset, yOffset;
 
     private Dictionary<Vector3, GameObject> chunkObjects = new Dictionary<Vector3, GameObject>();
     private Dictionary<Vector2Int, Tilemap> chunks = new Dictionary<Vector2Int, Tilemap>();
+    private HashSet<Vector2> occupiedCells = new HashSet<Vector2>();
+    private List<Vector2> surfaceCells = new List<Vector2>();
 
     private Transform playerTransform;
 
@@ -40,6 +43,10 @@ public class ChunkedLevelGenerator : MonoBehaviour
         SetRandomOffset();
 
         GenerateWorld();
+
+        SetFreeSurfaceCells();
+
+        barrelSpawner.SpawnBarrels(surfaceCells);
 
         InvokeRepeating(nameof(DisableFarChunks), 0f, disableChunkRate);
     }
@@ -63,7 +70,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
         {
             GameObject obj = kvp.Value;
 
-            Vector2 chunkCenter =  obj.transform.position + Vector3.one * chunkSize * cellSize * 0.5f;
+            Vector2 chunkCenter =  obj.transform.position + Vector3.one * chunkSizeInCells * cellSize * 0.5f;
             float distance = Vector2.Distance(playerPos, chunkCenter);
             obj.SetActive(distance <= distanceDisableChunk);
         }
@@ -77,7 +84,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
                 // Создаём чанк
                 GameObject chunkObj = Instantiate(chunkPrefab, transform);
                 chunkObj.name = $"Chunk_{cx}_{cy}";
-                Vector3 chunkObjPosition = new Vector3(cx * chunkSize * cellSize, cy * chunkSize * cellSize, 0);
+                Vector3 chunkObjPosition = new Vector3(cx * chunkSizeInCells * cellSize, cy * chunkSizeInCells * cellSize, 0);
                 chunkObj.transform.position = chunkObjPosition;
 
                 Tilemap tilemap = chunkObj.GetComponentInChildren<Tilemap>();
@@ -85,12 +92,12 @@ public class ChunkedLevelGenerator : MonoBehaviour
                 chunkObjects[chunkObjPosition] = chunkObj;
 
                 // Генерируем тайлы внутри этого чанка (можно PerlinNoise)
-                for (int x = 0; x < chunkSize; x++)
+                for (int x = 0; x < chunkSizeInCells; x++)
                 {
-                    for (int y = 0; y < chunkSize; y++)
+                    for (int y = 0; y < chunkSizeInCells; y++)
                     {
-                        int worldX = cx * chunkSize + x;
-                        int worldY = cy * chunkSize + y;
+                        int worldX = cx * chunkSizeInCells + x;
+                        int worldY = cy * chunkSizeInCells + y;
                         // Здесь твоя логика генерации (шум, острова и т.п.)
                         if (ShouldPlaceTile(worldX, worldY))
                         {
@@ -115,15 +122,15 @@ public class ChunkedLevelGenerator : MonoBehaviour
 
     public void DestroyTileAtWorldPosition(Vector3Int cellPos)
     {
-        int chunkX = Mathf.FloorToInt((float)cellPos.x / chunkSize);
-        int chunkY = Mathf.FloorToInt((float)cellPos.y / chunkSize);
+        int chunkX = Mathf.FloorToInt((float)cellPos.x / chunkSizeInCells);
+        int chunkY = Mathf.FloorToInt((float)cellPos.y / chunkSizeInCells);
         Vector2Int chunkKey = new Vector2Int(chunkX, chunkY);
 
         if (chunks.TryGetValue(chunkKey, out Tilemap chunkTilemap))
         {
             Vector3Int localCell = new Vector3Int(
-                cellPos.x - chunkX * chunkSize,
-                cellPos.y - chunkY * chunkSize,
+                cellPos.x - chunkX * chunkSizeInCells,
+                cellPos.y - chunkY * chunkSizeInCells,
                 0
             );
             chunkTilemap.SetTile(localCell, null);
@@ -134,15 +141,15 @@ public class ChunkedLevelGenerator : MonoBehaviour
         int cellX = Mathf.FloorToInt(worldPos.x / cellSize);
         int cellY = Mathf.FloorToInt(worldPos.y / cellSize);
 
-        int chunkX = Mathf.FloorToInt((float)cellX / chunkSize);
-        int chunkY = Mathf.FloorToInt((float)cellY / chunkSize);
+        int chunkX = Mathf.FloorToInt((float)cellX / chunkSizeInCells);
+        int chunkY = Mathf.FloorToInt((float)cellY / chunkSizeInCells);
         Vector2Int chunkKey = new Vector2Int(chunkX, chunkY);
 
         if (chunks.TryGetValue(chunkKey, out Tilemap chunkTilemap))
         {
             Vector3Int localCell = new Vector3Int(
-                cellX - chunkX * chunkSize,
-                cellY - chunkY * chunkSize,
+                cellX - chunkX * chunkSizeInCells,
+                cellY - chunkY * chunkSizeInCells,
                 0
             );
             chunkTilemap.SetTile(localCell, null);
@@ -170,5 +177,67 @@ public class ChunkedLevelGenerator : MonoBehaviour
                 }
             }
         }
+    }
+    private void SetFreeSurfaceCells()
+    {
+        surfaceCells.Clear();
+
+        for (int cx = 0; cx < worldWidthInChunks; cx++)
+        {
+            for (int cy = 0; cy < worldHeightInChunks; cy++)
+            {
+                Tilemap tilemap = chunks[new Vector2Int(cx, cy)];
+
+                for (int x = 0; x < chunkSizeInCells; x++)
+                {
+                    for (int y = 0; y < chunkSizeInCells; y++)
+                    {
+                        Vector3Int localCell = new Vector3Int(x, y, 0);
+                        Vector3Int aboveLocal = new Vector3Int(x, y + 1, 0);
+
+                        // Есть ли тайл в этой клетке?
+                        if (tilemap.GetTile(localCell) != null)
+                        {
+                            bool isAboveFree;
+
+                            if (y + 1 >= chunkSizeInCells && cy != worldHeightInChunks - 1)
+                            {
+                                // Выход за границу чанка — надо проверить соседний чанк сверху
+                                Tilemap tilemapAbove = chunks[new Vector2Int(cx, cy + 1)];
+                                isAboveFree = !tilemapAbove.GetTile(new Vector3Int(x, 0, 0));
+                            }
+                            else
+                            {
+                                isAboveFree = tilemap.GetTile(aboveLocal) == null;
+                            }
+
+                            if (isAboveFree)
+                            {
+                                surfaceCells.Add(new Vector2(cx * chunkSizeInCells * cellSize + x * cellSize, cy * chunkSizeInCells * cellSize + y * cellSize));
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    public void SetOccupiedCell(Vector2 pos)
+    {
+        occupiedCells.Add(pos);
+    }
+    public bool IsFreeCell(Vector2 pos)
+    {
+        return !occupiedCells.Contains(pos);
+    }
+    public bool IsDistanceSuitable(Vector2 pos, float minDistance)
+    {
+        foreach (Vector2 cell in occupiedCells)
+        {
+            if (Vector2.Distance(pos, cell) < minDistance)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

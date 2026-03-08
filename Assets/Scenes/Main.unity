@@ -2857,6 +2857,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: f07fcad5a9f021642a85a3bd76748e60, type: 3}
+--- !u!1 &879962573 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1763627242864465371, guid: 9dcd60eb6852533948e233d1aa3bc975, type: 3}
+  m_PrefabInstance: {fileID: 761535471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &892087980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4108450419802349056, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
@@ -3953,7 +3958,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1771613362496141323, guid: b56e974fd1264484abb6ad7de0963fdc, type: 3}
       propertyPath: _isImmortalMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1771613362496141323, guid: b56e974fd1264484abb6ad7de0963fdc, type: 3}
       propertyPath: deadPhysicsMaterial
@@ -4617,6 +4622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1434720300}
   - component: {fileID: 1434720301}
+  - component: {fileID: 1434720302}
   m_Layer: 0
   m_Name: Chunked Level Generator
   m_TagString: Ground
@@ -4651,17 +4657,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a38870b17274b64afeba3f81efb15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChunkedLevelGenerator
-  chunkSize: 50
-  worldWidthInChunks: 40
-  worldHeightInChunks: 40
+  chunkSizeInCells: 30
+  worldWidthInChunks: 10
+  worldHeightInChunks: 10
   platformTile: {fileID: 11400000, guid: 13aaa28934819b1848c984b449d74124, type: 2}
   chunkPrefab: {fileID: 8107286441514308303, guid: 6ae491820aef99fccaae843b81b28c28, type: 3}
-  seed: 0
+  seed: 13421
   noiseScale: 20
   porog: 0.5
   cellSize: 0.3
   disableChunkRate: 5
-  distanceDisableChunk: 60
+  distanceDisableChunk: 40
+  barrelSpawner: {fileID: 1434720302}
+--- !u!114 &1434720302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434720299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9677a6e4e75c0af59b8f2b7388fb7e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BarrelSpawner
+  barrelPrefab: {fileID: 879962573}
+  minDistanceBetweenBarrels: 20
+  count: 100
 --- !u!4 &1438138301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5400938385436457515, guid: 9dcd60eb6852533948e233d1aa3bc975, type: 3}
@@ -5522,7 +5544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1850477384
 Transform:
   m_ObjectHideFlags: 0

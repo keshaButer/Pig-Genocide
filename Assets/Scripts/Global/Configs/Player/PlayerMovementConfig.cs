@@ -7,6 +7,7 @@ public class PlayerMovementConfig : ScriptableObject
     [field: SerializeField] public float speed { get; private set; }
     [field: SerializeField] public float crouchSpeed { get; private set; }
     [field: SerializeField] public float fallSpeed { get; private set; }
+    [field: SerializeField] public float minFallSpeed { get; private set; }
 
     [field: Header("Gravity")]
     [field: SerializeField] public float gravityForce { get; private set; } = -9.81f;

@@ -111,7 +111,7 @@ public class MovementPlayer : MonoBehaviour
 
     private void ApplyGravity()
     {
-        if (!isGrounded)
+        if (!isGrounded && rb.linearVelocity.y >= config.minFallSpeed)
         {
             rb.linearVelocity += Vector2.down * config.gravityForce * Time.fixedDeltaTime;
             _timerGravity = 0;
@@ -120,7 +120,7 @@ public class MovementPlayer : MonoBehaviour
         {
             _timerGravity += Time.deltaTime;
             if (_timerGravity >= config.minDelayStopFall)
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -4.5f);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -5.5f);
         }
     }
 
@@ -168,7 +168,7 @@ public class MovementPlayer : MonoBehaviour
             isJumping = true;
 
             float jumpHeight = IsCrouch ? config.crouchJupmHeight : config.jupmHeight;
-            float jumpVelocity = Mathf.Sqrt(2 * config.gravityForce * jumpHeight) + 4.5f;
+            float jumpVelocity = Mathf.Sqrt(2 * config.gravityForce * jumpHeight);
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVelocity);
             Debug.Log(jumpVelocity);
         }
@@ -261,7 +261,7 @@ public class MovementPlayer : MonoBehaviour
     {
         if (direction == Vector2.down)
         {
-            if (!Physics2D.BoxCast(posRay, new Vector2(0.7f, 0.05f), 90, direction,
+            if (!Physics2D.BoxCast(transform.position, new Vector2(0.7f, 2.32f), 90, direction,
                  config.dashRangeDownRay, config.checkDashMask))
             {
                 rb.MovePosition(rb.position + direction * config.dashDistance);
@@ -271,7 +271,7 @@ public class MovementPlayer : MonoBehaviour
         }
         else
         {
-            if (!Physics2D.BoxCast(posRay, new Vector2(0.05f, 1.6f), 90, direction,
+            if (!Physics2D.BoxCast(transform.position, new Vector2(0.7f, 2.32f), 90, direction,
                  config.dashRangeLeftRay, config.checkDashMask))
             {
                 rb.MovePosition(rb.position + direction * config.dashDistance);

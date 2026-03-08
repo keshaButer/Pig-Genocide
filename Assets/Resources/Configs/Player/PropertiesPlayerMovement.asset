@@ -15,25 +15,26 @@ MonoBehaviour:
   <speed>k__BackingField: 6
   <crouchSpeed>k__BackingField: 1.5
   <fallSpeed>k__BackingField: 1
+  <minFallSpeed>k__BackingField: -7
   <gravityForce>k__BackingField: 40
   <stepHeight>k__BackingField: 0.3
-  <stepCheckDistance>k__BackingField: 0.335
+  <stepCheckDistance>k__BackingField: 0.3
   <checkGroundMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 521
   <checkDashMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 1
-  <jupmHeight>k__BackingField: 0.6
+    m_Bits: 513
+  <jupmHeight>k__BackingField: 1.5
   <crouchJupmHeight>k__BackingField: 1
   <checkCircleRadius>k__BackingField: 0.2
   <delayFalseIsGrounded>k__BackingField: 0.1
   <minJumpTime>k__BackingField: 0.1
   <minDelayStopFall>k__BackingField: 0.2
   <timeDoubleClick>k__BackingField: 0.1
-  <dashDistance>k__BackingField: 2
-  <dashRangeLeftRay>k__BackingField: 2
-  <dashRangeDownRay>k__BackingField: 2
+  <dashDistance>k__BackingField: 1.5
+  <dashRangeLeftRay>k__BackingField: 1.3
+  <dashRangeDownRay>k__BackingField: 1.4
   <delayResetRB>k__BackingField: 3
   <fallDeathSpeed>k__BackingField: 1
   <fallDamage>k__BackingField: 1
