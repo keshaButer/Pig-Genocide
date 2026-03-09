@@ -17,13 +17,24 @@ public abstract class Bullet : MonoBehaviour
     {
         previousPosition = transform.position;
     }
+    // private void Update()
+    // {
+    //     CheckHit();
+    //     if (!isExplode && !isParry)
+    //         Move();
+    //     else if (isParry && !isExplode)
+    //         ParryBackRun();
+    // }
     private void Update()
     {
-        CheckHit();
-        if (!isExplode && !isParry)
-            Move();
-        else if (isParry && !isExplode)
+        if (isExplode) return;
+
+        if (isParry)
             ParryBackRun();
+        else
+            Move();
+
+        CheckHit();
     }
     private void Move()
     {

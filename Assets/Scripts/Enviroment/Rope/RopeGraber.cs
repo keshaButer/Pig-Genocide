@@ -1,4 +1,3 @@
-
 public class RopeGraber : InteractableObject
 {
     private RopeControl ropeControl;

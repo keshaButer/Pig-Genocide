@@ -150,11 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea1bc9f4a105d943b8f66f1d097057d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startHealth: 1
+  _startHealth: 15
   _timeToDestroy: 0
   _isImmortalMode: 0
-  alivePhysicsMaterial: {fileID: 0}
-  deadPhysicsMaterial: {fileID: 0}
+  alivePhysicsMaterial: {fileID: 6200000, guid: f92774a5f3f37fe4ca427167b744b87a, type: 2}
+  deadPhysicsMaterial: {fileID: 6200000, guid: 282d24bf57a47997aa4aa33006354340, type: 2}
 --- !u!114 &1731098289306790927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf02191c2f4b744dbed274bab5e013c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: 0.07
+  accelaration: 0.2
   wasLeft: 0
 --- !u!61 &6887868598287265738
 BoxCollider2D:
@@ -914,7 +914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3381041178450407138
 Transform:
   m_ObjectHideFlags: 0

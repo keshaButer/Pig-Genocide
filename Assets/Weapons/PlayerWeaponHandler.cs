@@ -4,7 +4,7 @@ public class PlayerWeaponHandler : MonoBehaviour
 {
     public static PlayerWeaponHandler SingleTone;
 
-    [SerializeField] float offset;
+    [SerializeField] float accelaration;
     private float angle;
     public bool wasLeft;
     private float timer;
@@ -68,7 +68,7 @@ public class PlayerWeaponHandler : MonoBehaviour
         angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         Quaternion rot = Quaternion.Euler(0, 0, angle);
-        transform.localRotation = Quaternion.Lerp(transform.rotation, rot, offset);
+        transform.localRotation = Quaternion.Lerp(transform.rotation, rot, accelaration);
 
         if (((angle > -180 && angle < -90) || (angle < 180 && angle > 90)) && !wasLeft)
         {

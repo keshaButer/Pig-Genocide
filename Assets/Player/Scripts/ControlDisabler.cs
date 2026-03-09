@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ControlDisabler : MonoBehaviour
 {
+    public bool isUsing = false;
     public void DisableControl()
     {
         GetComponent<MovementPlayer>().isInput = false;

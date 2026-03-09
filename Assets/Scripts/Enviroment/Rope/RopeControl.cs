@@ -5,9 +5,11 @@ public class RopeControl : MonoBehaviour
 {
     [SerializeField] private float _rideSpeed;
     [SerializeField] private float _offset;
+
     private Transform graber1, graber2;
     private Transform playerTransform;
     private Coroutine _rideCoroutine;
+
     private void Awake()
     {
         graber1 = transform.GetChild(0);
@@ -17,6 +19,10 @@ public class RopeControl : MonoBehaviour
     }
     public void UseRope(Transform _graber)
     {
+        if (playerTransform.GetComponent<ControlDisabler>().isUsing)
+            return;
+
+        playerTransform.GetComponent<ControlDisabler>().isUsing = true;
         if (_graber == graber1)
         {
             playerTransform.position = graber1.position;
@@ -37,7 +43,9 @@ public class RopeControl : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
-        playerTransform.GetComponent<ControlDisabler>().EnableControl();
+        ControlDisabler controlDisabler = playerTransform.GetComponent<ControlDisabler>();
+        controlDisabler.isUsing = false;
+        controlDisabler.EnableControl();
     }
     private void StartRide(Vector3 _target)
     {
