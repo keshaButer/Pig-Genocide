@@ -22,9 +22,9 @@ public class RopeSpawner : MonoBehaviour
         InvokeRepeating(nameof(DisableFarRopes), 0, disableFarRate);
     }
 
-    public void SpawnRopes(List<Vector2> freeCells)
+    public void SpawnRopes(List<Vector2> surfaceCells)
     {
-        Debug.Log($"free cells count: {freeCells.Count}");
+        Debug.Log($"free cells count: {surfaceCells.Count}");
 
         ChunkedLevelGenerator levelGenerator = ChunkedLevelGenerator.SingleTon;
         int spawnedCount = 0;
@@ -33,7 +33,7 @@ public class RopeSpawner : MonoBehaviour
         while (spawnedCount < spawnCount && attempts < maxTotalAttempts)
         {
             attempts++;
-            Vector2 firstPoint = freeCells[Random.Range(0, freeCells.Count)];
+            Vector2 firstPoint = surfaceCells[Random.Range(0, surfaceCells.Count)];
 
             if (levelGenerator.IsFreeCell(firstPoint) && levelGenerator.IsDistanceSuitable(firstPoint, minDistanceBetweenRopes))
             {
@@ -42,7 +42,7 @@ public class RopeSpawner : MonoBehaviour
 
                 for (int attempt = 0; attempt < 30; attempt++) 
                 {
-                    Vector2 potentialSecond = freeCells[Random.Range(0, freeCells.Count)];
+                    Vector2 potentialSecond = surfaceCells[Random.Range(0, surfaceCells.Count)];
                     float dist = Vector2.Distance(firstPoint, potentialSecond);
 
                     if (levelGenerator.IsFreeCell(potentialSecond) && dist >= minDistanceBetweenGrabers && dist <= maxDistanceBetweenGrabers)

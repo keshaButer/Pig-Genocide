@@ -19,9 +19,9 @@ public class BarrelSpawner : MonoBehaviour
 
         InvokeRepeating(nameof(DisableFarBarrels), 0, disableFarRate);
     }
-    public void SpawnBarrels(List<Vector2> freeCells)
+    public void SpawnBarrels(List<Vector2> surfaceCells)
     {
-        Debug.Log($"free cells count: {freeCells.Count}");
+        Debug.Log($"free cells count: {surfaceCells.Count}");
 
         ChunkedLevelGenerator levelGenerator = ChunkedLevelGenerator.SingleTon;
         int spawnedCount = 0;
@@ -30,13 +30,13 @@ public class BarrelSpawner : MonoBehaviour
         for (int i = 0; i < count && attempts < maxAttempts; i++)
         {
             attempts++;
-            Vector2 cell = freeCells[Random.Range(0, freeCells.Count)];
+            Vector2 cell = surfaceCells[Random.Range(0, surfaceCells.Count)];
             if (levelGenerator.IsFreeCell(cell) && levelGenerator.IsDistanceSuitable(cell, minDistanceBetweenBarrels))
             {
                 levelGenerator.SetOccupiedCell(cell);
 
                 barrels.Add(GameObject.Instantiate(barrelPrefab, 
-                 cell + new Vector2(0.3f, 0.6f), Quaternion.Euler(0, 0, 0), transform));
+                 cell + Vector2.up * 0.6f, Quaternion.Euler(0, 0, 0), transform));
 
                 spawnedCount++;
             }
