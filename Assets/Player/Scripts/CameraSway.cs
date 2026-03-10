@@ -20,14 +20,10 @@ public class CameraSway : MonoBehaviour
 
     void Update()
     {
-        // if (_player != null)
-        // {
-        //     if (_rb2D.linearVelocityY <= velocityToChangeCamAccel) _accelCam = 0.15f;
-        //     else _accelCam = _startAccelCam;
-        // }
         if (_player != null)
         {
-            _accelCam = _startAccelCam;
+            if (_rb2D.linearVelocityY <= velocityToChangeCamAccel) _accelCam = 0.15f;
+            else _accelCam = _startAccelCam;
         }
 
         if (Input.GetKey(_rotateCameraKey))
