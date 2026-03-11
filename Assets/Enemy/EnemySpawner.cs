@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float spawnRate = 6;
     [SerializeField] private float minDistanceBetweenEnemies = 5;
     [SerializeField] private float minDistanceToPlayer = 5;
+    [SerializeField] private float maxDistanceToPlayer = 10;
     [SerializeField] private float distanceToDisable = 50;
     [SerializeField] private float spawnHeightOffset = 0.6f;
     [SerializeField] private int maxAttempts = 20000;
@@ -34,29 +35,28 @@ public class EnemySpawner : MonoBehaviour
         InvokeRepeating(nameof(UpdateEnemyActivation), 0, updateEnemyActivationRate);
 
         doSpawn = true;
+        spawnRepeatCoroutine = StartCoroutine(nameof(SpawnRepeat), spawnRate);
     }
-
-    public void StartSpawnEnemies() => spawnRepeatCoroutine = StartCoroutine(nameof(SpawnRepeat), spawnRate);
 
     private IEnumerator SpawnRepeat(float rate)
     {
-        List<Vector2> surfaceCells = levelGenerator.surfaceCells;
         while (doSpawn)
         {
-            SpawnEnemy(surfaceCells);
+            SpawnEnemyInRadius();
 
             yield return new WaitForSeconds(rate);
         }
     }
-    private void SpawnEnemy(List<Vector2> surfaceCells)
+    private void SpawnEnemyInRadius()
     {
         for (int attempts = 1; attempts < maxAttempts; attempts++)
         {
-            Vector2 cell = surfaceCells[Random.Range(0, surfaceCells.Count)];
+            Vector2 cell = levelGenerator.GetRandomSurfaceTileInRadius(playerTransform.position, maxDistanceToPlayer);
 
-            bool farEnoughToPlayer = Vector2.Distance(playerTransform.position, cell) >= minDistanceToPlayer;
+            float distanceToPlayer = Vector2.Distance(playerTransform.position, cell);
+            bool farEnoughToPlayer = distanceToPlayer >= minDistanceToPlayer;
 
-            if (levelGenerator.IsFreeCell(cell) && levelGenerator.IsDistanceSuitable(cell, minDistanceBetweenEnemies) && farEnoughToPlayer)
+            if (farEnoughToPlayer)
             {
                 levelGenerator.SetOccupiedCell(cell);
 
@@ -69,7 +69,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void UpdateEnemyActivation()
     {
-        float sqrMinDistanceToPlayer = minDistanceToPlayer * minDistanceToPlayer;
+        float sqrMaxDistanceToPlayer = maxDistanceToPlayer * maxDistanceToPlayer;
 
         for (int i = enemies.Count - 1; i >= 0; i--)
         {
@@ -80,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
             }
 
             float sqrDist = (playerTransform.position - enemies[i].transform.position).sqrMagnitude;
-            bool shouldActivate = sqrDist < sqrMinDistanceToPlayer;
+            bool shouldActivate = sqrDist < sqrMaxDistanceToPlayer;
 
             if (enemies[i].activeSelf != shouldActivate)
             {

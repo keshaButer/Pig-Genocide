@@ -23,12 +23,12 @@ public class ChunkedLevelGenerator : MonoBehaviour
     [SerializeField] private BarrelSpawner barrelSpawner;
     [SerializeField] private RopeSpawner ropeSpawner;
     [SerializeField] private PlayerSpawner playerSpawner;
-    [SerializeField] private EnemySpawner enemySpawner;
 
     private float xOffset, yOffset;
     private Dictionary<Vector3, GameObject> chunkObjects = new Dictionary<Vector3, GameObject>();
     private Dictionary<Vector2Int, Tilemap> chunks = new Dictionary<Vector2Int, Tilemap>();
     private HashSet<Vector2> occupiedCells = new HashSet<Vector2>();
+    private HashSet<Vector2Int> surfaceCellIndices = new HashSet<Vector2Int>();
     private Transform playerTransform;
 
     public void Initialize()
@@ -47,7 +47,6 @@ public class ChunkedLevelGenerator : MonoBehaviour
         barrelSpawner.SpawnBarrels(surfaceCells);
         ropeSpawner.SpawnRopes(surfaceCells);
         playerTransform = playerSpawner.SpawnPlayer(surfaceCells);
-        // enemySpawner.StartSpawnEnemies();
 
         InvokeRepeating(nameof(SetActivationChunks), 0f, disableChunkRate);
     }
@@ -179,9 +178,59 @@ public class ChunkedLevelGenerator : MonoBehaviour
             }
         }
     }
+    public Vector2 GetRandomSurfaceTileInRadius(Vector3 worldCenter, float radius)
+    {
+        int radiusInCells = Mathf.CeilToInt(radius / cellSize);
+        int centerX = Mathf.FloorToInt(worldCenter.x / cellSize);
+        int centerY = Mathf.FloorToInt(worldCenter.y / cellSize);
+
+        Vector2 result = Vector2.negativeInfinity;
+        int count = 0;
+
+        for (int dx = -radiusInCells; dx <= radiusInCells; dx++)
+        {
+            for (int dy = -radiusInCells; dy <= radiusInCells; dy++)
+            {
+                if (dx*dx + dy*dy > radiusInCells*radiusInCells)
+                    continue;
+
+                int worldIndexX = centerX + dx;
+                int worldIndexY = centerY + dy;
+
+                Vector2Int cellIndex = new Vector2Int(worldIndexX, worldIndexY);
+
+                if (surfaceCellIndices.Contains(cellIndex))
+                {
+                    count++;
+                    
+                    if (Random.Range(0, count) == 0)
+                    {
+                        result = new Vector2(worldIndexX * cellSize, worldIndexY * cellSize);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+    private HashSet<Vector2Int> GetSurfaceCellIndices()
+    {
+        if (surfaceCells == null)
+            return null;
+        
+        HashSet<Vector2Int> cellIndices = new HashSet<Vector2Int>();
+        foreach (Vector2 cell in surfaceCells)
+        {
+            int indexX = Mathf.FloorToInt(cell.x / cellSize);
+            int indexY = Mathf.FloorToInt(cell.y / cellSize);
+
+            cellIndices.Add(new Vector2Int(indexX, indexY));
+        }
+        return cellIndices;
+    }
     private void SetFreeSurfaceCells()
     {
         surfaceCells.Clear();
+        surfaceCellIndices.Clear();
 
         for (int cx = 0; cx < worldWidthInChunks; cx++)
         {
@@ -221,6 +270,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
                 }
             }
         }
+        surfaceCellIndices = GetSurfaceCellIndices();
     }
     public void SetOccupiedCell(Vector2 pos)
     {

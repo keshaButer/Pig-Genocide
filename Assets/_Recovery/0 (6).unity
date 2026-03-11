@@ -4026,7 +4026,7 @@ MonoBehaviour:
   barrelPrefab: {fileID: 1763627242864465371, guid: 9dcd60eb6852533948e233d1aa3bc975, type: 3}
   minDistanceBetweenBarrels: 10
   count: 1500
-  maxAttempts: 20000
+  maxAttempts: 200000
   distanceToDisable: 40
   disableFarRate: 2
 --- !u!114 &1434720303
@@ -4046,7 +4046,7 @@ MonoBehaviour:
   maxDistanceBetweenGrabers: 20
   minDistanceBetweenRopes: 3
   spawnCount: 1000
-  maxTotalAttempts: 20000
+  maxTotalAttempts: 200000
   distanceToDisable: 40
   disableFarRate: 2
 --- !u!114 &1434720305
@@ -5302,11 +5302,13 @@ MonoBehaviour:
   spawnRate: 3
   minDistanceBetweenEnemies: 5
   minDistanceToPlayer: 5
-  maxDistanceToPlayer: 10
+  maxDistanceToPlayer: 30
   distanceToDisable: 50
   spawnHeightOffset: 0.6
-  maxAttempts: 100
+  maxAttempts: 20000000
   enemyPrefabs:
+  - {fileID: 4194581230446803002, guid: 17c529aa3b4e5164b91a298e73d9f25c, type: 3}
+  - {fileID: 4194581230446803002, guid: ee48a0b146c27574b9947241db2247fa, type: 3}
   - {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
   parentObject: {fileID: 2115580975}
   updateEnemyActivationRate: 2
