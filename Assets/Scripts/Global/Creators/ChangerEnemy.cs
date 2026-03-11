@@ -40,10 +40,10 @@ public class ChangerEnemy : MonoBehaviour
         //     EventManager.OnEnemyDied();
         // }
     }
-    private void ChangeEnemy()
-    {
-        int n = Random.Range(0, 2);
-        if (n == 1) enemySpawnerObj.GetComponent<EnemySpawner>().enemyCreator = new ShooterEnemyCreator();
-        else enemySpawnerObj.GetComponent<EnemySpawner>().enemyCreator = new KamikazeEnemyCreator();
-    }
+    // private void ChangeEnemy()
+    // {
+    //     int n = Random.Range(0, 2);
+    //     if (n == 1) enemySpawnerObj.GetComponent<EnemySpawner>().enemyCreator = new ShooterEnemyCreator();
+    //     else enemySpawnerObj.GetComponent<EnemySpawner>().enemyCreator = new KamikazeEnemyCreator();
+    // }
 }

@@ -20,6 +20,8 @@ public class ChunkedLevelGenerator : MonoBehaviour
     public int worldHeightInChunks = 3;       // сколько чанков по Y
     public TileBase platformTile;              // тайл платформы
     public GameObject chunkPrefab;             // префаб с Tilemap, CompositeCollider и т.д.
+    public List<Vector2> surfaceCells = new List<Vector2>();
+
     [SerializeField] private int seed = 0;
     [SerializeField] private float noiseScale = 20;
     [SerializeField] private float porog = 0.5f;
@@ -28,13 +30,13 @@ public class ChunkedLevelGenerator : MonoBehaviour
     [SerializeField] private float distanceDisableChunk = 10;
     [SerializeField] private BarrelSpawner barrelSpawner;
     [SerializeField] private RopeSpawner ropeSpawner;
-    private float xOffset, yOffset;
+    [SerializeField] private PlayerSpawner playerSpawner;
+    [SerializeField] private EnemySpawner enemySpawner;
 
+    private float xOffset, yOffset;
     private Dictionary<Vector3, GameObject> chunkObjects = new Dictionary<Vector3, GameObject>();
     private Dictionary<Vector2Int, Tilemap> chunks = new Dictionary<Vector2Int, Tilemap>();
     private HashSet<Vector2> occupiedCells = new HashSet<Vector2>();
-    private List<Vector2> surfaceCells = new List<Vector2>();
-
     private Transform playerTransform;
 
     void Start()
@@ -49,6 +51,8 @@ public class ChunkedLevelGenerator : MonoBehaviour
 
         barrelSpawner.SpawnBarrels(surfaceCells);
         ropeSpawner.SpawnRopes(surfaceCells);
+        playerTransform = playerSpawner.SpawnPlayer(surfaceCells);
+        // enemySpawner.StartSpawnEnemies();
 
         InvokeRepeating(nameof(DisableFarChunks), 0f, disableChunkRate);
     }

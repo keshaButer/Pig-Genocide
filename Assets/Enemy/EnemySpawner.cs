@@ -1,10 +1,11 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Spawn Settings")]
-    [SerializeField] float spawnRate = 5;
+    [SerializeField] private float spawnRate = 6;
     [SerializeField] private float minDistanceBetweenEnemies = 5;
     [SerializeField] private float minDistanceToPlayer = 5;
     [SerializeField] private float distanceToDisable = 50;
@@ -13,22 +14,39 @@ public class EnemySpawner : MonoBehaviour
 
     [Header("Other Settings")]
     [SerializeField] private List<GameObject> enemyPrefabs;
+    [SerializeField] private Transform parentObject;
     [SerializeField] private float updateEnemyActivationRate = 2;
 
     private List<GameObject> enemies = new List<GameObject>();
     private Transform playerTransform;
+    private Coroutine spawnRepeatCoroutine;
+    private bool doSpawn;
+    private ChunkedLevelGenerator levelGenerator;
 
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        levelGenerator = ChunkedLevelGenerator.SingleTon;
 
         InvokeRepeating(nameof(UpdateEnemyActivation), 0, updateEnemyActivationRate);
-        InvokeRepeating(nameof(SpawnEnemy), 0, spawnRate);
-    }
-    public void SpawnEnemy(List<Vector2> surfaceCells)
-    {
-        ChunkedLevelGenerator levelGenerator = ChunkedLevelGenerator.SingleTon;
 
+        doSpawn = true;
+    }
+
+    public void StartSpawnEnemies() => spawnRepeatCoroutine = StartCoroutine(nameof(SpawnRepeat), spawnRate);
+
+    private IEnumerator SpawnRepeat(float rate)
+    {
+        List<Vector2> surfaceCells = levelGenerator.surfaceCells;
+        while (doSpawn)
+        {
+            SpawnEnemy(surfaceCells);
+
+            yield return new WaitForSeconds(rate);
+        }
+    }
+    private void SpawnEnemy(List<Vector2> surfaceCells)
+    {
         for (int attempts = 1; attempts < maxAttempts; attempts++)
         {
             Vector2 cell = surfaceCells[Random.Range(0, surfaceCells.Count)];
@@ -40,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
                 levelGenerator.SetOccupiedCell(cell);
 
                 enemies.Add(GameObject.Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count)], 
-                 cell + Vector2.up * spawnHeightOffset, Quaternion.Euler(0, 0, 0), transform));
+                 cell + Vector2.up * spawnHeightOffset, Quaternion.Euler(0, 0, 0), parentObject));
 
                 break;
             }
