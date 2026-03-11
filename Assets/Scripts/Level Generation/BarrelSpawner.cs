@@ -13,7 +13,10 @@ public class BarrelSpawner : MonoBehaviour
     private List<GameObject> barrels = new List<GameObject>();
     private Transform playerTransform;
 
-    private void Start()
+    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize;
+    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
+
+    public void Initialize()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -25,12 +28,11 @@ public class BarrelSpawner : MonoBehaviour
 
         ChunkedLevelGenerator levelGenerator = ChunkedLevelGenerator.SingleTon;
         int spawnedCount = 0;
-        int attempts = 0;
 
-        for (int i = 0; i < count && attempts < maxAttempts; i++)
+        for (int attempts = 0; attempts < maxAttempts; attempts++)
         {
-            attempts++;
             Vector2 cell = surfaceCells[Random.Range(0, surfaceCells.Count)];
+
             if (levelGenerator.IsFreeCell(cell) && levelGenerator.IsDistanceSuitable(cell, minDistanceBetweenBarrels))
             {
                 levelGenerator.SetOccupiedCell(cell);
@@ -39,10 +41,8 @@ public class BarrelSpawner : MonoBehaviour
                  cell + Vector2.up * 0.6f, Quaternion.Euler(0, 0, 0), transform));
 
                 spawnedCount++;
-            }
-            else
-            {
-                i--;
+                if (spawnedCount >= count)
+                    break;
             }
         }
         Debug.Log($"Barrels was spawned: {spawnedCount}");

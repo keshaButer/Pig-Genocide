@@ -11,13 +11,19 @@ public abstract class ItemTakable : InteractableObject
     private TextMeshPro text;
     private float playerDistance;
     private Transform playerPos;
-    private void Awake()
+
+    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize;
+    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
+
+    private void Initialize()
     {
         if (item.icon != null)
             renderer2.sprite = item.icon;
         renderer2.sortingOrder = 4;
         text = transform.GetChild(0).GetComponent<TextMeshPro>();
+        // playerPos = ServiceLocator.Current.Get<MovementPlayer>().transform;
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        Debug.Log("ITEM INITIALIZE");
         text.text = item.name;
     }
     private void FixedUpdate()

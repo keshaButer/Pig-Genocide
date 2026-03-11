@@ -6,14 +6,6 @@ public class ChunkedLevelGenerator : MonoBehaviour
 {
     public static ChunkedLevelGenerator SingleTon;
 
-    private void Awake()
-    {
-        if (SingleTon == null)
-            SingleTon = this;
-        else if (SingleTon != null)
-            Destroy(this);
-    }
-
     [Header("Настройки")]
     public int chunkSizeInCells = 20;               // размер чанка в тайлах
     public int worldWidthInChunks = 5;        // сколько чанков по X
@@ -39,11 +31,14 @@ public class ChunkedLevelGenerator : MonoBehaviour
     private HashSet<Vector2> occupiedCells = new HashSet<Vector2>();
     private Transform playerTransform;
 
-    void Start()
+    public void Initialize()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        if (SingleTon == null)
+            SingleTon = this;
+        else if (SingleTon != null)
+            Destroy(this);
 
-        SetRandomOffset();
+        SetRandomNoiseOffset();
 
         GenerateWorld();
 
@@ -54,9 +49,9 @@ public class ChunkedLevelGenerator : MonoBehaviour
         playerTransform = playerSpawner.SpawnPlayer(surfaceCells);
         // enemySpawner.StartSpawnEnemies();
 
-        InvokeRepeating(nameof(DisableFarChunks), 0f, disableChunkRate);
+        InvokeRepeating(nameof(SetActivationChunks), 0f, disableChunkRate);
     }
-    void SetRandomOffset()
+    void SetRandomNoiseOffset()
     {
         if (seed == 0)
             seed = Random.Range(1, 10000);
@@ -66,7 +61,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
         yOffset = Random.Range(0f, 1000f);
     }
 
-    void DisableFarChunks()
+    void SetActivationChunks()
     {
         if (playerTransform == null) return;
 

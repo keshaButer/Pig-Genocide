@@ -2,10 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MovementPlayer : MonoBehaviour
+public class MovementPlayer : MonoBehaviour, IService
 {
     public InputPlayerMovementConfig inputConfig;
     public PlayerMovementConfig config;
+
+    public static event System.Action OnPlayerSpawned;
+
     private Rigidbody2D rb;
     private Transform checkCirclePoint, circleStandUp;
     private BoxCollider2D colliderBody;
@@ -34,10 +37,12 @@ public class MovementPlayer : MonoBehaviour
     private Transform pointsTransform, spriteBody, parryPoints;
     private Coroutine IsGroundedCoroutine;
 
-    private void Awake() => Initialize();
+    private void Start() => Initialize();
 
     public void Initialize()
     {
+        OnPlayerSpawned?.Invoke();
+
         isInput = true;
         parryPoints = transform.GetChild(3);
         colliderBody = GetComponent<BoxCollider2D>();

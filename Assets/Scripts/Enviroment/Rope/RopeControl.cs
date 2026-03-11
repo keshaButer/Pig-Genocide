@@ -10,7 +10,7 @@ public class RopeControl : MonoBehaviour
     private Transform playerTransform;
     private Coroutine _rideCoroutine;
 
-    private void Awake()
+    private void Start()
     {
         graber1 = transform.GetChild(0);
         graber2 = transform.GetChild(1);

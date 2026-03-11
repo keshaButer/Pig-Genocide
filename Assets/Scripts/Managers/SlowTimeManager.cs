@@ -10,7 +10,11 @@ public class SlowTimeManager : MonoBehaviour
             SingleTon = this;
         else Destroy(this);
     }
-    private void Start()
+
+    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize;
+    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
+
+    public void Initialize()
     {
         EventManager.Parry += () => SlowTime(0, 0.2f);
     }

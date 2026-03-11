@@ -28,7 +28,7 @@ public abstract class Enemy : MonoBehaviour, IDamagable
             } 
         }
     }
-    protected virtual void Init()
+    public virtual void Init()
     {
         rb = GetComponent<Rigidbody2D>();
         _audioSource = GetComponent<AudioSource>();

@@ -19,6 +19,6 @@ public class SoundSource : MonoBehaviour
         {
             collider.gameObject.GetComponent<ISoundListener>()?.HandleSound(transform);
         }
-        print("звук!");
+        // print("звук!");
     }
 }

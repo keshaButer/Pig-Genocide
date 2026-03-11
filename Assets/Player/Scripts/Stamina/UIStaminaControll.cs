@@ -9,10 +9,10 @@ public class UIStaminaControll : MonoBehaviour
     [SerializeField] private Slider bar2;
     [SerializeField] private Slider bar3;
     private StaminaControll staminaControll;
-    private void Awake()
-    {
-        Initialize();
-    }
+
+    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize;
+    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
+
     public void Initialize()
     {
         staminaControll = GameObject.FindGameObjectWithTag("Player").GetComponent<StaminaControll>();

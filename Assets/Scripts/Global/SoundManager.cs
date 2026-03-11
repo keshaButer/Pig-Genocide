@@ -14,9 +14,10 @@ public class SoundManager : MonoBehaviour
             Destroy(this);
     }
 
-    private void Start() => Initialize();
+    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize;
+    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
 
-    private void Initialize()
+    public void Initialize()
     {
         audioSource = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
     }

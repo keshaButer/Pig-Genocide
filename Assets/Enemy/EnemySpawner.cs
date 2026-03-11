@@ -23,7 +23,10 @@ public class EnemySpawner : MonoBehaviour
     private bool doSpawn;
     private ChunkedLevelGenerator levelGenerator;
 
-    private void Start()
+    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize;
+    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
+
+    public void Initialize()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         levelGenerator = ChunkedLevelGenerator.SingleTon;

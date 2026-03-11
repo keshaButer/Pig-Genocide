@@ -13,7 +13,10 @@ public class CameraSway : MonoBehaviour
     private Transform _player;
     private bool _wasFreeView = false;
 
-    private void Awake()
+    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize;
+    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
+
+    public void Initialize()
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
     }

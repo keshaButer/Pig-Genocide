@@ -28,7 +28,7 @@ public class EnemyShooter : EnemyRasher, ISoundListener
             RandomizeValues();
     }
     void Start() => Init();
-    protected override void Init() => base.Init();
+    public override void Init() => base.Init();
     private void RandomizeValues()
     {
         fireInterval = (int)Random.Range(1, fireInterval + 1);

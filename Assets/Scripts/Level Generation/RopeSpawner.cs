@@ -15,7 +15,10 @@ public class RopeSpawner : MonoBehaviour
     private List<GameObject> ropes = new List<GameObject>();
     private Transform playerTransform;
 
-    private void Start()
+    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize;
+    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
+
+    public void Initialize()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 

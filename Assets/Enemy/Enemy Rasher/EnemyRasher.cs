@@ -40,7 +40,7 @@ public abstract class EnemyRasher : Enemy, IFollowing
     private Vector2 directionToPlayer;
     [SerializeField] LayerMask layerMask;
     private void Start() => Init();
-    protected override void Init()
+    public override void Init()
     {
         base.Init();
 
