@@ -1,63 +1,47 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent(typeof(AudioSource))]
-public abstract class Enemy : MonoBehaviour, IDamagable
+[RequireComponent(typeof(Health))]
+
+public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] protected int maxHealth;
-    [SerializeField] private float _delayToDestroy;
-    private AudioSource _audioSource;
-    private AudioClip _deathScreamSound;
-    private int _health;
-    [field: SerializeField] public int Damage { get; private set; }
-    protected Rigidbody2D rb;
-    private BoxCollider2D collider2d;
-    protected bool isDeath { get; private set; }
-    public enum States { chill = 0, fight = 1 }
-    public States CurrrentState { get; protected set; }
-    public int Health
+    [SerializeField] private EnemyConfig _config;
+
+    protected Rigidbody2D RigidBody { get; private set; }
+    protected Health HealthComponent { get; private set; }
+
+    protected bool IsDead { get; private set; }
+
+    private void Awake()
     {
-        get { return _health; }
-        protected set
-        {
-            _health = value;
-            if (value <= 0)
-            {
-                Die();
-                _health = 0;
-            } 
-        }
+        RigidBody = GetComponent<Rigidbody2D>();
+        HealthComponent = GetComponent<Health>();
+
+        HealthComponent.OnDied += HandleDeath;
     }
-    public virtual void Init()
+
+    private void HandleDeath()
     {
-        rb = GetComponent<Rigidbody2D>();
-        _audioSource = GetComponent<AudioSource>();
-        _deathScreamSound = Resources.Load<AudioClip>("Sounds/Enemy/death_scream");
-        collider2d = GetComponent<BoxCollider2D>();
-    }
-    private void Die()
-    {
-        EventManager.OnEnemyDied();
+        if (IsDead) return;
+        IsDead = true;
 
-        isDeath = true;
-
-        collider2d.enabled = false;
-
-        rb.constraints = RigidbodyConstraints2D.None;
-        rb.linearVelocity = new Vector3(0, 0, 0);
-        rb.mass = 0.5f;
-
-        _audioSource.PlayOneShot(_deathScreamSound);
+        RigidBody.constraints = RigidbodyConstraints2D.None;
+        RigidBody.linearVelocity = Vector2.zero;
+        RigidBody.mass = _config.massOnDeath;
 
         DisableComponents();
-        print("Something DEATH");
+        EventManager.OnEnemyDied();
 
-        Invoke(nameof(DestroyEnemy), _delayToDestroy);
+        Destroy(gameObject, _config.delayToDestroy);
     }
-    protected virtual void Attack() { }
-    protected virtual void Attack(Collision2D other) { }
-    public void ApplyDamage(int damage) { Health -= damage; }
-    protected virtual void SetState(States _state) => CurrrentState = _state;
+
     protected virtual void DisableComponents() { }
-    private void DestroyEnemy() => Destroy(gameObject);
+    
+    private void OnDestroy()
+    {
+        if (HealthComponent != null)
+        {
+            HealthComponent.OnDied -= HandleDeath;
+        }
+    }
 }
