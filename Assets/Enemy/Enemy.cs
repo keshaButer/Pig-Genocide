@@ -36,6 +36,8 @@ public abstract class Enemy : MonoBehaviour
     }
 
     protected virtual void DisableComponents() { }
+
+    public virtual void HandleCollision(Collision2D other) { }
     
     private void OnDestroy()
     {

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public abstract class EnemyRasher : Enemy, IFollowing
+public abstract class EnemyRasher : Enemy
 {
     [SerializeField] protected float chillSpeed, fightSpeed;
     private float _speed;
@@ -45,7 +45,7 @@ public abstract class EnemyRasher : Enemy, IFollowing
         base.Init();
 
         eysePoint = transform.GetChild(3);
-        Health = maxHealth;
+        CurrentHealth = maxHealth;
         filter.SetLayerMask(LayerMask.GetMask("Player"));
         viewCollider = transform.GetChild(2).GetComponent<PolygonCollider2D>();
         rb = GetComponent<Rigidbody2D>();
