@@ -107,6 +107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputConfig: {fileID: 11400000, guid: e3a9cca92edf25b1280cc266fe443186, type: 2}
   config: {fileID: 11400000, guid: 574c9a2b2c899393b800415eda11bd2b, type: 2}
+  checkCirclePoint: {fileID: 0}
+  circleStandUp: {fileID: 0}
   isInput: 0
   isStop: 0
 --- !u!114 &6005688838873338119
@@ -152,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startHealth: 15
   _timeToDestroy: 0
-  _isImmortalMode: 0
+  _isImmortalMode: 1
   alivePhysicsMaterial: {fileID: 6200000, guid: f92774a5f3f37fe4ca427167b744b87a, type: 2}
   deadPhysicsMaterial: {fileID: 6200000, guid: 282d24bf57a47997aa4aa33006354340, type: 2}
 --- !u!114 &1731098289306790927
@@ -196,8 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbdb1c44a0e9ba97a506685cbd38ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayDistance: 1
-  knifeDamage: 100
 --- !u!114 &2042985354204472515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfc08ae6d232d4f894e50017624495e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUsing: 0
 --- !u!114 &5112265296653720291
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -265,14 +265,20 @@ public class ChunkedLevelGenerator : MonoBehaviour
 
                             if (isAboveFree)
                             {
-                                surfaceCells.Add(new Vector2(cx * chunkSizeInCells * cellSize + x * cellSize, cy * chunkSizeInCells * cellSize + y * cellSize));
+                                surfaceCells.Add(new Vector2(
+                                    cx * chunkSizeInCells * cellSize + x * cellSize,
+                                    cy * chunkSizeInCells * cellSize + y * cellSize
+                                ));
+
+                                int worldIndexX = cx * chunkSizeInCells + x;
+                                int worldIndexY = cy * chunkSizeInCells + y;
+                                surfaceCellIndices.Add(new Vector2Int(worldIndexX, worldIndexY));
                             }
                         }
                     }
                 }
             }
         }
-        surfaceCellIndices = GetSurfaceCellIndices();
     }
     public void SetOccupiedCell(Vector2 pos)
     {
@@ -285,6 +291,27 @@ public class ChunkedLevelGenerator : MonoBehaviour
     public bool IsSurfaceCell(Vector2Int pos)
     {
         return surfaceCellIndices.Contains(pos);
+    }
+    public bool IsSurfaceCellAround(Vector2Int pos)
+    {
+        List<Vector2Int> nearCells = new List<Vector2Int>
+        {
+            new Vector2Int(pos.x + 1, pos.y),
+            new Vector2Int(pos.x - 1, pos.y),
+            new Vector2Int(pos.x, pos.y + 1),
+            new Vector2Int(pos.x, pos.y - 1),
+            new Vector2Int(pos.x + 1, pos.y + 1),
+            new Vector2Int(pos.x - 1, pos.y - 1),
+            new Vector2Int(pos.x - 1, pos.y + 1),
+            new Vector2Int(pos.x + 1, pos.y - 1),
+        };
+
+        foreach (Vector2Int cell in nearCells)
+        {
+            if (surfaceCellIndices.Contains(cell))
+                return true;
+        }
+        return false;
     }
     public bool IsDistanceSuitable(Vector2 pos, float minDistance)
     {

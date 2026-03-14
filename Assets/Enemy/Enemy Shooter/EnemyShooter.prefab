@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 2492246687414683435}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.36, z: 0}
+  m_LocalPosition: {x: 0, y: 0.9679996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -88,7 +88,7 @@ Transform:
   m_GameObject: {fileID: 2843150752305445764}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.039, y: -1.059, z: 0}
+  m_LocalPosition: {x: 0.039000034, y: 0.26899958, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -105,6 +105,8 @@ GameObject:
   - component: {fileID: 4108450419802349056}
   - component: {fileID: 2488673416757951370}
   - component: {fileID: 8026438931750408156}
+  - component: {fileID: 7360050065242645595}
+  - component: {fileID: 1472126050747900054}
   - component: {fileID: 5660121821233564600}
   - component: {fileID: 2683032931660153052}
   m_Layer: 3
@@ -124,8 +126,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.114069, y: 3.1363444, z: -0.044550076}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5914104383009031181}
   - {fileID: 4892140581239517066}
@@ -141,7 +143,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4194581230446803002}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 6200000, guid: f92774a5f3f37fe4ca427167b744b87a, type: 2}
@@ -168,7 +170,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.02, y: -0.11}
+  m_Offset: {x: 0, y: 1.15}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -178,7 +180,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.74, y: 1.84}
+  m_Size: {x: 0.8, y: 2.32}
   m_EdgeRadius: 0
 --- !u!50 &8026438931750408156
 Rigidbody2D:
@@ -192,10 +194,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 2
+  m_AngularDamping: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -207,6 +209,34 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7360050065242645595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194581230446803002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e274e5bdcc82cc3e49d4fdce64dada5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PathFollower
+  Speed: 60
+  _reachDistance: 0.31
+  FinishedPath: 0
+--- !u!114 &1472126050747900054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194581230446803002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12d80b1fbafbcb2d38bc54afe71226e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 5
 --- !u!114 &5660121821233564600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,33 +249,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d281555427c17d34b93158f66cf3f97b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  _delayToDestroy: 3
-  <Damage>k__BackingField: 1
-  chillSpeed: 1
-  fightSpeed: 2.5
-  rayRange: 1
-  timeAfterExpend: 0.3
-  checkMask:
-    serializedVersion: 2
-    m_Bits: 563
+  _config: {fileID: 11400000, guid: 0c4bb2a65d86427e1a77615410472bd1, type: 2}
+  _rayRangeJump: 0.5
+  _gravityForce: 9.81
+  _minDelayStopFall: 0.2
+  _coolDownFindPath: 0.5
   jupmHeight: 25
   fightJupmHeight: 15
   chillJumpHeight: 10
-  checkCircleRadius: 0.2
-  maxCountJumps: 3
-  coolDownJumps: 0
-  timeToDestroy: 3
-  offsetDirection: 1.5
-  maxTimeNotSeePlayer: 5
-  distanceActivating: 30
-  direction: 0
-  baseAlgorithmPoint: {fileID: 0}
-  layerMask:
+  _checkCircleRadius: 0.2
+  _intervalChangeDirection: 0.3
+  _maxCountJumps: 3
+  _coolDownJumps: 2
+  _checkMask:
     serializedVersion: 2
-    m_Bits: 1011
+    m_Bits: 512
+  config: {fileID: 11400000, guid: 574c9a2b2c899393b800415eda11bd2b, type: 2}
   bulletPrefab: {fileID: 3682554700567244655, guid: 1277fca4e604e95499c1e88fcfc65abb, type: 3}
-  fireInterval: 3
+  fireInterval: 1
   queueInterval: 0.1
   countComboBullets: 2
   spawnBullet: {fileID: 2366572757721750303}
@@ -374,9 +395,9 @@ Transform:
   m_GameObject: {fileID: 6059061539334364847}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.178, z: 0.044550076}
-  m_LocalScale: {x: 0.69, y: 0.790341, z: 0.21931987}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0, y: 1.15, z: 0.044550076}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4108450419802349056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -465,7 +486,7 @@ Transform:
   m_GameObject: {fileID: 6982528861214176225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.04, y: -0.29, z: -0.00037179887}
+  m_LocalPosition: {x: -1.04, y: 1.0379996, z: -0.00037179887}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -548,7 +569,7 @@ Transform:
   m_GameObject: {fileID: 7932947085839060508}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.026348114, y: 0.46227074, z: 0.00011648238}
+  m_LocalPosition: {x: -0.026348114, y: 1.7902703, z: 0.00011648238}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -671,15 +671,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 231540699060057677, guid: e472a837b3734304c818afdace07e8d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 164.26598
+      value: -1.416
       objectReference: {fileID: 0}
     - target: {fileID: 231540699060057677, guid: e472a837b3734304c818afdace07e8d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 192.91855
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 231540699060057677, guid: e472a837b3734304c818afdace07e8d8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6749.522
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 231540699060057677, guid: e472a837b3734304c818afdace07e8d8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2591,15 +2591,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 231540699060057677, guid: f07fcad5a9f021642a85a3bd76748e60, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 162.3
+      value: 1.136
       objectReference: {fileID: 0}
     - target: {fileID: 231540699060057677, guid: f07fcad5a9f021642a85a3bd76748e60, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 193.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 231540699060057677, guid: f07fcad5a9f021642a85a3bd76748e60, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6749.522
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 231540699060057677, guid: f07fcad5a9f021642a85a3bd76748e60, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3504,6 +3504,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1321037737}
+  - component: {fileID: 1321037738}
   m_Layer: 0
   m_Name: ITEMS TO TAKE
   m_TagString: Untagged
@@ -3520,7 +3521,7 @@ Transform:
   m_GameObject: {fileID: 1321037736}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23.306784, y: -3, z: 6749.522}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3528,6 +3529,18 @@ Transform:
   - {fileID: 636403721}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1321037738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1321037736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74023a56e95c7469ba10f3b42438fdd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoverItemsToPlayer
 --- !u!1 &1322294414
 GameObject:
   m_ObjectHideFlags: 0
@@ -4797,7 +4810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18509642f13d3d83ba5254f63f08d332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ServiceLocatorLoader_Main
-  _enemySpawner: {fileID: 0}
+  _enemySpawner: {fileID: 2115580976}
   _barrelSpawner: {fileID: 1434720302}
   _ropeSpawner: {fileID: 1434720303}
   _slowTimeManager: {fileID: 1937600278}
@@ -5303,11 +5316,12 @@ MonoBehaviour:
   minDistanceBetweenEnemies: 5
   minDistanceToPlayer: 5
   maxDistanceToPlayer: 10
-  distanceToDisable: 50
+  distanceToDisable: 25
   spawnHeightOffset: 0.6
   maxAttempts: 100
   enemyPrefabs:
   - {fileID: 4194581230446803002, guid: ee48a0b146c27574b9947241db2247fa, type: 3}
+  - {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
   parentObject: {fileID: 2115580975}
   updateEnemyActivationRate: 2
 --- !u!1001 &2139143769

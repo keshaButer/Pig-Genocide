@@ -12,7 +12,7 @@ public abstract class Enemy : MonoBehaviour
 
     protected bool IsDead { get; private set; }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         RigidBody = GetComponent<Rigidbody2D>();
         HealthComponent = GetComponent<Health>();

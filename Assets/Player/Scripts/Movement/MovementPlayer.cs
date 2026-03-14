@@ -10,7 +10,7 @@ public class MovementPlayer : MonoBehaviour, IService
     public static event System.Action OnPlayerSpawned;
 
     private Rigidbody2D rb;
-    private Transform checkCirclePoint, circleStandUp;
+    public Transform checkCirclePoint, circleStandUp;
     private BoxCollider2D colliderBody;
     private SoundSource _soundSource;
 
@@ -175,7 +175,6 @@ public class MovementPlayer : MonoBehaviour, IService
             float jumpHeight = IsCrouch ? config.crouchJupmHeight : config.jupmHeight;
             float jumpVelocity = Mathf.Sqrt(2 * config.gravityForce * jumpHeight);
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpVelocity);
-            Debug.Log(jumpVelocity);
         }
 
         if (isJumping)

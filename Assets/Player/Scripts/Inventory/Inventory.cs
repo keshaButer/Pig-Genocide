@@ -41,19 +41,19 @@ public class Inventory : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            InventoryWindow.SingleTone.transform.GetChild(2).GetChild(0).GetComponent<Cell>().SelectItem();
+            transform.GetChild(2).GetChild(0).GetComponent<Cell>().SelectItem();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            InventoryWindow.SingleTone.transform.GetChild(2).GetChild(1).GetComponent<Cell>().SelectItem();
+            transform.GetChild(2).GetChild(1).GetComponent<Cell>().SelectItem();
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            InventoryWindow.SingleTone.transform.GetChild(2).GetChild(2).GetComponent<Cell>().SelectItem();
+            transform.GetChild(2).GetChild(2).GetComponent<Cell>().SelectItem();
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            InventoryWindow.SingleTone.transform.GetChild(2).GetChild(3).GetComponent<Cell>().SelectItem();
+            transform.GetChild(2).GetChild(3).GetComponent<Cell>().SelectItem();
         }
     }
     private void DeselectCurrentItem()

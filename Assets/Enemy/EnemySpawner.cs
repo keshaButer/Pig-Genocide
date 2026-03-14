@@ -69,7 +69,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void UpdateEnemyActivation()
     {
-        float sqrMaxDistanceToPlayer = maxDistanceToPlayer * maxDistanceToPlayer;
+        float sqrDintanceToDisable = distanceToDisable * distanceToDisable;
 
         for (int i = enemies.Count - 1; i >= 0; i--)
         {
@@ -80,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
             }
 
             float sqrDist = (playerTransform.position - enemies[i].transform.position).sqrMagnitude;
-            bool shouldActivate = sqrDist < sqrMaxDistanceToPlayer;
+            bool shouldActivate = sqrDist < sqrDintanceToDisable;
 
             if (enemies[i].activeSelf != shouldActivate)
             {

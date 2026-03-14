@@ -17,14 +17,6 @@ public abstract class Bullet : MonoBehaviour
     {
         previousPosition = transform.position;
     }
-    // private void Update()
-    // {
-    //     CheckHit();
-    //     if (!isExplode && !isParry)
-    //         Move();
-    //     else if (isParry && !isExplode)
-    //         ParryBackRun();
-    // }
     private void Update()
     {
         if (isExplode) return;
@@ -55,20 +47,21 @@ public abstract class Bullet : MonoBehaviour
     }
     private void CheckHit()
     {
-        Vector2 direction = ((Vector2)transform.position - previousPosition).normalized;
-        float distance = Vector2.Distance(transform.position, previousPosition);
+        // Vector2 direction = ((Vector2)transform.position - previousPosition).normalized;
+        // float distance = Vector2.Distance(transform.position, previousPosition);
 
-        RaycastHit2D hit = Physics2D.Raycast(previousPosition, direction, distance, layerMask);
+        // RaycastHit2D hit = Physics2D.Raycast(previousPosition, direction, distance, layerMask);
+        Collider2D collider = Physics2D.OverlapCircle(transform.position, radius, layerMask);
 
-        if (hit.collider != null)
+        if (collider != null)
         {
-            print($"BULLET HIT {hit.collider.gameObject.name}");
-            Vector2 hitInside = hit.point + direction * 0.15f;
-            HandleHit(hit.collider.transform);
+            print($"BULLET HIT {collider.gameObject.name}");
+            HandleHit(collider.transform);
 
-            if (hit.collider.tag == "Ground")
+            if (collider.tag == "Ground")
             {
-                ChunkedLevelGenerator.SingleTon.DestroyTileAtWorldPosition(hitInside);
+                // ChunkedLevelGenerator.SingleTon.DestroyTileAtWorldPosition(hitInside);
+                ChunkedLevelGenerator.SingleTon.DestroyTilesInRadius(transform.position, radius);
             }
         }
 

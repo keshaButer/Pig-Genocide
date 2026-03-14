@@ -7,9 +7,13 @@ public static class PathFinder
     {
         Vector2Int start = generator.WorldCellToIndex(startWorld);
         Vector2Int target = generator.WorldCellToIndex(targetWorld);
+        // Debug.Log($"Start world: {startWorld}, start index: {start}, is surface start: {generator.IsSurfaceCell(start + Vector2Int.down)}, is surface target: {generator.IsSurfaceCell(target + Vector2Int.down)}");
 
-        if (!generator.IsSurfaceCell(start))
+        if (!generator.IsSurfaceCellAround(start + Vector2Int.down) || !generator.IsSurfaceCellAround(target + Vector2Int.down))
+        {
+            Debug.Log("Start is not surface");
             return null;
+        }
 
         Node startNode = new Node(start);
 
@@ -46,8 +50,11 @@ public static class PathFinder
                 if (closedSet.Contains(neighborPos))
                     continue;
 
-                if (!generator.IsSurfaceCell(neighborPos))
+                if (!generator.IsSurfaceCellAround(neighborPos + Vector2Int.down))
+                {
+                    Debug.Log("neighborPos is not around surface");
                     continue;
+                }
 
                 int newGCost = currentNode.GCost + 1;
 
@@ -70,6 +77,7 @@ public static class PathFinder
             }
         }
 
+        Debug.Log($"Path not found. openSetList.Count: {openSetList.Count}, closedSet.Count: {closedSet.Count}");
         return null;
     }
 
@@ -91,6 +99,8 @@ public static class PathFinder
 
     static List<Vector2> BuildPath(Node lastNode, ChunkedLevelGenerator generator)
     {
+        Debug.Log("Building Path...");
+
         List<Vector2> result = new List<Vector2>();
         Node currentNode = lastNode;
         result.Add(generator.IndexCellToWorld(currentNode.Position));
