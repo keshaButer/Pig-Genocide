@@ -9,7 +9,7 @@ public static class PathFinder
         Vector2Int target = generator.WorldCellToIndex(targetWorld);
         // Debug.Log($"Start world: {startWorld}, start index: {start}, is surface start: {generator.IsSurfaceCell(start + Vector2Int.down)}, is surface target: {generator.IsSurfaceCell(target + Vector2Int.down)}");
 
-        if (!generator.IsSurfaceCellAround(start + Vector2Int.down) || !generator.IsSurfaceCellAround(target + Vector2Int.down))
+        if (!generator.IsSurfaceCellAround(start) || !generator.IsSurfaceCellAround(target))
         {
             Debug.Log("Start is not surface");
             return null;
@@ -50,7 +50,7 @@ public static class PathFinder
                 if (closedSet.Contains(neighborPos))
                     continue;
 
-                if (!generator.IsSurfaceCellAround(neighborPos + Vector2Int.down))
+                if (!generator.IsSurfaceCellAround(neighborPos))
                 {
                     Debug.Log("neighborPos is not around surface");
                     continue;

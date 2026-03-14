@@ -16,7 +16,7 @@ public class EnemyRasher : Enemy
     [SerializeField] private int _maxCountJumps = 3;
     [SerializeField] private int _coolDownJumps = 2;
     [SerializeField] private LayerMask _checkMask;
-    [SerializeField] private PlayerMovementConfig config;
+    [SerializeField] private EnemyMovementConfig config;
 
     protected int countJumps;
     protected bool isJump, isFastExpend;
@@ -75,7 +75,7 @@ public class EnemyRasher : Enemy
             CheckGround();
             CalculateDirection(playerTransform.position);
 
-            if ((!_pathFollower.HasPath && !_targetUnreachable))
+            if (!_pathFollower.HasPath && !_targetUnreachable)
             {
                 List<Vector2> newPath = PathFinder.FindPath(
                     transform.position, 
@@ -123,22 +123,23 @@ public class EnemyRasher : Enemy
             float direction = Mathf.Sign(moveDirection.x);
             float rayDistance = config.stepCheckDistance;
 
-            Vector2 rayOrigin = checkCirclePoint.position + Vector3.up * 0.1f;
+            Vector2 rayOrigin = checkCirclePoint.position + Vector3.up * 0.05f;
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * direction, rayDistance, config.checkGroundMask);
 
             if (hit.collider != null)
             {
-                Vector2 stepCheckStart = (Vector2)checkCirclePoint.position + new Vector2(0, config.stepHeight);
+                Vector2 stepCheckStart = rayOrigin + new Vector2(0, config.stepHeight);
                 RaycastHit2D stepHit = Physics2D.Raycast(stepCheckStart, Vector2.right * direction, rayDistance, config.checkGroundMask);
 
                 if (stepHit.collider == null)
                 {
                     Debug.Log("MOVE TP");
-                    RigidBody.MovePosition(RigidBody.position + new Vector2(horizontalMove * Time.fixedDeltaTime, config.stepHeight));
+                    RigidBody.MovePosition(RigidBody.position + new Vector2(horizontalMove, config.stepHeight));
                 }
                 else
                 {
-                    RigidBody.linearVelocity = new Vector2(0, moveDirection.y + _yVelocity);
+                    // RigidBody.linearVelocity = new Vector2(0, moveDirection.y + _yVelocity);
+                    RigidBody.linearVelocity = new Vector2(0, RigidBody.linearVelocity.y);
 
                     return;
                 }
@@ -147,7 +148,9 @@ public class EnemyRasher : Enemy
 
         Debug.Log("MOVE");
         float verticalMove = moveDirection.y * _pathFollower.Speed * Time.fixedDeltaTime;
-        RigidBody.linearVelocity = new Vector2(horizontalMove, verticalMove + _yVelocity);
+        // RigidBody.linearVelocity = new Vector2(horizontalMove, verticalMove + _yVelocity);
+        // RigidBody.linearVelocity = new Vector2(horizontalMove, verticalMove);
+        RigidBody.linearVelocity = new Vector2(horizontalMove, RigidBody.linearVelocity.y);
     }
     protected void CheckGround()
     {

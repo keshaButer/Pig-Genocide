@@ -21,7 +21,7 @@ MonoBehaviour:
   <stepCheckDistance>k__BackingField: 0.3
   <checkGroundMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 513
+    m_Bits: 521
   <checkDashMask>k__BackingField:
     serializedVersion: 2
     m_Bits: 513
