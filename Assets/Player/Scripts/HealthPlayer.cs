@@ -15,7 +15,7 @@ public class HealthPlayer : MonoBehaviour, IDamagable
     private int _health;
     private bool _wasDeath;
     [SerializeField] public PhysicsMaterial2D alivePhysicsMaterial, deadPhysicsMaterial;
-    public int Health
+    public int CurrentHealth
     {
         get { return _health; }
         private set
@@ -45,14 +45,14 @@ public class HealthPlayer : MonoBehaviour, IDamagable
     public void Initialize()
     {
         _rb = GetComponent<Rigidbody2D>();
-        Health = _startHealth;
+        CurrentHealth = _startHealth;
         HealthWindow.SingleTon.UpdateHealthText();
         _animationController = transform.GetChild(0).GetComponent<AnimationController>();
     }
     public void AddHP(int hp)
     {
-        Health += hp;
-        Health = Math.Clamp(_health, 0, _startHealth);
+        CurrentHealth += hp;
+        CurrentHealth = Math.Clamp(_health, 0, _startHealth);
     }
     private void Die()
     {
@@ -100,7 +100,7 @@ public class HealthPlayer : MonoBehaviour, IDamagable
         if (!_wasDeath)
         {
             damage = Math.Clamp(damage, 0, 5);
-            Health -= damage;
+            CurrentHealth -= damage;
 
             EventManager.OnPlayerTookDamage();
         }

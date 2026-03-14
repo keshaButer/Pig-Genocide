@@ -50,6 +50,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
 
         InvokeRepeating(nameof(SetActivationChunks), 0f, disableChunkRate);
     }
+
     void SetRandomNoiseOffset()
     {
         if (seed == 0)
@@ -75,6 +76,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
             obj.SetActive(distance <= distanceDisableChunk);
         }
     }
+
     void GenerateWorld()
     {
         for (int cx = 0; cx < worldWidthInChunks; cx++)
@@ -280,8 +282,26 @@ public class ChunkedLevelGenerator : MonoBehaviour
     {
         return !occupiedCells.Contains(pos);
     }
+    public bool IsSurfaceCell(Vector2Int pos)
+    {
+        return surfaceCellIndices.Contains(pos);
+    }
     public bool IsDistanceSuitable(Vector2 pos, float minDistance)
     {
         return !Physics2D.OverlapCircle(pos, minDistance, LayerMask.GetMask("Occupied"));;
+    }
+    public Vector2Int WorldCellToIndex(Vector2 pos)
+    {
+        int X = Mathf.FloorToInt(pos.x / cellSize);
+        int Y = Mathf.FloorToInt(pos.y / cellSize);
+
+        return new Vector2Int(X, Y);
+    }
+    public Vector2 IndexCellToWorld(Vector2Int pos)
+    {
+        float X = (pos.x + 0.5f) * cellSize;
+        float Y = (pos.y + 0.5f) * cellSize;
+
+        return new Vector2(X, Y);
     }
 }

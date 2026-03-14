@@ -27,6 +27,6 @@ public class HealthWindow : MonoBehaviour
     }
     public void UpdateHealthText()
     {
-        healthText.text = $"Health: {healthPlayer.Health}";
+        healthText.text = $"Health: {healthPlayer.CurrentHealth}";
     }
 }

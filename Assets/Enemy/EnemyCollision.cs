@@ -12,7 +12,7 @@ public class EnemyCollision : MonoBehaviour
         _enemy = GetComponent<Enemy>();
     }
 
-    private void OnCollisionEnter(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.TryGetComponent<HealthPlayer>(out HealthPlayer player))
         {

@@ -5266,7 +5266,7 @@ GameObject:
   - component: {fileID: 2115580975}
   - component: {fileID: 2115580976}
   m_Layer: 0
-  m_Name: ENEMIES
+  m_Name: Enemy Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5307,7 +5307,7 @@ MonoBehaviour:
   spawnHeightOffset: 0.6
   maxAttempts: 100
   enemyPrefabs:
-  - {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+  - {fileID: 4194581230446803002, guid: ee48a0b146c27574b9947241db2247fa, type: 3}
   parentObject: {fileID: 2115580975}
   updateEnemyActivationRate: 2
 --- !u!1001 &2139143769

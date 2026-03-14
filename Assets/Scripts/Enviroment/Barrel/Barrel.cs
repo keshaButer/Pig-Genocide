@@ -8,7 +8,7 @@ public class Barrel : Explosives, IDamagable
     [SerializeField] GameObject effect;
     [SerializeField] AudioClip _audioClip;
 
-    public int Health { get; private set; }
+    public int CurrentHealth { get; private set; }
 
     private SpriteRenderer sprite;
     private GameObject lines;
@@ -16,17 +16,17 @@ public class Barrel : Explosives, IDamagable
 
     void Start()
     {
-        Health = _startHealth;
+        CurrentHealth = _startHealth;
         lines = transform.GetChild(0).gameObject;
         _soundSource = GetComponent<SoundSource>();
     }
     public void ApplyDamage(int damage)
     {
-        Health -= damage;
+        CurrentHealth -= damage;
         sprite = GetComponent<SpriteRenderer>();
-        if (Health <= 0)
+        if (CurrentHealth <= 0)
         {
-            Health = 0;
+            CurrentHealth = 0;
             Explode();
         }
     }
