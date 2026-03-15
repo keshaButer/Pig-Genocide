@@ -292,23 +292,22 @@ public class ChunkedLevelGenerator : MonoBehaviour
     {
         return surfaceCellIndices.Contains(pos);
     }
+    public bool IsSurfaceCellUnder(Vector2Int pos)
+    {
+        return surfaceCellIndices.Contains(pos + Vector2Int.down);
+    }
     public bool IsSurfaceCellAround(Vector2Int pos)
     {
         List<Vector2Int> nearCells = new List<Vector2Int>
         {
-            new Vector2Int(pos.x + 1, pos.y),
-            new Vector2Int(pos.x - 1, pos.y),
-            new Vector2Int(pos.x, pos.y + 1),
             new Vector2Int(pos.x, pos.y - 1),
-            new Vector2Int(pos.x + 1, pos.y + 1),
             new Vector2Int(pos.x - 1, pos.y - 1),
-            new Vector2Int(pos.x - 1, pos.y + 1),
             new Vector2Int(pos.x + 1, pos.y - 1),
         };
 
         foreach (Vector2Int cell in nearCells)
         {
-            if (surfaceCellIndices.Contains(cell))
+            if (surfaceCellIndices.Contains(cell) && !surfaceCellIndices.Contains(pos))
                 return true;
         }
         return false;

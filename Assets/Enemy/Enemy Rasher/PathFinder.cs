@@ -9,7 +9,7 @@ public static class PathFinder
         Vector2Int target = generator.WorldCellToIndex(targetWorld);
         // Debug.Log($"Start world: {startWorld}, start index: {start}, is surface start: {generator.IsSurfaceCell(start + Vector2Int.down)}, is surface target: {generator.IsSurfaceCell(target + Vector2Int.down)}");
 
-        if (!generator.IsSurfaceCellAround(start) || !generator.IsSurfaceCellAround(target))
+        if (!generator.IsSurfaceCellUnder(start) || !generator.IsSurfaceCellUnder(target))
         {
             Debug.Log("Start is not surface");
             return null;
