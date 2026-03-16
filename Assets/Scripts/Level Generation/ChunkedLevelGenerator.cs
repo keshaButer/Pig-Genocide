@@ -29,6 +29,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
     private Dictionary<Vector2Int, Tilemap> chunks = new Dictionary<Vector2Int, Tilemap>();
     private HashSet<Vector2> occupiedCells = new HashSet<Vector2>();
     private HashSet<Vector2Int> surfaceCellIndices = new HashSet<Vector2Int>();
+    private HashSet<Vector2Int> filledCellIndices = new HashSet<Vector2Int>();
     private Transform playerTransform;
 
     public void Initialize()
@@ -104,6 +105,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
                         if (ShouldPlaceTile(worldX, worldY))
                         {
                             tilemap.SetTile(new Vector3Int(x, y, 0), platformTile);
+                            filledCellIndices.Add(new Vector2Int(worldX, worldY));
                         }
                     }
                 }
@@ -296,7 +298,20 @@ public class ChunkedLevelGenerator : MonoBehaviour
     {
         return surfaceCellIndices.Contains(pos + Vector2Int.down);
     }
-    public bool IsSurfaceCellAround(Vector2Int pos)
+    public bool IsFilledCell(Vector2Int pos)
+    {
+        return filledCellIndices.Contains(pos);
+    }
+    public bool HasSurfaceBelow(Vector2Int pos, int maxDepth)
+    {
+        for (int i = 0; i < maxDepth; i++)
+        {
+            if (IsSurfaceCellUnder(pos + i * Vector2Int.down))
+                return true;
+        }
+        return false;
+    }
+    public bool IsSurfaceCellUnderAround(Vector2Int pos)
     {
         List<Vector2Int> nearCells = new List<Vector2Int>
         {

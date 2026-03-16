@@ -93,7 +93,8 @@ public class EnemyRasher : Enemy
                 List<Vector2> newPath = PathFinder.FindPath(
                     transform.position, 
                     _movementPlayer.checkCirclePoint.position, 
-                    ChunkedLevelGenerator.SingleTon
+                    ChunkedLevelGenerator.SingleTon,
+                    _pathFollower.MaxDepthAstar
                 );
 
                 if (newPath != null)

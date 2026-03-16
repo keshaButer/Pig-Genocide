@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class PathFinder
 {
-    public static List<Vector2> FindPath(Vector2 startWorld, Vector2 targetWorld, ChunkedLevelGenerator generator)
+    public static List<Vector2> FindPath(Vector2 startWorld, Vector2 targetWorld, ChunkedLevelGenerator generator, int maxFallDepth)
     {
         Vector2Int start = generator.WorldCellToIndex(startWorld);
         Vector2Int target = generator.WorldCellToIndex(targetWorld);
@@ -50,7 +50,25 @@ public static class PathFinder
                 if (closedSet.Contains(neighborPos))
                     continue;
 
-                if (!generator.IsSurfaceCellAround(neighborPos))
+                bool isWalkable = false;
+
+                if (generator.IsSurfaceCellUnderAround(neighborPos))
+                {
+                    isWalkable = true;
+                }
+                else if (neighborPos == currentNode.Position + Vector2Int.down)
+                {
+                    if (!generator.IsSurfaceCellUnderAround(neighborPos) && !generator.IsFilledCell(neighborPos))
+                    {
+                        if (generator.HasSurfaceBelow(neighborPos, maxFallDepth))
+                        {
+                            isWalkable = true;
+                        }
+                    }
+                }
+
+
+                if (!isWalkable)
                 {
                     Debug.Log("neighborPos is not around surface");
                     continue;

@@ -6,6 +6,7 @@ public class PathFollower : MonoBehaviour
 {
     public float Speed;
     [SerializeField] private float _reachDistance = 0.1f;
+    [SerializeField] public int MaxDepthAstar = 30;
 
     public bool HasPath => _currentPath != null;
     public bool FinishedPath;
@@ -50,7 +51,7 @@ public class PathFollower : MonoBehaviour
         Vector2 target = _currentPath[_currentPoint] + Vector2.down * 0.15f;
         Vector2 newPos = Vector2.MoveTowards(transform.position, target, Speed * Time.fixedDeltaTime);
         
-        transform.position = newPos;
+        _rigidBody.MovePosition(newPos);
 
         if (Vector2.Distance(transform.position, target) < _reachDistance)
             _currentPoint++;
