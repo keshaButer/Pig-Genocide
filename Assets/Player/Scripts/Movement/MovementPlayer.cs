@@ -41,8 +41,6 @@ public class MovementPlayer : MonoBehaviour, IService
 
     public void Initialize()
     {
-        OnPlayerSpawned?.Invoke();
-
         isInput = true;
         parryPoints = transform.GetChild(3);
         colliderBody = GetComponent<BoxCollider2D>();
@@ -58,6 +56,8 @@ public class MovementPlayer : MonoBehaviour, IService
         _soundSource = transform.GetComponent<SoundSource>();
         inputConfig = Resources.Load<InputPlayerMovementConfig>("Configs/Player/InputPlayerMovementConfig");
         config = Resources.Load<PlayerMovementConfig>("Configs/Player/PropertiesPlayerMovement");
+
+        OnPlayerSpawned?.Invoke();
     }
 
     private void Update()

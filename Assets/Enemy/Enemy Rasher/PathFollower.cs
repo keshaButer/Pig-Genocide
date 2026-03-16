@@ -23,21 +23,37 @@ public class PathFollower : MonoBehaviour
         _currentPoint = 0;
     }
 
-    public Vector2 GetDirectionAlongPath()
+    // public Vector2 GetDirectionAlongPath()
+    // {
+    //     if (_currentPoint >= _currentPath.Count)
+    //     {
+    //         Stop();
+    //         return Vector2.zero;
+    //     }
+    //
+    //     Vector2 target = _currentPath[_currentPoint];
+    //     if (Vector2.Distance(_rigidBody.position, target) < _reachDistance)
+    //         _currentPoint++;
+    //
+    //     Vector2 direction = target - _rigidBody.position;
+    //
+    //     return direction.normalized;
+    // }
+    public void MoveAlongPath()
     {
         if (_currentPoint >= _currentPath.Count)
         {
             Stop();
-            return Vector2.zero;
+            return;
         }
 
-        Vector2 target = _currentPath[_currentPoint];
-        if (Vector2.Distance(_rigidBody.position, target) < _reachDistance)
+        Vector2 target = _currentPath[_currentPoint] + Vector2.down * 0.15f;
+        Vector2 newPos = Vector2.MoveTowards(transform.position, target, Speed * Time.fixedDeltaTime);
+        
+        transform.position = newPos;
+
+        if (Vector2.Distance(transform.position, target) < _reachDistance)
             _currentPoint++;
-
-        Vector2 direction = target - _rigidBody.position;
-
-        return direction.normalized;
     }
     public void Stop()
     {

@@ -37,7 +37,20 @@ public class EnemyRasher : Enemy
     private float _timerGravity;
     private float _yVelocity = 0;
 
-    private void Start() => Initialize();
+    private void OnEnable()
+    {
+        Debug.Log("On Enable");
+        MovementPlayer.OnPlayerSpawned += Initialize;
+    }
+    private void OnDisable()
+    {
+        Debug.Log("On Disable");
+        MovementPlayer.OnPlayerSpawned -= Initialize;
+    }
+    // private void Start()
+    // {
+    //     Initialize();
+    // }
 
     public void Initialize()
     {
@@ -102,9 +115,11 @@ public class EnemyRasher : Enemy
 
             CalculateYVelocity();
             if (_pathFollower.HasPath)
-                Move(_pathFollower.GetDirectionAlongPath());
-            else
-                Move(Vector2.zero);
+                _pathFollower.MoveAlongPath();
+            // if (_pathFollower.HasPath)
+            //     Move(_pathFollower.GetDirectionAlongPath());
+            // else
+            //     Move(Vector2.zero);
 
             // JumpControl();
 
@@ -150,7 +165,7 @@ public class EnemyRasher : Enemy
         float verticalMove = moveDirection.y * _pathFollower.Speed * Time.fixedDeltaTime;
         // RigidBody.linearVelocity = new Vector2(horizontalMove, verticalMove + _yVelocity);
         // RigidBody.linearVelocity = new Vector2(horizontalMove, verticalMove);
-        RigidBody.linearVelocity = new Vector2(horizontalMove, RigidBody.linearVelocity.y);
+        // RigidBody.linearVelocity = new Vector2(horizontalMove, RigidBody.linearVelocity.y);
     }
     protected void CheckGround()
     {
