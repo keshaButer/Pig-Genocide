@@ -1457,3 +1457,84 @@ Memory consumption went from 218.6 MB to 213.6 MB.
 Total: 8.216849 ms (FindLiveObjects: 0.398557 ms CreateObjectMapping: 0.421987 ms MarkObjects: 5.530493 ms  DeleteObjects: 1.864899 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 3648.492319 seconds.
+  path: Assets/Enemy/Enemy Rasher/EnemyRasher.prefab
+  artifactKey: Guid(ee48a0b146c27574b9947241db2247fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemy/Enemy Rasher/EnemyRasher.prefab using Guid(ee48a0b146c27574b9947241db2247fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd507b0508b64e445384297dd3563be2b') in 0.280706189 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 25
+
+========================================================================
+Received Import Request.
+  Time since last request: 1.882700 seconds.
+  path: Assets/Enemy/Enemy Shooter/EnemyShooter.prefab
+  artifactKey: Guid(78d4f2664aac6994e80ad4c98eee041f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Enemy/Enemy Shooter/EnemyShooter.prefab using Guid(78d4f2664aac6994e80ad4c98eee041f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '98f6af1de1a41a78b2b10b8237a7e230') in 0.006496848 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 56
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 0.35 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7012 unused Assets / (4.7 MB). Loaded Objects now: 8092.
+Memory consumption went from 219.4 MB to 214.7 MB.
+Total: 8.814586 ms (FindLiveObjects: 0.427200 ms CreateObjectMapping: 0.422277 ms MarkObjects: 6.379475 ms  DeleteObjects: 1.584834 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+[Licensing::Client] Successfully resolved entitlement details
+- Loaded All Assemblies, in  0.516 seconds
+Refreshing native plugins compatible for Editor in 0.28 ms, found 1 plugins.
+Native extension for LinuxStandalone target not found
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Unable to send message (not connected to server process).
+[Package Manager] Cannot connect to Unity Package Manager local server
+ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.536 seconds
+Domain Reload Profiling: 1054ms
+	BeginReloadAssembly (146ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (19ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (53ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (8ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (316ms)
+		LoadAssemblies (190ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (157ms)
+			TypeCache.Refresh (9ms)
+				TypeCache.ScanAssembly (1ms)
+			BuildScriptInfoCaches (138ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (536ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (410ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (13ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (103ms)
+			ProcessInitializeOnLoadAttributes (234ms)
+			ProcessInitializeOnLoadMethodAttributes (56ms)
+			AfterProcessingInitializeOnLoad (2ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (10ms)
+Refreshing native plugins compatible for Editor in 0.34 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7022 unused Assets / (4.6 MB). Loaded Objects now: 8024.
+Memory consumption went from 218.8 MB to 214.2 MB.
+Total: 7.573373 ms (FindLiveObjects: 0.412386 ms CreateObjectMapping: 0.392713 ms MarkObjects: 5.261108 ms  DeleteObjects: 1.506481 ms)
+
+Prepare: number of updated asset objects reloaded= 0

@@ -60,8 +60,10 @@ public class EnemySpawner : MonoBehaviour
             {
                 levelGenerator.SetOccupiedCell(cell);
 
-                enemies.Add(GameObject.Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count)], 
-                 cell + Vector2.up * spawnHeightOffset, Quaternion.Euler(0, 0, 0), parentObject));
+                GameObject enemy = GameObject.Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count)], 
+                 cell + Vector2.up * spawnHeightOffset, Quaternion.Euler(0, 0, 0), parentObject);
+                enemy.GetComponent<EnemyRasher>().Initialize();
+                enemies.Add(enemy);
 
                 break;
             }
