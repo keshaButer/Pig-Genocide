@@ -46,6 +46,5 @@ public class Health : MonoBehaviour, IDamagable
         _isDead = true;
 
         OnDied?.Invoke();
-        Destroy(this);
     }
 }

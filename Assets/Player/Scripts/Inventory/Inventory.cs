@@ -3,29 +3,26 @@ using System.Collections.Generic;
 
 public class Inventory : MonoBehaviour
 {
-    public static Inventory SingleTone;
     [SerializeField] public uint maxItemsCount = 4;
     public List<Item> startItems;
-    public List<Item> items;
+    public List<Item> currentItems;
     public Cell currentActiveItem;
     private Cell tempCurrentActiveItem;
-    void Awake()
-    {
-        if (SingleTone == null)
-            SingleTone = this;
-        else if (SingleTone != null)
-            Destroy(this);
-    }
+
     private void Start()
     {
-        foreach (Item el in startItems)
-        {
-            items.Add(el);
-        }
-        InventoryWindow.SingleTone.Initialize();
-        InventoryWindow.SingleTone.Redraw();
+        AddStartItems();
+        // InventoryWindow.SingleTone.Initialize();
+        // InventoryWindow.SingleTone.Redraw();
         EventManager.SatDown += DeselectCurrentItem;
         EventManager.StandUp += SelectTempItem;
+    }
+    private void AddStartItems()
+    {
+        foreach (Item element in startItems)
+        {
+            currentItems.Add(element);
+        }
     }
     public void AddItem(Item _item)
     {
@@ -34,26 +31,26 @@ public class Inventory : MonoBehaviour
         //     items.Add(_item);
         //     InventoryWindow.SingleTone.Redraw();
         // }
-        items.Add(_item);
+        currentItems.Add(_item);
         InventoryWindow.SingleTone.Redraw();
     }
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            transform.GetChild(2).GetChild(0).GetComponent<Cell>().SelectItem();
+            transform.GetChild(2).GetChild(0)?.GetComponent<Cell>().SelectItem();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            transform.GetChild(2).GetChild(1).GetComponent<Cell>().SelectItem();
+            transform.GetChild(2).GetChild(1)?.GetComponent<Cell>().SelectItem();
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            transform.GetChild(2).GetChild(2).GetComponent<Cell>().SelectItem();
+            transform.GetChild(2).GetChild(2)?.GetComponent<Cell>().SelectItem();
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            transform.GetChild(2).GetChild(3).GetComponent<Cell>().SelectItem();
+            transform.GetChild(2)?.GetChild(3)?.GetComponent<Cell>()?.SelectItem();
         }
     }
     private void DeselectCurrentItem()
@@ -68,5 +65,10 @@ public class Inventory : MonoBehaviour
     {
         if (tempCurrentActiveItem != null)
             tempCurrentActiveItem.SelectItem();
+    }
+    private void OnDisable()
+    {
+        EventManager.SatDown -= DeselectCurrentItem;
+        EventManager.StandUp -= SelectTempItem;
     }
 }

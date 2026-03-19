@@ -112,7 +112,6 @@ public class ChunkedLevelGenerator : MonoBehaviour
             }
         }
     }
-
     bool ShouldPlaceTile(int x, int y)
     {
         float noiseValue = Mathf.PerlinNoise(x / noiseScale + xOffset, y / noiseScale + yOffset);
@@ -123,7 +122,6 @@ public class ChunkedLevelGenerator : MonoBehaviour
 
         return false;
     }
-
     public void DestroyTileAtWorldPosition(Vector3Int cellPos)
     {
         int chunkX = Mathf.FloorToInt((float)cellPos.x / chunkSizeInCells);
@@ -182,6 +180,13 @@ public class ChunkedLevelGenerator : MonoBehaviour
             }
         }
     }
+    public Vector2Int GetChunkIndex(Vector2Int pos)
+    {
+        int chunkX = Mathf.FloorToInt((float)pos.x / chunkSizeInCells);
+        int chunkY = Mathf.FloorToInt((float)pos.y / chunkSizeInCells);
+
+        return new Vector2Int(chunkX, chunkY);
+    }
     public Vector2 GetRandomSurfaceTileInRadius(Vector3 worldCenter, float radius)
     {
         int radiusInCells = Mathf.CeilToInt(radius / cellSize);
@@ -215,21 +220,6 @@ public class ChunkedLevelGenerator : MonoBehaviour
             }
         }
         return result;
-    }
-    private HashSet<Vector2Int> GetSurfaceCellIndices()
-    {
-        if (surfaceCells == null)
-            return null;
-        
-        HashSet<Vector2Int> cellIndices = new HashSet<Vector2Int>();
-        foreach (Vector2 cell in surfaceCells)
-        {
-            int indexX = Mathf.FloorToInt(cell.x / cellSize);
-            int indexY = Mathf.FloorToInt(cell.y / cellSize);
-
-            cellIndices.Add(new Vector2Int(indexX, indexY));
-        }
-        return cellIndices;
     }
     private void SetFreeSurfaceCells()
     {

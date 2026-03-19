@@ -39,19 +39,12 @@ public class EnemyRasher : Enemy
 
     private void OnEnable()
     {
-        Debug.Log("On Enable");
         MovementPlayer.OnPlayerSpawned += Initialize;
     }
     private void OnDisable()
     {
-        Debug.Log("On Disable");
         MovementPlayer.OnPlayerSpawned -= Initialize;
     }
-    // private void Start()
-    // {
-    //     Initialize();
-    // }
-
     public void Initialize()
     {
         _pathFollower = GetComponent<PathFollower>();
@@ -62,12 +55,12 @@ public class EnemyRasher : Enemy
 
         fightCoroutine = StartCoroutine(nameof(Fighting));
     }
-
     private void CalculateYVelocity()
     {
         if (!isGrounded)
         {
             _yVelocity -= _gravityForce * Time.fixedDeltaTime;
+            RigidBody.linearVelocity = new Vector2(0, _yVelocity);
             _timerGravity = 0;
         }
         else
@@ -76,11 +69,10 @@ public class EnemyRasher : Enemy
             if (_timerGravity >= _minDelayStopFall)
             {
                 _yVelocity = 0;
-                // RigidBody.linearVelocity = new Vector2(RigidBody.linearVelocityX, -5.5f);
+                RigidBody.linearVelocity = new Vector2(0, _yVelocity);
             }
         }
     }
-
     private IEnumerator Fighting()
     {
         while (playerTransform != null)
@@ -110,17 +102,12 @@ public class EnemyRasher : Enemy
 
             if (_targetUnreachable && Time.time > _unreachableTimer)
             {
-                Debug.Log("unreachable = false");
                 _targetUnreachable = false;
             }
 
-            CalculateYVelocity();
             if (_pathFollower.HasPath)
                 _pathFollower.MoveAlongPath();
-            // if (_pathFollower.HasPath)
-            //     Move(_pathFollower.GetDirectionAlongPath());
-            // else
-            //     Move(Vector2.zero);
+            // CalculateYVelocity();
 
             // JumpControl();
 
@@ -128,45 +115,6 @@ public class EnemyRasher : Enemy
         }
 
         fightCoroutine = null;
-    }
-
-    private void Move(Vector2 moveDirection)
-    {
-        float horizontalMove = moveDirection.x * _pathFollower.Speed * Time.fixedDeltaTime;
-
-        if (moveDirection.x != 0)
-        {
-            float direction = Mathf.Sign(moveDirection.x);
-            float rayDistance = config.stepCheckDistance;
-
-            Vector2 rayOrigin = checkCirclePoint.position + Vector3.up * 0.05f;
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * direction, rayDistance, config.checkGroundMask);
-
-            if (hit.collider != null)
-            {
-                Vector2 stepCheckStart = rayOrigin + new Vector2(0, config.stepHeight);
-                RaycastHit2D stepHit = Physics2D.Raycast(stepCheckStart, Vector2.right * direction, rayDistance, config.checkGroundMask);
-
-                if (stepHit.collider == null)
-                {
-                    Debug.Log("MOVE TP");
-                    RigidBody.MovePosition(RigidBody.position + new Vector2(horizontalMove, config.stepHeight));
-                }
-                else
-                {
-                    // RigidBody.linearVelocity = new Vector2(0, moveDirection.y + _yVelocity);
-                    RigidBody.linearVelocity = new Vector2(0, RigidBody.linearVelocity.y);
-
-                    return;
-                }
-            }
-        }
-
-        Debug.Log("MOVE");
-        float verticalMove = moveDirection.y * _pathFollower.Speed * Time.fixedDeltaTime;
-        // RigidBody.linearVelocity = new Vector2(horizontalMove, verticalMove + _yVelocity);
-        // RigidBody.linearVelocity = new Vector2(horizontalMove, verticalMove);
-        // RigidBody.linearVelocity = new Vector2(horizontalMove, RigidBody.linearVelocity.y);
     }
     protected void CheckGround()
     {

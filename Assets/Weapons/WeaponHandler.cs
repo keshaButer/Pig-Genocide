@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class PlayerWeaponHandler : MonoBehaviour
+public class WeaponHandler : MonoBehaviour
 {
-    public static PlayerWeaponHandler SingleTone;
+    public static WeaponHandler SingleTone;
 
     [SerializeField] float accelaration;
     private float angle;

@@ -64,7 +64,7 @@ public class HealthPlayer : MonoBehaviour, IDamagable
         _rb.linearVelocity = new Vector3(0, 0, 0);
         _rb.mass = 0.5f;
         _capsule.sharedMaterial = deadPhysicsMaterial;
-        _weaponHandler.GetComponent<PlayerWeaponHandler>().enabled = false;
+        _weaponHandler.GetComponent<WeaponHandler>().enabled = false;
         _weaponHandler.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
         Rigidbody2D _weaponRb = _weaponHandler.gameObject.AddComponent<Rigidbody2D>();
 
