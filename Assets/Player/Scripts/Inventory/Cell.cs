@@ -1,8 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+public class Cell : MonoBehaviour
 {
     public bool isFill;
     public Item item;
@@ -10,10 +8,6 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     [SerializeField] Color defaultColor;
     [SerializeField] Color selectedColor;
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        SelectItem();
-    }
     public void SelectItem()
     {
         if (isFill && !Inventory.SingleTone.transform.GetComponent<MovementPlayer>().IsCrouch)
@@ -37,14 +31,5 @@ public class Cell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
                 isActiveItem = false;
             }
         }
-    }
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        transform.parent.parent.GetChild(0).GetChild(int.Parse(gameObject.name)).GetComponent<Image>().color = selectedColor;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        transform.parent.parent.GetChild(0).GetChild(int.Parse(gameObject.name)).GetComponent<Image>().color = defaultColor;
     }
 }

@@ -12,7 +12,7 @@ public class BulletPlayer : Bullet
         {
             other.GetComponent<IDamagable>()?.ApplyDamage(damage);
             if (other.GetComponent<Rigidbody2D>() != null)
-                other.GetComponent<Rigidbody2D>()?.AddForceAtPosition(transform.right * force,
+                other.GetComponent<Rigidbody2D>().AddForceAtPosition(transform.right * force,
                  transform.position, ForceMode2D.Impulse);
             
             Explosion();

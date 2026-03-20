@@ -2,30 +2,28 @@ using UnityEngine;
 
 public class Kalash : Weapon
 {
-    [SerializeField] Rifle rifle;
-    [SerializeField] GameObject bulletPrefab;
-    [SerializeField] Transform bulletSpawn;
-    [SerializeField] LayerMask freeSpaceMask;
+    [SerializeField] private Rifle _rifle;
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Transform _bulletSpawnTransform;
+    [SerializeField] private LayerMask _obstacleMask;
+    [SerializeField] private float _radiusCircleCheckFreeSpace;
+
     private SoundSource _soundSource;
-    private bool isFreeSpace;
+    private bool _isFreeSpace;
+
     private void Start() => _soundSource = GetComponent<SoundSource>();
+
     private void Update()
     {
-        isFreeSpace = Physics2D.CircleCast(bulletSpawn.position, 0.2f, transform.up, 0, freeSpaceMask);
+        _isFreeSpace = !Physics2D.OverlapCircle(_bulletSpawnTransform.position, _radiusCircleCheckFreeSpace, _obstacleMask);
     }
-    public override void WeaponAttack()
+    public override void UseAttack()
     {
-        if (!isFreeSpace)
+        if (_isFreeSpace)
         {
-            Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+            Instantiate(_bulletPrefab, _bulletSpawnTransform.position, _bulletSpawnTransform.rotation);
 
-            _soundSource.PlaySound(rifle.audioClipShot, rifle.radiusSoundShot);
+            _soundSource.PlaySound(_rifle.ShotSound, _rifle.RadiusShotSound);
         }
-    }
-
-    public override void Initialize()
-    {
-        item = rifle;
-        bulletSpawn = transform.GetChild(0);
     }
 }

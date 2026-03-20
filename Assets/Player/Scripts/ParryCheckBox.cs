@@ -2,19 +2,22 @@ using UnityEngine;
 
 public class ParryCheckBox : MonoBehaviour
 {
-    private ParryInput parryInput;
+    [SerializeField] private float _additionalSpeed = 1;
+
+    private ParryInput _parryInput;
+
     private void Start()
     {
-        parryInput = transform.parent.GetComponent<ParryInput>();
+        _parryInput = transform.parent.GetComponent<ParryInput>();
     }
     public void HandleBullet(Bullet bullet)
     {
-        if (parryInput.CanParry)
+        if (_parryInput.CanParry)
         {
             if (!bullet.isParry)
                 bullet.isParry = true;
 
-            bullet.Speed += 1;
+            bullet.Speed += _additionalSpeed;
 
             EventManager.OnParry();
         }

@@ -1,106 +1,151 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class WeaponHandler : MonoBehaviour
 {
-    public static WeaponHandler SingleTone;
+    [SerializeField] private float _rotateAccelaration;
+    [SerializeField] private KeyCode _useWeaponKey = KeyCode.Mouse0;
+    [SerializeField] private Inventory _inventory;
 
-    [SerializeField] float accelaration;
-    private float angle;
-    public bool wasLeft;
-    private float timer;
-    private Weapon activeWeapon;
-    private float activeWeaponFireInterval;
-    private MovementPlayer movementPlayerScript;
-    private void Awake()
-    {
-        if (SingleTone == null)
-            SingleTone = this;
-        else if (SingleTone != null)
-            Destroy(this);
-    }
+    public event System.Action<bool> OnExpand;
+
+    private bool _wasLeft;
+    private float _angle;
+    private float _nextTimeFire;
+    private bool _needUpdateNextTimeFire = false;
+    private Weapon _activeWeapon;
+    private Dictionary<string, Weapon> _mountedWeapons = new Dictionary<string, Weapon>();
+
     private void Start()
     {
-        movementPlayerScript = transform.parent.GetComponent<MovementPlayer>();
+        _inventory.OnAddItem += SetInventoryWeapons;
     }
-    public void SetWeaponActive(string name, bool turn)
+
+    // public void SetWeaponActivation(Weapon weapon, bool turn)
+    // {
+    //     if (_mountedWeapons.Contains(weapon))
+    //     {
+    //         Weapon weapon = _mountedWeapons;
+    //         if (weapon.item.name == name)
+    //         {
+    //             _activeWeapon = weapon;
+    //             weapon.gameObject.SetActive(turn);
+    //             if (!turn)
+    //                 _activeWeapon = null;
+    //             break;
+    //         }
+    //     }
+    // }
+    public void SetActiveWeaponSlot(int index)
     {
+        if (transform.childCount < index)
+        {
+            Debug.Log("Нет предмета на этой ячейке");
+            return;
+        }
+
         for (int i = 0; i < transform.childCount; i++)
         {
-            Weapon weapon = transform.GetChild(i).GetComponent<Weapon>();
-            if (weapon.item.name == name)
+            transform.GetChild(i).gameObject.SetActive(false);
+        }
+
+        Weapon weapon = transform.GetChild(index - 1).GetComponent<Weapon>();
+        weapon.gameObject.SetActive(true);
+
+        _activeWeapon = weapon;
+    }
+    private void SetInventoryWeapons()
+    {
+        foreach (Item item in _inventory.CurrentItems)
+        {
+            if (item.Weapon != null)
             {
-                activeWeapon = weapon;
-                activeWeaponFireInterval = weapon.fireInterval;
-                weapon.gameObject.SetActive(turn);
-                if (!turn)
-                    activeWeapon = null;
-                break;
+                SetWeapon(item.Weapon);
             }
         }
     }
-    public void SetWeapon(Weapon weapon)
+    public void SetWeapon<T>(T weapon) where T : Weapon
     {
         if (weapon == null)
             return;
 
-        SpriteRenderer sprite;
+        string key = typeof(T).Name;
 
-        activeWeapon = weapon;
-        activeWeaponFireInterval = weapon.fireInterval;
-        print($"{weapon.item.name} - was taken");
-        InventoryWindow.SingleTone.FindCellByItemName(weapon.item.name)?.SelectItem();
+        // SpriteRenderer sprite;
 
-        if ((angle > -180 && angle < -90) || (angle < 180 && angle > 90))
+        if (!_mountedWeapons.ContainsKey(key))
         {
-            if (activeWeapon != null)
-            {
-                if (activeWeapon.TryGetComponent<SpriteRenderer>(out sprite))
-                {
-                    if (sprite != null)
-                        sprite.flipY = true;
-                }
-            }
+            Weapon spawnedWeapon = Instantiate(weapon, transform);
+            spawnedWeapon.transform.localPosition = Vector3.zero;
+            spawnedWeapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+            spawnedWeapon.gameObject.SetActive(false);
+
+            _mountedWeapons.Add(key, weapon);
+            _activeWeapon = weapon;
+
+            print($"{weapon.name} - was set");
         }
+        // InventoryWindow.SingleTone.FindCellByItemName(weapon.item.name)?.SelectItem();
+
+        // if ((_angle > -180 && _angle < -90) || (_angle < 180 && _angle > 90))
+        // {
+        //     if (_activeWeapon != null)
+        //     {
+        //         if (_activeWeapon.TryGetComponent<SpriteRenderer>(out sprite))
+        //         {
+        //             if (sprite != null)
+        //                 sprite.flipY = true;
+        //         }
+        //     }
+        // }
     }
     private void SetDirectionByMouse()
     {
         Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        _angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        Quaternion rot = Quaternion.Euler(0, 0, angle);
-        transform.localRotation = Quaternion.Lerp(transform.rotation, rot, accelaration);
+        Quaternion rot = Quaternion.Euler(0, 0, _angle);
+        transform.localRotation = Quaternion.Lerp(transform.rotation, rot, _rotateAccelaration);
 
-        if (((angle > -180 && angle < -90) || (angle < 180 && angle > 90)) && !wasLeft)
+        if (((_angle > -180 && _angle < -90) || (_angle < 180 && _angle > 90)) && !_wasLeft)
         {
-            wasLeft = true;
-            movementPlayerScript.Expending(true);
+            _wasLeft = true;
+            OnExpand?.Invoke(true);
 
-            if (activeWeapon != null && activeWeapon.gameObject.activeSelf)
-                activeWeapon.GetComponent<SpriteRenderer>().flipY = true;
+            if (_activeWeapon != null && _activeWeapon.gameObject.activeSelf)
+                _activeWeapon.GetComponent<SpriteRenderer>().flipY = true;
         }
-        else if (angle < 90 && angle > -90 && wasLeft)
+        else if (_angle < 90 && _angle > -90 && _wasLeft)
         {
-            wasLeft = false;
-            movementPlayerScript.Expending(false);
+            _wasLeft = false;
+            OnExpand?.Invoke(false);
 
-            if (activeWeapon != null && activeWeapon.gameObject.activeSelf)
-                activeWeapon.GetComponent<SpriteRenderer>().flipY = false;
+            if (_activeWeapon != null && _activeWeapon.gameObject.activeSelf)
+                _activeWeapon.GetComponent<SpriteRenderer>().flipY = false;
         }
     }
     private void Update()
     {
         SetDirectionByMouse();
-        UseWeapon();
+        HandleInput();
     }
-    private void UseWeapon()
+    private void HandleInput()
     {
-        timer += Time.deltaTime;
-
-        if (timer >= activeWeaponFireInterval && activeWeapon != null && Input.GetMouseButton(0))
+        if (Input.GetKey(_useWeaponKey))
         {
-            activeWeapon.WeaponAttack();
-            
-            timer = 0;
+            if (_needUpdateNextTimeFire)
+            {
+                _nextTimeFire = Time.time + _activeWeapon.FireInterval;
+                _needUpdateNextTimeFire = false;
+            }
+
+            if (_activeWeapon != null && Time.time >= _nextTimeFire)
+            {
+                _activeWeapon.UseAttack();
+
+                _needUpdateNextTimeFire = true;
+            }
         }
     }
 }

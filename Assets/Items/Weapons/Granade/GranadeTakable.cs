@@ -2,20 +2,16 @@ using UnityEngine;
 
 public class GranadeTakable : ItemTakable
 {
-    [SerializeField] GameObject weaponPrefab;
-    [SerializeField] Transform weaponSlot;
+    [SerializeField] Weapon _weapon;
 
-    public override void Use()
+    protected override void SetItemObjectToHandler(Transform weaponSlotTransform)
     {
-        // base.Interact();
-        SpawnPrefab();
-    }
-    private void SpawnPrefab()
-    {
-        GameObject obj = Instantiate(weaponPrefab, weaponSlot);
-        obj.transform.localPosition = Vector3.zero;
-        obj.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        obj.SetActive(false);
-        SoundManager.SingleTone.PlaySound(item.takeSound, item.soundVolume);
+        Weapon spawnedWeapon = Instantiate(_weapon, weaponSlotTransform);
+        spawnedWeapon.transform.localPosition = Vector3.zero;
+        spawnedWeapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+        spawnedWeapon.gameObject.SetActive(false);
+        // SoundManager.SingleTone.PlaySound(item.takeSound, item.soundVolume); //поменять
+        
     }
 }

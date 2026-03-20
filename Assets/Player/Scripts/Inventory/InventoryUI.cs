@@ -2,17 +2,10 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class InventoryWindow : MonoBehaviour
+public class InventoryUI : MonoBehaviour
 {
-    public static InventoryWindow SingleTone;
     public List<Cell> cells;
-    void Awake()
-    {
-        if (SingleTone == null)
-            SingleTone = this;
-        else if (SingleTone != null)
-            Destroy(this);
-    }
+
     public void Initialize()
     {
         for (int i = 0; i < transform.GetChild(2).childCount; i++)

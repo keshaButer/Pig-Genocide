@@ -10,6 +10,7 @@ public class MovementPlayer : MonoBehaviour, IService
     public static event System.Action OnPlayerSpawned;
 
     private Rigidbody2D rb;
+    [SerializeField] private WeaponHandler _weaponHandler;
     public Transform checkCirclePoint, circleStandUp;
     private BoxCollider2D colliderBody;
     private SoundSource _soundSource;
@@ -41,6 +42,7 @@ public class MovementPlayer : MonoBehaviour, IService
 
     public void Initialize()
     {
+        _weaponHandler.OnExpand += Expand;
         isInput = true;
         parryPoints = transform.GetChild(3);
         colliderBody = GetComponent<BoxCollider2D>();
@@ -226,7 +228,7 @@ public class MovementPlayer : MonoBehaviour, IService
         wasIsGroundFalse = false;
     }
 
-    public void Expending(bool side)
+    private void Expand(bool side)
     {
         Quaternion rot = side ? Quaternion.Euler(0, 180, 0) : Quaternion.Euler(0, 0, 0);
 

@@ -1,74 +1,40 @@
-using UnityEngine;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] public uint maxItemsCount = 4;
-    public List<Item> startItems;
-    public List<Item> currentItems;
-    public Cell currentActiveItem;
-    private Cell tempCurrentActiveItem;
+    [SerializeField] private uint _maxItemsCount = 4;
+
+    public event Action OnAddItem;
+    public IReadOnlyList<Item> CurrentItems => _currentItems.AsReadOnly();
+
+    private List<Item> _currentItems = new List<Item>();
+    private List<Item> _startItems = new List<Item>();
+    // private Cell _currentActiveItem;
 
     private void Start()
     {
-        AddStartItems();
-        // InventoryWindow.SingleTone.Initialize();
-        // InventoryWindow.SingleTone.Redraw();
-        EventManager.SatDown += DeselectCurrentItem;
-        EventManager.StandUp += SelectTempItem;
+        Initialize();
     }
-    private void AddStartItems()
+    private void Initialize()
     {
-        foreach (Item element in startItems)
-        {
-            currentItems.Add(element);
-        }
+        AddItems(_startItems);
     }
-    public void AddItem(Item _item)
+    private void AddItems(List<Item> startItems)
     {
-        // if (items.Count < maxItemsCount)
-        // {
-        //     items.Add(_item);
-        //     InventoryWindow.SingleTone.Redraw();
-        // }
-        currentItems.Add(_item);
-        InventoryWindow.SingleTone.Redraw();
+        if (_currentItems.Count + startItems.Count > _maxItemsCount)
+            return;
+
+        _currentItems.AddRange(startItems);
+        OnAddItem?.Invoke();
     }
-    public void Update()
+    public void AddItem(Item item)
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            transform.GetChild(2).GetChild(0)?.GetComponent<Cell>().SelectItem();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            transform.GetChild(2).GetChild(1)?.GetComponent<Cell>().SelectItem();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            transform.GetChild(2).GetChild(2)?.GetComponent<Cell>().SelectItem();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            transform.GetChild(2)?.GetChild(3)?.GetComponent<Cell>()?.SelectItem();
-        }
-    }
-    private void DeselectCurrentItem()
-    {
-        if (currentActiveItem != null)
-        {
-            tempCurrentActiveItem = currentActiveItem;
-            currentActiveItem.SelectItem();
-        }
-    }
-    private void SelectTempItem()
-    {
-        if (tempCurrentActiveItem != null)
-            tempCurrentActiveItem.SelectItem();
-    }
-    private void OnDisable()
-    {
-        EventManager.SatDown -= DeselectCurrentItem;
-        EventManager.StandUp -= SelectTempItem;
+        if (_currentItems.Count >= _maxItemsCount)
+            return;
+
+        _currentItems.Add(item);
+        OnAddItem?.Invoke();
     }
 }
