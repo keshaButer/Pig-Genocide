@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b6a2926dc21b34d89ba374d0fa4796, type: 3}
   m_Name: Granade
   m_EditorClassIdentifier: 
-  itemName: Granade
-  icon: {fileID: 21300000, guid: 19d69ec5f7c902449bb80d8bd3183eef, type: 3}
-  takeSound: {fileID: 8300000, guid: 0683a95fabe8b4375864fae2df7bdcf7, type: 3}
-  soundVolume: 0.1
+  ItemName: Granade
+  Icon: {fileID: 21300000, guid: b5ec2577f0379194787e6a0895c97b12, type: 3}
+  TakeSounde: {fileID: 8300000, guid: 0cd38bf12a94b3c7680e2804cb0e1155, type: 3}
+  SoundVolume: 1
+  Weapon: {fileID: 7645696269508689003, guid: b5414b29dd05b7e4598abb435097d636, type: 3}
   damage: 100
   radius: 2.5

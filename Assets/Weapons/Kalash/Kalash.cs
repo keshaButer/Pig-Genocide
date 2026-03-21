@@ -23,7 +23,7 @@ public class Kalash : Weapon
         {
             Instantiate(_bulletPrefab, _bulletSpawnTransform.position, _bulletSpawnTransform.rotation);
 
-            _soundSource.PlaySound(_rifle.ShotSound, _rifle.RadiusShotSound);
+            _soundSource.PlaySound(_rifle.ShotSound, 10);
         }
     }
 }

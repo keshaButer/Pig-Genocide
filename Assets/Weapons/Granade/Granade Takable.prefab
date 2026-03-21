@@ -112,6 +112,8 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -133,9 +135,11 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &2141292618320587446
 MonoBehaviour:
@@ -195,6 +199,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -242,7 +247,7 @@ GameObject:
   - component: {fileID: 2139148686171810115}
   - component: {fileID: 7163356624810659065}
   - component: {fileID: 5640993640502600943}
-  - component: {fileID: 8925555104432929873}
+  - component: {fileID: 5720147930179474149}
   m_Layer: 6
   m_Name: body
   m_TagString: Untagged
@@ -268,6 +273,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7163356624810659065
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -286,6 +292,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -307,9 +315,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 7685522080315503079, guid: ef030e3c859c7874fb10622dcd6028d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -319,7 +329,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &5640993640502600943
 BoxCollider2D:
@@ -367,7 +376,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0717654, y: 1.2409744}
   m_EdgeRadius: 0
---- !u!114 &8925555104432929873
+--- !u!114 &5720147930179474149
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -376,10 +385,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4040956517459178139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dfdc4eb51c65444da738de1119ad984, type: 3}
+  m_Script: {fileID: 11500000, guid: f984cbac7f5847347aa372d5e05d6896, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: c35f9ed1996560f4f9cc7f13d7b52f2b, type: 2}
-  minTextSize: 6
-  maxTextSize: 20
-  weaponPrefab: {fileID: 1948138172363701562, guid: b5414b29dd05b7e4598abb435097d636, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::ItemTakable
+  _item: {fileID: 11400000, guid: c35f9ed1996560f4f9cc7f13d7b52f2b, type: 2}
+  _minTextSize: 10
+  _maxTextSize: 20
+  _textSizeMultiplier: 4
+  _text: {fileID: 2141292618320587446}

@@ -6,6 +6,7 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] private float _rotateAccelaration;
     [SerializeField] private KeyCode _useWeaponKey = KeyCode.Mouse0;
     [SerializeField] private Inventory _inventory;
+    [SerializeField] private InventoryInput _inventoryInput;
 
     public event System.Action<bool> OnExpand;
 
@@ -16,26 +17,16 @@ public class WeaponHandler : MonoBehaviour
     private Weapon _activeWeapon;
     private Dictionary<string, Weapon> _mountedWeapons = new Dictionary<string, Weapon>();
 
-    private void Start()
+    private void OnEnable()
     {
         _inventory.OnAddItem += SetInventoryWeapons;
+        _inventoryInput.OnSelectSlot += SetActiveWeaponSlot;
+    }
+    private void OnDisable()
+    {
+        _inventoryInput.OnSelectSlot -= SetActiveWeaponSlot;
     }
 
-    // public void SetWeaponActivation(Weapon weapon, bool turn)
-    // {
-    //     if (_mountedWeapons.Contains(weapon))
-    //     {
-    //         Weapon weapon = _mountedWeapons;
-    //         if (weapon.item.name == name)
-    //         {
-    //             _activeWeapon = weapon;
-    //             weapon.gameObject.SetActive(turn);
-    //             if (!turn)
-    //                 _activeWeapon = null;
-    //             break;
-    //         }
-    //     }
-    // }
     public void SetActiveWeaponSlot(int index)
     {
         if (transform.childCount < index)
@@ -64,27 +55,32 @@ public class WeaponHandler : MonoBehaviour
             }
         }
     }
-    public void SetWeapon<T>(T weapon) where T : Weapon
+    private void SetWeapon(Weapon weaponPrefab)
     {
-        if (weapon == null)
+        if (weaponPrefab == null)
             return;
 
-        string key = typeof(T).Name;
+        System.Type type = weaponPrefab.GetType();
+        string key = type.Name;
 
         // SpriteRenderer sprite;
 
         if (!_mountedWeapons.ContainsKey(key))
         {
-            Weapon spawnedWeapon = Instantiate(weapon, transform);
+            Weapon spawnedWeapon = Instantiate(weaponPrefab, transform);
             spawnedWeapon.transform.localPosition = Vector3.zero;
             spawnedWeapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
             spawnedWeapon.gameObject.SetActive(false);
 
-            _mountedWeapons.Add(key, weapon);
-            _activeWeapon = weapon;
+            _mountedWeapons.Add(key, spawnedWeapon);
+            _activeWeapon = spawnedWeapon;
 
-            print($"{weapon.name} - was set");
+            print($"{key} - was set");
+        }
+        else 
+        {
+            Debug.Log("ТАКОЙ ТИП ОРУЖИЯ УЖЕ ЕСТЬ!!!");
         }
         // InventoryWindow.SingleTone.FindCellByItemName(weapon.item.name)?.SelectItem();
 

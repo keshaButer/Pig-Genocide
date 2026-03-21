@@ -1,35 +1,41 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cell : MonoBehaviour
 {
-    public bool isFill;
-    public Item item;
-    public bool isActiveItem;
-    [SerializeField] Color defaultColor;
-    [SerializeField] Color selectedColor;
+    [SerializeField] private Color _defaultColor;
+    [SerializeField] private Color _selectedColor;
 
-    public void SelectItem()
+    private Item _item;
+    private bool _isFill = false;
+
+    private Image _imageComponent;
+
+    private void Start()
     {
-        if (isFill && !Inventory.SingleTone.transform.GetComponent<MovementPlayer>().IsCrouch)
-        {
-            if (!isActiveItem)
-            {
-                if (Inventory.SingleTone.currentActiveItem != null)
-                {
-                    PlayerWeaponHandler.SingleTone.SetWeaponActive(Inventory.SingleTone.currentActiveItem.item.name, false);
-                    Inventory.SingleTone.currentActiveItem.isActiveItem = false;
-                }
-                Inventory.SingleTone.currentActiveItem = this;
+        _imageComponent = GetComponent<Image>();
+    }
+    public void SelectCell()
+    {
+        if (_isFill)
+            return;
 
-                PlayerWeaponHandler.SingleTone.SetWeaponActive(item.name, true);
-                isActiveItem = true;
-            }
-            else
-            {
-                PlayerWeaponHandler.SingleTone.SetWeaponActive(item.name, false);
-                Inventory.SingleTone.currentActiveItem = null;
-                isActiveItem = false;
-            }
-        }
+        _imageComponent.color = _selectedColor;
+        _isFill = true;
+    }
+    public void DeselectCell()
+    {
+        if (!_isFill)
+            return;
+        
+        _imageComponent.color = _defaultColor;
+        _isFill = false;
+    }
+    public void FillCell(Item item)
+    {
+        _item = item;
+        _imageComponent.sprite = _item.Icon;
+        _imageComponent.color = _defaultColor;
+        _isFill = true;
     }
 }

@@ -1,46 +1,62 @@
 using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
-    public List<Cell> cells;
+    [SerializeField] private Transform _cellsParent;
 
-    public void Initialize()
+    private List<Cell> _cells = new List<Cell>();
+    private Inventory _inventory;
+    private InventoryInput _inventoryInput;
+
+    private void Awake()
     {
-        for (int i = 0; i < transform.GetChild(2).childCount; i++)
+        MovementPlayer.OnPlayerSpawned += Initialize;
+    }
+    private void OnDestroy()
+    {
+        MovementPlayer.OnPlayerSpawned -= Initialize;
+        _inventory.OnAddItem -= Redraw;
+    }
+    private void Initialize()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        _inventory = player.GetComponent<Inventory>();
+        _inventoryInput = player.GetComponent<InventoryInput>();
+
+        _inventory.OnAddItem += Redraw;
+        _inventoryInput.OnSelectSlot += SelectCell;
+
+        FillCellsList();
+    }
+    private void SelectCell(int index)
+    {
+        if (index > _cells.Count)
         {
-            cells.Add(transform.GetChild(2).GetChild(i).GetComponent<Cell>());
+            Debug.Log($"Нет столько клеток, чтобы выбрать на этом месте {index} предмет.");
+            return;
+        }
+
+        foreach (Cell cell in _cells)        
+            cell.DeselectCell();
+        
+        _cells[index - 1].SelectCell();
+    }
+    private void FillCellsList() 
+    {
+        for (int i = 0; i < _cellsParent.childCount; i++)
+        {
+            _cells.Add(_cellsParent.GetChild(i).GetComponent<Cell>());
         }
     }
-    public void Redraw()
+    private void Redraw()
     {
-        for (int i = 0; i < Inventory.SingleTone.items.Count; i++)
+        for (int i = 0; i < _inventory.CurrentItems.Count; i++)
         {
-            FillCell(Inventory.SingleTone.items[i].icon, cells[i], Inventory.SingleTone.items[i]);
+            if (i >= _cells.Count)
+                break;
+
+            _cells[i].FillCell(_inventory.CurrentItems[i]);
         }
-    }
-    private void FillCell(Sprite _sprite, Cell _cell, Item item)
-    {
-        Image image = _cell.GetComponent<Image>();
-        image.color = Color.white;
-        image.sprite = _sprite;
-        _cell.item = item;
-        _cell.isFill = true;
-    }
-    public Cell FindCellByItemName(string name)
-    {
-        if (cells.Count > 0)
-        {
-            foreach (Cell cell in cells)
-            {
-                if (cell.item != null)
-                {
-                    if (cell.item.name == name)
-                        return cell;
-                }
-            }
-        }
-        return null;
     }
 }

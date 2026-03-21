@@ -69,6 +69,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9005712761028217957
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -87,6 +88,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -108,9 +111,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 12c40104494ed574d849cae51b82f19c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -120,7 +125,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &8169385456493948832
 MonoBehaviour:
@@ -134,14 +138,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74540237f0bfcf14d9108afd175d1a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <item>k__BackingField: {fileID: 11400000, guid: 8c0e072430e9d35469c300dde86b3586, type: 2}
-  fireInterval: 0.2
-  rifle: {fileID: 11400000, guid: 8c0e072430e9d35469c300dde86b3586, type: 2}
-  bulletPrefab: {fileID: 3682554700567244655, guid: da243da016e27cf4dbce3a4fe70b6759, type: 3}
-  bulletSpawn: {fileID: 1034593521805434455}
-  freeSpaceMask:
+  Name: Unnamed
+  FireInterval: 0.3
+  _rifle: {fileID: 11400000, guid: 8c0e072430e9d35469c300dde86b3586, type: 2}
+  _bulletPrefab: {fileID: 3682554700567244655, guid: da243da016e27cf4dbce3a4fe70b6759, type: 3}
+  _bulletSpawnTransform: {fileID: 1034593521805434455}
+  _obstacleMask:
     serializedVersion: 2
-    m_Bits: 51
+    m_Bits: 512
+  _radiusCircleCheckFreeSpace: 0.2
 --- !u!114 &-2599717463604814030
 MonoBehaviour:
   m_ObjectHideFlags: 0

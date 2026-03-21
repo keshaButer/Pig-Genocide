@@ -3,14 +3,14 @@ using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(BoxCollider2D))]
-public abstract class ItemTakable : MonoBehaviour
+public class ItemTakable : MonoBehaviour
 {
+    [SerializeField] private Item _item;
     [SerializeField] private float _minTextSize = 10, _maxTextSize = 20, _textSizeMultiplier = 4;
     [SerializeField] private TextMeshPro _text;
 
-    private Item _item;
     private SpriteRenderer _spriteRenderer;
-    private Transform _playerTransform;
+    protected Transform PlayerTransform;
 
     private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize; //поменять потом
     private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
@@ -20,7 +20,7 @@ public abstract class ItemTakable : MonoBehaviour
         InitializeSpriteRenderer();
 
         // playerPos = ServiceLocator.Current.Get<MovementPlayer>().transform;
-        _playerTransform = GameObject.FindGameObjectWithTag("Player").transform; //поменять потом
+        PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform; //поменять потом
 
         _text.text = _item.name;
         
@@ -42,24 +42,21 @@ public abstract class ItemTakable : MonoBehaviour
     }
     private void SetTextSizeByDistance()
     {
-        if (_playerTransform != null)
+        if (PlayerTransform != null)
         {
-            float distance = Vector2.Distance(transform.position, _playerTransform.position);
+            float distance = Vector2.Distance(transform.position, PlayerTransform.position);
             float distanceMultiplier = Mathf.Clamp(distance, _minTextSize, _maxTextSize);
 
             _text.fontSize = distanceMultiplier * _textSizeMultiplier;
         }
     }
-    
-    protected abstract void SetItemObjectToHandler(WeaponHandler weaponHandler);
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        WeaponHandler weaponHandler;
-        if (other.TryGetComponent<WeaponHandler>(out weaponHandler))
+        Inventory inventory;
+        if (other.TryGetComponent<Inventory>(out inventory))
         {
             // Inventory.SingleTone.AddItem(item);
-            SetItemObjectToHandler(weaponHandler);
+            inventory.AddItem(_item);
             Destroy(gameObject);
         }
     }

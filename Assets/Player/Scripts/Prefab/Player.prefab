@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4458468373013711534}
   - component: {fileID: 7820054303129576589}
   - component: {fileID: 6005688838873338119}
+  - component: {fileID: 5729336040083349751}
   - component: {fileID: 8602505357978216153}
   - component: {fileID: 1771613362496141323}
   - component: {fileID: 1731098289306790927}
@@ -107,8 +108,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputConfig: {fileID: 11400000, guid: e3a9cca92edf25b1280cc266fe443186, type: 2}
   config: {fileID: 11400000, guid: 574c9a2b2c899393b800415eda11bd2b, type: 2}
-  checkCirclePoint: {fileID: 0}
-  circleStandUp: {fileID: 0}
+  _weaponHandler: {fileID: 6480485268539553040}
+  checkCirclePoint: {fileID: 4019411804421733937}
+  circleStandUp: {fileID: 6965500046509417043}
   isInput: 0
   isStop: 0
 --- !u!114 &6005688838873338119
@@ -123,7 +125,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b929a88490f3004aae91b9ead89a42d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circleRasius: 1
+  _circleRadius: 1
+  _circleCenter: {fileID: 6965500046509417043}
+  inputConfig: {fileID: 11400000, guid: e3a9cca92edf25b1280cc266fe443186, type: 2}
+--- !u!114 &5729336040083349751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76852695540339604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc985149894317afaf0bb4785dcc9b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryInput
+  _1key: 49
+  _2key: 50
+  _3key: 51
+  _4key: 52
 --- !u!114 &8602505357978216153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,10 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524310b91d2d84f48a471159234b463b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxItemsCount: 4
-  startItems: []
-  items: []
-  currentActiveItem: {fileID: 0}
+  _maxItemsCount: 4
+  _startItems: []
 --- !u!114 &1771613362496141323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,10 +375,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7203985130990943130}
-  - component: {fileID: 2119823008326273823}
   - component: {fileID: 6887868598287265738}
+  - component: {fileID: 6480485268539553040}
   m_Layer: 6
-  m_Name: Weapon Slot
+  m_Name: Weapon Handler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -381,20 +399,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2682810260283462058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2119823008326273823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 891507536404783185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcf02191c2f4b744dbed274bab5e013c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  accelaration: 0.2
-  wasLeft: 0
 --- !u!61 &6887868598287265738
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -441,6 +445,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0906434, y: 0.32917023}
   m_EdgeRadius: 0
+--- !u!114 &6480485268539553040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891507536404783185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf0101799c320f85ae6ca108a0e325b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponHandler
+  _rotateAccelaration: 5
+  _useWeaponKey: 323
+  _inventory: {fileID: 8602505357978216153}
+  _inventoryInput: {fileID: 5729336040083349751}
 --- !u!1 &2326455567811335825
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3167df0f18720008a75ed9bbe1cc2e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParryCheckBox
+  _additionalSpeed: 1
 --- !u!1 &6407221031514720428
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,3 +1010,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3167df0f18720008a75ed9bbe1cc2e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParryCheckBox
+  _additionalSpeed: 1
