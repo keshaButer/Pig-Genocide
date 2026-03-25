@@ -12,15 +12,14 @@ public class ItemTakable : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     protected Transform PlayerTransform;
 
-    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize; //поменять потом
-    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
+    private void OnEnable() => PlayerSpawner.OnPlayerSpawned += Initialize; //поменять потом
+    private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
 
-    private void Initialize()
+    private void Initialize(GameObject player)
     {
         InitializeSpriteRenderer();
 
-        // playerPos = ServiceLocator.Current.Get<MovementPlayer>().transform;
-        PlayerTransform = GameObject.FindGameObjectWithTag("Player").transform; //поменять потом
+        PlayerTransform = player.transform;
 
         _text.text = _item.name;
         

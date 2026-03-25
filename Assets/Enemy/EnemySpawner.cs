@@ -24,12 +24,12 @@ public class EnemySpawner : MonoBehaviour
     private bool doSpawn;
     private ChunkedLevelGenerator levelGenerator;
 
-    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize;
-    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
+    private void OnEnable() => PlayerSpawner.OnPlayerSpawned += Initialize;
+    private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
 
-    public void Initialize()
+    public void Initialize(GameObject player)
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = player.transform;
         levelGenerator = ChunkedLevelGenerator.SingleTon;
 
         InvokeRepeating(nameof(UpdateEnemyActivation), 0, updateEnemyActivationRate);
@@ -62,7 +62,7 @@ public class EnemySpawner : MonoBehaviour
 
                 GameObject enemy = GameObject.Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count)], 
                  cell + Vector2.up * spawnHeightOffset, Quaternion.Euler(0, 0, 0), parentObject);
-                enemy.GetComponent<EnemyRasher>().Initialize();
+                enemy.GetComponent<EnemyRasher>().Initialize(playerTransform.gameObject);
                 enemies.Add(enemy);
 
                 break;

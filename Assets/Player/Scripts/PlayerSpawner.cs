@@ -1,10 +1,13 @@
 using UnityEngine;
+using System;
 using System.Collections.Generic;
 
 public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private int maxAttempts = 200000;
+    [SerializeField] private int maxAttempts = 20000;
+
+    public static event Action<GameObject> OnPlayerSpawned;
 
     public Transform SpawnPlayer(List<Vector2> surfaceCells)
     {
@@ -12,13 +15,22 @@ public class PlayerSpawner : MonoBehaviour
 
         for (int attempts = 1; attempts < maxAttempts; attempts++)
         {
-            Vector2 cell = surfaceCells[Random.Range(0, surfaceCells.Count)];
+            Vector2 cell = surfaceCells[UnityEngine.Random.Range(0, surfaceCells.Count)];
             if (levelGenerator.IsFreeCell(cell))
             {
                 levelGenerator.SetOccupiedCell(cell);
 
+                GameObject playerObject = GameObject.Instantiate(
+                    playerPrefab,
+                    cell + new Vector2(0, 1),
+                    Quaternion.Euler(0, 0, 0)
+                );
+
+                OnPlayerSpawned?.Invoke(playerObject);
+
                 Debug.Log($"Player was spawned :)");
-                return GameObject.Instantiate(playerPrefab, cell + new Vector2(0, 1), Quaternion.Euler(0, 0, 0)).transform;
+
+                return playerObject.transform;
             }
         }
         Debug.Log($"Player wasnt spawned");

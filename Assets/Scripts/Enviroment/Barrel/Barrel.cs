@@ -5,8 +5,8 @@ public class Barrel : Explosives, IDamagable
     [Range(0, 3)]
     [SerializeField] int _startHealth;
 
-    [SerializeField] GameObject effect;
-    [SerializeField] AudioClip _audioClip;
+    [SerializeField] private GameObject effect;
+    [SerializeField] private AudioClip _audioClip;
 
     public int CurrentHealth { get; private set; }
 

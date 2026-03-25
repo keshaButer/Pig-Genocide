@@ -13,12 +13,12 @@ public class BarrelSpawner : MonoBehaviour
     private List<GameObject> barrels = new List<GameObject>();
     private Transform playerTransform;
 
-    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize;
-    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
+    private void OnEnable() => PlayerSpawner.OnPlayerSpawned += Initialize;
+    private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
 
-    public void Initialize()
+    public void Initialize(GameObject player)
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = player.transform;
 
         InvokeRepeating(nameof(DisableFarBarrels), 0, disableFarRate);
     }

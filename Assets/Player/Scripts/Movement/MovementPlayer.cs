@@ -7,8 +7,6 @@ public class MovementPlayer : MonoBehaviour, IService
     public InputPlayerMovementConfig inputConfig;
     public PlayerMovementConfig config;
 
-    public static event System.Action OnPlayerSpawned;
-
     private Rigidbody2D rb;
     [SerializeField] private WeaponHandler _weaponHandler;
     public Transform checkCirclePoint, circleStandUp;
@@ -58,8 +56,6 @@ public class MovementPlayer : MonoBehaviour, IService
         _soundSource = transform.GetComponent<SoundSource>();
         inputConfig = Resources.Load<InputPlayerMovementConfig>("Configs/Player/InputPlayerMovementConfig");
         config = Resources.Load<PlayerMovementConfig>("Configs/Player/PropertiesPlayerMovement");
-
-        OnPlayerSpawned?.Invoke();
     }
 
     private void Update()

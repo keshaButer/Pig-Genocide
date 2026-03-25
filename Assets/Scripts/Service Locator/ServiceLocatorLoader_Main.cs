@@ -25,6 +25,7 @@ public class ServiceLocatorLoader_Main : MonoBehaviour
 
     private void Initialize()
     {
+        _soundManager.Subscribe();
         _levelGenerator.Initialize();
     }
 }

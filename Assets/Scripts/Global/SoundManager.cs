@@ -14,16 +14,27 @@ public class SoundManager : MonoBehaviour
             Destroy(this);
     }
 
-    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize;
-    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
+    private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
+    public void Subscribe() => PlayerSpawner.OnPlayerSpawned += Initialize;
 
-    public void Initialize()
+    private void Initialize(GameObject player)
     {
-        audioSource = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
+        if (player == null)
+        {
+            Debug.LogError("PLAYER is NULL");
+            return;
+        }
+        Debug.LogError("PLAYER is not NULL");
+        audioSource = player.GetComponent<AudioSource>();
     }
-
     public void PlaySound(AudioClip clip, float volume = 1f)
     {
+        if (audioSource == null)
+        {
+            Debug.LogError("audioSource is NULL");
+            return;
+        }
+
         audioSource.volume = volume;
         audioSource.PlayOneShot(clip);
     }

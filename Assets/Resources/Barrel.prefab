@@ -328,7 +328,7 @@ MonoBehaviour:
     m_Bits: 1
   _startHealth: 1
   effect: {fileID: 1148100095273426946, guid: 11fac573aa7824f4ab01e53fe6b2e880, type: 3}
-  _audioClip: {fileID: 0}
+  _audioClip: {fileID: 8300000, guid: cce56b655df9119cfac285ce41d08d83, type: 3}
 --- !u!50 &341301198706951806
 Rigidbody2D:
   serializedVersion: 5

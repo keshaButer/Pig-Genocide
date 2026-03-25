@@ -39,18 +39,18 @@ public class EnemyRasher : Enemy
 
     private void OnEnable()
     {
-        MovementPlayer.OnPlayerSpawned += Initialize;
+        PlayerSpawner.OnPlayerSpawned += Initialize;
     }
     private void OnDisable()
     {
-        MovementPlayer.OnPlayerSpawned -= Initialize;
+        PlayerSpawner.OnPlayerSpawned -= Initialize;
     }
-    public void Initialize()
+    public void Initialize(GameObject player)
     {
         _pathFollower = GetComponent<PathFollower>();
 
         checkCirclePoint = transform.GetChild(1);
-        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        playerTransform = player.transform;
         _movementPlayer = playerTransform.GetComponent<MovementPlayer>();
 
         fightCoroutine = StartCoroutine(nameof(Fighting));

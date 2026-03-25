@@ -11,16 +11,15 @@ public class InventoryUI : MonoBehaviour
 
     private void Awake()
     {
-        MovementPlayer.OnPlayerSpawned += Initialize;
+        PlayerSpawner.OnPlayerSpawned += Initialize;
     }
     private void OnDestroy()
     {
-        MovementPlayer.OnPlayerSpawned -= Initialize;
+        PlayerSpawner.OnPlayerSpawned -= Initialize;
         _inventory.OnAddItem -= Redraw;
     }
-    private void Initialize()
+    private void Initialize(GameObject player)
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
         _inventory = player.GetComponent<Inventory>();
         _inventoryInput = player.GetComponent<InventoryInput>();
 

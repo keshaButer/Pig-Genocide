@@ -2,20 +2,11 @@ using UnityEngine;
 
 public class MoverItemsToPlayer : MonoBehaviour
 {
-    private void Awake()
+    private void OnEnable() => PlayerSpawner.OnPlayerSpawned += MoveItemsToPlayer;
+    private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= MoveItemsToPlayer;
+
+    private void MoveItemsToPlayer(GameObject player)
     {
-        MovementPlayer.OnPlayerSpawned += MoveItemsToPlayer;
-    }
-    private void MoveItemsToPlayer()
-    {
-        transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
-    }
-    private void OnDisable()
-    {
-        MovementPlayer.OnPlayerSpawned -= MoveItemsToPlayer;
-    }
-    private void OnDestroy()
-    {
-        MovementPlayer.OnPlayerSpawned -= MoveItemsToPlayer;
+        transform.position = player.transform.position;
     }
 }

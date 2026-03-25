@@ -4,15 +4,13 @@ using UnityEngine;
 public class SlowTimeManager : MonoBehaviour
 {
     public static SlowTimeManager SingleTon;
+
     private void Awake()
     {
         if (SingleTon == null)
             SingleTon = this;
         else Destroy(this);
     }
-
-    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize;
-    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
 
     public void Initialize()
     {

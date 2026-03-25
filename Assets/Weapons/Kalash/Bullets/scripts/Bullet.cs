@@ -6,13 +6,18 @@ public abstract class Bullet : MonoBehaviour
     [SerializeField] public int damage;
     [SerializeField] protected float force;
     [SerializeField] private LayerMask layerMask;
+
     public float Speed { get; set; }
+    public bool isParry;
+
+    protected bool isExplode;
+
     private Vector2 previousPosition;
     private Animator animator;
-    protected bool isExplode;
-    public bool isParry;
     private float timer;
+
     private void Awake() => animator = GetComponent<Animator>();
+
     private void Start()
     {
         previousPosition = transform.position;

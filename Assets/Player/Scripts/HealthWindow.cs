@@ -13,15 +13,15 @@ public class HealthWindow : MonoBehaviour
         else Destroy(this);
     }
 
-    private void OnEnable() => MovementPlayer.OnPlayerSpawned += Initialize;
-    private void OnDisable() => MovementPlayer.OnPlayerSpawned -= Initialize;
+    private void OnEnable() => PlayerSpawner.OnPlayerSpawned += Initialize;
+    private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
 
-    public void Initialize()
+    public void Initialize(GameObject player)
     {
         EventManager.PlayerTookDamage += UpdateHealthText;
         EventManager.EnemyDied += UpdateHealthText;
 
-        healthPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<HealthPlayer>();
+        healthPlayer = player.GetComponent<HealthPlayer>();
         healthText = transform.GetChild(0).GetComponent<TextMeshPro>();
         UpdateHealthText();
     }

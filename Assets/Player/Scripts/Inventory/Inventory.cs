@@ -11,7 +11,6 @@ public class Inventory : MonoBehaviour
     public IReadOnlyList<Item> CurrentItems => _currentItems.AsReadOnly();
 
     private List<Item> _currentItems = new List<Item>();
-    // private Cell _currentActiveItem;
 
     private void Start()
     {
