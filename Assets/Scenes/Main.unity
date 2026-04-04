@@ -5181,7 +5181,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2115580975
 Transform:
   m_ObjectHideFlags: 0
@@ -5217,7 +5217,6 @@ MonoBehaviour:
   spawnHeightOffset: 0.3
   maxAttempts: 100
   enemyPrefabs:
-  - {fileID: 4194581230446803002, guid: ee48a0b146c27574b9947241db2247fa, type: 3}
   - {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
   parentObject: {fileID: 2115580975}
   updateEnemyActivationRate: 2

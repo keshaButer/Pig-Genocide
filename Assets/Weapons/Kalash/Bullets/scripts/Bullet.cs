@@ -9,7 +9,7 @@ public abstract class Bullet : MonoBehaviour
 
     protected bool _isExplode;
 
-    [SerializeField] private LayerMask _ignoreMask;
+    [SerializeField] private LayerMask _hitMask;
     [SerializeField] protected float _force;
 
     [SerializeField] private float _speed, _delayDestroy, _radius;
@@ -80,7 +80,7 @@ public abstract class Bullet : MonoBehaviour
         int layer = other.layer;
         int layerMaskValue = 1 << layer;
         
-        if ((_ignoreMask.value & layerMaskValue) == 0)
+        if ((_hitMask.value & layerMaskValue) != 0)
             return true;
             
         return false;
