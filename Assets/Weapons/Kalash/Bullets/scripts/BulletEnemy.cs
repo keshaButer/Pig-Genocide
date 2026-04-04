@@ -7,7 +7,11 @@ public class BulletEnemy : Bullet
         if (_isExplode)
             return;
 
-        other.GetComponent<ParryCheckBox>()?.HandleBullet(this);
+        if (other.GetComponent<ParryCheckBox>())
+        {
+            other.GetComponent<ParryCheckBox>()?.HandleBullet(this);
+            return;
+        }
 
         if (other.GetComponent<Bullet>()) 
             Explosion();

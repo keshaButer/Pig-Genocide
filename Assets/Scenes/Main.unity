@@ -5209,7 +5209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29108f42c51c451aaba25c324be6e92f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  spawnRate: 3
+  spawnRate: 10
   minDistanceBetweenEnemies: 5
   minDistanceToPlayer: 5
   maxDistanceToPlayer: 10

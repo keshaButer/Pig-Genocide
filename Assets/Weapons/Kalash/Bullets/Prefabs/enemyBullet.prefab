@@ -111,7 +111,7 @@ MonoBehaviour:
   IsParry: 0
   _hitMask:
     serializedVersion: 2
-    m_Bits: 776
+    m_Bits: 1800
   _force: 5
   _speed: 10
   _delayDestroy: 4
