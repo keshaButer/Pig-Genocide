@@ -14,8 +14,8 @@ public class ParryCheckBox : MonoBehaviour
     {
         if (_parryInput.CanParry)
         {
-            if (!bullet.isParry)
-                bullet.isParry = true;
+            if (!bullet.IsParry)
+                bullet.IsParry = true;
 
             bullet.Speed += _additionalSpeed;
 

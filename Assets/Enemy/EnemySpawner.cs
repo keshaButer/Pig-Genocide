@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
     private bool doSpawn;
     private ChunkedLevelGenerator levelGenerator;
 
-    private void OnEnable() => PlayerSpawner.OnPlayerSpawned += Initialize;
+    public void Subscribe() => PlayerSpawner.OnPlayerSpawned += Initialize;
     private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
 
     public void Initialize(GameObject player)

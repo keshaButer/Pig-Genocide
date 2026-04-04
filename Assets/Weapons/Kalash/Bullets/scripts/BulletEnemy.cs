@@ -2,22 +2,26 @@ using UnityEngine;
 
 public class BulletEnemy : Bullet
 {
+    [SerializeField] private LayerMask _ignoreMask;
+
     protected override void HandleHit(Transform other)
     {
-        if (isExplode)
+        if (_isExplode)
             return;
 
         other.GetComponent<ParryCheckBox>()?.HandleBullet(this);
 
-        if (other.GetComponent<Bullet>()) Explosion();
-        if (other.gameObject.layer != 10 && other.gameObject.layer != 2 && other.gameObject.layer != 6)
+        if (other.GetComponent<Bullet>()) 
+            Explosion();
+
+        if (CanHit(other.gameObject))
         {
-            if (isParry)
+            if (IsParry)
             {
-                other.GetComponent<IDamagable>()?.ApplyDamage(damage * 2);
+                other.GetComponent<IDamagable>()?.ApplyDamage(Damage * 2);
                 if (other.GetComponent<Rigidbody2D>())
                 {
-                    other.GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * force,
+                    other.GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * _force,
                      transform.position, ForceMode2D.Impulse);
                 }
 
@@ -26,11 +30,11 @@ public class BulletEnemy : Bullet
             else
             {
                 if (!other.gameObject.GetComponent<Enemy>())
-                    other.GetComponent<IDamagable>()?.ApplyDamage(damage);
+                    other.GetComponent<IDamagable>()?.ApplyDamage(Damage);
 
                 if (other.GetComponent<Rigidbody2D>())
                 {
-                    other.GetComponent<Rigidbody2D>().AddForceAtPosition(transform.right * force,
+                    other.GetComponent<Rigidbody2D>().AddForceAtPosition(transform.right * _force,
                      transform.position, ForceMode2D.Impulse);
                 }
 
@@ -38,5 +42,15 @@ public class BulletEnemy : Bullet
                     Explosion();
             }
         } 
+    }
+    private bool CanHit(GameObject other)
+    {
+        int layer = other.layer;
+        int layerMaskValue = 1 << layer;
+        
+        if ((_ignoreMask.value & layerMaskValue) == 0)
+            return true;
+            
+        return false;
     }
 }

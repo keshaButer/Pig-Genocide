@@ -80,21 +80,24 @@ public class WeaponHandler : MonoBehaviour
         }
         else 
         {
-            Debug.Log("ТАКОЙ ТИП ОРУЖИЯ УЖЕ ЕСТЬ!!!");
+            Debug.Log("ТАКОЙ ТИП ОРУЖИЯ УЖЕ ЕСТЬ");
         }
-        // InventoryWindow.SingleTone.FindCellByItemName(weapon.item.name)?.SelectItem();
 
-        // if ((_angle > -180 && _angle < -90) || (_angle < 180 && _angle > 90))
-        // {
-        //     if (_activeWeapon != null)
-        //     {
-        //         if (_activeWeapon.TryGetComponent<SpriteRenderer>(out sprite))
-        //         {
-        //             if (sprite != null)
-        //                 sprite.flipY = true;
-        //         }
-        //     }
-        // }
+        // FlipSprite();
+    }
+    private void FlipSprite()
+    {
+        if (_activeWeapon != null)
+        {
+            if ((_angle > -180 && _angle < -90) || (_angle < 180 && _angle > 90))
+            {
+                SpriteRenderer sprite;
+                if (_activeWeapon.TryGetComponent<SpriteRenderer>(out sprite))
+                {
+                    sprite.flipY = true;
+                }
+            }
+        }
     }
     private void SetDirectionByMouse()
     {

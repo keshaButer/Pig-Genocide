@@ -10,10 +10,13 @@ public class SlowTimeManager : MonoBehaviour
         if (SingleTon == null)
             SingleTon = this;
         else Destroy(this);
+
+        Initialize();
     }
 
     public void Initialize()
     {
+        Debug.Log("INIT SLOW TIME MANAGER");
         EventManager.Parry += () => SlowTime(0, 0.2f);
     }
     private IEnumerator SlowTimeCorutine(float timeScale, float duration)
@@ -26,6 +29,7 @@ public class SlowTimeManager : MonoBehaviour
     }
     public void SlowTime(float timeScale, float duration)
     {
+        Debug.Log("SLOW TIME");
         StartCoroutine(SlowTimeCorutine(timeScale, duration));
     }
 }

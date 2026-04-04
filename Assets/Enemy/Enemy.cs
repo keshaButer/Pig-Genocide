@@ -2,7 +2,6 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Health))]
-
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyConfig _config;

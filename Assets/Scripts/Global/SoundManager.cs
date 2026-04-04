@@ -24,7 +24,6 @@ public class SoundManager : MonoBehaviour
             Debug.LogError("PLAYER is NULL");
             return;
         }
-        Debug.LogError("PLAYER is not NULL");
         audioSource = player.GetComponent<AudioSource>();
     }
     public void PlaySound(AudioClip clip, float volume = 1f)

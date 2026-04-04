@@ -15,6 +15,9 @@ public class ServiceLocatorLoader_Main : MonoBehaviour
     private void Awake()
     {
         RegisterServices();
+    }
+    private void Start()
+    {
         Initialize();
     }
 
@@ -26,6 +29,7 @@ public class ServiceLocatorLoader_Main : MonoBehaviour
     private void Initialize()
     {
         _soundManager.Subscribe();
+        _enemySpawner.Subscribe();
         _levelGenerator.Initialize();
     }
 }

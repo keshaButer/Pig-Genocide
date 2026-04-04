@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PathFollower
   Speed: 50
   _reachDistance: 0.1
-  MaxDepthAstar: 30
+  MaxDepthAstar: 50
   FinishedPath: 0
 --- !u!114 &1472126050747900054
 MonoBehaviour:

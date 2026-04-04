@@ -1,76 +1,67 @@
 using UnityEngine;
 
+[RequireComponent(typeof(CircleCollider2D))]
 public abstract class Bullet : MonoBehaviour
 {
-    [SerializeField] float speed, delayDestroy, radius;
-    [SerializeField] public int damage;
-    [SerializeField] protected float force;
-    [SerializeField] private LayerMask layerMask;
-
+    public int Damage;
+    public bool IsParry;
     public float Speed { get; set; }
-    public bool isParry;
 
-    protected bool isExplode;
+    protected bool _isExplode;
+    [SerializeField] protected float _force;
 
-    private Vector2 previousPosition;
-    private Animator animator;
-    private float timer;
+    [SerializeField] private float _speed, _delayDestroy, _radius;
+    [SerializeField] private LayerMask _layerMask;
 
-    private void Awake() => animator = GetComponent<Animator>();
+    private Animator _animator;
+    private CircleCollider2D _circleCollider;
+    private float _timer;
 
-    private void Start()
+    private void Awake()
     {
-        previousPosition = transform.position;
+        _animator = GetComponent<Animator>();
+        _circleCollider = GetComponent<CircleCollider2D>();
+        _circleCollider.isTrigger = true;
+        _circleCollider.radius = _radius;
     }
+
     private void Update()
     {
-        if (isExplode) return;
+        if (_isExplode) return;
 
-        if (isParry)
+        if (IsParry)
             ParryBackRun();
         else
             Move();
-
-        CheckHit();
     }
     private void Move()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
-        timer += Time.deltaTime;
-        if (timer >= delayDestroy)
+        transform.Translate(Vector2.right * _speed * Time.deltaTime);
+        _timer += Time.deltaTime;
+        if (_timer >= _delayDestroy)
             Destroy(gameObject);
     }
     private void ParryBackRun()
     {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
+        transform.Translate(Vector2.left * _speed * Time.deltaTime);
     }
     private void Explode() => Destroy(gameObject);
     protected virtual void Explosion()
     {
-        isExplode = true;
-        animator.SetTrigger("isExplode");
+        _isExplode = true;
+        _animator.SetTrigger("isExplode");
     }
-    private void CheckHit()
+    private void CheckHit(Collider2D collider)
     {
-        // Vector2 direction = ((Vector2)transform.position - previousPosition).normalized;
-        // float distance = Vector2.Distance(transform.position, previousPosition);
+        print($"BULLET HIT {collider.gameObject.name}");
+        HandleHit(collider.transform);
 
-        // RaycastHit2D hit = Physics2D.Raycast(previousPosition, direction, distance, layerMask);
-        Collider2D collider = Physics2D.OverlapCircle(transform.position, radius, layerMask);
-
-        if (collider != null)
+        if (collider.tag == "Ground")
         {
-            print($"BULLET HIT {collider.gameObject.name}");
-            HandleHit(collider.transform);
-
-            if (collider.tag == "Ground")
-            {
-                // ChunkedLevelGenerator.SingleTon.DestroyTileAtWorldPosition(hitInside);
-                ChunkedLevelGenerator.SingleTon.DestroyTilesInRadius(transform.position, radius);
-            }
+            // ChunkedLevelGenerator.SingleTon.DestroyTileAtWorldPosition(hitInside);
+            ChunkedLevelGenerator.SingleTon.DestroyTilesInRadius(transform.position, _radius);
         }
-
-        previousPosition = transform.position;
     }
     protected abstract void HandleHit(Transform other);
+    private void OnTriggerEnter2D(Collider2D other) => CheckHit(other);
 }

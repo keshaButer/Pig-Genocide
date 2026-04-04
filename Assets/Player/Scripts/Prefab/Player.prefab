@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _circleRadius: 1
   _circleCenter: {fileID: 6965500046509417043}
-  inputConfig: {fileID: 11400000, guid: e3a9cca92edf25b1280cc266fe443186, type: 2}
+  _inputConfig: {fileID: 11400000, guid: e3a9cca92edf25b1280cc266fe443186, type: 2}
 --- !u!114 &5729336040083349751
 MonoBehaviour:
   m_ObjectHideFlags: 0

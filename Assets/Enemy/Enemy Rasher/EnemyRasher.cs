@@ -32,6 +32,7 @@ public class EnemyRasher : Enemy
 
     private MovementPlayer _movementPlayer;
     private PathFollower _pathFollower;
+
     private bool _targetUnreachable;
     private float _unreachableTimer;
     private float _timerGravity;
