@@ -10,7 +10,7 @@ public class UIStaminaControll : MonoBehaviour
     [SerializeField] private Slider bar3;
     private StaminaControll staminaControll;
 
-    private void OnEnable() => PlayerSpawner.OnPlayerSpawned += Initialize;
+    private void Awake() => PlayerSpawner.OnPlayerSpawned += Initialize;
     private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
 
     public void Initialize(GameObject player)

@@ -3201,6 +3201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: []
+  <IsUsing>k__BackingField: 0
 --- !u!1 &1193317711
 GameObject:
   m_ObjectHideFlags: 0
@@ -3873,6 +3874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: []
+  <IsUsing>k__BackingField: 0
 --- !u!1 &1434720299
 GameObject:
   m_ObjectHideFlags: 0

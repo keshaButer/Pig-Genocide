@@ -11,9 +11,10 @@ public class HealthWindow : MonoBehaviour
         if (SingleTon == null)
             SingleTon = this;
         else Destroy(this);
+
+        PlayerSpawner.OnPlayerSpawned += Initialize;
     }
 
-    private void OnEnable() => PlayerSpawner.OnPlayerSpawned += Initialize;
     private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
 
     public void Initialize(GameObject player)

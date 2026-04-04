@@ -8,10 +8,11 @@ public abstract class Bullet : MonoBehaviour
     public float Speed { get; set; }
 
     protected bool _isExplode;
+
+    [SerializeField] private LayerMask _ignoreMask;
     [SerializeField] protected float _force;
 
     [SerializeField] private float _speed, _delayDestroy, _radius;
-    [SerializeField] private LayerMask _layerMask;
 
     private Animator _animator;
     private CircleCollider2D _circleCollider;
@@ -45,7 +46,9 @@ public abstract class Bullet : MonoBehaviour
     {
         transform.Translate(Vector2.left * _speed * Time.deltaTime);
     }
+
     private void Explode() => Destroy(gameObject);
+
     protected virtual void Explosion()
     {
         _isExplode = true;
@@ -54,14 +57,33 @@ public abstract class Bullet : MonoBehaviour
     private void CheckHit(Collider2D collider)
     {
         print($"BULLET HIT {collider.gameObject.name}");
-        HandleHit(collider.transform);
 
         if (collider.tag == "Ground")
         {
             // ChunkedLevelGenerator.SingleTon.DestroyTileAtWorldPosition(hitInside);
             ChunkedLevelGenerator.SingleTon.DestroyTilesInRadius(transform.position, _radius);
         }
+
+        HandleHit(collider.transform);
     }
     protected abstract void HandleHit(Transform other);
-    private void OnTriggerEnter2D(Collider2D other) => CheckHit(other);
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject == gameObject) return;
+
+        if (!CanHit(other.gameObject)) return;
+
+        CheckHit(other);
+    }
+    protected bool CanHit(GameObject other)
+    {
+        int layer = other.layer;
+        int layerMaskValue = 1 << layer;
+        
+        if ((_ignoreMask.value & layerMaskValue) == 0)
+            return true;
+            
+        return false;
+    }
+
 }

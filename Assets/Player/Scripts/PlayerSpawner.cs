@@ -8,6 +8,10 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private int maxAttempts = 20000;
 
     public static event Action<GameObject> OnPlayerSpawned;
+    private void OnDestroy()
+    {
+        OnPlayerSpawned = null;
+    }
 
     public Transform SpawnPlayer(List<Vector2> surfaceCells)
     {

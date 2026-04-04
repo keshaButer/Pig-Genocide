@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class BulletEnemy : Bullet
 {
-    [SerializeField] private LayerMask _ignoreMask;
-
     protected override void HandleHit(Transform other)
     {
         if (_isExplode)
@@ -42,15 +40,5 @@ public class BulletEnemy : Bullet
                     Explosion();
             }
         } 
-    }
-    private bool CanHit(GameObject other)
-    {
-        int layer = other.layer;
-        int layerMaskValue = 1 << layer;
-        
-        if ((_ignoreMask.value & layerMaskValue) == 0)
-            return true;
-            
-        return false;
     }
 }
