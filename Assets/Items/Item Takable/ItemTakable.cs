@@ -22,8 +22,6 @@ public class ItemTakable : MonoBehaviour
         PlayerTransform = player.transform;
 
         _text.text = _item.name;
-        
-        Debug.Log($"Item {_item.name} initialized.");
     }
     private void InitializeSpriteRenderer()
     {

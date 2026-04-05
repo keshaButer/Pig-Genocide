@@ -63,8 +63,6 @@ public class WeaponHandler : MonoBehaviour
         System.Type type = weaponPrefab.GetType();
         string key = type.Name;
 
-        // SpriteRenderer sprite;
-
         if (!_mountedWeapons.ContainsKey(key))
         {
             Weapon spawnedWeapon = Instantiate(weaponPrefab, transform);
@@ -76,7 +74,7 @@ public class WeaponHandler : MonoBehaviour
             _mountedWeapons.Add(key, spawnedWeapon);
             _activeWeapon = spawnedWeapon;
 
-            print($"{key} - was set");
+            print($"Weapon: {key} was set.");
         }
         else 
         {

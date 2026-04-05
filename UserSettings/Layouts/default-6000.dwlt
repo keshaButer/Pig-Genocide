@@ -679,23 +679,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 1110
+      width: 553
       height: 647
-    m_Scale: {x: 0.578125, y: 0.578125}
-    m_Translation: {x: 555, y: 323.5}
+    m_Scale: {x: 0.28802082, y: 0.28802082}
+    m_Translation: {x: 276.5, y: 323.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -960
-      y: -559.56757
-      width: 1920
-      height: 1119.1351
+      x: -960.00006
+      y: -1123.1827
+      width: 1920.0001
+      height: 2246.3655
     m_MinimalGUI: 1
-  m_defaultScale: 0.578125
-  m_LastWindowPixelSize: {x: 1110, y: 668}
+  m_defaultScale: 0.28802082
+  m_LastWindowPixelSize: {x: 553, y: 668}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000001000000000000
@@ -1213,7 +1213,7 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 258.25522, y: 122.19821, z: -0.012165139}
+    m_Target: {x: 202.832, y: 373.1816, z: -0.017921403}
     speed: 2
     m_Value: {x: 258.25522, y: 122.19821, z: -0.012165139}
   m_RenderMode: 0
@@ -1265,7 +1265,7 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 2.2393215
+    m_Target: 2.8149583
     speed: 2
     m_Value: 2.2393215
   m_Ortho:
@@ -1606,12 +1606,7 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 50562
-    - m_Data: 51260
-    - m_Data: 51262
-    - m_Data: 51264
-    - m_Data: 51266
-    - m_Data: 51268
+    - m_Data: 50572
     - m_Data: 51270
     - m_Data: 51272
     - m_Data: 51274
@@ -1622,6 +1617,11 @@ MonoBehaviour:
     - m_Data: 51284
     - m_Data: 51286
     - m_Data: 51288
+    - m_Data: 51290
+    - m_Data: 51292
+    - m_Data: 51294
+    - m_Data: 51296
+    - m_Data: 51298
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1654,12 +1654,7 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 50562
-    - m_Data: 51260
-    - m_Data: 51262
-    - m_Data: 51264
-    - m_Data: 51266
-    - m_Data: 51268
+    - m_Data: 50572
     - m_Data: 51270
     - m_Data: 51272
     - m_Data: 51274
@@ -1670,6 +1665,11 @@ MonoBehaviour:
     - m_Data: 51284
     - m_Data: 51286
     - m_Data: 51288
+    - m_Data: 51290
+    - m_Data: 51292
+    - m_Data: 51294
+    - m_Data: 51296
+    - m_Data: 51298
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

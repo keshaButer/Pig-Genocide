@@ -27,8 +27,6 @@ public class RopeSpawner : MonoBehaviour
 
     public void SpawnRopes(List<Vector2> surfaceCells)
     {
-        Debug.Log($"free cells count: {surfaceCells.Count}");
-
         ChunkedLevelGenerator levelGenerator = ChunkedLevelGenerator.SingleTon;
         int spawnedCount = 0;
         int attempts = 0;
@@ -70,8 +68,6 @@ public class RopeSpawner : MonoBehaviour
                 }
             }
         }
-
-        Debug.Log($"Ropes was spawned: {spawnedCount}");
     }
     void DisableFarRopes()
     {

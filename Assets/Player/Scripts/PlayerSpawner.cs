@@ -32,12 +32,9 @@ public class PlayerSpawner : MonoBehaviour
 
                 OnPlayerSpawned?.Invoke(playerObject);
 
-                Debug.Log($"Player was spawned :)");
-
                 return playerObject.transform;
             }
         }
-        Debug.Log($"Player wasnt spawned");
         return null;
     }
 }

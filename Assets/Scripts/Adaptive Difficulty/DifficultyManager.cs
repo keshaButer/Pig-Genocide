@@ -51,7 +51,7 @@ public class DifficultyManager : MonoBehaviour
         if (_healthPlayer == null || _healthPlayer.CurrentHealth <= 0)
             return 0.5f;
 
-        float healthRate = _healthPlayer.CurrentHealth / _healthPlayer.MaxHealth;
+        float healthRate = Mathf.Clamp(_healthPlayer.CurrentHealth / _healthPlayer.MaxHealth, 0.5f, 1.0f);
         float killRate = _kills * _killMeaning;
         
         float timeBonus = Time.timeSinceLevelLoad / _reverseTimeMeaning;

@@ -56,11 +56,8 @@ public abstract class Bullet : MonoBehaviour
     }
     private void CheckHit(Collider2D collider)
     {
-        print($"BULLET HIT {collider.gameObject.name}");
-
         if (collider.tag == "Ground")
         {
-            // ChunkedLevelGenerator.SingleTon.DestroyTileAtWorldPosition(hitInside);
             ChunkedLevelGenerator.SingleTon.DestroyTilesInRadius(transform.position, _radius);
         }
 

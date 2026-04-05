@@ -78,5 +78,7 @@ public class EnemyShooter : EnemyRasher
     {
         base.ChangeDifficulty(playerSkill);
         fireInterval = Mathf.Clamp(startFireInterval / Mathf.Max(playerSkill, 0.1f), minFireInterval, maxFireInterval);
+        Debug.Log($"Change fire interval to: {fireInterval}");
+
     }
 }

@@ -24,8 +24,6 @@ public class BarrelSpawner : MonoBehaviour
     }
     public void SpawnBarrels(List<Vector2> surfaceCells)
     {
-        Debug.Log($"free cells count: {surfaceCells.Count}");
-
         ChunkedLevelGenerator levelGenerator = ChunkedLevelGenerator.SingleTon;
         int spawnedCount = 0;
 
@@ -45,7 +43,6 @@ public class BarrelSpawner : MonoBehaviour
                     break;
             }
         }
-        Debug.Log($"Barrels was spawned: {spawnedCount}");
     }
     void DisableFarBarrels()
     {
