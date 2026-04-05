@@ -5,6 +5,7 @@ public class EnemyShooter : EnemyRasher
 {
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float fireInterval;
+    [SerializeField] float minFireInterval = 0.2f, maxFireInterval = 3.0f;
     [SerializeField] float queueInterval;
     [SerializeField] int countComboBullets;
     [SerializeField] Transform spawnBullet;
@@ -12,6 +13,7 @@ public class EnemyShooter : EnemyRasher
     [SerializeField] bool randomizeValues;
 
     private Coroutine shootCoroutine;
+    private float startFireInterval;
     private float timer;
     private int currentCountShots;
     private bool isSeePlayer;
@@ -19,6 +21,7 @@ public class EnemyShooter : EnemyRasher
     protected override void Awake()
     {
         base.Awake();
+        startFireInterval = fireInterval;
 
         if (randomizeValues)
             RandomizeValues();
@@ -69,5 +72,11 @@ public class EnemyShooter : EnemyRasher
         Vector3 lookAt = _weapon.InverseTransformPoint(target);
         float angle = Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg;
         _weapon.Rotate(0, 0, angle - 180);
+    }
+
+    public override void ChangeDifficulty(float playerSkill)
+    {
+        base.ChangeDifficulty(playerSkill);
+        fireInterval = Mathf.Clamp(startFireInterval / Mathf.Max(playerSkill, 0.1f), minFireInterval, maxFireInterval);
     }
 }

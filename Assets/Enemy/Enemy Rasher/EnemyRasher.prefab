@@ -156,7 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e274e5bdcc82cc3e49d4fdce64dada5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathFollower
-  Speed: 50
+  CurrentSpeed: 0
+  StartSpeed: 4
   _reachDistance: 0.1
   MaxDepthAstar: 50
   FinishedPath: 0
@@ -186,6 +187,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRasher
   _config: {fileID: 11400000, guid: 0c4bb2a65d86427e1a77615410472bd1, type: 2}
+  _minSpeed: 1
+  _maxSpeed: 20
   _rayRangeJump: 0.5
   _gravityForce: 0
   _minDelayStopFall: 0.3

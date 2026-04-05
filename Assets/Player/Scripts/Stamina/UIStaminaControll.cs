@@ -19,6 +19,8 @@ public class UIStaminaControll : MonoBehaviour
     }
     private void SynchronizeStamina()
     {
+        if (staminaControll == null) return;
+
         if (staminaControll.CurrentStamina <= 1)
         {
             bar3.value = 0;

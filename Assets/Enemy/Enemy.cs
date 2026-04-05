@@ -18,6 +18,10 @@ public abstract class Enemy : MonoBehaviour
 
         HealthComponent.OnDied += HandleDeath;
     }
+    protected virtual void Start()
+    {
+        DifficultyManager.SingleTon.Enemies.Add(this);
+    }
 
     private void HandleDeath()
     {
@@ -38,11 +42,15 @@ public abstract class Enemy : MonoBehaviour
 
     public virtual void HandleCollision(Collision2D other) { }
     
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         if (HealthComponent != null)
         {
             HealthComponent.OnDied -= HandleDeath;
         }
+
+        DifficultyManager.SingleTon.Enemies.Remove(this);
     }
+
+    public abstract void ChangeDifficulty(float playerSkill);
 }

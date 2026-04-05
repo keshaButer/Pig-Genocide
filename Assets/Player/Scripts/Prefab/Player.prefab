@@ -170,9 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea1bc9f4a105d943b8f66f1d097057d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startHealth: 15
+  MaxHealth: 15
   _timeToDestroy: 0
-  _isImmortalMode: 1
+  _isImmortalMode: 0
   alivePhysicsMaterial: {fileID: 6200000, guid: f92774a5f3f37fe4ca427167b744b87a, type: 2}
   deadPhysicsMaterial: {fileID: 6200000, guid: 282d24bf57a47997aa4aa33006354340, type: 2}
 --- !u!114 &1731098289306790927

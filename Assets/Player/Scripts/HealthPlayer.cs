@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class HealthPlayer : MonoBehaviour, IDamagable
 {
     [Range(0, 15)]
-    [SerializeField] int _startHealth;
+    [SerializeField] public int MaxHealth;
     [SerializeField] float _timeToDestroy;
     Rigidbody2D _rb;
     BoxCollider2D _capsule;
@@ -45,14 +45,14 @@ public class HealthPlayer : MonoBehaviour, IDamagable
     public void Initialize()
     {
         _rb = GetComponent<Rigidbody2D>();
-        CurrentHealth = _startHealth;
+        CurrentHealth = MaxHealth;
         HealthWindow.SingleTon.UpdateHealthText();
         _animationController = transform.GetChild(0).GetComponent<AnimationController>();
     }
     public void AddHP(int hp)
     {
         CurrentHealth += hp;
-        CurrentHealth = Math.Clamp(_health, 0, _startHealth);
+        CurrentHealth = Math.Clamp(_health, 0, MaxHealth);
     }
     private void Die()
     {

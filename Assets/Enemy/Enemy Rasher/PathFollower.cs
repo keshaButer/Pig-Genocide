@@ -4,7 +4,8 @@ using System.Collections.Generic;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PathFollower : MonoBehaviour
 {
-    public float Speed;
+    public float CurrentSpeed;
+    public float StartSpeed;
     [SerializeField] private float _reachDistance = 0.1f;
     [SerializeField] public int MaxDepthAstar = 30;
 
@@ -15,7 +16,11 @@ public class PathFollower : MonoBehaviour
     private List<Vector2> _currentPath;
     private int _currentPoint;
 
-    private void Awake() => _rigidBody = GetComponent<Rigidbody2D>();
+    private void Awake()
+    {
+        _rigidBody = GetComponent<Rigidbody2D>();
+        CurrentSpeed = StartSpeed;
+    }
 
     public void SetPath(List<Vector2> path)
     {
@@ -33,7 +38,7 @@ public class PathFollower : MonoBehaviour
         }
 
         Vector2 target = _currentPath[_currentPoint] + Vector2.down * 0.15f;
-        Vector2 newPos = Vector2.MoveTowards(transform.position, target, Speed * Time.fixedDeltaTime);
+        Vector2 newPos = Vector2.MoveTowards(transform.position, target, CurrentSpeed * Time.fixedDeltaTime);
         
         _rigidBody.MovePosition(newPos);
 

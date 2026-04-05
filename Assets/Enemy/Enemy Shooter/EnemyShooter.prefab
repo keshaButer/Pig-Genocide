@@ -221,7 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e274e5bdcc82cc3e49d4fdce64dada5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathFollower
-  Speed: 50
+  CurrentSpeed: 0
+  StartSpeed: 4
   _reachDistance: 0.1
   MaxDepthAstar: 50
   FinishedPath: 0
@@ -251,6 +252,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 0c4bb2a65d86427e1a77615410472bd1, type: 2}
+  _minSpeed: 1
+  _maxSpeed: 20
   _rayRangeJump: 0.5
   _gravityForce: 9.81
   _minDelayStopFall: 0.2
@@ -268,6 +271,8 @@ MonoBehaviour:
   config: {fileID: 11400000, guid: 1c3c498b5f09c553e8de798f2d1a50ef, type: 2}
   bulletPrefab: {fileID: 3682554700567244655, guid: 1277fca4e604e95499c1e88fcfc65abb, type: 3}
   fireInterval: 1
+  minFireInterval: 0.2
+  maxFireInterval: 3
   queueInterval: 0.1
   countComboBullets: 2
   spawnBullet: {fileID: 2366572757721750303}

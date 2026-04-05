@@ -7,6 +7,7 @@ public class EnemyRasher : Enemy
 {
     public bool isChangeDirection { get; set; }
 
+    [SerializeField] private float _minSpeed = 1, _maxSpeed = 20;
     [SerializeField] private float _rayRangeJump;
     [SerializeField] private float _gravityForce, _minDelayStopFall;
     [SerializeField] private float _coolDownFindPath;
@@ -29,10 +30,9 @@ public class EnemyRasher : Enemy
     protected Vector2 moveDirection;
     protected Transform playerTransform;
     protected Coroutine fightCoroutine;
+    protected PathFollower PathFollower;
 
     private MovementPlayer _movementPlayer;
-    private PathFollower _pathFollower;
-
     private bool _targetUnreachable;
     private float _unreachableTimer;
     private float _timerGravity;
@@ -48,7 +48,7 @@ public class EnemyRasher : Enemy
     }
     public void Initialize(GameObject player)
     {
-        _pathFollower = GetComponent<PathFollower>();
+        PathFollower = GetComponent<PathFollower>();
 
         checkCirclePoint = transform.GetChild(1);
         playerTransform = player.transform;
@@ -81,18 +81,18 @@ public class EnemyRasher : Enemy
             CheckGround();
             CalculateDirection(playerTransform.position);
 
-            if (!_pathFollower.HasPath && !_targetUnreachable)
+            if (!PathFollower.HasPath && !_targetUnreachable)
             {
                 List<Vector2> newPath = PathFinder.FindPath(
                     transform.position, 
                     _movementPlayer.checkCirclePoint.position, 
                     ChunkedLevelGenerator.SingleTon,
-                    _pathFollower.MaxDepthAstar
+                    PathFollower.MaxDepthAstar
                 );
 
                 if (newPath != null)
                 {
-                    _pathFollower.SetPath(newPath);
+                    PathFollower.SetPath(newPath);
                 }
                 else
                 {
@@ -106,8 +106,8 @@ public class EnemyRasher : Enemy
                 _targetUnreachable = false;
             }
 
-            if (_pathFollower.HasPath)
-                _pathFollower.MoveAlongPath();
+            if (PathFollower.HasPath)
+                PathFollower.MoveAlongPath();
             // CalculateYVelocity();
 
             // JumpControl();
@@ -188,5 +188,10 @@ public class EnemyRasher : Enemy
             isChangeDirection = false;
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+    }
+    public override void ChangeDifficulty(float playerSkill)
+    {
+        PathFollower.CurrentSpeed = Mathf.Clamp(PathFollower.StartSpeed * playerSkill, _minSpeed, _maxSpeed);
+        Debug.Log($"Change speed to: {PathFollower.CurrentSpeed}");
     }
 }
