@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] private EnemyConfig _config;
+    [SerializeField] public EnemyConfig Config;
 
     protected Rigidbody2D RigidBody { get; private set; }
     protected Health HealthComponent { get; private set; }
@@ -30,15 +30,15 @@ public abstract class Enemy : MonoBehaviour
 
         RigidBody.constraints = RigidbodyConstraints2D.None;
         RigidBody.linearVelocity = Vector2.zero;
-        RigidBody.mass = _config.massOnDeath;
+        RigidBody.mass = Config.massOnDeath;
 
-        DisableComponents();
+        OnDeath();
         EventManager.OnEnemyDied();
 
-        Destroy(gameObject, _config.delayToDestroy);
+        Destroy(gameObject, Config.delayToDestroy);
     }
 
-    protected virtual void DisableComponents() { }
+    protected virtual void OnDeath() { }
 
     public virtual void HandleCollision(Collision2D other) { }
     

@@ -10,7 +10,7 @@ public class PathFollower : MonoBehaviour
     [SerializeField] public int MaxDepthAstar = 30;
 
     public bool HasPath => _currentPath != null;
-    public bool FinishedPath;
+    [HideInInspector] public bool FinishedPath;
 
     private Rigidbody2D _rigidBody;
     private List<Vector2> _currentPath;
@@ -37,7 +37,7 @@ public class PathFollower : MonoBehaviour
             return;
         }
 
-        Vector2 target = _currentPath[_currentPoint] + Vector2.down * 0.15f;
+        Vector2 target = _currentPath[_currentPoint] + Vector2.down * 0.1f;
         Vector2 newPos = Vector2.MoveTowards(transform.position, target, CurrentSpeed * Time.fixedDeltaTime);
         
         _rigidBody.MovePosition(newPos);

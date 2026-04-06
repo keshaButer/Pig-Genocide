@@ -1,15 +1,17 @@
-// using UnityEngine;
+using UnityEngine;
 
+[RequireComponent(typeof(EnemyCollision))]
 public class EnemyKamikaze : EnemyRasher
 {
-    // private void OnCollisionEnter2D(Collision2D other)
-    // {
-    //     if (other.transform.tag == "Player")
-    //         Explode(other);
-    // }
-    // private void Explode(Collision2D other)
-    // {
-    //     other.transform.GetComponent<HealthPlayer>().ApplyDamage(Damage);
-    //     Destroy(gameObject);
-    // }
+    [SerializeField] private Bomb _bomb;
+
+    public override void HandleCollision(Collision2D other) => Explode();
+
+    protected override void OnDeath() => Explode();
+
+    private void Explode()
+    {
+        _bomb.Explode();
+        Destroy(gameObject);
+    }
 }

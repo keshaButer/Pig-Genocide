@@ -34,14 +34,16 @@ public class HealthPlayer : MonoBehaviour, IDamagable
             }
         }
     }
-    void Awake()
+    private void Awake()
     {
         _capsule = GetComponent<BoxCollider2D>();
         _capsule.sharedMaterial = alivePhysicsMaterial;
         _weaponHandler = transform.GetChild(2);
         EventManager.EnemyDied += () => AddHP(1);
     }
-    void Start() => Initialize();
+
+    private void Start() => Initialize();
+
     public void Initialize()
     {
         _rb = GetComponent<Rigidbody2D>();

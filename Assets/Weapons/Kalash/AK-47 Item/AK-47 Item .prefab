@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660918895025604547}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.58, y: 1.34, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
@@ -117,7 +117,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8006965424475929645, guid: e184e8ae8cf0f664d943195c02f7a75e, type: 2}
+  - {fileID: 7154442055681871968, guid: bba33f71aa594f344b63cf407337f874, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -163,15 +163,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Kalash
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e184e8ae8cf0f664d943195c02f7a75e, type: 2}
-  m_sharedMaterial: {fileID: 8006965424475929645, guid: e184e8ae8cf0f664d943195c02f7a75e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bba33f71aa594f344b63cf407337f874, type: 2}
+  m_sharedMaterial: {fileID: 7154442055681871968, guid: bba33f71aa594f344b63cf407337f874, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278251263
+  m_fontColor: {r: 1, g: 0.93333334, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemTakable
   _item: {fileID: 11400000, guid: 8c0e072430e9d35469c300dde86b3586, type: 2}
-  _minTextSize: 10
-  _maxTextSize: 20
-  _textSizeMultiplier: 4
+  _minTextSize: 4
+  _maxTextSize: 6
+  _textSizeMultiplier: 3
   _text: {fileID: 2141292618320587446}

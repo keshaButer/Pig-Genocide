@@ -10,20 +10,18 @@ public class EnemyRasher : Enemy
     [SerializeField] private float _minSpeed = 1, _maxSpeed = 20;
     [SerializeField] private float _rayRangeJump;
     [SerializeField] private float _gravityForce, _minDelayStopFall;
-    [SerializeField] private float _coolDownFindPath;
-    [SerializeField] private float jupmHeight, fightJupmHeight, chillJumpHeight;
+    [SerializeField] private float _coolDownUnreachablePath;
+    [SerializeField] private float _coolDownRecalculatePath;
+    [SerializeField] private float jupmHeight;
     [SerializeField] private float _checkCircleRadius;
     [SerializeField] private float _intervalChangeDirection;
     [SerializeField] private int _maxCountJumps = 3;
     [SerializeField] private int _coolDownJumps = 2;
-    [SerializeField] private LayerMask _checkMask;
-    [SerializeField] private EnemyMovementConfig config;
+    [SerializeField] private LayerMask _checkGroundMask;
 
     protected int countJumps;
-    protected bool isJump, isFastExpend;
     protected bool isGrounded;
     protected float coolDownTimer;
-    protected float playerDistance;
     protected float currentDirection;
 
     protected Transform checkCirclePoint;
@@ -35,8 +33,19 @@ public class EnemyRasher : Enemy
     private MovementPlayer _movementPlayer;
     private bool _targetUnreachable;
     private float _unreachableTimer;
+    private float _recalculatePathTimer;
     private float _timerGravity;
     private float _yVelocity = 0;
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (_coolDownRecalculatePath > _coolDownUnreachablePath)
+        {
+            _coolDownRecalculatePath = _coolDownUnreachablePath;
+        }
+    }
+#endif
 
     private void OnEnable()
     {
@@ -81,7 +90,8 @@ public class EnemyRasher : Enemy
             CheckGround();
             CalculateDirection(playerTransform.position);
 
-            if (!PathFollower.HasPath && !_targetUnreachable)
+            bool recalculatePath = Time.timeSinceLevelLoad >= _recalculatePathTimer;
+            if ((!PathFollower.HasPath && !_targetUnreachable) || (recalculatePath && PathFollower.HasPath))
             {
                 List<Vector2> newPath = PathFinder.FindPath(
                     transform.position, 
@@ -97,11 +107,13 @@ public class EnemyRasher : Enemy
                 else
                 {
                     _targetUnreachable = true;
-                    _unreachableTimer = Time.time + _coolDownFindPath;
+                    _unreachableTimer = Time.timeSinceLevelLoad + _coolDownRecalculatePath;
                 }
+
+                _recalculatePathTimer = Time.timeSinceLevelLoad + _coolDownRecalculatePath;
             }
 
-            if (_targetUnreachable && Time.time > _unreachableTimer)
+            if (_targetUnreachable && Time.timeSinceLevelLoad >= _unreachableTimer)
             {
                 _targetUnreachable = false;
             }
@@ -120,7 +132,7 @@ public class EnemyRasher : Enemy
     protected void CheckGround()
     {
         isGrounded = Physics2D.OverlapCircle(checkCirclePoint.position,
-        _checkCircleRadius, _checkMask);
+        _checkCircleRadius, _checkGroundMask);
     }
     protected void Jump()
     {
@@ -134,13 +146,13 @@ public class EnemyRasher : Enemy
     protected void JumpControl()
     {
         if (isGrounded && Physics2D.BoxCast(transform.position - new Vector3(0.5f, 0.6f), new Vector2(_rayRangeJump, 0.5f),
-         0, Vector2.left, 0, _checkMask) && countJumps < _maxCountJumps && currentDirection == -1)
+         0, Vector2.left, 0, _checkGroundMask) && countJumps < _maxCountJumps && currentDirection == -1)
         {
             countJumps++;
             Jump();
         }
         else if (isGrounded && Physics2D.BoxCast(transform.position + new Vector3(0.5f, -0.6f), new Vector2(_rayRangeJump, 0.5f),
-         0, Vector2.left, 0, _checkMask) && countJumps < _maxCountJumps && currentDirection == 1)
+         0, Vector2.left, 0, _checkGroundMask) && countJumps < _maxCountJumps && currentDirection == 1)
         {
             countJumps++;
             Jump();

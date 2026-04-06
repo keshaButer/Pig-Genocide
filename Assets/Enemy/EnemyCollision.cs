@@ -10,6 +10,7 @@ public class EnemyCollision : MonoBehaviour
     private void Awake()
     {
         _enemy = GetComponent<Enemy>();
+        _config = _enemy.Config;
     }
 
     private void OnCollisionEnter2D(Collision2D other)

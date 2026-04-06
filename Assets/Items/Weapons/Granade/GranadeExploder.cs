@@ -11,9 +11,9 @@ public class GranadeExploder : Explosives
     {
         Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>(), GetComponent<CircleCollider2D>());
 
-        Invoke(nameof(Explode), delayExplode);
+        Invoke(nameof(OnExplode), delayExplode);
     }
-    protected override void Explode()
+    protected override void OnExplode()
     {
         DealDamage();
 

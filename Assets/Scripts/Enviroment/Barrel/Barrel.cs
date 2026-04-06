@@ -27,10 +27,10 @@ public class Barrel : Explosives, IDamagable
         if (CurrentHealth <= 0)
         {
             CurrentHealth = 0;
-            Explode();
+            OnExplode();
         }
     }
-    protected override void Explode()
+    protected override void OnExplode()
     {
         DealDamage();
 

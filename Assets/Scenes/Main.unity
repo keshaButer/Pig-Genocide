@@ -3967,9 +3967,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a38870b17274b64afeba3f81efb15a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChunkedLevelGenerator
-  chunkSizeInCells: 30
-  worldWidthInChunks: 50
-  worldHeightInChunks: 50
+  chunkSizeInCells: 50
+  worldWidthInChunks: 40
+  worldHeightInChunks: 40
   platformTile: {fileID: 11400000, guid: 13aaa28934819b1848c984b449d74124, type: 2}
   chunkPrefab: {fileID: 8107286441514308303, guid: 6ae491820aef99fccaae843b81b28c28, type: 3}
   surfaceCells: []
@@ -5262,7 +5262,7 @@ MonoBehaviour:
   spawnHeightOffset: 0.3
   maxAttempts: 100
   enemyPrefabs:
-  - {fileID: 4194581230446803002, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
+  - {fileID: 4194581230446803002, guid: fcf2fba1684ef6783874ccb6f83d57cf, type: 3}
   parentObject: {fileID: 2115580975}
   updateEnemyActivationRate: 2
 --- !u!1001 &2139143769

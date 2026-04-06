@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4010d71b37e3b5048afc576958fff8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyRasher
-  _config: {fileID: 11400000, guid: 0c4bb2a65d86427e1a77615410472bd1, type: 2}
+  Config: {fileID: 11400000, guid: c1b1218398b70413d9390b8c0db2cfc5, type: 2}
   _minSpeed: 1
   _maxSpeed: 20
   _rayRangeJump: 0.5
@@ -194,16 +194,13 @@ MonoBehaviour:
   _minDelayStopFall: 0.3
   _coolDownFindPath: 0.5
   jupmHeight: 1.5
-  fightJupmHeight: 1.5
-  chillJumpHeight: 1.5
   _checkCircleRadius: 0.4
   _intervalChangeDirection: 0.3
   _maxCountJumps: 3
   _coolDownJumps: 2
-  _checkMask:
+  _checkGroundMask:
     serializedVersion: 2
-    m_Bits: 513
-  config: {fileID: 11400000, guid: 1c3c498b5f09c553e8de798f2d1a50ef, type: 2}
+    m_Bits: 520
 --- !u!1 &5128799461337896039
 GameObject:
   m_ObjectHideFlags: 0

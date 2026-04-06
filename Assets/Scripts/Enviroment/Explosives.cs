@@ -55,5 +55,5 @@ public abstract class Explosives : MonoBehaviour
             }
         }
     }
-    protected abstract void Explode();
+    protected abstract void OnExplode();
 }
