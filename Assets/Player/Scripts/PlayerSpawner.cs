@@ -2,13 +2,16 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-public class PlayerSpawner : MonoBehaviour
+public class PlayerSpawner : MonoBehaviour, IPlayerProvider
 {
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private int maxAttempts = 20000;
 
-    public static event Action<GameObject> OnPlayerSpawned;
-    private void OnDestroy()
+    public GameObject Player { get; private set; }
+
+    public event Action<GameObject> OnPlayerSpawned;
+
+    private void OnDisable()
     {
         OnPlayerSpawned = null;
     }
@@ -30,7 +33,8 @@ public class PlayerSpawner : MonoBehaviour
                     Quaternion.Euler(0, 0, 0)
                 );
 
-                OnPlayerSpawned?.Invoke(playerObject);
+                Player = playerObject;
+                OnPlayerSpawned?.Invoke(Player);
 
                 return playerObject.transform;
             }

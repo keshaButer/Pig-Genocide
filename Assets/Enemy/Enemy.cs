@@ -1,15 +1,29 @@
+using VContainer;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Health))]
 public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] public EnemyConfig Config;
+    [Inject] private IDifficultyManager _difficultyManager;
+
+    public EnemyConfig Config;
 
     protected Rigidbody2D RigidBody { get; private set; }
     protected Health HealthComponent { get; private set; }
 
     protected bool IsDead { get; private set; }
+
+    protected virtual void OnEnable()
+    {
+        _difficultyManager.OnDifficultyChanged += OnDifficultyChanged;
+    }
+    
+    protected virtual void OnDisable()
+    {
+        _difficultyManager.OnDifficultyChanged -= OnDifficultyChanged;
+        HealthComponent.OnDied -= HandleDeath;
+    }
 
     protected virtual void Awake()
     {
@@ -17,10 +31,6 @@ public abstract class Enemy : MonoBehaviour
         HealthComponent = GetComponent<Health>();
 
         HealthComponent.OnDied += HandleDeath;
-    }
-    protected virtual void Start()
-    {
-        DifficultyManager.SingleTon.Enemies.Add(this);
     }
 
     private void HandleDeath()
@@ -48,9 +58,7 @@ public abstract class Enemy : MonoBehaviour
         {
             HealthComponent.OnDied -= HandleDeath;
         }
-
-        DifficultyManager.SingleTon.Enemies.Remove(this);
     }
 
-    public abstract void ChangeDifficulty(float playerSkill);
+    protected abstract void OnDifficultyChanged(float playerSkill);
 }

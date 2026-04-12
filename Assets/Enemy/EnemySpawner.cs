@@ -25,6 +25,7 @@ public class EnemySpawner : MonoBehaviour
     private ChunkedLevelGenerator levelGenerator;
 
     public void Subscribe() => PlayerSpawner.OnPlayerSpawned += Initialize;
+
     private void OnDisable()
     {
         PlayerSpawner.OnPlayerSpawned -= Initialize;

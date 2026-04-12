@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class PathFinder
+public class AStartPathFinder : IPathFinder
 {
-    public static List<Vector2> FindPath(Vector2 startWorld, Vector2 targetWorld, ChunkedLevelGenerator generator, int maxFallDepth)
+    public List<Vector2> FindPath(Vector2 startWorld, Vector2 targetWorld, ChunkedLevelGenerator generator, int maxFallDepth)
     {
         Vector2Int start = generator.WorldCellToIndex(startWorld);
         Vector2Int target = generator.WorldCellToIndex(targetWorld);
@@ -92,7 +92,7 @@ public static class PathFinder
         return null;
     }
 
-    static List<Vector2Int> GetNeighbors(Vector2Int pos)
+    private List<Vector2Int> GetNeighbors(Vector2Int pos)
     {
         return new List<Vector2Int>
         {
@@ -103,12 +103,12 @@ public static class PathFinder
         };
     }
 
-    static int Distance(Vector2Int a, Vector2Int b)
+    private int Distance(Vector2Int a, Vector2Int b)
     {
         return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
     }
 
-    static List<Vector2> BuildPath(Node lastNode, ChunkedLevelGenerator generator)
+    private List<Vector2> BuildPath(Node lastNode, ChunkedLevelGenerator generator)
     {
         // Debug.Log("Building Path...");
 

@@ -1,50 +1,41 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DifficultyManager : MonoBehaviour
+public class DifficultyManager : IDifficultyManager
 {
-    public static DifficultyManager SingleTon;
+    public event System.Action<float> OnDifficultyChanged;
 
-    [HideInInspector] public List<Enemy> Enemies = new List<Enemy>();
-
-    [SerializeField] private float _changeRate;
-    [SerializeField] private float _killMeaning = 0.3f;
-    [SerializeField] private float _reverseTimeMeaning = 60.0f;
-
+    private IInvokerFactory _invokerFactory;
+    private IInvoker _invoker;
+    private DifficultyConfig _config;
     private HealthPlayer _healthPlayer;
-    private int _kills;
-    private float _timer;
+    private int _killCount;
 
-    private void Awake()
+    public DifficultyManager(DifficultyConfig config, IPlayerProvider playerProvider, IInvokerFactory invokerFactory)
     {
-        if (SingleTon == null)
-            SingleTon = this;
-        else if (SingleTon != null)
-            Destroy(this);
+        _config = config;
 
-        PlayerSpawner.OnPlayerSpawned += Initialize;
-        EventManager.EnemyDied += AddKill;
-    }
+        _invokerFactory = invokerFactory;
 
-    private void Initialize(GameObject player)
-    {
-        _healthPlayer = player.GetComponent<HealthPlayer>();
+        EventManager.EnemyDied += () => _killCount++;
 
-        InvokeRepeating(nameof(ChangeDifficulty), 0, _changeRate);
-    }
-
-    private void ChangeDifficulty()
-    {
-        Debug.Log($"Change difficulty with count enemies: {Enemies.Count}.");
-
-        float playerSkill = GetPlayerSkill();
-        foreach (Enemy enemy in Enemies)
+        playerProvider.OnPlayerSpawned += OnPlayerSpawned;
+        if (playerProvider.Player != null)
         {
-            enemy.ChangeDifficulty(playerSkill);
+            OnPlayerSpawned(playerProvider.Player);
         }
     }
 
-    private void AddKill() => _kills++;
+    private void OnPlayerSpawned(GameObject player)
+    {
+        _healthPlayer = player.GetComponent<HealthPlayer>();
+
+        _invoker = _invokerFactory.StartRepeatInvoking(_config.ChangeRate, UpdateDifficulty);
+    }
+
+    private void UpdateDifficulty()
+    {
+        OnDifficultyChanged?.Invoke(GetPlayerSkill());
+    }
 
     private float GetPlayerSkill()
     {
@@ -52,21 +43,12 @@ public class DifficultyManager : MonoBehaviour
             return 0.5f;
 
         float healthRate = Mathf.Clamp(_healthPlayer.CurrentHealth / _healthPlayer.MaxHealth, 0.5f, 1.0f);
-        float killRate = _kills * _killMeaning;
+        float killRate = _killCount * _config.KillMeaning;
         
-        float timeBonus = Time.timeSinceLevelLoad / _reverseTimeMeaning;
+        float timeBonus = Time.timeSinceLevelLoad * _config.TimeMeaning;
 
         float skill = (timeBonus + killRate) * healthRate;
 
         return skill;
-    }
-
-    public void Reset()
-    {
-        _kills = 0;
-        _timer = 0;
-        if (_healthPlayer != null)
-            _healthPlayer = null;
-        Enemies.Clear();
     }
 }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using VContainer;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -29,6 +30,7 @@ public class EnemyRasher : Enemy
     protected Transform playerTransform;
     protected Coroutine fightCoroutine;
     protected PathFollower PathFollower;
+    [Inject] private IPathFinder _pathFinder;
 
     private MovementPlayer _movementPlayer;
     private bool _targetUnreachable;
@@ -47,12 +49,14 @@ public class EnemyRasher : Enemy
     }
 #endif
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         PlayerSpawner.OnPlayerSpawned += Initialize;
     }
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         PlayerSpawner.OnPlayerSpawned -= Initialize;
     }
     public void Initialize(GameObject player)
@@ -93,7 +97,7 @@ public class EnemyRasher : Enemy
             bool recalculatePath = Time.timeSinceLevelLoad >= _recalculatePathTimer;
             if ((!PathFollower.HasPath && !_targetUnreachable) || (recalculatePath && PathFollower.HasPath))
             {
-                List<Vector2> newPath = PathFinder.FindPath(
+                List<Vector2> newPath = _pathFinder.FindPath(
                     transform.position, 
                     _movementPlayer.checkCirclePoint.position, 
                     ChunkedLevelGenerator.SingleTon,
@@ -201,7 +205,7 @@ public class EnemyRasher : Enemy
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
-    public override void ChangeDifficulty(float playerSkill)
+    protected override void OnDifficultyChanged(float playerSkill)
     {
         PathFollower.CurrentSpeed = Mathf.Clamp(PathFollower.StartSpeed * playerSkill, _minSpeed, _maxSpeed);
         Debug.Log($"Change speed to: {PathFollower.CurrentSpeed}");

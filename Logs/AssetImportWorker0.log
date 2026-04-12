@@ -21,18 +21,18 @@ Kernel version:          6.19.11-arch1-1
 Architecture:            x86_64
 Window Protocol:         Wayland (XWayland)
 Available memory:        31926 MB
-Date:                    2026-04-06T13:51:59Z
+Date:                    2026-04-12T11:14:21Z
 [Licensing::Module] Trying to connect to existing licensing client channel...
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-kesha" at "2026-04-06T13:51:59.653624Z"
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-kesha" at "2026-04-12T11:14:21.699132Z"
 [SignatureVerifier] Application signature verification not supported on this platform.
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.17.4+4293ba1
-  Session Id:              1bd8ed685dfe404dbb3990cd8ba2013d
-  Correlation Id:          b8e6d6a43234b6002eb5fc2decc965d6
-  External correlation Id: 1174131311923255341
+  Session Id:              1f9328d02c074a8a9166c39df8590484
+  Correlation Id:          3b26a89cc3d86c2ba1421061368b0da0
+  External correlation Id: 2385773004665656749
   Machine Id:              9wmKbEn+DnXYh1j4RRGJb/HKOOs=
 [Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-kesha" (connect: 0.00s, validation: 0.00s, handshake: 0.00s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-kesha-notifications" at "2026-04-06T13:51:59.654534Z"
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-kesha-notifications" at "2026-04-12T11:14:21.700621Z"
 [Licensing::Module] Licensing Background thread has ended after 0.00s
 Selected window backend: (null) 
 Desktop is 1920 x 1080 @ 60 Hz
@@ -50,7 +50,7 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-44961
+43777
 -licensingIpc
 LicenseClient-kesha
 -job-worker-count
@@ -96,14 +96,14 @@ Successfully changed project path to: /home/D/Unity Projects/Contra
     "memorysetup-job-temp-allocator-block-size-background=1048576"
     "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [140591835946112]  Target information:
+Player connection [140014133591168]  Target information:
 
-Player connection [140591835946112]  * "[IP] 192.168.0.22 [Port] 0 [Flags] 2 [Guid] 3339051794 [EditorId] 3339051794 [Version] 1048832 [Id] LinuxEditor(16,172.16.0.2) [Debug] 1 [PackageName] LinuxEditor [ProjectName] Editor" 
+Player connection [140014133591168]  * "[IP] 192.168.0.22 [Port] 0 [Flags] 2 [Guid] 3020158826 [EditorId] 3020158826 [Version] 1048832 [Id] LinuxEditor(16,172.16.0.2) [Debug] 1 [PackageName] LinuxEditor [ProjectName] Editor" 
 
-Player connection [140591835946112]  * "[IP] 172.16.0.2 [Port] 0 [Flags] 2 [Guid] 3339051794 [EditorId] 3339051794 [Version] 1048832 [Id] LinuxEditor(16,172.16.0.2) [Debug] 1 [PackageName] LinuxEditor [ProjectName] Editor" 
+Player connection [140014133591168]  * "[IP] 172.16.0.2 [Port] 0 [Flags] 2 [Guid] 3020158826 [EditorId] 3020158826 [Version] 1048832 [Id] LinuxEditor(16,172.16.0.2) [Debug] 1 [PackageName] LinuxEditor [ProjectName] Editor" 
 
-Player connection [140591835946112] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [140591835946112] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [140014133591168] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [140014133591168] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 5
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -115,7 +115,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 0,83 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0,80 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0,00 ms.
 Initialize engine version: 6000.3.9f1 (7a9955a4f2fa)
 [Subsystems] Discovering subsystems at path /home/kesha/Unity/Hub/Editor/6000.3.9f1/Editor/Data/Resources/UnitySubsystems
@@ -138,12 +138,12 @@ blend_equation_advanced_coherent GL_NVX_blend_equation_advanced_multi_draw_buffe
 der_passthrough GL_NV_gpu_program4 GL_NV_internalformat_sample_query GL_NV_gpu_program4_1 GL_NV_gpu_program5 GL_NV_gpu_program5_mem_extended GL_NV_gpu_program_fp64 GL_NV_gpu_program_multiview GL_NV_gpu_shader5 GL_NV_half_float GL_NV_light_max_exponent GL_NV_memory_attachment GL_NV_mesh_shader GL_NV_multisample_coverage GL_NV_multisample_filter_hint GL_NV_occlusion_query GL_NV_packed_depth_stencil GL_NV_parameter_buffer_object GL_NV_parameter_buffer_object2 GL_NV_path_rendering GL_NV_path_rendering_shared_edge GL_NV_pixel_data_range GL_NV_point_sprite GL_NV_primitive_restart GL_NV_query_resource GL_NV_query_resource_tag GL_NV_register_combiners GL_NV_register_combiners2 GL_NV_representative_fragment_test GL_NV_sample_locations GL_NV_sample_mask_override_coverage GL_NV_scissor_exclusive GL_NV_shader_atomic_counters GL_NV_shader_atomic_float GL_NV_shader_atomic_float64 GL_NV_shader_atomic_fp16_vector GL_NV_shader_atomic_int64 GL_NV_shader_buffer_load GL_NV_shader_storage_buffer_object GL_NV_shader_subgroup_part
 itioned GL_NV_shader_texture_footprint GL_NV_shading_rate_image GL_NV_stereo_view_rendering GL_NV_texgen_reflection GL_NV_texture_barrier GL_NV_texture_compression_vtc GL_NV_texture_env_combine4 GL_NV_texture_multisample GL_NV_texture_rectangle GL_NV_texture_rectangle_compressed GL_NV_texture_shader GL_NV_texture_shader2 GL_NV_texture_shader3 GL_NV_transform_feedback GL_NV_transform_feedback2 GL_NV_uniform_buffer_unified_memory GL_NV_uniform_buffer_std430_layout GL_NV_vdpau_interop GL_NV_vdpau_interop2 GL_NV_vertex_array_range GL_NV_vertex_array_range2 GL_NV_vertex_attrib_integer_64bit GL_NV_vertex_buffer_unified_memory GL_NV_vertex_program GL_NV_vertex_program1_1 GL_NV_vertex_program2 GL_NV_vertex_program2_option GL_NV_vertex_program3 GL_NV_viewport_array2 GL_NV_viewport_swizzle GL_NVX_conditional_render GL_NV_gpu_multicast GL_NVX_progress_fence GL_NVX_gpu_memory_info GL_NVX_nvenc_interop GL_NV_shader_thread_group GL_NV_shader_thread_shuffle GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_cohe
 rent GL_OVR_multiview GL_OVR_multiview2 GL_SGIS_generate_mipmap GL_SGIS_texture_lod GL_SGIX_depth_texture GL_SGIX_shadow GL_SUN_slice_accum
-OPENGL LOG: Creating OpenGL 4.5 graphics device ; Context level  <OpenGL 4.5> ; Context handle 670792568
+OPENGL LOG: Creating OpenGL 4.5 graphics device ; Context level  <OpenGL 4.5> ; Context handle 1908592568
 Initialize mono
 Mono path[0] = '/home/kesha/Unity/Hub/Editor/6000.3.9f1/Editor/Data/Managed'
 Mono path[1] = '/home/kesha/Unity/Hub/Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-linux'
 Mono config path = '/home/kesha/Unity/Hub/Editor/6000.3.9f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56088
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56973
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /home/kesha/Unity/Hub/Editor/6000.3.9f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
@@ -155,11 +155,11 @@ Register platform support module: /home/kesha/Unity/Hub/Editor/6000.3.9f1/Editor
   Expiration: Unlimited
 Register platform support module: /home/kesha/Unity/Hub/Editor/6000.3.9f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: /home/kesha/Unity/Hub/Editor/6000.3.9f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0,001605 seconds.
-- Loaded All Assemblies, in  0,247 seconds
+Registered in 0,001655 seconds.
+- Loaded All Assemblies, in  0,254 seconds
 Native extension for LinuxStandalone target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 79 ms
+Android Extension - Scanning For ADB Devices 77 ms
 Native extension for WindowsStandalone target not found
 Package Manager log level set to [2]
 [Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
@@ -167,34 +167,34 @@ Package Manager log level set to [2]
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0,419 seconds
-Domain Reload Profiling: 666ms
-	BeginReloadAssembly (51ms)
+- Finished resetting the current domain, in  0,423 seconds
+Domain Reload Profiling: 677ms
+	BeginReloadAssembly (52ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (0ms)
+		CreateAndSetChildDomain (1ms)
 	RebuildCommonClasses (26ms)
 	RebuildNativeTypeToScriptingClass (7ms)
-	initialDomainReloadingComplete (38ms)
-	LoadAllAssembliesAndSetupDomain (125ms)
-		LoadAssemblies (51ms)
+	initialDomainReloadingComplete (39ms)
+	LoadAllAssembliesAndSetupDomain (130ms)
+		LoadAssemblies (52ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (123ms)
-			TypeCache.Refresh (122ms)
-				TypeCache.ScanAssembly (112ms)
+		AnalyzeDomain (127ms)
+			TypeCache.Refresh (126ms)
+				TypeCache.ScanAssembly (116ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (419ms)
+	FinalizeReload (423ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (384ms)
+		SetupLoadedEditorAssemblies (386ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (152ms)
+			InitializePlatformSupportModulesInManaged (154ms)
 			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (66ms)
-			ProcessInitializeOnLoadAttributes (110ms)
+			BeforeProcessingInitializeOnLoad (64ms)
+			ProcessInitializeOnLoadAttributes (111ms)
 			ProcessInitializeOnLoadMethodAttributes (53ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
@@ -205,8 +205,8 @@ Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
 [Licensing::Client] Successfully resolved entitlement details
-- Loaded All Assemblies, in  0,498 seconds
-Refreshing native plugins compatible for Editor in 0,29 ms, found 1 plugins.
+- Loaded All Assemblies, in  0,506 seconds
+Refreshing native plugins compatible for Editor in 0,37 ms, found 1 plugins.
 Native extension for LinuxStandalone target not found
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
@@ -215,670 +215,223 @@ Native extension for WindowsStandalone target not found
 [Package Manager] Cannot connect to Unity Package Manager local server
 ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0,557 seconds
-Domain Reload Profiling: 1054ms
-	BeginReloadAssembly (96ms)
+- Finished resetting the current domain, in  0,558 seconds
+Domain Reload Profiling: 1063ms
+	BeginReloadAssembly (100ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (26ms)
+		CreateAndSetChildDomain (29ms)
 	RebuildCommonClasses (27ms)
-	RebuildNativeTypeToScriptingClass (6ms)
-	initialDomainReloadingComplete (29ms)
-	LoadAllAssembliesAndSetupDomain (337ms)
-		LoadAssemblies (173ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (30ms)
+	LoadAllAssembliesAndSetupDomain (340ms)
+		LoadAssemblies (175ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (201ms)
+		AnalyzeDomain (202ms)
 			TypeCache.Refresh (145ms)
-				TypeCache.ScanAssembly (133ms)
-			BuildScriptInfoCaches (47ms)
+				TypeCache.ScanAssembly (132ms)
+			BuildScriptInfoCaches (48ms)
 			ResolveRequiredComponents (8ms)
-	FinalizeReload (557ms)
+	FinalizeReload (559ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (454ms)
+		SetupLoadedEditorAssemblies (458ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (12ms)
 			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (103ms)
-			ProcessInitializeOnLoadAttributes (250ms)
-			ProcessInitializeOnLoadMethodAttributes (84ms)
+			BeforeProcessingInitializeOnLoad (101ms)
+			ProcessInitializeOnLoadAttributes (253ms)
+			ProcessInitializeOnLoadMethodAttributes (86ms)
 			AfterProcessingInitializeOnLoad (2ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (2ms)
-AutoLocale: current locale expects 'C' but got 'ru_RU.UTF-8'Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
+AutoLocale: current locale expects 'C' but got 'ru_RU.UTF-8'Launched and connected shader compiler UnityShaderCompiler after 0.00 seconds
 Refreshing native plugins compatible for Editor in 0.33 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7022 unused Assets / (4.7 MB). Loaded Objects now: 7846.
-Memory consumption went from 215.0 MB to 210.4 MB.
-Total: 7.977453 ms (FindLiveObjects: 0.394137 ms CreateObjectMapping: 0.493425 ms MarkObjects: 5.575849 ms  DeleteObjects: 1.512763 ms)
+Unloading 7115 unused Assets / (4.4 MB). Loaded Objects now: 7939.
+Memory consumption went from 215.3 MB to 210.9 MB.
+Total: 7.927362 ms (FindLiveObjects: 0.383133 ms CreateObjectMapping: 0.510944 ms MarkObjects: 5.553321 ms  DeleteObjects: 1.479496 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 2709.100662 seconds.
-  path: Assets/Enemy/Enemy Rasher/EnemyRasher.cs
-  artifactKey: Guid(4010d71b37e3b5048afc576958fff8d5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Enemy/Enemy Rasher/EnemyRasher.cs using Guid(4010d71b37e3b5048afc576958fff8d5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'a1cc2b19c0bb382c7b5f4b54c343166f') in 0.05086684 seconds
+  Time since last request: 15254.292751 seconds.
+  path: Assets/Scripts/Service Locator/ServiceLocatorLoader_Main.cs
+  artifactKey: Guid(18509642f13d3d83ba5254f63f08d332) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Service Locator/ServiceLocatorLoader_Main.cs using Guid(18509642f13d3d83ba5254f63f08d332) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '5cc2d1d6ebb8d9028a38bc53910f939f') in 0.050422043 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000008 seconds.
-  path: Assets/Enemy/Enemy.cs
-  artifactKey: Guid(643c5cc51cf9f224f8604c506808b34b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Enemy/Enemy.cs using Guid(643c5cc51cf9f224f8604c506808b34b) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'dbccab54588cc87f65cde38ab05ae462') in 0.001324548 seconds
+  Time since last request: 0.000010 seconds.
+  path: Assets/Scripts/Adaptive Difficulty/DifficultyManager.cs
+  artifactKey: Guid(1b2a20af9b8ba2512b3bfb24c517e0a9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Adaptive Difficulty/DifficultyManager.cs using Guid(1b2a20af9b8ba2512b3bfb24c517e0a9) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '12a04da884d97324dde0d6ef3a39b173') in 0.002900427 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 47.454639 seconds.
-  path: Assets/Enemy/Enemy Rasher/KamikazeConfig.asset
-  artifactKey: Guid(c1b1218398b70413d9390b8c0db2cfc5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Enemy/Enemy Rasher/KamikazeConfig.asset using Guid(c1b1218398b70413d9390b8c0db2cfc5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd7bd769100c59049110f7c9a075e6523') in 0.018750732 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 18.146452 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '2ee626b61bef90c4681508cf6b17e4ad') in 0.027697521 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
+  Time since last request: 252.352719 seconds.
+  path: Assets/Scripts/Adaptive Difficulty/DifficultyManager.cs
+  artifactKey: Guid(1b2a20af9b8ba2512b3bfb24c517e0a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Adaptive Difficulty/DifficultyManager.cs using Guid(1b2a20af9b8ba2512b3bfb24c517e0a9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ad657d8b4d2347f278e8adfbeef4e7af') in 0.000297799 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 0.43 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.53 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7009 unused Assets / (4.9 MB). Loaded Objects now: 7847.
-Memory consumption went from 213.7 MB to 208.8 MB.
-Total: 9.908811 ms (FindLiveObjects: 0.454110 ms CreateObjectMapping: 0.622491 ms MarkObjects: 6.677046 ms  DeleteObjects: 2.154240 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-- Loaded All Assemblies, in  0.501 seconds
-Refreshing native plugins compatible for Editor in 0.29 ms, found 1 plugins.
-Native extension for LinuxStandalone target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.524 seconds
-Domain Reload Profiling: 1026ms
-	BeginReloadAssembly (145ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (10ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (48ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (7ms)
-	initialDomainReloadingComplete (20ms)
-	LoadAllAssembliesAndSetupDomain (303ms)
-		LoadAssemblies (194ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (152ms)
-			TypeCache.Refresh (9ms)
-				TypeCache.ScanAssembly (1ms)
-			BuildScriptInfoCaches (133ms)
-			ResolveRequiredComponents (8ms)
-	FinalizeReload (524ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (401ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (13ms)
-			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (101ms)
-			ProcessInitializeOnLoadAttributes (228ms)
-			ProcessInitializeOnLoadMethodAttributes (54ms)
-			AfterProcessingInitializeOnLoad (2ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (8ms)
-Refreshing native plugins compatible for Editor in 0.33 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7019 unused Assets / (3.9 MB). Loaded Objects now: 7851.
-Memory consumption went from 216.6 MB to 212.7 MB.
-Total: 7.195746 ms (FindLiveObjects: 0.372555 ms CreateObjectMapping: 0.401840 ms MarkObjects: 5.058256 ms  DeleteObjects: 1.362519 ms)
+Unloading 7108 unused Assets / (1.9 MB). Loaded Objects now: 7946.
+Memory consumption went from 213.8 MB to 211.8 MB.
+Total: 21.850378 ms (FindLiveObjects: 0.481399 ms CreateObjectMapping: 0.726249 ms MarkObjects: 18.687162 ms  DeleteObjects: 1.953758 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Import Request.
-  Time since last request: 56.726029 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/KamikazeConfig.asset
-  artifactKey: Guid(c1b1218398b70413d9390b8c0db2cfc5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/KamikazeConfig.asset using Guid(c1b1218398b70413d9390b8c0db2cfc5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fdd5755ad8dcbacde643b590fec26f7c') in 0.014107683 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+  Time since last request: 3391.759889 seconds.
+  path: Assets/Scripts/DI/RootLifetimeScope.cs
+  artifactKey: Guid(0173a0122cd921686a8558208aaf2380) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/DI/RootLifetimeScope.cs using Guid(0173a0122cd921686a8558208aaf2380) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4c58088a8c2d87b9c35601c8a7d7a34d') in 0.002219599 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.962765 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/KamikazeConfig.asset
-  artifactKey: Guid(c1b1218398b70413d9390b8c0db2cfc5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Enemy/Enemy Kamikaze/KamikazeConfig.asset using Guid(c1b1218398b70413d9390b8c0db2cfc5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '282539909b9953ea1d82e9c40b8e4a24') in 0.055487532 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+  Time since last request: 0.001802 seconds.
+  path: Assets/Scripts/Interval Invoking/Invoker.cs
+  artifactKey: Guid(2f1f6c3e1d2c49768b33493254fed74d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Interval Invoking/Invoker.cs using Guid(2f1f6c3e1d2c49768b33493254fed74d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'd100a01f6fb3f902d26168da3a5862b5') in 0.002384237 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.838382 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f02d3521b0f37ba8b740b8ed4033c557') in 0.272559323 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
+  Time since last request: 0.000015 seconds.
+  path: Assets/Scripts/Interval Invoking/IntervalInvoker.cs
+  artifactKey: Guid(4bcf66342a5d138ac9f4e9083b166d90) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Interval Invoking/IntervalInvoker.cs using Guid(4bcf66342a5d138ac9f4e9083b166d90) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '7c61d317c3a4363d8be8fb2062198941') in 0.001669312 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 1.252741 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '21ede07d9b59a51aac2cd7fb3d567dd0') in 0.005218565 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 18
+  Time since last request: 0.000016 seconds.
+  path: Assets/Scripts/Interval Invoking/IInvoker.cs
+  artifactKey: Guid(eeec5f0acd80f972fa25e98a259a917a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Interval Invoking/IInvoker.cs using Guid(eeec5f0acd80f972fa25e98a259a917a) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '54d63c4b19e708126dcef19356297323') in 0.002270797 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.954649 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '3fafaea935068c858fc4275f76d54120') in 0.026102039 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 18
-
-========================================================================
-Received Import Request.
-  Time since last request: 16.753441 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '799e812cadc983a670795f9cd5d35601') in 0.00818399 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.954229 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f8317074efd084dda6e8b004f1e6f8d4') in 0.006565968 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.646401 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '384be036f9c765989318557b4928fbd6') in 0.004555274 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.964887 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '825bb886b192a3524d66f3951420a668') in 0.003951872 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.310761 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b6d578be4b2bfe91331d982d52ec85ee') in 0.005058188 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.958126 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e01bd1d37e17136f42d872d88eba8f65') in 0.003703668 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
+  Time since last request: 0.000015 seconds.
+  path: Assets/Scripts/DI/GameplayLifetimeScope.cs
+  artifactKey: Guid(7fa61ea5229326188b07b15cecc6b9b8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/DI/GameplayLifetimeScope.cs using Guid(7fa61ea5229326188b07b15cecc6b9b8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'e2c981122a601fbe39cf56c785d4690e') in 0.001606477 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Prepare
-Refreshing native plugins compatible for Editor in 0.33 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 0.34 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7009 unused Assets / (4.7 MB). Loaded Objects now: 7949.
-Memory consumption went from 218.8 MB to 214.1 MB.
-Total: 11.310505 ms (FindLiveObjects: 0.420536 ms CreateObjectMapping: 0.426690 ms MarkObjects: 8.636716 ms  DeleteObjects: 1.825700 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-- Loaded All Assemblies, in  0.491 seconds
-Refreshing native plugins compatible for Editor in 0.27 ms, found 1 plugins.
-Native extension for LinuxStandalone target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.523 seconds
-Domain Reload Profiling: 1016ms
-	BeginReloadAssembly (139ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (20ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (45ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (7ms)
-	initialDomainReloadingComplete (19ms)
-	LoadAllAssembliesAndSetupDomain (300ms)
-		LoadAssemblies (185ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (148ms)
-			TypeCache.Refresh (9ms)
-				TypeCache.ScanAssembly (1ms)
-			BuildScriptInfoCaches (130ms)
-			ResolveRequiredComponents (8ms)
-	FinalizeReload (523ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (407ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (12ms)
-			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (101ms)
-			ProcessInitializeOnLoadAttributes (232ms)
-			ProcessInitializeOnLoadMethodAttributes (56ms)
-			AfterProcessingInitializeOnLoad (2ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (8ms)
-Refreshing native plugins compatible for Editor in 0.32 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7019 unused Assets / (4.7 MB). Loaded Objects now: 7881.
-Memory consumption went from 218.0 MB to 213.3 MB.
-Total: 7.589752 ms (FindLiveObjects: 0.375704 ms CreateObjectMapping: 0.381485 ms MarkObjects: 5.338891 ms  DeleteObjects: 1.493007 ms)
+Unloading 7108 unused Assets / (5.4 MB). Loaded Objects now: 7946.
+Memory consumption went from 213.8 MB to 208.4 MB.
+Total: 9.427361 ms (FindLiveObjects: 0.436417 ms CreateObjectMapping: 0.624315 ms MarkObjects: 6.023695 ms  DeleteObjects: 2.341971 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Import Request.
-  Time since last request: 39.156133 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1d350564572095625104997bd0ff023c') in 0.271630287 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 0.38 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7009 unused Assets / (4.9 MB). Loaded Objects now: 7971.
-Memory consumption went from 218.6 MB to 213.8 MB.
-Total: 12.023058 ms (FindLiveObjects: 0.533162 ms CreateObjectMapping: 0.689966 ms MarkObjects: 9.064237 ms  DeleteObjects: 1.735063 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.498 seconds
-Refreshing native plugins compatible for Editor in 0.29 ms, found 1 plugins.
-Native extension for LinuxStandalone target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.532 seconds
-Domain Reload Profiling: 1032ms
-	BeginReloadAssembly (141ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (19ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (46ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (7ms)
-	initialDomainReloadingComplete (20ms)
-	LoadAllAssembliesAndSetupDomain (303ms)
-		LoadAssemblies (187ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (151ms)
-			TypeCache.Refresh (9ms)
-				TypeCache.ScanAssembly (1ms)
-			BuildScriptInfoCaches (133ms)
-			ResolveRequiredComponents (8ms)
-	FinalizeReload (533ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (412ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (13ms)
-			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (114ms)
-			ProcessInitializeOnLoadAttributes (226ms)
-			ProcessInitializeOnLoadMethodAttributes (54ms)
-			AfterProcessingInitializeOnLoad (2ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (9ms)
-Refreshing native plugins compatible for Editor in 0.31 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7019 unused Assets / (4.6 MB). Loaded Objects now: 7903.
-Memory consumption went from 218.1 MB to 213.4 MB.
-Total: 8.141092 ms (FindLiveObjects: 0.386941 ms CreateObjectMapping: 0.404363 ms MarkObjects: 5.793802 ms  DeleteObjects: 1.555406 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 0.33 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7009 unused Assets / (4.7 MB). Loaded Objects now: 7903.
-Memory consumption went from 218.1 MB to 213.4 MB.
-Total: 7.934178 ms (FindLiveObjects: 0.396032 ms CreateObjectMapping: 0.470341 ms MarkObjects: 5.477471 ms  DeleteObjects: 1.589712 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-- Loaded All Assemblies, in  0.496 seconds
-Refreshing native plugins compatible for Editor in 0.30 ms, found 1 plugins.
-Native extension for LinuxStandalone target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.555 seconds
-Domain Reload Profiling: 1053ms
-	BeginReloadAssembly (124ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (11ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (38ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (7ms)
-	initialDomainReloadingComplete (19ms)
-	LoadAllAssembliesAndSetupDomain (321ms)
-		LoadAssemblies (191ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (163ms)
-			TypeCache.Refresh (9ms)
-				TypeCache.ScanAssembly (1ms)
-			BuildScriptInfoCaches (144ms)
-			ResolveRequiredComponents (9ms)
-	FinalizeReload (555ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (429ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (13ms)
-			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (105ms)
-			ProcessInitializeOnLoadAttributes (246ms)
-			ProcessInitializeOnLoadMethodAttributes (59ms)
-			AfterProcessingInitializeOnLoad (2ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (9ms)
-Refreshing native plugins compatible for Editor in 0.33 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7019 unused Assets / (4.8 MB). Loaded Objects now: 7906.
-Memory consumption went from 218.0 MB to 213.1 MB.
-Total: 8.202624 ms (FindLiveObjects: 0.380214 ms CreateObjectMapping: 0.394076 ms MarkObjects: 5.469789 ms  DeleteObjects: 1.957959 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 93.045258 seconds.
-  path: Assets/Enemy/Enemy Rasher/EnemyRasher.prefab
-  artifactKey: Guid(ee48a0b146c27574b9947241db2247fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Rasher/EnemyRasher.prefab using Guid(ee48a0b146c27574b9947241db2247fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4371d8dad5ce8b37a56923e482e241a6') in 0.284250435 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 22
+  Time since last request: 1804.834397 seconds.
+  path: Assets/Scripts/Interval Invoking/Invoker.cs
+  artifactKey: Guid(2f1f6c3e1d2c49768b33493254fed74d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Interval Invoking/Invoker.cs using Guid(2f1f6c3e1d2c49768b33493254fed74d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '03e5f5a4df1a5120ad2bb93fdc235e90') in 0.001613878 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.776789 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '82d736e3abe20660fc54bde663a3829b') in 0.004555415 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
+  Time since last request: 0.000045 seconds.
+  path: Assets/Scripts/Interval Invoking/IInvokerFactory.cs
+  artifactKey: Guid(1e18599a7e5a39670b880cc2307e9f64) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Interval Invoking/IInvokerFactory.cs using Guid(1e18599a7e5a39670b880cc2307e9f64) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'c6e18b5d2e11aa727ba5e9f9465546c4') in 0.001414199 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 29.449203 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '079d6411ed7f8083a4f7abcb921e9b31') in 0.004384678 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 13.731240 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '04e07c82366005e843e8b37276a52720') in 0.005106181 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 16.305728 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd4570c04c73047cb309a62cdcde90eb5') in 0.003889485 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.523248 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '91c2855c006ec675bafbc5b8d0693b75') in 0.004786362 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 0.36 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7009 unused Assets / (4.4 MB). Loaded Objects now: 7996.
-Memory consumption went from 218.8 MB to 214.4 MB.
-Total: 9.066536 ms (FindLiveObjects: 0.419556 ms CreateObjectMapping: 0.422703 ms MarkObjects: 6.712582 ms  DeleteObjects: 1.511013 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-[Licensing::Client] Successfully resolved entitlement details
-- Loaded All Assemblies, in  0.499 seconds
-Refreshing native plugins compatible for Editor in 0.31 ms, found 1 plugins.
-Native extension for LinuxStandalone target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-[Package Manager] Failed to launch server process. Reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] Unable to send message (not connected to server process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-ScheduleIndexationOnStartup MainProcess:False IndexOnStartup:True
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.533 seconds
-Domain Reload Profiling: 1034ms
-	BeginReloadAssembly (141ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (19ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (47ms)
-	RebuildCommonClasses (27ms)
-	RebuildNativeTypeToScriptingClass (7ms)
-	initialDomainReloadingComplete (19ms)
-	LoadAllAssembliesAndSetupDomain (308ms)
-		LoadAssemblies (186ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (156ms)
-			TypeCache.Refresh (9ms)
-				TypeCache.ScanAssembly (1ms)
-			BuildScriptInfoCaches (137ms)
-			ResolveRequiredComponents (8ms)
-	FinalizeReload (533ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (412ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (12ms)
-			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (100ms)
-			ProcessInitializeOnLoadAttributes (239ms)
-			ProcessInitializeOnLoadMethodAttributes (56ms)
-			AfterProcessingInitializeOnLoad (2ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (10ms)
-Refreshing native plugins compatible for Editor in 0.33 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 7019 unused Assets / (4.7 MB). Loaded Objects now: 7928.
-Memory consumption went from 218.2 MB to 213.5 MB.
-Total: 7.794772 ms (FindLiveObjects: 0.374947 ms CreateObjectMapping: 0.466708 ms MarkObjects: 5.363557 ms  DeleteObjects: 1.588937 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 43.728545 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '240013fa20bebb0048c4d61e2c777b20') in 0.28166133 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
-
-========================================================================
-Received Import Request.
-  Time since last request: 171.269844 seconds.
-  path: Assets/Enemy/Enemy Rasher/EnemyRasher.prefab
-  artifactKey: Guid(ee48a0b146c27574b9947241db2247fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Rasher/EnemyRasher.prefab using Guid(ee48a0b146c27574b9947241db2247fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9e55d45830ad122db8d3057997b2586c') in 0.005673503 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 22
-
-========================================================================
-Received Import Request.
-  Time since last request: 16.484425 seconds.
-  path: Assets/Enemy/Enemy Shooter/EnemyShooter.prefab
-  artifactKey: Guid(78d4f2664aac6994e80ad4c98eee041f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Shooter/EnemyShooter.prefab using Guid(78d4f2664aac6994e80ad4c98eee041f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8aa6e3f7ddad4d6659e949269c82370e') in 0.005791976 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 55
-
-========================================================================
-Received Import Request.
-  Time since last request: 17.818249 seconds.
-  path: Assets/Enemy/Enemy Shooter/EnemyShooter.prefab
-  artifactKey: Guid(78d4f2664aac6994e80ad4c98eee041f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Shooter/EnemyShooter.prefab using Guid(78d4f2664aac6994e80ad4c98eee041f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '01653105e45882d4ac99c1ce175a9c48') in 0.008476376 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 56
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.679455 seconds.
-  path: Assets/Enemy/Enemy Shooter/EnemyShooter.prefab
-  artifactKey: Guid(78d4f2664aac6994e80ad4c98eee041f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Shooter/EnemyShooter.prefab using Guid(78d4f2664aac6994e80ad4c98eee041f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8483e9c23ba0fe4f9b3307257c79deba') in 0.00698735 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 56
-
-========================================================================
-Received Import Request.
-  Time since last request: 5.042762 seconds.
-  path: Assets/Enemy/Enemy Rasher/EnemyRasher.prefab
-  artifactKey: Guid(ee48a0b146c27574b9947241db2247fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Rasher/EnemyRasher.prefab using Guid(ee48a0b146c27574b9947241db2247fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'adaf86c4e3eb3889d0bbdcafe80bb128') in 0.00388445 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 23
-
-========================================================================
-Received Import Request.
-  Time since last request: 23.092458 seconds.
-  path: Assets/Player/Scripts/Prefab/Player.prefab
-  artifactKey: Guid(b56e974fd1264484abb6ad7de0963fdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Player/Scripts/Prefab/Player.prefab using Guid(b56e974fd1264484abb6ad7de0963fdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fff98910cc466c278cd6f885ed1112a9') in 0.008244414 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 77
-
-========================================================================
-Received Import Request.
-  Time since last request: 203.931580 seconds.
-  path: Assets/Enemy/Enemy Shooter/EnemyShooter.prefab
-  artifactKey: Guid(78d4f2664aac6994e80ad4c98eee041f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Shooter/EnemyShooter.prefab using Guid(78d4f2664aac6994e80ad4c98eee041f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1e137c7f1c62d96769312eaf00f19d4e') in 0.005081634 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 57
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.083050 seconds.
-  path: Assets/Enemy/Enemy Rasher/EnemyRasher.prefab
-  artifactKey: Guid(ee48a0b146c27574b9947241db2247fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Rasher/EnemyRasher.prefab using Guid(ee48a0b146c27574b9947241db2247fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f73fde86dedebe6a6f4f0374cc6bf333') in 0.003794614 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 24
-
-========================================================================
-Received Import Request.
-  Time since last request: 393.560808 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab
-  artifactKey: Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/Enemy Kamikaze.prefab using Guid(17c529aa3b4e5164b91a298e73d9f25c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5924ffb38068bfa18fde303c1d8021e8') in 0.004993908 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 20
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.988295 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/EnemyRasher.prefab
-  artifactKey: Guid(fcf2fba1684ef6783874ccb6f83d57cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Enemy/Enemy Kamikaze/EnemyRasher.prefab using Guid(fcf2fba1684ef6783874ccb6f83d57cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '34a9590b03860dcd8f7ca50813d3f7b8') in 0.003948426 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 24
-
-========================================================================
-Received Import Request.
-  Time since last request: 2.758920 seconds.
-  path: Assets/Enemy/Enemy Rasher/PathFollower.cs
-  artifactKey: Guid(e274e5bdcc82cc3e49d4fdce64dada5d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Enemy/Enemy Rasher/PathFollower.cs using Guid(e274e5bdcc82cc3e49d4fdce64dada5d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '491c71ff3187ed0c01b5173e130c97a5') in 0.046750443 seconds
+  Time since last request: 0.000013 seconds.
+  path: Assets/Scripts/Adaptive Difficulty/IDifficultyManager.cs
+  artifactKey: Guid(c5f431e004615aad1ad5e8cea202a010) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Adaptive Difficulty/IDifficultyManager.cs using Guid(c5f431e004615aad1ad5e8cea202a010) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'f97876afbea0151ff6cdd7a349f4a8a1') in 0.001460568 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000018 seconds.
-  path: Assets/Enemy/Enemy Rasher/EnemyRasher.prefab
-  artifactKey: Guid(ee48a0b146c27574b9947241db2247fa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Enemy/Enemy Rasher/EnemyRasher.prefab using Guid(ee48a0b146c27574b9947241db2247fa) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '0594d969b381ff262ba43100268f63e0') in 0.031881151 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 24
+  path: Assets/Scripts/Interval Invoking/CoroutineOwner.cs
+  artifactKey: Guid(16fb12d72a9eb9b52a9ad09294e8c639) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Interval Invoking/CoroutineOwner.cs using Guid(16fb12d72a9eb9b52a9ad09294e8c639) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: 'ae0b2821e45483a4f6164b9be5fa8f18') in 0.001521406 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000021 seconds.
-  path: Assets/TextMesh Pro/Fonts/WallaceGromit-Regular rus SDF.asset
-  artifactKey: Guid(bba33f71aa594f344b63cf407337f874) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/TextMesh Pro/Fonts/WallaceGromit-Regular rus SDF.asset using Guid(bba33f71aa594f344b63cf407337f874) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8d40a8ef6538b6e1585b375ebd8fb80f') in 0.032527566 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 5
+  Time since last request: 0.000010 seconds.
+  path: Assets/Scripts/DI/GameplayLifetimeScope.cs
+  artifactKey: Guid(7fa61ea5229326188b07b15cecc6b9b8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/DI/GameplayLifetimeScope.cs using Guid(7fa61ea5229326188b07b15cecc6b9b8) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '8b5bd4dcc82cca471499074336f2da01') in 0.001235053 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000013 seconds.
-  path: Assets/Enemy/Enemy Kamikaze/KamikazeConfig.asset
-  artifactKey: Guid(c1b1218398b70413d9390b8c0db2cfc5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
-Start importing Assets/Enemy/Enemy Kamikaze/KamikazeConfig.asset using Guid(c1b1218398b70413d9390b8c0db2cfc5) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '4ff0bdf9fce1daa5e6eadf97a96585c0') in 0.001982787 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
+  Time since last request: 85.517933 seconds.
+  path: Assets/Scripts/Interval Invoking/CoroutineOwner.cs
+  artifactKey: Guid(16fb12d72a9eb9b52a9ad09294e8c639) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/Interval Invoking/CoroutineOwner.cs using Guid(16fb12d72a9eb9b52a9ad09294e8c639) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2ba5437287d28a725cc84ec4e85f3e57') in 0.000337227 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 0.50 ms, found 1 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 16 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 7108 unused Assets / (4.8 MB). Loaded Objects now: 7946.
+Memory consumption went from 213.8 MB to 209.0 MB.
+Total: 8.780643 ms (FindLiveObjects: 0.503061 ms CreateObjectMapping: 0.661654 ms MarkObjects: 6.040305 ms  DeleteObjects: 1.574814 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 6425.541393 seconds.
+  path: Assets/Scripts/DI/RootLifetimeScope.cs
+  artifactKey: Guid(0173a0122cd921686a8558208aaf2380) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/DI/RootLifetimeScope.cs using Guid(0173a0122cd921686a8558208aaf2380) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '868f11d12fb805888462936a82e68a73') in 0.001512612 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.007047 seconds.
+  path: Assets/Scripts/Interval Invoking/Invoker.cs
+  artifactKey: Guid(2f1f6c3e1d2c49768b33493254fed74d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Interval Invoking/Invoker.cs using Guid(2f1f6c3e1d2c49768b33493254fed74d) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '973b8a95cfc7caeafba15048f5dd2d85') in 0.001420586 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Scripts/Interval Invoking/IntervalInvoker.cs
+  artifactKey: Guid(4bcf66342a5d138ac9f4e9083b166d90) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Interval Invoking/IntervalInvoker.cs using Guid(4bcf66342a5d138ac9f4e9083b166d90) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '248b1329b7265a8a8a630eefed9fbff7') in 0.001389383 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/Scripts/Interval Invoking/IInvokerFactory.cs
+  artifactKey: Guid(1e18599a7e5a39670b880cc2307e9f64) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d)
+Start importing Assets/Scripts/Interval Invoking/IInvokerFactory.cs using Guid(1e18599a7e5a39670b880cc2307e9f64) Importer(2089858483,b0f066a214c2f5e87bad3c948f4d605d) (ScriptedImporter) -> (artifact id: '148a5ad964d21cf7d6ccacd76b82b25e') in 0.001344989 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
 AssetImportWorker is now disconnected from the server
 Process exiting
 
 SDL leaked 2 allocations
-Internal: Possible leak. All render target surfaces should be removed from IdMap when destructed using RenderTargetMap::Remove(RenderSurfaceBase* rs).

@@ -74,9 +74,9 @@ public class EnemyShooter : EnemyRasher
         _weapon.Rotate(0, 0, angle - 180);
     }
 
-    public override void ChangeDifficulty(float playerSkill)
+    protected override void OnDifficultyChanged(float playerSkill)
     {
-        base.ChangeDifficulty(playerSkill);
+        base.OnDifficultyChanged(playerSkill);
         fireInterval = Mathf.Clamp(startFireInterval / Mathf.Max(playerSkill, 0.1f), minFireInterval, maxFireInterval);
         Debug.Log($"Change fire interval to: {fireInterval}");
 

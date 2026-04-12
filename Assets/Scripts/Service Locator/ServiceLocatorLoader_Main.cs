@@ -30,7 +30,6 @@ public class ServiceLocatorLoader_Main : MonoBehaviour
     {
         _soundManager.Subscribe();
         _enemySpawner.Subscribe();
-        DifficultyManager.SingleTon.Reset();
         _levelGenerator.Initialize();
     }
 }
