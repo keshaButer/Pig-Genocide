@@ -1,3 +1,4 @@
+using VContainer;
 using TMPro;
 using UnityEngine;
 
@@ -12,8 +13,14 @@ public class ItemTakable : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     protected Transform PlayerTransform;
 
-    private void OnEnable() => PlayerSpawner.OnPlayerSpawned += Initialize; //поменять потом
-    private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
+    [Inject]
+    public void Construct(IPlayerProvider playerProvider)
+    {
+        playerProvider.OnPlayerSpawned += Initialize;
+        
+        if (playerProvider.Player != null)
+            Initialize(playerProvider.Player);
+    }
 
     private void Initialize(GameObject player)
     {
@@ -52,7 +59,6 @@ public class ItemTakable : MonoBehaviour
         Inventory inventory;
         if (other.TryGetComponent<Inventory>(out inventory))
         {
-            // Inventory.SingleTone.AddItem(item);
             inventory.AddItem(_item);
             Destroy(gameObject);
         }

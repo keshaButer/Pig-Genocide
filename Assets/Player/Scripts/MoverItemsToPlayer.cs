@@ -1,11 +1,18 @@
+using VContainer;
 using UnityEngine;
 
 public class MoverItemsToPlayer : MonoBehaviour
 {
-    private void OnEnable() => PlayerSpawner.OnPlayerSpawned += MoveItemsToPlayer;
-    private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= MoveItemsToPlayer;
+    [Inject]
+    public void Construct(IPlayerProvider playerProvider)
+    {
+        playerProvider.OnPlayerSpawned += OnPlayerSpawned;
+        
+        if (playerProvider.Player != null)
+            OnPlayerSpawned(playerProvider.Player);
+    }
 
-    private void MoveItemsToPlayer(GameObject player)
+    private void OnPlayerSpawned(GameObject player)
     {
         transform.position = player.transform.position;
     }

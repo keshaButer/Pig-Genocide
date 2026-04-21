@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class AStartPathFinder : IPathFinder
 {
-    public List<Vector2> FindPath(Vector2 startWorld, Vector2 targetWorld, ChunkedLevelGenerator generator, int maxFallDepth)
+    public List<Vector2> FindPath(Vector2 startWorld, Vector2 targetWorld, ILevelGenerator generator, int maxFallDepth)
     {
         Vector2Int start = generator.WorldCellToIndex(startWorld);
         Vector2Int target = generator.WorldCellToIndex(targetWorld);
@@ -73,10 +73,13 @@ public class AStartPathFinder : IPathFinder
 
                 if (!openSetDictionary.ContainsKey(neighborPos))
                 {
-                    neighbor = new Node(neighborPos);
-                    neighbor.GCost = newGCost;
-                    neighbor.HCost = Distance(neighborPos, target);
-                    neighbor.Parent = currentNode;
+                    neighbor = new Node(neighborPos)
+                    {
+                        GCost = newGCost,
+                        HCost = Distance(neighborPos, target),
+                        Parent = currentNode
+                    };
+
                     openSetList.Add(neighbor);
                     openSetDictionary[neighborPos] = neighbor;
                 }
@@ -108,7 +111,7 @@ public class AStartPathFinder : IPathFinder
         return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
     }
 
-    private List<Vector2> BuildPath(Node lastNode, ChunkedLevelGenerator generator)
+    private List<Vector2> BuildPath(Node lastNode, ILevelGenerator generator)
     {
         // Debug.Log("Building Path...");
 

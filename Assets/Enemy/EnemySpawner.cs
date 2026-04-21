@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
+using VContainer;
+using VContainer.Unity;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -11,69 +12,85 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float maxDistanceToPlayer = 10;
     [SerializeField] private float distanceToDisable = 50;
     [SerializeField] private float spawnHeightOffset = 0.6f;
-    [SerializeField] private int maxAttempts = 20000;
+    [SerializeField] private int maxAttempts = 2000;
 
     [Header("Other Settings")]
-    [SerializeField] private List<GameObject> enemyPrefabs;
+    [SerializeField] private List<Enemy> enemyPrefabs;
     [SerializeField] private Transform parentObject;
     [SerializeField] private float updateEnemyActivationRate = 2;
 
-    private List<GameObject> enemies = new List<GameObject>();
+    private List<Enemy> enemies = new();
     private Transform playerTransform;
-    private Coroutine spawnRepeatCoroutine;
-    private bool doSpawn;
-    private ChunkedLevelGenerator levelGenerator;
 
-    public void Subscribe() => PlayerSpawner.OnPlayerSpawned += Initialize;
+    [Inject] private ILevelGenerator _levelGenerator; // надо будет перетащить в auto inject
+    [Inject] private IDifficultyManager _difficultyManager;
+
+    [Inject] private IInvokerFactory _invokerFactory;
+    private IInvoker _invokerUpdateActivation;
+    private IInvoker _invokerSpawnEnemies;
+    
+    [Inject] private IObjectResolver _objectResolver;
+
+    private void OnEnable()
+    {
+        if (_invokerSpawnEnemies != null)
+            _invokerSpawnEnemies.Start();
+
+        if (_invokerUpdateActivation != null)
+            _invokerUpdateActivation.Start();
+    }
 
     private void OnDisable()
     {
-        PlayerSpawner.OnPlayerSpawned -= Initialize;
-        CancelInvoke();
+        if (_invokerSpawnEnemies != null)
+            _invokerSpawnEnemies.Stop();
+
+        if (_invokerUpdateActivation != null)
+            _invokerUpdateActivation.Stop();
     }
+
+    [Inject]
+    public void Construct(IPlayerProvider playerProvider)
+    {
+        playerProvider.OnPlayerSpawned += OnPlayerSpawned;
         
-    public void Initialize(GameObject player)
+        if (playerProvider.Player != null)
+            OnPlayerSpawned(playerProvider.Player);
+    }
+
+    private void OnPlayerSpawned(GameObject player)
     {
         playerTransform = player.transform;
-        levelGenerator = ChunkedLevelGenerator.SingleTon;
 
-        InvokeRepeating(nameof(UpdateEnemyActivation), 0, updateEnemyActivationRate);
-
-        doSpawn = true;
-        spawnRepeatCoroutine = StartCoroutine(nameof(SpawnRepeat), spawnRate);
+        _invokerUpdateActivation = _invokerFactory.StartRepeatInvoking(updateEnemyActivationRate, UpdateEnemyActivation, this);
+        _invokerSpawnEnemies = _invokerFactory.StartRepeatInvoking(spawnRate, SpawnEnemyInRadius, this);
     }
 
-    private IEnumerator SpawnRepeat(float rate)
-    {
-        while (doSpawn)
-        {
-            SpawnEnemyInRadius();
-
-            yield return new WaitForSeconds(rate);
-        }
-    }
     private void SpawnEnemyInRadius()
     {
         for (int attempts = 1; attempts < maxAttempts; attempts++)
         {
-            Vector2 cell = levelGenerator.GetRandomSurfaceTileInRadius(playerTransform.position, maxDistanceToPlayer);
+            Vector2 cell = _levelGenerator.GetRandomSurfaceTileInRadius(playerTransform.position, maxDistanceToPlayer);
 
             float distanceToPlayer = Vector2.Distance(playerTransform.position, cell);
             bool farEnoughToPlayer = distanceToPlayer >= minDistanceToPlayer;
 
             if (farEnoughToPlayer)
             {
-                levelGenerator.SetOccupiedCell(cell);
+                _levelGenerator.SetOccupiedCell(cell);
 
-                GameObject enemy = GameObject.Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Count)], 
+                Enemy enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Count)];
+                Enemy enemy = _objectResolver.Instantiate(enemyPrefab,
                  cell + Vector2.up * spawnHeightOffset, Quaternion.Euler(0, 0, 0), parentObject);
-                enemy.GetComponent<EnemyRasher>().Initialize(playerTransform.gameObject);
-                enemies.Add(enemy);
+                
+                _difficultyManager.UpdateDifficulty();
 
+                enemies.Add(enemy);
                 break;
             }
         }
     }
+
     private void UpdateEnemyActivation()
     {
         float sqrDintanceToDisable = distanceToDisable * distanceToDisable;
@@ -89,9 +106,9 @@ public class EnemySpawner : MonoBehaviour
             float sqrDist = (playerTransform.position - enemies[i].transform.position).sqrMagnitude;
             bool shouldActivate = sqrDist < sqrDintanceToDisable;
 
-            if (enemies[i].activeSelf != shouldActivate)
+            if (enemies[i].gameObject.activeSelf != shouldActivate)
             {
-                enemies[i].SetActive(shouldActivate);
+                enemies[i].gameObject.SetActive(shouldActivate);
             }
         }
     }

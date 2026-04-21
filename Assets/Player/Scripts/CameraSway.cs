@@ -1,3 +1,4 @@
+using VContainer;
 using UnityEngine;
 
 public class CameraSway : MonoBehaviour
@@ -15,10 +16,16 @@ public class CameraSway : MonoBehaviour
     private Transform _playerTransform;
     private bool _wasFreeView = false;
 
-    private void OnEnable() => PlayerSpawner.OnPlayerSpawned += Initialize;
-    private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
+    [Inject]
+    public void Construct(IPlayerProvider playerProvider)
+    {
+        playerProvider.OnPlayerSpawned += Initialize;
+        
+        if (playerProvider.Player != null)
+            Initialize(playerProvider.Player);
+    }
 
-    public void Initialize(GameObject player)
+    private void Initialize(GameObject player)
     {
         _playerTransform = player.transform;
     }

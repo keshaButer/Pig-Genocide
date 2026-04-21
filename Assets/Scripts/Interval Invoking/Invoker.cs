@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Invoker : IInvoker
 {
+    private readonly CoroutineOwner _owner;
     private Coroutine _coroutine;
-    private CoroutineOwner _owner;
+    private readonly float _interval;
+    private readonly Action _callback;
+    private readonly object _caller;
 
     public Invoker(CoroutineOwner owner, float interval, Action callback, object caller = null)
     {
         _owner = owner;
-        _coroutine = _owner.StartCoroutine(InvokingCorotine(interval, callback, caller));
+        _interval = interval;
+        _callback = callback;
+        _caller = caller;
+
+        Start();
     }
 
     private IEnumerator InvokingCorotine(float interval, Action callback, object caller = null)
@@ -37,6 +44,18 @@ public class Invoker : IInvoker
     {
         if (_coroutine != null && _owner != null)
             _owner.StopCoroutine(_coroutine);
+
         _coroutine = null;
+    }
+
+    public void Start()
+    {
+        if (_owner != null)
+        {
+            if (_coroutine != null)
+                _owner.StopCoroutine(_coroutine);
+
+            _coroutine = _owner.StartCoroutine(InvokingCorotine(_interval, _callback, _caller));
+        }
     }
 }

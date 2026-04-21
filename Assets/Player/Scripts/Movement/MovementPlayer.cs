@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MovementPlayer : MonoBehaviour, IService
+public class MovementPlayer : MonoBehaviour
 {
     public InputPlayerMovementConfig inputConfig;
     public PlayerMovementConfig config;

@@ -1,3 +1,5 @@
+using VContainer;
+using VContainer.Unity;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -7,6 +9,8 @@ public class WeaponHandler : MonoBehaviour
     [SerializeField] private KeyCode _useWeaponKey = KeyCode.Mouse0;
     [SerializeField] private Inventory _inventory;
     [SerializeField] private InventoryInput _inventoryInput;
+    
+    [Inject] private IObjectResolver _objectResolver;
 
     public event System.Action<bool> OnExpand;
 
@@ -65,7 +69,7 @@ public class WeaponHandler : MonoBehaviour
 
         if (!_mountedWeapons.ContainsKey(key))
         {
-            Weapon spawnedWeapon = Instantiate(weaponPrefab, transform);
+            Weapon spawnedWeapon = _objectResolver.Instantiate(weaponPrefab, transform);
             spawnedWeapon.transform.localPosition = Vector3.zero;
             spawnedWeapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
 

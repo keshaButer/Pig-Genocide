@@ -1,3 +1,4 @@
+using VContainer;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,8 @@ public class HealthPlayer : MonoBehaviour, IDamagable
     private int _health;
     private bool _wasDeath;
     [SerializeField] public PhysicsMaterial2D alivePhysicsMaterial, deadPhysicsMaterial;
+    [Inject] private IHealthWindow _healthWindow;
+
     public int CurrentHealth
     {
         get { return _health; }
@@ -30,10 +33,11 @@ public class HealthPlayer : MonoBehaviour, IDamagable
                 }
                 else _health = value;
 
-                HealthWindow.SingleTon.UpdateHealthText();
+                _healthWindow.UpdateHealthText();
             }
         }
     }
+
     private void Awake()
     {
         _capsule = GetComponent<BoxCollider2D>();
@@ -48,7 +52,7 @@ public class HealthPlayer : MonoBehaviour, IDamagable
     {
         _rb = GetComponent<Rigidbody2D>();
         CurrentHealth = MaxHealth;
-        HealthWindow.SingleTon.UpdateHealthText();
+        _healthWindow.UpdateHealthText();
         _animationController = transform.GetChild(0).GetComponent<AnimationController>();
     }
     public void AddHP(int hp)

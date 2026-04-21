@@ -1,23 +1,22 @@
+using VContainer;
 using TMPro;
 using UnityEngine;
 
-public class HealthWindow : MonoBehaviour
+public class HealthWindow : MonoBehaviour, IHealthWindow
 {
-    public static HealthWindow SingleTon;
     private HealthPlayer healthPlayer;
     private TextMeshPro healthText;
-    private void Awake()
-    {
-        if (SingleTon == null)
-            SingleTon = this;
-        else Destroy(this);
 
-        PlayerSpawner.OnPlayerSpawned += Initialize;
+    [Inject]
+    public void Construct(IPlayerProvider playerProvider)
+    {
+        playerProvider.OnPlayerSpawned += OnPlayerSpawned;
+        
+        if (playerProvider.Player != null)
+            OnPlayerSpawned(playerProvider.Player);
     }
 
-    private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
-
-    public void Initialize(GameObject player)
+    private void OnPlayerSpawned(GameObject player)
     {
         EventManager.PlayerTookDamage += UpdateHealthText;
         EventManager.EnemyDied += UpdateHealthText;
@@ -26,6 +25,7 @@ public class HealthWindow : MonoBehaviour
         healthText = transform.GetChild(0).GetComponent<TextMeshPro>();
         UpdateHealthText();
     }
+
     public void UpdateHealthText()
     {
         healthText.text = $"Health: {healthPlayer.CurrentHealth}";

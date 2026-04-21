@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
-public class DifficultyManager : IDifficultyManager
+public class DifficultyManager : IDifficultyManager, IDisposable
 {
-    public event System.Action<float> OnDifficultyChanged;
+    public event Action<float> OnDifficultyChanged;
 
     private IInvokerFactory _invokerFactory;
     private IInvoker _invoker;
@@ -25,6 +26,11 @@ public class DifficultyManager : IDifficultyManager
         }
     }
 
+    public void Dispose()
+    {
+        _invoker.Stop();            
+    }
+
     private void OnPlayerSpawned(GameObject player)
     {
         _healthPlayer = player.GetComponent<HealthPlayer>();
@@ -32,7 +38,7 @@ public class DifficultyManager : IDifficultyManager
         _invoker = _invokerFactory.StartRepeatInvoking(_config.ChangeRate, UpdateDifficulty);
     }
 
-    private void UpdateDifficulty()
+    public void UpdateDifficulty()
     {
         OnDifficultyChanged?.Invoke(GetPlayerSkill());
     }

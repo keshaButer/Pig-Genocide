@@ -1,23 +1,20 @@
+using VContainer;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : MonoBehaviour, ISoundManager
 {
-    public static SoundManager SingleTone;
-
     private AudioSource audioSource;
     
-    private void Awake()
+    [Inject]
+    public void Construct(IPlayerProvider playerProvider)
     {
-        if (SingleTone == null)
-            SingleTone = this;
-        else if (SingleTone != null)
-            Destroy(this);
+        playerProvider.OnPlayerSpawned += OnPlayerSpawned;
+        
+        if (playerProvider.Player != null)
+            OnPlayerSpawned(playerProvider.Player);
     }
 
-    private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
-    public void Subscribe() => PlayerSpawner.OnPlayerSpawned += Initialize;
-
-    private void Initialize(GameObject player)
+    private void OnPlayerSpawned(GameObject player)
     {
         if (player == null)
         {

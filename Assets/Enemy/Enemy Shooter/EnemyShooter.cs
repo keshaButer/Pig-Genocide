@@ -1,4 +1,6 @@
 using UnityEngine;
+using VContainer;
+using VContainer.Unity;
 using System.Collections;
 
 public class EnemyShooter : EnemyRasher
@@ -12,11 +14,13 @@ public class EnemyShooter : EnemyRasher
     [SerializeField] Transform weapon;
     [SerializeField] bool randomizeValues;
 
+    [Inject] private IObjectResolver _objectResolver;
+
     private Coroutine shootCoroutine;
     private float startFireInterval;
     private float timer;
     private int currentCountShots;
-    private bool isSeePlayer;
+    // private bool isSeePlayer;
 
     protected override void Awake()
     {
@@ -49,7 +53,7 @@ public class EnemyShooter : EnemyRasher
         currentCountShots = 0;
         while (currentCountShots < _countShots)
         {
-            GameObject _bullet = Instantiate(bulletPrefab, spawnBullet.position, spawnBullet.rotation);
+            GameObject _bullet = _objectResolver.Instantiate(bulletPrefab, spawnBullet.position, spawnBullet.rotation);
             _bullet.transform.localRotation = spawnBullet.rotation;
 
             currentCountShots++;
@@ -74,7 +78,7 @@ public class EnemyShooter : EnemyRasher
         _weapon.Rotate(0, 0, angle - 180);
     }
 
-    protected override void OnDifficultyChanged(float playerSkill)
+    public override void OnDifficultyChanged(float playerSkill)
     {
         base.OnDifficultyChanged(playerSkill);
         fireInterval = Mathf.Clamp(startFireInterval / Mathf.Max(playerSkill, 0.1f), minFireInterval, maxFireInterval);

@@ -1,12 +1,16 @@
 using UnityEngine;
+using VContainer;
+using VContainer.Unity;
 
 public class Kalash : Weapon
 {
     [SerializeField] private Rifle _rifle;
-    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Bullet _bulletPrefab;
     [SerializeField] private Transform _bulletSpawnTransform;
     [SerializeField] private LayerMask _obstacleMask;
     [SerializeField] private float _radiusCircleCheckFreeSpace;
+    
+    [Inject] private IObjectResolver _objectResolver;
 
     private SoundSource _soundSource;
     private bool _isFreeSpace;
@@ -21,7 +25,7 @@ public class Kalash : Weapon
     {
         if (_isFreeSpace)
         {
-            Instantiate(_bulletPrefab, _bulletSpawnTransform.position, _bulletSpawnTransform.rotation);
+            _objectResolver.Instantiate(_bulletPrefab, _bulletSpawnTransform.position, _bulletSpawnTransform.rotation);
 
             _soundSource.PlaySound(_rifle.ShotSound, 10);
         }

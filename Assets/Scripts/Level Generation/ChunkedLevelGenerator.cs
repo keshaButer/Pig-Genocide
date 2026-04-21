@@ -1,25 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using VContainer;
+using VContainer.Unity;
 
-public class ChunkedLevelGenerator : MonoBehaviour
+public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
 {
-    public static ChunkedLevelGenerator SingleTon;
-
-    [Header("Настройки")]
-    public int chunkSizeInCells = 20;               // размер чанка в тайлах
-    public int worldWidthInChunks = 5;        // сколько чанков по X
-    public int worldHeightInChunks = 3;       // сколько чанков по Y
-    public TileBase platformTile;              // тайл платформы
-    public GameObject chunkPrefab;             // префаб с Tilemap, CompositeCollider и т.д.
-    public List<Vector2> surfaceCells = new List<Vector2>();
-
+    [Header("Generate settings")]
+    [SerializeField] private int chunkSizeInCells = 20;               // размер чанка в тайлах
+    [SerializeField] private int worldWidthInChunks = 5;        // сколько чанков по X
+    [SerializeField] private int worldHeightInChunks = 3;       // сколько чанков по Y
     [SerializeField] private int seed = 0;
     [SerializeField] private float noiseScale = 20;
     [SerializeField] private float porog = 0.5f;
     [SerializeField] private float cellSize = 0.3f;
     [SerializeField] private float disableChunkRate = 5;
     [SerializeField] private float distanceDisableChunk = 10;
+
+    [Header("Components")]
+    [SerializeField] private TileBase platformTile;              // тайл платформы
+    [SerializeField] private GameObject chunkPrefab;             // префаб с Tilemap, CompositeCollider и т.д.
+    [SerializeField] private List<Vector2> surfaceCells = new List<Vector2>();
+
+    [Header("Spawners")]
     [SerializeField] private BarrelSpawner barrelSpawner;
     [SerializeField] private RopeSpawner ropeSpawner;
     [SerializeField] private PlayerSpawner playerSpawner;
@@ -32,13 +35,11 @@ public class ChunkedLevelGenerator : MonoBehaviour
     private HashSet<Vector2Int> filledCellIndices = new HashSet<Vector2Int>();
     private Transform playerTransform;
 
-    public void Initialize()
+    [Inject] private IInvokerFactory _invokerFactory;
+    private IInvoker _invoker;
+    
+    public void Start()
     {
-        if (SingleTon == null)
-            SingleTon = this;
-        else if (SingleTon != null)
-            Destroy(this);
-
         SetRandomNoiseOffset();
 
         GenerateWorld();
@@ -49,10 +50,15 @@ public class ChunkedLevelGenerator : MonoBehaviour
         ropeSpawner.SpawnRopes(surfaceCells);
         playerTransform = playerSpawner.SpawnPlayer(surfaceCells);
 
-        InvokeRepeating(nameof(SetActivationChunks), 0f, disableChunkRate);
+        _invoker = _invokerFactory.StartRepeatInvoking(disableChunkRate, SetActivationChunks, this);
     }
 
-    void SetRandomNoiseOffset()
+    private void OnDestroy()
+    {
+        _invoker.Stop();
+    }
+
+    private void SetRandomNoiseOffset()
     {
         if (seed == 0)
             seed = Random.Range(1, 10000);
@@ -62,7 +68,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
         yOffset = Random.Range(0f, 1000f);
     }
 
-    void SetActivationChunks()
+    private void SetActivationChunks()
     {
         if (playerTransform == null) return;
 
@@ -78,7 +84,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
         }
     }
 
-    void GenerateWorld()
+    private void GenerateWorld()
     {
         for (int cx = 0; cx < worldWidthInChunks; cx++)
         {
@@ -112,7 +118,7 @@ public class ChunkedLevelGenerator : MonoBehaviour
             }
         }
     }
-    bool ShouldPlaceTile(int x, int y)
+    private bool ShouldPlaceTile(int x, int y)
     {
         float noiseValue = Mathf.PerlinNoise(x / noiseScale + xOffset, y / noiseScale + yOffset);
         if (noiseValue > porog)

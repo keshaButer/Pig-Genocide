@@ -1,5 +1,7 @@
+using VContainer;
 using System.Collections.Generic;
 using UnityEngine;
+using VContainer.Unity;
 
 public class RopeSpawner : MonoBehaviour
 {
@@ -10,24 +12,45 @@ public class RopeSpawner : MonoBehaviour
     [SerializeField] private int spawnCount;
     [SerializeField] private int maxTotalAttempts = 20000;
     [SerializeField] private float distanceToDisable = 50;
-    [SerializeField] private float disableFarRate = 2;
+    [SerializeField] private float _updateActivationRate = 2;
 
     private List<GameObject> ropes = new List<GameObject>();
     private Transform playerTransform;
+    [Inject] private ILevelGenerator levelGenerator;
+    [Inject] private IInvokerFactory _invokerFactory;
+    [Inject] private IObjectResolver _objectResolver;
+    private IInvoker _invokerUpdateActivation;
 
-    private void OnEnable() => PlayerSpawner.OnPlayerSpawned += Initialize;
-    private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
-
-    public void Initialize(GameObject player)
+    [Inject]
+    public void Construct(IPlayerProvider playerProvider)
+    {
+        playerProvider.OnPlayerSpawned += OnPlayerSpawned;
+        
+        if (playerProvider.Player != null)
+            OnPlayerSpawned(playerProvider.Player);
+    }
+    
+    private void OnPlayerSpawned(GameObject player)
     {
         playerTransform = player.transform;
 
-        InvokeRepeating(nameof(DisableFarRopes), 0, disableFarRate);
+        _invokerUpdateActivation = _invokerFactory.StartRepeatInvoking(_updateActivationRate, UpdateActivationRopes, this);
+    }
+
+    private void OnEnable()
+    {
+        if (_invokerUpdateActivation != null)
+            _invokerUpdateActivation.Start();
+    }
+
+    private void OnDisable()
+    {
+        if (_invokerUpdateActivation != null)
+            _invokerUpdateActivation.Stop();
     }
 
     public void SpawnRopes(List<Vector2> surfaceCells)
     {
-        ChunkedLevelGenerator levelGenerator = ChunkedLevelGenerator.SingleTon;
         int spawnedCount = 0;
         int attempts = 0;
 
@@ -59,7 +82,7 @@ public class RopeSpawner : MonoBehaviour
                     levelGenerator.SetOccupiedCell(firstPoint);
                     levelGenerator.SetOccupiedCell(secondPoint);
 
-                    GameObject rope = GameObject.Instantiate(ropePrefab, firstPoint, Quaternion.Euler(0, 0, 0), transform);
+                    GameObject rope = _objectResolver.Instantiate(ropePrefab, firstPoint, Quaternion.Euler(0, 0, 0), transform);
                     ropes.Add(rope);
                     rope.transform.GetChild(0).position = firstPoint + new Vector2(0, 1.5f);
                     rope.transform.GetChild(1).position = secondPoint + new Vector2(0, 1.5f);
@@ -69,7 +92,8 @@ public class RopeSpawner : MonoBehaviour
             }
         }
     }
-    void DisableFarRopes()
+
+    private void UpdateActivationRopes()
     {
         foreach (GameObject rope in ropes)
         {

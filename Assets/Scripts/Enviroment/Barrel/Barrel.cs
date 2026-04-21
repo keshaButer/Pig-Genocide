@@ -1,3 +1,4 @@
+using VContainer;
 using UnityEngine;
 
 public class Barrel : Explosives, IDamagable
@@ -7,18 +8,17 @@ public class Barrel : Explosives, IDamagable
 
     [SerializeField] private GameObject effect;
     [SerializeField] private AudioClip _audioClip;
+    [Inject] private ISoundManager _soundManager;
 
     public int CurrentHealth { get; private set; }
 
     private SpriteRenderer sprite;
     private GameObject lines;
-    private SoundSource _soundSource;
 
-    void Start()
+    private void Start()
     {
         CurrentHealth = _startHealth;
         lines = transform.GetChild(0).gameObject;
-        _soundSource = GetComponent<SoundSource>();
     }
     public void ApplyDamage(int damage)
     {
@@ -34,7 +34,7 @@ public class Barrel : Explosives, IDamagable
     {
         DealDamage();
 
-        SoundManager.SingleTone.PlaySound(_audioClip, 0.1f);
+        _soundManager.PlaySound(_audioClip, 0.1f);
 
         GameObject obj = Instantiate(effect, transform.position + new Vector3(0, 0.7f, 0), transform.rotation);
         obj.transform.parent = transform;

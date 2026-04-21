@@ -8,5 +8,5 @@ public class EnemyConfig : ScriptableObject
     public float delayToDestroy;
     public int collisionDamage;
     public float massOnDeath;
-    public AudioClip deathSound;    
+    public AudioClip deathSound;
 }

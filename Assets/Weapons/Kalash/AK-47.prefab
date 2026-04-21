@@ -138,10 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74540237f0bfcf14d9108afd175d1a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Unnamed
+  Name: AK-47
   FireInterval: 0.3
   _rifle: {fileID: 11400000, guid: 8c0e072430e9d35469c300dde86b3586, type: 2}
-  _bulletPrefab: {fileID: 3682554700567244655, guid: da243da016e27cf4dbce3a4fe70b6759, type: 3}
+  _bulletPrefab: {fileID: -3235686933755742809, guid: da243da016e27cf4dbce3a4fe70b6759, type: 3}
   _bulletSpawnTransform: {fileID: 1034593521805434455}
   _obstacleMask:
     serializedVersion: 2

@@ -10,12 +10,12 @@ public class EnemyCollision : MonoBehaviour
     private void Awake()
     {
         _enemy = GetComponent<Enemy>();
-        _config = _enemy.con;
+        _config = _enemy.Config;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.TryGetComponent<HealthPlayer>(out HealthPlayer player))
+        if (other.gameObject.TryGetComponent(out HealthPlayer player))
         {
             player.ApplyDamage(_config.collisionDamage);
             _enemy.HandleCollision(other);

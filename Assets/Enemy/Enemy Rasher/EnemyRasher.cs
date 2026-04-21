@@ -29,8 +29,12 @@ public class EnemyRasher : Enemy
     protected Vector2 moveDirection;
     protected Transform playerTransform;
     protected Coroutine fightCoroutine;
+
     protected PathFollower PathFollower;
+
     [Inject] private IPathFinder _pathFinder;
+    [Inject] private ILevelGenerator _levelGenerator;
+    [Inject] private IPlayerProvider _playerProvider;
 
     private MovementPlayer _movementPlayer;
     private bool _targetUnreachable;
@@ -49,26 +53,27 @@ public class EnemyRasher : Enemy
     }
 #endif
 
-    protected override void OnEnable()
+    private void Start()
     {
-        base.OnEnable();
-        PlayerSpawner.OnPlayerSpawned += Initialize;
+        _playerProvider.OnPlayerSpawned += OnPlayerSpawned;
+        
+        if (_playerProvider.Player != null)
+            OnPlayerSpawned(_playerProvider.Player);
     }
-    protected override void OnDisable()
-    {
-        base.OnDisable();
-        PlayerSpawner.OnPlayerSpawned -= Initialize;
-    }
-    public void Initialize(GameObject player)
+    protected override void Awake()
     {
         PathFollower = GetComponent<PathFollower>();
-
         checkCirclePoint = transform.GetChild(1);
+    }
+
+    private void OnPlayerSpawned(GameObject player)
+    {
         playerTransform = player.transform;
         _movementPlayer = playerTransform.GetComponent<MovementPlayer>();
 
         fightCoroutine = StartCoroutine(nameof(Fighting));
     }
+
     private void CalculateYVelocity()
     {
         if (!isGrounded)
@@ -87,8 +92,11 @@ public class EnemyRasher : Enemy
             }
         }
     }
+
     private IEnumerator Fighting()
     {
+        var wait = new WaitForFixedUpdate();
+
         while (playerTransform != null)
         {
             CheckGround();
@@ -100,7 +108,7 @@ public class EnemyRasher : Enemy
                 List<Vector2> newPath = _pathFinder.FindPath(
                     transform.position, 
                     _movementPlayer.checkCirclePoint.position, 
-                    ChunkedLevelGenerator.SingleTon,
+                    _levelGenerator,
                     PathFollower.MaxDepthAstar
                 );
 
@@ -123,30 +131,37 @@ public class EnemyRasher : Enemy
             }
 
             if (PathFollower.HasPath)
+            {
+                Debug.Log("HasPath = true");
                 PathFollower.MoveAlongPath();
+            }
             // CalculateYVelocity();
 
             // JumpControl();
 
-            yield return new WaitForFixedUpdate();
+            yield return wait;
         }
 
         fightCoroutine = null;
     }
+
     protected void CheckGround()
     {
         isGrounded = Physics2D.OverlapCircle(checkCirclePoint.position,
         _checkCircleRadius, _checkGroundMask);
     }
+
     protected void Jump()
     {
         moveDirection.y = CalculateJumpHeight(jupmHeight);
         RigidBody.linearVelocity = moveDirection;
     }
+
     protected float CalculateJumpHeight(float _jumpHeight)
     {
         return Mathf.Sqrt(2 * RigidBody.gravityScale * _jumpHeight);
     }
+
     protected void JumpControl()
     {
         if (isGrounded && Physics2D.BoxCast(transform.position - new Vector3(0.5f, 0.6f), new Vector2(_rayRangeJump, 0.5f),
@@ -171,6 +186,7 @@ public class EnemyRasher : Enemy
             }
         }
     }
+
     public void CalculateDirection(Vector3 position)
     {
         float x1 = position.x;
@@ -192,6 +208,7 @@ public class EnemyRasher : Enemy
         }
         else { currentDirection = 0; }
     }
+
     public void Expend(bool turn)
     {
         if (turn && !isChangeDirection)
@@ -205,9 +222,10 @@ public class EnemyRasher : Enemy
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
-    protected override void OnDifficultyChanged(float playerSkill)
+
+    public override void OnDifficultyChanged(float playerSkill)
     {
         PathFollower.CurrentSpeed = Mathf.Clamp(PathFollower.StartSpeed * playerSkill, _minSpeed, _maxSpeed);
-        Debug.Log($"Change speed to: {PathFollower.CurrentSpeed}");
+        Debug.Log($"Changed speed to: {PathFollower.CurrentSpeed}");
     }
 }

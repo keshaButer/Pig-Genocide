@@ -1,3 +1,4 @@
+using VContainer;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
@@ -13,6 +14,7 @@ public abstract class Bullet : MonoBehaviour
     [SerializeField] protected float _force;
 
     [SerializeField] private float _speed, _delayDestroy, _radius;
+    [Inject] private ILevelGenerator _levelGenerator;
 
     private Animator _animator;
     private CircleCollider2D _circleCollider;
@@ -58,7 +60,7 @@ public abstract class Bullet : MonoBehaviour
     {
         if (collider.tag == "Ground")
         {
-            ChunkedLevelGenerator.SingleTon.DestroyTilesInRadius(transform.position, _radius);
+            _levelGenerator.DestroyTilesInRadius(transform.position, _radius);
         }
 
         HandleHit(collider.transform);

@@ -658,6 +658,64 @@ Transform:
   - {fileID: 432502102}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &238712367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 238712369}
+  - component: {fileID: 238712368}
+  m_Layer: 0
+  m_Name: INITIALIZER
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &238712368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238712367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fa61ea5229326188b07b15cecc6b9b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameplayLifetimeScope
+  parentReference:
+    TypeName: 
+  autoRun: 1
+  autoInjectGameObjects:
+  - {fileID: 1434720299}
+  - {fileID: 1666236958}
+  - {fileID: 2115580974}
+  _playerSpawner: {fileID: 1434720305}
+  _difficultyConfig: {fileID: 11400000, guid: 72c0c00b8301fc4b4b58ba816dfc91ce, type: 2}
+  _intervalInvokingPerformer: {fileID: 1448821527}
+  _chunkedLevelGenerator: {fileID: 1434720301}
+  _enemySpawner: {fileID: 2115580976}
+  _healthWindow: {fileID: 517284404}
+  _soundManager: {fileID: 2145539026}
+--- !u!4 &238712369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238712367}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 361.8765, y: 348.22818, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &249042841
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +758,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 328367789}
-  - component: {fileID: 328367790}
   m_Layer: 0
   m_Name: Difficulty Manager
   m_TagString: Untagged
@@ -723,22 +780,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 901543218}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &328367790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 328367788}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b2a20af9b8ba2512b3bfb24c517e0a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DifficultyManager
-  Enemies: []
-  _changeRate: 0.5
-  _killMeaning: 0.3
-  _reverseTimeMeaning: 60
 --- !u!1 &345333050
 GameObject:
   m_ObjectHideFlags: 0
@@ -3970,15 +4011,15 @@ MonoBehaviour:
   chunkSizeInCells: 50
   worldWidthInChunks: 40
   worldHeightInChunks: 40
-  platformTile: {fileID: 11400000, guid: 13aaa28934819b1848c984b449d74124, type: 2}
-  chunkPrefab: {fileID: 8107286441514308303, guid: 6ae491820aef99fccaae843b81b28c28, type: 3}
-  surfaceCells: []
   seed: 0
   noiseScale: 20
   porog: 0.5
   cellSize: 0.3
   disableChunkRate: 2
   distanceDisableChunk: 40
+  platformTile: {fileID: 11400000, guid: 13aaa28934819b1848c984b449d74124, type: 2}
+  chunkPrefab: {fileID: 8107286441514308303, guid: 6ae491820aef99fccaae843b81b28c28, type: 3}
+  surfaceCells: []
   barrelSpawner: {fileID: 1434720302}
   ropeSpawner: {fileID: 1434720303}
   playerSpawner: {fileID: 1434720305}
@@ -3999,7 +4040,7 @@ MonoBehaviour:
   count: 1500
   maxAttempts: 20000
   distanceToDisable: 40
-  disableFarRate: 2
+  updateActivationRate: 2
 --- !u!114 &1434720303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4019,7 +4060,7 @@ MonoBehaviour:
   spawnCount: 1000
   maxTotalAttempts: 20000
   distanceToDisable: 40
-  disableFarRate: 2
+  _updateActivationRate: 2
 --- !u!114 &1434720305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4034,6 +4075,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawner
   playerPrefab: {fileID: 76852695540339604, guid: b56e974fd1264484abb6ad7de0963fdc, type: 3}
   maxAttempts: 20000
+--- !u!1 &1448821526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1448821528}
+  - component: {fileID: 1448821527}
+  m_Layer: 0
+  m_Name: Corotine Owner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1448821527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448821526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fb12d72a9eb9b52a9ad09294e8c639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoroutineOwner
+--- !u!4 &1448821528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448821526}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 361.8765, y: 348.22818, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1452438497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5921323870032956098, guid: 03e7c5d6851cf8548ae060c54b346f05, type: 3}
@@ -4752,15 +4837,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18509642f13d3d83ba5254f63f08d332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ServiceLocatorLoader_Main
-  _enemySpawner: {fileID: 2115580976}
-  _barrelSpawner: {fileID: 1434720302}
-  _ropeSpawner: {fileID: 1434720303}
-  _slowTimeManager: {fileID: 1937600278}
-  _healthWindow: {fileID: 517284404}
-  _cameraSway: {fileID: 1666236960}
-  _levelGenerator: {fileID: 1434720301}
-  _soundManager: {fileID: 2145539026}
-  _uiStaminaControll: {fileID: 495661507}
 --- !u!4 &1817042730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5921323870032956098, guid: 03e7c5d6851cf8548ae060c54b346f05, type: 3}
@@ -5254,7 +5330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29108f42c51c451aaba25c324be6e92f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
-  spawnRate: 10
+  spawnRate: 5
   minDistanceBetweenEnemies: 5
   minDistanceToPlayer: 5
   maxDistanceToPlayer: 10
@@ -5262,7 +5338,8 @@ MonoBehaviour:
   spawnHeightOffset: 0.3
   maxAttempts: 100
   enemyPrefabs:
-  - {fileID: 4194581230446803002, guid: fcf2fba1684ef6783874ccb6f83d57cf, type: 3}
+  - {fileID: 6087825141186289468, guid: fcf2fba1684ef6783874ccb6f83d57cf, type: 3}
+  - {fileID: 5660121821233564600, guid: 78d4f2664aac6994e80ad4c98eee041f, type: 3}
   parentObject: {fileID: 2115580975}
   updateEnemyActivationRate: 2
 --- !u!1001 &2139143769
@@ -5475,3 +5552,5 @@ SceneRoots:
   - {fileID: 1321037737}
   - {fileID: 104998259}
   - {fileID: 249042842}
+  - {fileID: 238712369}
+  - {fileID: 1448821528}

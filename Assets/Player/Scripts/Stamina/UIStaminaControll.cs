@@ -1,3 +1,4 @@
+using VContainer;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,15 +9,23 @@ public class UIStaminaControll : MonoBehaviour
     [SerializeField] private Slider bar1;
     [SerializeField] private Slider bar2;
     [SerializeField] private Slider bar3;
+
     private StaminaControll staminaControll;
 
-    private void Awake() => PlayerSpawner.OnPlayerSpawned += Initialize;
-    private void OnDisable() => PlayerSpawner.OnPlayerSpawned -= Initialize;
+    [Inject]
+    public void Construct(IPlayerProvider playerProvider)
+    {
+        playerProvider.OnPlayerSpawned += OnPlayerSpawned;
+        
+        if (playerProvider.Player != null)
+            OnPlayerSpawned(playerProvider.Player);
+    }
 
-    public void Initialize(GameObject player)
+    private void OnPlayerSpawned(GameObject player)
     {
         staminaControll = player.GetComponent<StaminaControll>();
     }
+
     private void SynchronizeStamina()
     {
         if (staminaControll == null) return;

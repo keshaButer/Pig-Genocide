@@ -1,3 +1,4 @@
+using VContainer;
 using UnityEngine;
 
 public abstract class Explosives : MonoBehaviour
@@ -6,20 +7,20 @@ public abstract class Explosives : MonoBehaviour
     [SerializeField] private float radiusExplosion, force;
     [SerializeField] LayerMask damagableMask, obstacleMask;
 
+    [Inject] private ILevelGenerator _levelGenerator;
     private bool isExploded;
-    private RaycastHit2D hit;
-    private Ray rayToCollider;
 
     private void Awake()
     {
         damagableMask = LayerMask.GetMask("Player", "Enemy", "Explodeable");
     }
+
     protected virtual void DealDamage()
     {
         isExploded = true;
         EventManager.OnExplosion();
 
-        ChunkedLevelGenerator.SingleTon.DestroyTilesInRadius(transform.position, radiusExplosion);
+        _levelGenerator.DestroyTilesInRadius(transform.position, radiusExplosion);
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radiusExplosion, damagableMask);
 

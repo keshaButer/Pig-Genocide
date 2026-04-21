@@ -1,3 +1,4 @@
+using VContainer;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -9,16 +10,16 @@ public class InventoryUI : MonoBehaviour
     private Inventory _inventory;
     private InventoryInput _inventoryInput;
 
-    private void Awake()
+    [Inject]
+    public void Construct(IPlayerProvider playerProvider)
     {
-        PlayerSpawner.OnPlayerSpawned += Initialize;
+        playerProvider.OnPlayerSpawned += OnPlayerSpawned;
+        
+        if (playerProvider.Player != null)
+            OnPlayerSpawned(playerProvider.Player);
     }
-    private void OnDestroy()
-    {
-        PlayerSpawner.OnPlayerSpawned -= Initialize;
-        _inventory.OnAddItem -= Redraw;
-    }
-    private void Initialize(GameObject player)
+
+    private void OnPlayerSpawned(GameObject player)
     {
         _inventory = player.GetComponent<Inventory>();
         _inventoryInput = player.GetComponent<InventoryInput>();
@@ -28,6 +29,7 @@ public class InventoryUI : MonoBehaviour
 
         FillCellsList();
     }
+
     private void SelectCell(int index)
     {
         if (index > _cells.Count)

@@ -192,7 +192,8 @@ MonoBehaviour:
   _rayRangeJump: 0.5
   _gravityForce: 0
   _minDelayStopFall: 0.3
-  _coolDownFindPath: 0.5
+  _coolDownUnreachablePath: 2
+  _coolDownRecalculatePath: 0.5
   jupmHeight: 1.5
   _checkCircleRadius: 0.4
   _intervalChangeDirection: 0.3
