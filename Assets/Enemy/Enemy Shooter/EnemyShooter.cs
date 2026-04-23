@@ -16,6 +16,7 @@ public class EnemyShooter : EnemyRasher
 
     [Inject] private IObjectResolver _objectResolver;
 
+
     private Coroutine shootCoroutine;
     private float startFireInterval;
     private float timer;
@@ -25,6 +26,7 @@ public class EnemyShooter : EnemyRasher
     protected override void Awake()
     {
         base.Awake();
+
         startFireInterval = fireInterval;
 
         if (randomizeValues)

@@ -62,6 +62,8 @@ public class EnemyRasher : Enemy
     }
     protected override void Awake()
     {
+        base.Awake();
+
         PathFollower = GetComponent<PathFollower>();
         checkCirclePoint = transform.GetChild(1);
     }

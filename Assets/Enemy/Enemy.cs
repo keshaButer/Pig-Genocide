@@ -13,7 +13,7 @@ public abstract class Enemy : MonoBehaviour
     protected Rigidbody2D RigidBody { get; private set; }
     protected Health HealthComponent { get; private set; }
 
-    protected bool IsDead { get; private set; }
+    protected bool IsDead { get; private set; } = false;
 
     protected virtual void OnEnable()
     {
@@ -32,11 +32,13 @@ public abstract class Enemy : MonoBehaviour
         RigidBody = GetComponent<Rigidbody2D>();
         HealthComponent = GetComponent<Health>();
 
+        Debug.Log("AWAKE LSKJFSDKJFLSKJFHKLSJFSKLJF");
         HealthComponent.OnDied += HandleDeath;
     }
 
     private void HandleDeath()
     {
+        Debug.Log("DEATH");
         if (IsDead) return;
         IsDead = true;
 

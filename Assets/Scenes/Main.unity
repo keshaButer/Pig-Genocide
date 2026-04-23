@@ -695,6 +695,7 @@ MonoBehaviour:
   - {fileID: 1666236958}
   - {fileID: 2115580974}
   - {fileID: 901543217}
+  - {fileID: 1599142542}
   _playerSpawner: {fileID: 1434720305}
   _difficultyConfig: {fileID: 11400000, guid: 72c0c00b8301fc4b4b58ba816dfc91ce, type: 2}
   _intervalInvokingPerformer: {fileID: 1448821527}
