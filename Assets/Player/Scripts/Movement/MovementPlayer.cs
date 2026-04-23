@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VContainer;
 
 public class MovementPlayer : MonoBehaviour
 {
     public InputPlayerMovementConfig inputConfig;
     public PlayerMovementConfig config;
+
+    [Inject] private IPlayerEvents _playerEvents;
 
     private Rigidbody2D rb;
     [SerializeField] private WeaponHandler _weaponHandler;
@@ -267,7 +270,7 @@ public class MovementPlayer : MonoBehaviour
                  config.dashRangeDownRay, config.checkDashMask))
             {
                 rb.MovePosition(rb.position + direction * config.dashDistance);
-                EventManager.OnDash();
+                _playerEvents.NotifyDashPerformed();
                 isDashDown = true;
             }
         }
@@ -277,7 +280,7 @@ public class MovementPlayer : MonoBehaviour
                  config.dashRangeLeftRay, config.checkDashMask))
             {
                 rb.MovePosition(rb.position + direction * config.dashDistance);
-                EventManager.OnDash();
+                _playerEvents.NotifyDashPerformed();
             }
         }
     }
@@ -306,7 +309,7 @@ public class MovementPlayer : MonoBehaviour
         needToStandUp = false;
         colliderBody.size = new Vector2(colliderBody.size.x, 1);
         colliderBody.offset = new Vector2(colliderBody.offset.x, -0.5f);
-        EventManager.OnSatDown();
+        _playerEvents.NotifyPlayerSitDown();
         IsCrouch = true;
     }
 
@@ -316,7 +319,7 @@ public class MovementPlayer : MonoBehaviour
         colliderBody.size = new Vector2(colliderBody.size.x, 2);
         colliderBody.offset = new Vector2(colliderBody.offset.x, 0);
         IsCrouch = false;
-        EventManager.OnStandUp();
+        _playerEvents.NotifyPlayerStandUp();
     }
 
     public void ResetIsDashDown() => isDashDown = false;

@@ -1,4 +1,5 @@
 using UnityEngine;
+using VContainer;
 
 public class StaminaControll : MonoBehaviour
 {
@@ -18,11 +19,13 @@ public class StaminaControll : MonoBehaviour
         private set { currentStamina = value; }
     } // вызвать event
     private float currentStamina;
+    [Inject] private IPlayerEvents _playerEvents;
+
     private void Start()
     {
         CurrentStamina = 3;
 
-        EventManager.Dash += () => SpendStamina(StaminaSpender.dash);
+        _playerEvents.OnDash += () => SpendStamina(StaminaSpender.dash);
     }
     private void CalculateStamina(float value)
     {

@@ -24,7 +24,7 @@ public class Invoker : IInvoker
     {
         var wait = new WaitForSeconds(interval);
 
-        UnityEngine.Object unityObject = caller as UnityEngine.Object;
+        var unityObject = caller as UnityEngine.Object;
         bool isUnityObject = unityObject != null;
 
         while (true)

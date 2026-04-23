@@ -1,4 +1,5 @@
 using UnityEngine;
+using VContainer;
 
 public class DashDownKick : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class DashDownKick : MonoBehaviour
     [SerializeField] int damage;
     [SerializeField] float timeSlowMo;
     [SerializeField] float timeSpeedInSlowMo;
+
+    [Inject] private IPlayerEvents _playerEvents;
 
     private void Awake()
     {
@@ -22,8 +25,10 @@ public class DashDownKick : MonoBehaviour
             if (other.transform.GetComponent<IDamagable>() != null)
             {
                 other.transform.GetComponent<IDamagable>().ApplyDamage(damage);
-                EventManager.OnDashDownKick();
-                SlowTimeManager.SingleTon.SlowTime(timeSpeedInSlowMo, timeSlowMo);
+
+                _playerEvents.NotifyDashDownKickPerformed();
+
+                SlowTimeManager.SingleTon.SlowTime(timeSpeedInSlowMo, timeSlowMo); // ПОМЕНЯТЬ
             }
 
             if (other.transform.GetComponent<Rigidbody2D>())

@@ -18,6 +18,9 @@ public class HealthPlayer : MonoBehaviour, IDamagable
     [SerializeField] public PhysicsMaterial2D alivePhysicsMaterial, deadPhysicsMaterial;
     [Inject] private IHealthWindow _healthWindow;
 
+    [Inject] private IEnemyEvents _enemyEvents;
+    [Inject] private IPlayerEvents _playerEvents;
+
     public int CurrentHealth
     {
         get { return _health; }
@@ -43,7 +46,7 @@ public class HealthPlayer : MonoBehaviour, IDamagable
         _capsule = GetComponent<BoxCollider2D>();
         _capsule.sharedMaterial = alivePhysicsMaterial;
         _weaponHandler = transform.GetChild(2);
-        EventManager.EnemyDied += () => AddHP(1);
+        _enemyEvents.OnEnemyDied += () => AddHP(1);
     }
 
     private void Start() => Initialize();
@@ -79,7 +82,7 @@ public class HealthPlayer : MonoBehaviour, IDamagable
         _weaponRb.interpolation = RigidbodyInterpolation2D.Interpolate;
         _weaponHandler.parent = null;
 
-        EventManager.OnPlayerDied();
+        _playerEvents.NotifyPlayerDied();
 
         Invoke(nameof(Kill), _animationController.Death());
     }
@@ -108,7 +111,7 @@ public class HealthPlayer : MonoBehaviour, IDamagable
             damage = Math.Clamp(damage, 0, 5);
             CurrentHealth -= damage;
 
-            EventManager.OnPlayerTookDamage();
+            _playerEvents.NotifyPlayerTookDamage();
         }
     }
 }

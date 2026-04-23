@@ -6,6 +6,8 @@ public class HealthWindow : MonoBehaviour, IHealthWindow
 {
     private HealthPlayer healthPlayer;
     private TextMeshPro healthText;
+    [Inject] private IPlayerEvents _playerEvents;
+    [Inject] private IEnemyEvents _enemyEvents;
 
     [Inject]
     public void Construct(IPlayerProvider playerProvider)
@@ -18,8 +20,8 @@ public class HealthWindow : MonoBehaviour, IHealthWindow
 
     private void OnPlayerSpawned(GameObject player)
     {
-        EventManager.PlayerTookDamage += UpdateHealthText;
-        EventManager.EnemyDied += UpdateHealthText;
+        _playerEvents.OnPlayerTookDamage += UpdateHealthText;
+        _enemyEvents.OnEnemyDied += UpdateHealthText;
 
         healthPlayer = player.GetComponent<HealthPlayer>();
         healthText = transform.GetChild(0).GetComponent<TextMeshPro>();

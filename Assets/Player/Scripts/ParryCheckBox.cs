@@ -1,8 +1,10 @@
+using VContainer;
 using UnityEngine;
 
 public class ParryCheckBox : MonoBehaviour
 {
     [SerializeField] private float _additionalSpeed = 1;
+    [Inject] private IPlayerEvents _playerEvents;
 
     private ParryInput _parryInput;
 
@@ -19,7 +21,7 @@ public class ParryCheckBox : MonoBehaviour
 
             bullet.Speed += _additionalSpeed;
 
-            EventManager.OnParry();
+            _playerEvents.NotifyParryPerformed();
         }
     }
 }

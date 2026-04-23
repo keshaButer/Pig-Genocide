@@ -1,3 +1,4 @@
+using VContainer;
 using System.Collections;
 using UnityEngine.Rendering;
 using UnityEngine;
@@ -5,6 +6,7 @@ using UnityEngine;
 public class VolumeController : MonoBehaviour
 {
     [SerializeField] private VolumeProfile normal, parry;
+    [Inject] private IPlayerEvents _playerEvents;
     private Volume volume;
 
     private void Awake()
@@ -12,7 +14,7 @@ public class VolumeController : MonoBehaviour
         volume = GetComponent<Volume>();
         volume.profile = normal;
 
-        EventManager.Parry += HandleParry;
+        _playerEvents.OnParry += HandleParry;
     }
     private void HandleParry()
     {

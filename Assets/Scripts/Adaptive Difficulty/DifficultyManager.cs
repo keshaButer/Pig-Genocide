@@ -11,13 +11,13 @@ public class DifficultyManager : IDifficultyManager, IDisposable
     private HealthPlayer _healthPlayer;
     private int _killCount;
 
-    public DifficultyManager(DifficultyConfig config, IPlayerProvider playerProvider, IInvokerFactory invokerFactory)
+    public DifficultyManager(DifficultyConfig config, IPlayerProvider playerProvider, IInvokerFactory invokerFactory, IEnemyEvents enemyEvents)
     {
         _config = config;
 
         _invokerFactory = invokerFactory;
 
-        EventManager.EnemyDied += () => _killCount++;
+        enemyEvents.OnEnemyDied += () => _killCount++;
 
         playerProvider.OnPlayerSpawned += OnPlayerSpawned;
         if (playerProvider.Player != null)

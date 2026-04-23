@@ -14,17 +14,31 @@ public class GameplayLifetimeScope : LifetimeScope
 
     protected override void Configure(IContainerBuilder builder)
     {
-        builder.RegisterComponent<IPlayerProvider>(_playerSpawner);
-        builder.RegisterComponent(_intervalInvokingPerformer);
-        
-        builder.RegisterComponent<ILevelGenerator>(_chunkedLevelGenerator);
+        RegisterServices(builder);
 
-        builder.RegisterComponent<ISoundManager>(_soundManager);
-        
-        builder.RegisterComponent<IHealthWindow>(_healthWindow);
+        RegisterComponents(builder);
 
-        builder.RegisterInstance(_difficultyConfig);
+        RegisterInstances(builder);
+    }
+    private void RegisterServices(IContainerBuilder builder)
+    {
         builder.Register<IDifficultyManager, DifficultyManager>(Lifetime.Singleton);
         builder.Register<IInvokerFactory, IntervalInvoker>(Lifetime.Singleton);
+
+        builder.Register<IPlayerEvents, PlayerEvents>(Lifetime.Singleton);
+        builder.Register<IEnemyEvents, EnemyEvents>(Lifetime.Singleton);
+        builder.Register<IExplosionEvents, ExplosionEvents>(Lifetime.Singleton);
+    }
+    private void RegisterComponents(IContainerBuilder builder)
+    {
+        builder.RegisterComponent<IPlayerProvider>(_playerSpawner);
+        builder.RegisterComponent(_intervalInvokingPerformer);
+        builder.RegisterComponent<ILevelGenerator>(_chunkedLevelGenerator);
+        builder.RegisterComponent<ISoundManager>(_soundManager);
+        builder.RegisterComponent<IHealthWindow>(_healthWindow);
+    }
+    private void RegisterInstances(IContainerBuilder builder)
+    {
+        builder.RegisterInstance(_difficultyConfig);
     }
 };

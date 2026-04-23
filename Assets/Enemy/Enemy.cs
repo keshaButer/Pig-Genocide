@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour
 {
     [Inject] private readonly IDifficultyManager _difficultyManager;
+    [Inject] private readonly IEnemyEvents _enemyEvents;
 
     public EnemyConfig Config;
 
@@ -44,7 +45,7 @@ public abstract class Enemy : MonoBehaviour
         RigidBody.mass = Config.massOnDeath;
 
         OnDeath();
-        EventManager.OnEnemyDied();
+        _enemyEvents.NotifyEnemyDied();
 
         Destroy(gameObject, Config.delayToDestroy);
     }

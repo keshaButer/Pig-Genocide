@@ -1,4 +1,5 @@
 using UnityEngine;
+using VContainer;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -9,6 +10,9 @@ public class PostEffectsController : MonoBehaviour
     private Volume[] volumes;
     private Volume mainVolume;
     private ChannelMixer channelMixer;
+
+    [Inject] private IPlayerEvents _playerEvents;
+
     private void Awake()
     {
         if (SingleTon == null)
@@ -23,9 +27,9 @@ public class PostEffectsController : MonoBehaviour
         mainVolume.profile.TryGet(out channelMixer);
         channelMixer.active = false;
 
-        EventManager.Parry += () => FlashBang(0.1f);
-        EventManager.SatDown += () => SetVignette(true);
-        EventManager.StandUp += () => SetVignette(false);
+        _playerEvents.OnParry += () => FlashBang(0.1f);
+        _playerEvents.OnPlayerSitDown += () => SetVignette(true);
+        _playerEvents.OnPlayerStandUp += () => SetVignette(false);
 
     }
     public void FlashBang(float time)

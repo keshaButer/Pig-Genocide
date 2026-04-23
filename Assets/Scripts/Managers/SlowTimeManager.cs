@@ -1,9 +1,12 @@
+using VContainer;
 using System.Collections;
 using UnityEngine;
 
 public class SlowTimeManager : MonoBehaviour
 {
     public static SlowTimeManager SingleTon;
+
+    [Inject] private IPlayerEvents _playerEvents;
 
     private void Awake()
     {
@@ -16,7 +19,7 @@ public class SlowTimeManager : MonoBehaviour
 
     public void Initialize()
     {
-        EventManager.Parry += () => SlowTime(0, 0.2f);
+        _playerEvents.OnParry += () => SlowTime(0, 0.2f);
     }
     private IEnumerator SlowTimeCorutine(float timeScale, float duration)
     {

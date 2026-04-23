@@ -8,6 +8,7 @@ public abstract class Explosives : MonoBehaviour
     [SerializeField] LayerMask damagableMask, obstacleMask;
 
     [Inject] private ILevelGenerator _levelGenerator;
+    [Inject] private IExplosionEvents _explosionEvents;
     private bool isExploded;
 
     private void Awake()
@@ -18,7 +19,7 @@ public abstract class Explosives : MonoBehaviour
     protected virtual void DealDamage()
     {
         isExploded = true;
-        EventManager.OnExplosion();
+        _explosionEvents.NotifyExplosionPerformed();
 
         _levelGenerator.DestroyTilesInRadius(transform.position, radiusExplosion);
 

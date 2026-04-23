@@ -1,3 +1,4 @@
+using VContainer;
 using UnityEngine;
 using DG.Tweening;
 
@@ -9,18 +10,25 @@ public class CameraShaker : MonoBehaviour
     strengthShakeDash,
     strengthPlayerTookDamage = 1f,
     durationPlayerTookDamage = 0.5f;
+
+    [Inject] private IPlayerEvents _playerEvents;
+    [Inject] private IEnemyEvents _enemyEvents;
+    [Inject] private IExplosionEvents _explosionEvents;
+
     private void Start()
     {
         Initialize();
     }
     public void Initialize()
     {
-        EventManager.EnemyDied += ShakeCamera;
-        EventManager.DashDownKick += () => ShakeCamera(strengthShakeDash);
-        EventManager.PlayerTookDamage += () => ShakeCamera(strengthPlayerTookDamage, durationPlayerTookDamage);
-        EventManager.PlayerDied += ShakeCamera;
-        EventManager.Parry += ShakeCamera;
-        EventManager.Explosion += ShakeCamera;
+        _enemyEvents.OnEnemyDied += ShakeCamera;
+
+        _playerEvents.OnDashDownKick += () => ShakeCamera(strengthShakeDash);
+        _playerEvents.OnPlayerTookDamage += () => ShakeCamera(strengthPlayerTookDamage, durationPlayerTookDamage);
+        _playerEvents.OnPlayerDied += ShakeCamera;
+        _playerEvents.OnParry += ShakeCamera;
+
+        _explosionEvents.OnExplosion += ShakeCamera;
     }
     public void ShakeCamera()
     {

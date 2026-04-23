@@ -158,7 +158,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxItemsCount: 4
-  _startItems: []
+  _startItems:
+  - {fileID: 11400000, guid: c35f9ed1996560f4f9cc7f13d7b52f2b, type: 2}
+  - {fileID: 11400000, guid: 8c0e072430e9d35469c300dde86b3586, type: 2}
 --- !u!114 &1771613362496141323
 MonoBehaviour:
   m_ObjectHideFlags: 0

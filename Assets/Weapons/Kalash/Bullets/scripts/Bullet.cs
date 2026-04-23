@@ -37,6 +37,7 @@ public abstract class Bullet : MonoBehaviour
         else
             Move();
     }
+
     private void Move()
     {
         transform.Translate(Vector2.right * _speed * Time.deltaTime);
@@ -44,6 +45,7 @@ public abstract class Bullet : MonoBehaviour
         if (_timer >= _delayDestroy)
             Destroy(gameObject);
     }
+
     private void ParryBackRun()
     {
         transform.Translate(Vector2.left * _speed * Time.deltaTime);
@@ -56,6 +58,7 @@ public abstract class Bullet : MonoBehaviour
         _isExplode = true;
         _animator.SetTrigger("isExplode");
     }
+
     private void CheckHit(Collider2D collider)
     {
         if (collider.tag == "Ground")
@@ -65,7 +68,9 @@ public abstract class Bullet : MonoBehaviour
 
         HandleHit(collider.transform);
     }
+
     protected abstract void HandleHit(Transform other);
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject == gameObject) return;
@@ -74,6 +79,7 @@ public abstract class Bullet : MonoBehaviour
 
         CheckHit(other);
     }
+
     protected bool CanHit(GameObject other)
     {
         int layer = other.layer;
@@ -84,5 +90,4 @@ public abstract class Bullet : MonoBehaviour
             
         return false;
     }
-
 }

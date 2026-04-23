@@ -1,4 +1,3 @@
-
 public interface IExplodeable
 {
     protected int damage { get; }
