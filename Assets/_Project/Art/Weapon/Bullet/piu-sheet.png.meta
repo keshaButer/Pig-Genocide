@@ -1,0 +1,962 @@
+fileFormatVersion: 2
+guid: 9275c1d542a77e59ca984b9e329d1e47
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5346238311610517723
+    second: piu-sheet_0
+  - first:
+      213: 8252258201441830634
+    second: piu-sheet_1
+  - first:
+      213: 7619542674163353001
+    second: piu-sheet_2
+  - first:
+      213: 9156119013056674911
+    second: piu-sheet_3
+  - first:
+      213: -7090529001988804974
+    second: piu-sheet_4
+  - first:
+      213: -3777036025086711962
+    second: piu-sheet_5
+  - first:
+      213: 6387549667372134991
+    second: piu-sheet_6
+  - first:
+      213: 2958936683861033640
+    second: piu-sheet_7
+  - first:
+      213: -4204841613707411025
+    second: piu-sheet_8
+  - first:
+      213: 4890434981165068106
+    second: piu-sheet_9
+  - first:
+      213: -6687918993118038541
+    second: piu-sheet_10
+  - first:
+      213: 5562361844266687856
+    second: piu-sheet_11
+  - first:
+      213: -9176468171597737614
+    second: piu-sheet_12
+  - first:
+      213: 2634176971912878388
+    second: piu-sheet_13
+  - first:
+      213: -5004621734790046817
+    second: piu-sheet_14
+  - first:
+      213: -4715204295715307929
+    second: piu-sheet_15
+  - first:
+      213: -2877035545228456675
+    second: piu-sheet_16
+  - first:
+      213: -45693362493260057
+    second: piu-sheet_17
+  - first:
+      213: 1797170922629049602
+    second: piu-sheet_18
+  - first:
+      213: 2469584006686722541
+    second: piu-sheet_19
+  - first:
+      213: -3457336655435299914
+    second: piu-sheet_20
+  - first:
+      213: -3076340810169446060
+    second: piu-sheet_21
+  - first:
+      213: -2107025139710614053
+    second: piu-sheet_22
+  - first:
+      213: 537457601135902675
+    second: piu-sheet_23
+  - first:
+      213: -3296195647604459830
+    second: piu-sheet_24
+  - first:
+      213: -3401711418363346838
+    second: piu-sheet_25
+  - first:
+      213: -2607848229775945824
+    second: piu-sheet_26
+  - first:
+      213: 355944220445328718
+    second: piu-sheet_27
+  - first:
+      213: 2411046235112241727
+    second: piu-sheet_28
+  - first:
+      213: 566455036701653135
+    second: piu-sheet_29
+  - first:
+      213: 4987658170386749022
+    second: piu-sheet_30
+  - first:
+      213: 7635151698615691730
+    second: piu-sheet_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: piu-sheet_0
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 55
+        width: 34
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 527fed7c4985ec5b0800000000000000
+      internalID: -5346238311610517723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_1
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 87
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae68eb3ac19e58270800000000000000
+      internalID: 8252258201441830634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_2
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 87
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a5cf6c21bd0eb960800000000000000
+      internalID: 7619542674163353001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_3
+      rect:
+        serializedVersion: 2
+        x: 759
+        y: 95
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5c717e2bb1111f70800000000000000
+      internalID: 9156119013056674911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_4
+      rect:
+        serializedVersion: 2
+        x: 783
+        y: 95
+        width: 18
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29e2ade9071699d90800000000000000
+      internalID: -7090529001988804974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_5
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 7
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6676adc2fb5459bc0800000000000000
+      internalID: -3777036025086711962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_6
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 23
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4271ec649225a850800000000000000
+      internalID: 6387549667372134991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_7
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 15
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a2c862ac31401920800000000000000
+      internalID: 2958936683861033640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_8
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 39
+        width: 50
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa1803e94d665a5c0800000000000000
+      internalID: -4204841613707411025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_9
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 55
+        width: 42
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4fec7964b05ed340800000000000000
+      internalID: 4890434981165068106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_10
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 63
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f57c902c1dbf23a0800000000000000
+      internalID: -6687918993118038541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_11
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 71
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07dd3bf60aa713d40800000000000000
+      internalID: 5562361844266687856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_12
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2711d3321d2a6a080800000000000000
+      internalID: -9176468171597737614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_13
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 71
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 439916edff97e8420800000000000000
+      internalID: 2634176971912878388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_14
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 39
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9bd3ae3c030c8ab0800000000000000
+      internalID: -5004621734790046817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_15
+      rect:
+        serializedVersion: 2
+        x: 471
+        y: 15
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76e3e7edcaa309eb0800000000000000
+      internalID: -4715204295715307929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_16
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 23
+        width: 18
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1d4c703a67b218d0800000000000000
+      internalID: -2877035545228456675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_17
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 55
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7eefefff02aad5ff0800000000000000
+      internalID: -45693362493260057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_18
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 55
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20d27fbae65d0f810800000000000000
+      internalID: 1797170922629049602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_19
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 31
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de94c85d199b54220800000000000000
+      internalID: 2469584006686722541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_20
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 39
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b387df21a21500d0800000000000000
+      internalID: -3457336655435299914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_21
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 31
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45110d11554ae45d0800000000000000
+      internalID: -3076340810169446060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_22
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 31
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd52bb68cc752c2e0800000000000000
+      internalID: -2107025139710614053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_23
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 23
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3dff98537de657700800000000000000
+      internalID: 537457601135902675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_24
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 15
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac6f852c58f8142d0800000000000000
+      internalID: -3296195647604459830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_25
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 15
+        width: 34
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a600010fc71bac0d0800000000000000
+      internalID: -3401711418363346838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_26
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 15
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0afc21c1adf0fcbd0800000000000000
+      internalID: -2607848229775945824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_27
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 15
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e454f73f16190f400800000000000000
+      internalID: 355944220445328718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_28
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 15
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3a78ecc6c1c57120800000000000000
+      internalID: 2411046235112241727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_29
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 15
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8835dbcad37cd700800000000000000
+      internalID: 566455036701653135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_30
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 0
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e561af22ea8b73540800000000000000
+      internalID: 4987658170386749022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: piu-sheet_31
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 0
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d96532640285f960800000000000000
+      internalID: 7635151698615691730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      piu-sheet_0: -5346238311610517723
+      piu-sheet_1: 8252258201441830634
+      piu-sheet_10: -6687918993118038541
+      piu-sheet_11: 5562361844266687856
+      piu-sheet_12: -9176468171597737614
+      piu-sheet_13: 2634176971912878388
+      piu-sheet_14: -5004621734790046817
+      piu-sheet_15: -4715204295715307929
+      piu-sheet_16: -2877035545228456675
+      piu-sheet_17: -45693362493260057
+      piu-sheet_18: 1797170922629049602
+      piu-sheet_19: 2469584006686722541
+      piu-sheet_2: 7619542674163353001
+      piu-sheet_20: -3457336655435299914
+      piu-sheet_21: -3076340810169446060
+      piu-sheet_22: -2107025139710614053
+      piu-sheet_23: 537457601135902675
+      piu-sheet_24: -3296195647604459830
+      piu-sheet_25: -3401711418363346838
+      piu-sheet_26: -2607848229775945824
+      piu-sheet_27: 355944220445328718
+      piu-sheet_28: 2411046235112241727
+      piu-sheet_29: 566455036701653135
+      piu-sheet_3: 9156119013056674911
+      piu-sheet_30: 4987658170386749022
+      piu-sheet_31: 7635151698615691730
+      piu-sheet_4: -7090529001988804974
+      piu-sheet_5: -3777036025086711962
+      piu-sheet_6: 6387549667372134991
+      piu-sheet_7: 2958936683861033640
+      piu-sheet_8: -4204841613707411025
+      piu-sheet_9: 4890434981165068106
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

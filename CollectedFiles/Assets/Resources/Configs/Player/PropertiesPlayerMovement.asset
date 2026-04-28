@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2cbc976f861e60b6921f795c0338375, type: 3}
+  m_Name: PropertiesPlayerMovement
+  m_EditorClassIdentifier: 
+  <speed>k__BackingField: 6
+  <crouchSpeed>k__BackingField: 1.5
+  <fallSpeed>k__BackingField: 1
+  <minFallSpeed>k__BackingField: -22
+  <gravityForce>k__BackingField: 40
+  <stepHeight>k__BackingField: 0.3
+  <stepCheckDistance>k__BackingField: 0.3
+  <checkGroundMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 521
+  <checkDashMask>k__BackingField:
+    serializedVersion: 2
+    m_Bits: 513
+  <jupmHeight>k__BackingField: 1.5
+  <crouchJupmHeight>k__BackingField: 1
+  <checkCircleRadius>k__BackingField: 0.2
+  <delayFalseIsGrounded>k__BackingField: 0.1
+  <minJumpTime>k__BackingField: 0.1
+  <minDelayStopFall>k__BackingField: 0.2
+  <timeDoubleClick>k__BackingField: 0.1
+  <dashDistance>k__BackingField: 1.5
+  <dashRangeLeftRay>k__BackingField: 1.3
+  <dashRangeDownRay>k__BackingField: 1.4
+  <delayResetRB>k__BackingField: 3
+  <fallDeathSpeed>k__BackingField: 1
+  <fallDamage>k__BackingField: 1
+  <delaySoundStep>k__BackingField: 0.5
+  <soundStep>k__BackingField: {fileID: 8300000, guid: 0683a95fabe8b4375864fae2df7bdcf7, type: 3}
+  <radiusStep>k__BackingField: 10
