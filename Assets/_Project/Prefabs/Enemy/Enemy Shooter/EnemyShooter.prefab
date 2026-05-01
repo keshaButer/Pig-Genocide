@@ -105,10 +105,10 @@ GameObject:
   - component: {fileID: 4108450419802349056}
   - component: {fileID: 2488673416757951370}
   - component: {fileID: 8026438931750408156}
-  - component: {fileID: 7360050065242645595}
-  - component: {fileID: 1472126050747900054}
-  - component: {fileID: 5660121821233564600}
   - component: {fileID: 2683032931660153052}
+  - component: {fileID: 6661053442987164931}
+  - component: {fileID: 1263620392268623904}
+  - component: {fileID: 2175482862756912251}
   m_Layer: 3
   m_Name: EnemyShooter
   m_TagString: Untagged
@@ -209,73 +209,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7360050065242645595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4194581230446803002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e274e5bdcc82cc3e49d4fdce64dada5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PathFollower
-  CurrentSpeed: 0
-  StartSpeed: 4
-  _reachDistance: 0.1
-  MaxDepthAstar: 50
-  FinishedPath: 0
---- !u!114 &1472126050747900054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4194581230446803002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d80b1fbafbcb2d38bc54afe71226e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 5
---- !u!114 &5660121821233564600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4194581230446803002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d281555427c17d34b93158f66cf3f97b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Config: {fileID: 11400000, guid: c1b1218398b70413d9390b8c0db2cfc5, type: 2}
-  _minSpeed: 1
-  _maxSpeed: 20
-  _rayRangeJump: 0.5
-  _gravityForce: 9.81
-  _minDelayStopFall: 0.2
-  _coolDownUnreachablePath: 2
-  _coolDownRecalculatePath: 0.5
-  jupmHeight: 25
-  _checkCircleRadius: 0.2
-  _intervalChangeDirection: 0.3
-  _maxCountJumps: 3
-  _coolDownJumps: 2
-  _checkGroundMask:
-    serializedVersion: 2
-    m_Bits: 520
-  bulletPrefab: {fileID: 3682554700567244655, guid: 1277fca4e604e95499c1e88fcfc65abb, type: 3}
-  fireInterval: 1
-  minFireInterval: 0.2
-  maxFireInterval: 3
-  queueInterval: 0.1
-  countComboBullets: 2
-  spawnBullet: {fileID: 2366572757721750303}
-  weapon: {fileID: 4555160011151700703}
-  randomizeValues: 0
 --- !u!82 &2683032931660153052
 AudioSource:
   m_ObjectHideFlags: 0
@@ -373,6 +306,73 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6661053442987164931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194581230446803002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddac5dc28a457547981727278dea304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PathFollower
+  CurrentSpeed: 0
+  StartSpeed: 0
+  _reachDistance: 0.1
+  MaxDepthAstar: 30
+  FinishedPath: 0
+--- !u!114 &1263620392268623904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194581230446803002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b70a0d2896d5fb493ef66eb64317cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Health
+  maxHealth: 0
+--- !u!114 &2175482862756912251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194581230446803002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4571ffa612a21cc58981d05ace1ec10b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
+  Config: {fileID: 0}
+  _minSpeed: 1
+  _maxSpeed: 20
+  _rayRangeJump: 1
+  _gravityForce: 9.81
+  _minDelayStopFall: 0
+  _coolDownUnreachablePath: 2
+  _coolDownRecalculatePath: 0.5
+  jupmHeight: 2
+  _checkCircleRadius: 0.2
+  _intervalChangeDirection: 0.1
+  _maxCountJumps: 3
+  _coolDownJumps: 2
+  _checkGroundMask:
+    serializedVersion: 2
+    m_Bits: 521
+  bulletPrefab: {fileID: 0}
+  fireInterval: 0
+  minFireInterval: 0.2
+  maxFireInterval: 3
+  queueInterval: 0.2
+  countComboBullets: 2
+  spawnBullet: {fileID: 2366572757721750303}
+  weapon: {fileID: 4555160011151700703}
+  randomizeValues: 0
 --- !u!1 &6059061539334364847
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,7 +462,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6982528861214176225
 GameObject:
@@ -669,5 +669,5 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0

@@ -58,7 +58,7 @@ public class MedkitSpawner : MonoBehaviour
         {
             Vector2 cell = surfaceCells[Random.Range(0, surfaceCells.Count)];
 
-            if (levelGenerator.IsFreeCell(cell) && levelGenerator.IsDistanceSuitable(cell, minDistanceBetweenMedkits))
+            if (levelGenerator.IsFreeCell(cell) && levelGenerator.IsDistanceSuitable<Medkit>(cell, minDistanceBetweenMedkits))
             {
                 levelGenerator.SetOccupiedCell(cell);
 

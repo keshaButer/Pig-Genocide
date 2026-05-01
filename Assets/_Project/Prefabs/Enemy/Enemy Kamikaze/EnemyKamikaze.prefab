@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6573665804922156050}
-  - component: {fileID: 1604423681219353533}
+  - component: {fileID: 3302576594481885426}
   m_Layer: 3
   m_Name: Bomb
   m_TagString: Untagged
@@ -63,7 +63,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4108450419802349056}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1604423681219353533
+--- !u!114 &3302576594481885426
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,18 +72,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 3752802815364958877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bde6175dc6a09cea6b67bb2f2c2ea8bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b7042f48ffe0e2bc82ff98c873bcae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bomb
-  damage: 5
-  radiusExplosion: 2
-  force: 5
+  damage: 0
+  radiusExplosion: 0
+  force: 0
   damagableMask:
     serializedVersion: 2
-    m_Bits: 776
+    m_Bits: 0
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
 --- !u!1 &4194581230446803002
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,10 +95,12 @@ GameObject:
   - component: {fileID: 4108450419802349056}
   - component: {fileID: 2488673416757951370}
   - component: {fileID: 8026438931750408156}
-  - component: {fileID: 7360050065242645595}
-  - component: {fileID: 1472126050747900054}
-  - component: {fileID: 6087825141186289468}
-  - component: {fileID: 5256407330847016950}
+  - component: {fileID: 2583945390102157497}
+  - component: {fileID: 1091807407334914441}
+  - component: {fileID: 2804802086483375383}
+  - component: {fileID: 2741303837511368233}
+  - component: {fileID: 3723836092393920349}
+  - component: {fileID: 4473217380695099548}
   m_Layer: 3
   m_Name: EnemyKamikaze
   m_TagString: Untagged
@@ -199,7 +201,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7360050065242645595
+--- !u!114 &2583945390102157497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,28 +210,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4194581230446803002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e274e5bdcc82cc3e49d4fdce64dada5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PathFollower
-  CurrentSpeed: 0
-  StartSpeed: 15
-  _reachDistance: 0.2
-  MaxDepthAstar: 50
-  FinishedPath: 0
---- !u!114 &1472126050747900054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4194581230446803002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d80b1fbafbcb2d38bc54afe71226e3, type: 3}
+  m_Script: {fileID: 11500000, guid: f7b70a0d2896d5fb493ef66eb64317cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 5
---- !u!114 &6087825141186289468
+  maxHealth: 1
+--- !u!114 &1091807407334914441
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,39 +223,167 @@ MonoBehaviour:
   m_GameObject: {fileID: 4194581230446803002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9db6f6c6c8f9d4a89edc187a693f1f, type: 3}
+  m_Script: {fileID: 11500000, guid: b50b5d794f533459dbc41ca6dc2ad56e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  Config: {fileID: 11400000, guid: c1b1218398b70413d9390b8c0db2cfc5, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAudio
+  _source: {fileID: 4473217380695099548}
+  _config: {fileID: 11400000, guid: 36aa195ba231b1dc68bc527131b7e507, type: 2}
+--- !u!114 &2804802086483375383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194581230446803002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531803cd2d3e050518be690349c66db3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyCollision
+  _config: {fileID: 11400000, guid: 36aa195ba231b1dc68bc527131b7e507, type: 2}
+--- !u!114 &2741303837511368233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194581230446803002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bddac5dc28a457547981727278dea304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PathFollower
+  CurrentSpeed: 1
+  StartSpeed: 1
+  _reachDistance: 0.1
+  MaxDepthAstar: 30
+  FinishedPath: 0
+--- !u!114 &3723836092393920349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4194581230446803002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a268ad1c9be479aa91458eb44708f1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyKamikaze
+  Config: {fileID: 0}
   _minSpeed: 1
   _maxSpeed: 20
-  _rayRangeJump: 0.5
+  _rayRangeJump: 0
   _gravityForce: 0
-  _minDelayStopFall: 0.3
-  _coolDownUnreachablePath: 2
-  _coolDownRecalculatePath: 0.5
-  jupmHeight: 1.5
-  _checkCircleRadius: 0.4
-  _intervalChangeDirection: 0.3
+  _minDelayStopFall: 0
+  _coolDownUnreachablePath: 0
+  _coolDownRecalculatePath: 0
+  jupmHeight: 0
+  _checkCircleRadius: 0
+  _intervalChangeDirection: 0
   _maxCountJumps: 3
   _coolDownJumps: 2
   _checkGroundMask:
     serializedVersion: 2
-    m_Bits: 520
-  _bomb: {fileID: 1604423681219353533}
---- !u!114 &5256407330847016950
-MonoBehaviour:
+    m_Bits: 0
+  _bomb: {fileID: 0}
+--- !u!82 &4473217380695099548
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4194581230446803002}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ed2531fbbf2f4b08fbf2553ae06947, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyCollision
-  _config: {fileID: 11400000, guid: c1b1218398b70413d9390b8c0db2cfc5, type: 2}
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5128799461337896039
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,7 +555,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &7010054711411432359
 GameObject:

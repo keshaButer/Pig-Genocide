@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 2139148686171810115}
   - component: {fileID: 7163356624810659065}
   - component: {fileID: 5640993640502600943}
-  - component: {fileID: 5660164267904691217}
+  - component: {fileID: 3650945476610849014}
   m_Layer: 6
   m_Name: body
   m_TagString: Item
@@ -328,7 +328,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!61 &5640993640502600943
 BoxCollider2D:
@@ -376,7 +376,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.1478844, y: 0.76975346}
   m_EdgeRadius: 0
---- !u!114 &5660164267904691217
+--- !u!114 &3650945476610849014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -385,11 +385,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4040956517459178139}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f984cbac7f5847347aa372d5e05d6896, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e533b9d8c8e55c33b0b86141b9f61ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemTakable
-  _item: {fileID: 11400000, guid: 8c0e072430e9d35469c300dde86b3586, type: 2}
-  _minTextSize: 4
-  _maxTextSize: 6
-  _textSizeMultiplier: 3
+  _item: {fileID: 11400000, guid: 257bbbb7643ebf4aa8bada1760cdb598, type: 2}
+  _minTextSize: 10
+  _maxTextSize: 20
+  _textSizeMultiplier: 4
   _text: {fileID: 2141292618320587446}

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1485754524377532813}
-  - component: {fileID: 9000747354423258161}
   - component: {fileID: 160095245867010988}
   - component: {fileID: 1215032929584698061}
+  - component: {fileID: 4351977464268583738}
   m_Layer: 6
   m_Name: Graber 2
   m_TagString: Untagged
@@ -34,18 +34,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6472988826757079089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9000747354423258161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1223436006865068115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e08b5ad71bf38940b04a61b49b5fa47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &160095245867010988
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -151,6 +139,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &4351977464268583738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223436006865068115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bde5378bcf75c553bf73f83a2fbbda4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RopeGraber
 --- !u!1 &4039804629787383795
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,9 +160,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5227303579763809352}
-  - component: {fileID: 3962655551504116761}
   - component: {fileID: 3665297809417477055}
   - component: {fileID: 6994352662271236015}
+  - component: {fileID: 494163444502291955}
   m_Layer: 6
   m_Name: Graber 1
   m_TagString: Untagged
@@ -185,18 +185,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6472988826757079089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3962655551504116761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4039804629787383795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e08b5ad71bf38940b04a61b49b5fa47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &3665297809417477055
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -302,6 +290,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &494163444502291955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4039804629787383795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bde5378bcf75c553bf73f83a2fbbda4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RopeGraber
 --- !u!1 &8604899275477625610
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,10 +311,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6472988826757079089}
-  - component: {fileID: 5140852509724646789}
   - component: {fileID: 4483621757400926971}
   - component: {fileID: 7190117877821844923}
-  - component: {fileID: 4521442603595694274}
+  - component: {fileID: 8266114772088872775}
+  - component: {fileID: 6005193806800727738}
   m_Layer: 11
   m_Name: Rope
   m_TagString: Untagged
@@ -339,20 +339,6 @@ Transform:
   - {fileID: 1485754524377532813}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5140852509724646789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8604899275477625610}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dd1d0ee78fdcf6949408704c87a04cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rideSpeed: 15
-  _offset: 0.3
 --- !u!58 &4483621757400926971
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -499,7 +485,7 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
---- !u!114 &4521442603595694274
+--- !u!114 &8266114772088872775
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -508,8 +494,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 8604899275477625610}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1dde7437365094e0a0250344fe191b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 883aba26133beec18bf554fb51580f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RopeRenderer
   pointA: {fileID: 5227303579763809352}
   pointB: {fileID: 1485754524377532813}
+--- !u!114 &6005193806800727738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8604899275477625610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cc231c9386369c199d193eadd4430d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RopeControl
+  _rideSpeed: 1
+  _offsetGetOff: 0.3

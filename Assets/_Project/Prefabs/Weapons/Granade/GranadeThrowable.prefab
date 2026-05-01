@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7846592471888519567}
   - component: {fileID: 6172134039833802519}
-  - component: {fileID: 2127070820458490135}
   - component: {fileID: 3546088847479539002}
   - component: {fileID: 1833901677998469203}
+  - component: {fileID: 3625210072528657677}
   m_Layer: 9
   m_Name: GranadeThrowable
   m_TagString: Untagged
@@ -92,32 +92,8 @@ SpriteRenderer:
   m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
---- !u!114 &2127070820458490135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948138172363701562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6cee9b3b89932146a38dc6d3e57cb3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 3
-  radiusExplosion: 1.5
-  force: 5
-  damagableMask:
-    serializedVersion: 2
-    m_Bits: 776
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 1
-  delayExplode: 1
-  delayDestroyVfx: 1
-  vfxPrefab: {fileID: 1148100095273426946, guid: 11fac573aa7824f4ab01e53fe6b2e880, type: 3}
 --- !u!50 &3546088847479539002
 Rigidbody2D:
   serializedVersion: 5
@@ -155,7 +131,7 @@ CircleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 1f76ae0b606957772aa52c87d24ca852, type: 2}
+  m_Material: {fileID: 6200000, guid: a563c38d3b7f72fd7846d979bb3cb0a7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -181,3 +157,27 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.53
+--- !u!114 &3625210072528657677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948138172363701562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd16a3637a95c8dbf883eec9200a9672, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GranadeExploder
+  damage: 5
+  radiusExplosion: 3
+  force: 3
+  damagableMask:
+    serializedVersion: 2
+    m_Bits: 776
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 1
+  delayExplode: 3
+  delayDestroyVfx: 1
+  vfxPrefab: {fileID: 0}

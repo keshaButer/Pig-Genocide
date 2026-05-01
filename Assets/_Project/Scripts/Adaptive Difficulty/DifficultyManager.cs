@@ -32,7 +32,7 @@ public class DifficultyManager : IDifficultyManager, IDisposable
 
     public void Dispose()
     {
-        _invoker.Stop();            
+        _invoker.Stop();
 
         _enemyEvents.OnEnemyDied -= IncreaseKillCount;
         _playerProvider.OnPlayerSpawned -= OnPlayerSpawned;
@@ -41,7 +41,7 @@ public class DifficultyManager : IDifficultyManager, IDisposable
     private void IncreaseKillCount() => _killCount++;
 
     private void OnPlayerSpawned(GameObject player)
-    {
+    { 
         _healthPlayer = player.GetComponent<HealthPlayer>();
 
         _invoker = _invokerFactory.StartRepeatInvoking(_config.ChangeRate, UpdateDifficulty);

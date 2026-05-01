@@ -4,7 +4,7 @@ using System.Collections;
 public class RopeControl : MonoBehaviour
 {
     [SerializeField] private float _rideSpeed;
-    [SerializeField] private float _offset;
+    [SerializeField] private float _offsetGetOff;
 
     private Transform graber1, graber2;
     private Transform playerTransform;
@@ -36,7 +36,7 @@ public class RopeControl : MonoBehaviour
     }
     private IEnumerator Ride(Vector3 _target)
     {
-        while (Vector2.Distance(playerTransform.position, _target) > _offset)
+        while (Vector2.Distance(playerTransform.position, _target) > _offsetGetOff)
         {
             Vector3 _direction = _target - playerTransform.position;
             playerTransform.Translate(_direction.normalized * _rideSpeed * Time.deltaTime);

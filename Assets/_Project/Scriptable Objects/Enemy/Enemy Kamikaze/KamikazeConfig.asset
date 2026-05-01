@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09805d6c26966ca60bbaed7a461ba015, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fb77b3652a4e24b285736336fd095bb, type: 3}
   m_Name: KamikazeConfig
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
-  maxHealth: 5
+  maxHealth: 1
   delayToDestroy: 0
   collisionDamage: 0
   massOnDeath: 1
-  deathSound: {fileID: 8300000, guid: b7fa9330e6e9abf6788a119b94bececa, type: 3}
+  deathSound: {fileID: 8300000, guid: 2411269749a8a4945983628a2f6a1b8f, type: 3}

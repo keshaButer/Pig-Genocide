@@ -41,9 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4042264070950053462}
   - component: {fileID: 9005712761028217957}
-  - component: {fileID: 8169385456493948832}
-  - component: {fileID: -2599717463604814030}
   - component: {fileID: 977054563655577146}
+  - component: {fileID: 1840654478809651905}
   m_Layer: 0
   m_Name: AK-47
   m_TagString: Untagged
@@ -124,42 +123,8 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
---- !u!114 &8169385456493948832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6632314179438201137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74540237f0bfcf14d9108afd175d1a59, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: AK-47
-  FireInterval: 0.3
-  _rifle: {fileID: 11400000, guid: 8c0e072430e9d35469c300dde86b3586, type: 2}
-  _bulletPrefab: {fileID: -3235686933755742809, guid: da243da016e27cf4dbce3a4fe70b6759, type: 3}
-  _bulletSpawnTransform: {fileID: 1034593521805434455}
-  _obstacleMask:
-    serializedVersion: 2
-    m_Bits: 512
-  _radiusCircleCheckFreeSpace: 0.2
---- !u!114 &-2599717463604814030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6632314179438201137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2234c50c1f91eaf1db404ed1051b4df4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <SoundRadius>k__BackingField: 30
 --- !u!82 &977054563655577146
 AudioSource:
   m_ObjectHideFlags: 0
@@ -257,3 +222,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1840654478809651905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6632314179438201137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae02416afe70af9a8a4532ebf42b06c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Kalash
+  Name: AK-47
+  FireInterval: 0.2
+  _rifle: {fileID: 11400000, guid: 257bbbb7643ebf4aa8bada1760cdb598, type: 2}
+  _bulletPrefab: {fileID: 8275247584284296125, guid: d77e5c7ec7e77bc78a245362f91b19de, type: 3}
+  _bulletSpawnTransform: {fileID: 1034593521805434455}
+  _obstacleMask:
+    serializedVersion: 2
+    m_Bits: 1
+  _radiusCircleCheckFreeSpace: 0.3

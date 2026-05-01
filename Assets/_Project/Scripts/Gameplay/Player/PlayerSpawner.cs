@@ -42,6 +42,7 @@ public class PlayerSpawner : MonoBehaviour, IPlayerProvider
                 return playerObject.transform;
             }
         }
+        Debug.LogError("COULD NOT SPAWN PLAYER");
         return null;
     }
 }

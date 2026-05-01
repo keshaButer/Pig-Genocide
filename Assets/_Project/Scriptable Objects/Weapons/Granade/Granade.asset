@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73b6a2926dc21b34d89ba374d0fa4796, type: 3}
+  m_Script: {fileID: 11500000, guid: e245eca4fdde0ee00bd18a742e29926a, type: 3}
   m_Name: Granade
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rifle
   ItemName: Granade
-  Icon: {fileID: 21300000, guid: b5ec2577f0379194787e6a0895c97b12, type: 3}
-  TakeSounde: {fileID: 8300000, guid: 0cd38bf12a94b3c7680e2804cb0e1155, type: 3}
+  Icon: {fileID: 6674439964351189597, guid: a5b95cc9741a0b378a61f210ddac4047, type: 3}
+  TakeSounde: {fileID: 8300000, guid: 4d5b69d867c3bf9ee96c9bf2fa432614, type: 3}
   SoundVolume: 1
-  Weapon: {fileID: 7645696269508689003, guid: b5414b29dd05b7e4598abb435097d636, type: 3}
-  damage: 100
-  radius: 2.5
+  Weapon: {fileID: 0}
+  ShotSound: {fileID: 8300000, guid: 98279137b507c8467884c311a54c40c8, type: 3}
+  CanSpam: 0

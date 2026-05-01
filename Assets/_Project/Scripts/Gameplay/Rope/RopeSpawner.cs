@@ -59,7 +59,7 @@ public class RopeSpawner : MonoBehaviour
             attempts++;
             Vector2 firstPoint = surfaceCells[Random.Range(0, surfaceCells.Count)];
 
-            if (levelGenerator.IsFreeCell(firstPoint) && levelGenerator.IsDistanceSuitable(firstPoint, minDistanceBetweenRopes))
+            if (levelGenerator.IsFreeCell(firstPoint) && levelGenerator.IsDistanceSuitable<RopeControl>(firstPoint, minDistanceBetweenRopes))
             {
                 Vector2 secondPoint = Vector2.zero;
                 bool secondPointFound = false;

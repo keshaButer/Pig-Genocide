@@ -5,5 +5,6 @@ public class RootLifetimeScope : LifetimeScope
 {
     protected override void Configure(IContainerBuilder builder)
     {
+        builder.Register<IPathFinder, AStartPathFinder>(Lifetime.Singleton);
     }
-}
+};

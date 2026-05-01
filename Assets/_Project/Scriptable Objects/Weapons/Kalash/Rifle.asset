@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e245eca4fdde0ee00bd18a742e29926a, type: 3}
+  m_Name: Rifle
+  m_EditorClassIdentifier: Assembly-CSharp::Rifle
+  ItemName: Rifle
+  Icon: {fileID: 4626487909751855687, guid: 6e0c7b1844cf70e8aafb666f65eba9fd, type: 3}
+  TakeSounde: {fileID: 8300000, guid: 0e408f8218995c844b3c998048261a56, type: 3}
+  SoundVolume: 1
+  Weapon: {fileID: 0}
+  ShotSound: {fileID: 8300000, guid: 2411269749a8a4945983628a2f6a1b8f, type: 3}
+  CanSpam: 0

@@ -62,9 +62,7 @@ public class EnemyShooter : EnemyRasher
 
             yield return new WaitForSeconds(queueInterval);
         }
-        StopCoroutine(shootCoroutine);
-    }
-    private void Update()
+        StopCoroutine(shootCoroutine); } private void Update()
     {
         if (playerTransform != null)
         {

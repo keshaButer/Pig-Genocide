@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3947842623496636473}
   - component: {fileID: 8765774497147939642}
-  - component: {fileID: -3235686933755742809}
   - component: {fileID: -4550091488914886650}
   - component: {fileID: 6133681408088004348}
   - component: {fileID: -3940849625185883684}
+  - component: {fileID: 8275247584284296125}
   m_Layer: 7
   m_Name: bulletPlayer
   m_TagString: Untagged
@@ -93,29 +93,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3235686933755742809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3682554700567244655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6003511c24361ea41804af8dca9d872e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 1
-  IsParry: 0
-  _hitMask:
-    serializedVersion: 2
-    m_Bits: 520
-  _force: 5
-  _speed: 10
-  _delayDestroy: 4
-  _radius: 0.5
 --- !u!95 &-4550091488914886650
 Animator:
   serializedVersion: 7
@@ -201,3 +180,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &8275247584284296125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682554700567244655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48799015b809b776cba925a75b3da6bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletPlayer
+  Damage: 1
+  IsParry: 0
+  _hitMask:
+    serializedVersion: 2
+    m_Bits: 648
+  _force: 2
+  _speed: 5
+  _delayDestroy: 5
+  _radius: 0.3

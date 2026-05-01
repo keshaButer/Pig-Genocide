@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5990706992499217260}
   - component: {fileID: 5483191763843008775}
-  - component: {fileID: -6706108713008459347}
+  - component: {fileID: 4938646014872751391}
   m_Layer: 11
   m_Name: Medkit
   m_TagString: Untagged
@@ -80,7 +80,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-6706108713008459347
+--- !u!114 &4938646014872751391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,10 +89,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1871755083662161810}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361e0f6ba6c12de3590ec824f6368222, type: 3}
+  m_Script: {fileID: 11500000, guid: 771429c82d6facc1599ad91949c624dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Medkit
-  _healthAmount: 100
+  _healthAmount: 5
 --- !u!1 &4139911337584889996
 GameObject:
   m_ObjectHideFlags: 0

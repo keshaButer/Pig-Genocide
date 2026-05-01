@@ -173,10 +173,10 @@ GameObject:
   - component: {fileID: 5400938385436457515}
   - component: {fileID: 5248844789601779146}
   - component: {fileID: 1738263586583911375}
-  - component: {fileID: 4743111021006401098}
   - component: {fileID: 341301198706951806}
-  - component: {fileID: 4002360576905725885}
   - component: {fileID: 4219691614118492965}
+  - component: {fileID: 3968308613808657252}
+  - component: {fileID: 8224164936390248019}
   m_Layer: 9
   m_Name: Barrel
   m_TagString: Untagged
@@ -305,30 +305,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.94031197, y: 0.9354551}
   m_EdgeRadius: 0
---- !u!114 &4743111021006401098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1763627242864465371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42b1b2a1127f2cc48843dd312e9aebc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  radiusExplosion: 3
-  force: 10
-  damagableMask:
-    serializedVersion: 2
-    m_Bits: 776
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 1
-  _startHealth: 1
-  effect: {fileID: 1148100095273426946, guid: 11fac573aa7824f4ab01e53fe6b2e880, type: 3}
-  _audioClip: {fileID: 8300000, guid: cce56b655df9119cfac285ce41d08d83, type: 3}
 --- !u!50 &341301198706951806
 Rigidbody2D:
   serializedVersion: 5
@@ -356,19 +332,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4002360576905725885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1763627242864465371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2234c50c1f91eaf1db404ed1051b4df4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <SoundRadius>k__BackingField: 0
 --- !u!82 &4219691614118492965
 AudioSource:
   m_ObjectHideFlags: 0
@@ -466,6 +429,43 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3968308613808657252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763627242864465371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4d7602be2c7a4b8a18ad1a02defd7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Barrel
+  damage: 5
+  radiusExplosion: 3
+  force: 5
+  damagableMask:
+    serializedVersion: 2
+    m_Bits: 776
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 1
+  _startHealth: 1
+  effect: {fileID: 685986822785864104}
+  _audioClip: {fileID: 8300000, guid: 4d5b69d867c3bf9ee96c9bf2fa432614, type: 3}
+--- !u!114 &8224164936390248019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763627242864465371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320fdbdeca7c299b8b27bb055d042ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundSource
+  <SoundRadius>k__BackingField: 30
 --- !u!1 &5994596702632655222
 GameObject:
   m_ObjectHideFlags: 0

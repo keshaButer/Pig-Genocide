@@ -38,19 +38,26 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
 
     [Inject] private IInvokerFactory _invokerFactory;
     private IInvoker _invoker;
+
+
+    private int totalTiles = 0;
+
     
     public void Start()
     {
         SetRandomNoiseOffset();
 
         GenerateWorld();
+        Debug.Log($"totalTiles: {totalTiles}");
 
         SetFreeSurfaceCells();
 
+        playerTransform = playerSpawner.SpawnPlayer(surfaceCells);
+        Debug.Log($"surface cells count: {surfaceCells.Count}");
         medkitSpawner.SpawnBarrels(surfaceCells);
         barrelSpawner.SpawnBarrels(surfaceCells);
         ropeSpawner.SpawnRopes(surfaceCells);
-        playerTransform = playerSpawner.SpawnPlayer(surfaceCells);
+        // playerTransform = playerSpawner.SpawnPlayer(surfaceCells);
 
         _invoker = _invokerFactory.StartRepeatInvoking(disableChunkRate, SetActivationChunks, this);
     }
@@ -114,6 +121,7 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
                         {
                             tilemap.SetTile(new Vector3Int(x, y, 0), platformTile);
                             filledCellIndices.Add(new Vector2Int(worldX, worldY));
+                            totalTiles++;
                         }
                     }
                 }
@@ -325,10 +333,20 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
         }
         return false;
     }
-    public bool IsDistanceSuitable(Vector2 pos, float minDistance)
+    
+    public bool IsDistanceSuitable<T>(Vector2 pos, float minDistance) where T : MonoBehaviour
     {
-        return !Physics2D.OverlapCircle(pos, minDistance, LayerMask.GetMask("Occupied"));;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, minDistance, LayerMask.GetMask("Occupied"));
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (colliders[i].GetComponent<T>())
+            {
+                return false;
+            }
+        }
+        return true;
     }
+
     public Vector2Int WorldCellToIndex(Vector2 pos)
     {
         int X = Mathf.FloorToInt(pos.x / cellSize);

@@ -55,7 +55,7 @@ public class BarrelSpawner : MonoBehaviour
         {
             Vector2 cell = surfaceCells[Random.Range(0, surfaceCells.Count)];
 
-            if (levelGenerator.IsFreeCell(cell) && levelGenerator.IsDistanceSuitable(cell, minDistanceBetweenBarrels))
+            if (levelGenerator.IsFreeCell(cell) && levelGenerator.IsDistanceSuitable<Barrel>(cell, minDistanceBetweenBarrels))
             {
                 levelGenerator.SetOccupiedCell(cell);
 

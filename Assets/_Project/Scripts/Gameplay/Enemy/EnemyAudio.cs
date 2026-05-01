@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Health))]
+[RequireComponent(typeof(AudioSource))]
 
 public class EnemyAudio : MonoBehaviour
 {
