@@ -108,5 +108,5 @@ MonoBehaviour:
   FireInterval: 0.5
   granadeItem: {fileID: 11400000, guid: bd7e5ade6d4d7c18ca02f8125e65f2f2, type: 2}
   granadePrefab: {fileID: 1948138172363701562, guid: bde480ab9bd0d479787d053c6a3cdce4, type: 3}
-  throwForce: 5
-  rotateForce: 3
+  throwForce: 10
+  rotateForce: 1

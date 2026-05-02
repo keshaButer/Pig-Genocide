@@ -75,15 +75,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7042f48ffe0e2bc82ff98c873bcae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bomb
-  damage: 0
-  radiusExplosion: 0
-  force: 0
+  damage: 5
+  radiusExplosion: 5
+  force: 5
   damagableMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 904
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
 --- !u!1 &4194581230446803002
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,20 +273,20 @@ MonoBehaviour:
   Config: {fileID: 11400000, guid: 36aa195ba231b1dc68bc527131b7e507, type: 2}
   _minSpeed: 1
   _maxSpeed: 20
-  _rayRangeJump: 0
-  _gravityForce: 0
-  _minDelayStopFall: 0
-  _coolDownUnreachablePath: 0
-  _coolDownRecalculatePath: 0
-  jupmHeight: 0
-  _checkCircleRadius: 0
-  _intervalChangeDirection: 0
+  _rayRangeJump: 0.3
+  _gravityForce: 9.81
+  _minDelayStopFall: 0.1
+  _coolDownUnreachablePath: 2
+  _coolDownRecalculatePath: 0.5
+  jupmHeight: 1
+  _checkCircleRadius: 0.2
+  _intervalChangeDirection: 0.1
   _maxCountJumps: 3
   _coolDownJumps: 2
   _checkGroundMask:
     serializedVersion: 2
-    m_Bits: 0
-  _bomb: {fileID: 0}
+    m_Bits: 777
+  _bomb: {fileID: 3302576594481885426}
 --- !u!82 &4473217380695099548
 AudioSource:
   m_ObjectHideFlags: 0

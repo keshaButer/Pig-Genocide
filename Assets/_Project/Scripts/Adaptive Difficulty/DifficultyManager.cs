@@ -7,8 +7,7 @@ public class DifficultyManager : IDifficultyManager, IDisposable
 
     private IInvokerFactory _invokerFactory;
     private IInvoker _invoker;
-    private DifficultyConfig _config;
-    private HealthPlayer _healthPlayer;
+    private DifficultyConfig _config; private HealthPlayer _healthPlayer;
     private int _killCount;
     private IPlayerProvider _playerProvider;
     private IEnemyEvents _enemyEvents;
@@ -32,7 +31,7 @@ public class DifficultyManager : IDifficultyManager, IDisposable
 
     public void Dispose()
     {
-        _invoker.Stop();
+        _invoker?.Stop();
 
         _enemyEvents.OnEnemyDied -= IncreaseKillCount;
         _playerProvider.OnPlayerSpawned -= OnPlayerSpawned;

@@ -3,39 +3,42 @@ using UnityEngine;
 
 public class CameraSway : MonoBehaviour
 {
-    [SerializeField] float _startAccelCam, _accelText, 
+    [SerializeField] float _defaultAccelCam, _toFreeViewAccelCam, _accelText, 
      velocityToChangeCamAccel, _freeCamSpeed, _playerHorizontalSpeed, _rotateCameraSpeed;
 
     [SerializeField] Transform _cam, _healthText;
     [SerializeField] KeyCode _freeViewKey;
     [SerializeField] KeyCode _rotateCameraKey;
 
-    private float _accelCam, _xMouse, _yMouse, _xHorizontal;
-    private Rigidbody2D _rb2D => _playerTransform.GetComponent<Rigidbody2D>(); 
+    private float _currentAccelCam, _xMouse, _yMouse, _xHorizontal;
+    private Rigidbody2D _rb2D;
     private Vector2 _cameraTarget;
     private Transform _playerTransform;
     private bool _wasFreeView = false;
+    private MovementPlayer _movementPlayer;
 
     [Inject]
     public void Construct(IPlayerProvider playerProvider)
     {
-        playerProvider.OnPlayerSpawned += Initialize;
+        playerProvider.OnPlayerSpawned += OnPlayerSpawned;
         
         if (playerProvider.Player != null)
-            Initialize(playerProvider.Player);
+            OnPlayerSpawned(playerProvider.Player);
     }
 
-    private void Initialize(GameObject player)
+    private void OnPlayerSpawned(GameObject player)
     {
         _playerTransform = player.transform;
+        _rb2D = _playerTransform.GetComponent<Rigidbody2D>();
+        _movementPlayer = _playerTransform.GetComponent<MovementPlayer>();
     }
 
     void Update()
     {
         if (_playerTransform != null)
         {
-            if (_rb2D.linearVelocityY <= velocityToChangeCamAccel) _accelCam = 0.15f;
-            else _accelCam = _startAccelCam;
+            if (_rb2D.linearVelocityY <= velocityToChangeCamAccel) _currentAccelCam = 0.15f;
+            else _currentAccelCam = _defaultAccelCam;
         }
 
         if (Input.GetKey(_rotateCameraKey))
@@ -52,7 +55,9 @@ public class CameraSway : MonoBehaviour
         {
             if (Input.GetKey(_freeViewKey))
             {
-                _playerTransform.GetComponent<MovementPlayer>().isStop = true;
+                _currentAccelCam = _toFreeViewAccelCam;
+
+                _movementPlayer.isStop = true;
 
                 if (!_wasFreeView)
                 { 
@@ -63,12 +68,14 @@ public class CameraSway : MonoBehaviour
             }
             else
             {
+                _currentAccelCam = _defaultAccelCam;
+
                 _cameraTarget = _playerTransform.position + new Vector3(0, 2f);
                 _wasFreeView = false;
-                _playerTransform.GetComponent<MovementPlayer>().isStop = false;
+                _movementPlayer.isStop = false;
             }
 
-            _cam.position = Vector2.Lerp(_cam.position, _cameraTarget, _accelCam * 100 * Time.deltaTime);
+            _cam.position = Vector2.Lerp(_cam.position, _cameraTarget, _currentAccelCam * 100 * Time.deltaTime);
         }
 
         if (_healthText != null && _playerTransform != null)

@@ -144,13 +144,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18377411}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.1354666, w: 0.9907819}
-  m_LocalPosition: {x: 0.14, y: 0.39, z: 0.29384676}
-  m_LocalScale: {x: 4.0736527, y: 3.127789, z: 32.46889}
+  m_LocalRotation: {x: -0, y: -0, z: -0.1513171, w: 0.98848534}
+  m_LocalPosition: {x: -0.05, y: 0.26, z: 0.29384676}
+  m_LocalScale: {x: 3.140675, y: -2.133872, z: 29.311941}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1331675219}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 15.571}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -17.407}
 --- !u!212 &18377413
 SpriteRenderer:
   serializedVersion: 2
@@ -200,15 +200,15 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1618283856, guid: 111bac0a01be35583a091628c15972ed, type: 3}
+  m_Sprite: {fileID: -6695950386315148514, guid: 4f7f6371788d4cebcb107e0bd75da786, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.07, y: 1.18}
+  m_Size: {x: 2.09, y: 1.99}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!1 &30374082
 GameObject:
@@ -3002,10 +3002,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraShaker
   duration: 0.2
-  strength: 0.4
-  strengthShakeDash: 0.6
-  strengthPlayerTookDamage: 1
-  durationPlayerTookDamage: 0.5
+  strength: 0.1
+  strengthShakeDash: 0.3
+  strengthPlayerTookDamage: 0.2
+  durationPlayerTookDamage: 0.2
 --- !u!1 &1098556532
 GameObject:
   m_ObjectHideFlags: 0
@@ -4665,14 +4665,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82266d27ec51cfc73ad2d24b52b7f94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraSway
-  _startAccelCam: 0.2
+  _defaultAccelCam: 0.05
+  _toFreeViewAccelCam: 0.15
   _accelText: 0.1
-  velocityToChangeCamAccel: 1
-  _freeCamSpeed: 1
+  velocityToChangeCamAccel: -8
+  _freeCamSpeed: 10
   _playerHorizontalSpeed: 1
   _rotateCameraSpeed: 1
   _cam: {fileID: 1097744459}
-  _healthText: {fileID: 517284403}
+  _healthText: {fileID: 1331675219}
   _freeViewKey: 304
   _rotateCameraKey: 99
 --- !u!1 &1670628614
@@ -4863,7 +4864,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1850477384
 Transform:
   m_ObjectHideFlags: 0
