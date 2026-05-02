@@ -2,6 +2,7 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
+[RequireComponent(typeof(SoundSource))]
 public class Kalash : Weapon
 {
     [SerializeField] private Rifle _rifle;

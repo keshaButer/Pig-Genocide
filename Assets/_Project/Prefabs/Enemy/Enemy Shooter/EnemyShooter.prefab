@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4571ffa612a21cc58981d05ace1ec10b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
-  Config: {fileID: 0}
+  Config: {fileID: 11400000, guid: b76f49f8054d90c4281b7a2b26c1fe4e, type: 2}
   _minSpeed: 1
   _maxSpeed: 20
   _rayRangeJump: 1
@@ -364,7 +364,7 @@ MonoBehaviour:
   _checkGroundMask:
     serializedVersion: 2
     m_Bits: 521
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 3682554700567244655, guid: f5d57a529038422e7a9bc8e6060e1fe0, type: 3}
   fireInterval: 0
   minFireInterval: 0.2
   maxFireInterval: 3
@@ -454,15 +454,15 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -5044969329273991963, guid: dd502d02017a720458bb6708df8553c8, type: 3}
+  m_Sprite: {fileID: 2548742589011693122, guid: 059979206e660e032a98cffd1d5d89f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.46, y: 2.33}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!1 &6982528861214176225
 GameObject:

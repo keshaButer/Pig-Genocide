@@ -9,7 +9,7 @@ public class InventoryUI : MonoBehaviour
     private List<Cell> _cells = new List<Cell>();
     private Inventory _inventory;
     private InventoryInput _inventoryInput;
-
+    
     [Inject]
     public void Construct(IPlayerProvider playerProvider)
     {
@@ -52,6 +52,8 @@ public class InventoryUI : MonoBehaviour
     }
     private void Redraw()
     {
+        if (_cells.Count == 0) return;
+
         for (int i = 0; i < _inventory.CurrentItems.Count; i++)
         {
             if (i >= _cells.Count)

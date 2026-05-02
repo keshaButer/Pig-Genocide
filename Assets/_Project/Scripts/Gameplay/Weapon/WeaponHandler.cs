@@ -28,6 +28,7 @@ public class WeaponHandler : MonoBehaviour
     }
     private void OnDisable()
     {
+        _inventory.OnAddItem -= SetInventoryWeapons;
         _inventoryInput.OnSelectSlot -= SetActiveWeaponSlot;
     }
 

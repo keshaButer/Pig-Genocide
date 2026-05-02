@@ -12,32 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 601cfe1683d9ea028bec31e49e360a95, type: 3}
   m_Name: PropertiesPlayerMovement 1
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementConfig
-  <speed>k__BackingField: 0
-  <crouchSpeed>k__BackingField: 0
-  <fallSpeed>k__BackingField: 0
-  <minFallSpeed>k__BackingField: 0
-  <gravityForce>k__BackingField: -9.81
-  <stepHeight>k__BackingField: 0
-  <stepCheckDistance>k__BackingField: 0
+  <speed>k__BackingField: 3
+  <crouchSpeed>k__BackingField: 3
+  <fallSpeed>k__BackingField: 61.8
+  <minFallSpeed>k__BackingField: 0.15
+  <gravityForce>k__BackingField: 4.2
+  <stepHeight>k__BackingField: 0.3
+  <stepCheckDistance>k__BackingField: 0.3
   <checkGroundMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 520
   <checkDashMask>k__BackingField:
     serializedVersion: 2
-    m_Bits: 0
-  <jupmHeight>k__BackingField: 0
-  <crouchJupmHeight>k__BackingField: 0
-  <checkCircleRadius>k__BackingField: 0
-  <delayFalseIsGrounded>k__BackingField: 1
+    m_Bits: 512
+  <jupmHeight>k__BackingField: 5
+  <crouchJupmHeight>k__BackingField: 5
+  <checkCircleRadius>k__BackingField: 0.2
+  <delayFalseIsGrounded>k__BackingField: 0.1
   <minJumpTime>k__BackingField: 0.5
   <minDelayStopFall>k__BackingField: 0.5
   <timeDoubleClick>k__BackingField: 0
-  <dashDistance>k__BackingField: 0
-  <dashRangeLeftRay>k__BackingField: 0
-  <dashRangeDownRay>k__BackingField: 0
+  <dashDistance>k__BackingField: 2
+  <dashRangeLeftRay>k__BackingField: 2
+  <dashRangeDownRay>k__BackingField: 2
   <delayResetRB>k__BackingField: 3
-  <fallDeathSpeed>k__BackingField: 0
-  <fallDamage>k__BackingField: 0
+  <fallDeathSpeed>k__BackingField: 3
+  <fallDamage>k__BackingField: 5
   <delaySoundStep>k__BackingField: 0.5
-  <soundStep>k__BackingField: {fileID: 0}
-  <radiusStep>k__BackingField: 0
+  <soundStep>k__BackingField: {fileID: 8300000, guid: 0e408f8218995c844b3c998048261a56, type: 3}
+  <radiusStep>k__BackingField: 5

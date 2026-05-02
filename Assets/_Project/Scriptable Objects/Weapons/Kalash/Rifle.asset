@@ -16,6 +16,6 @@ MonoBehaviour:
   Icon: {fileID: 4626487909751855687, guid: 6e0c7b1844cf70e8aafb666f65eba9fd, type: 3}
   TakeSounde: {fileID: 8300000, guid: 0e408f8218995c844b3c998048261a56, type: 3}
   SoundVolume: 1
-  Weapon: {fileID: 0}
+  Weapon: {fileID: 1840654478809651905, guid: 83cf71eac2fe32ddc8554536c553ddb8, type: 3}
   ShotSound: {fileID: 8300000, guid: 2411269749a8a4945983628a2f6a1b8f, type: 3}
   CanSpam: 0

@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Health))]
 public abstract class Enemy : MonoBehaviour
 {
-    [Inject] private readonly IDifficultyManager _difficultyManager;
-    [Inject] private readonly IEnemyEvents _enemyEvents;
+    [Inject] private IDifficultyManager _difficultyManager;
+    [Inject] private IEnemyEvents _enemyEvents;
 
     public EnemyConfig Config;
 
@@ -17,12 +17,15 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        _difficultyManager.OnDifficultyChanged += OnDifficultyChanged;
+        if (_difficultyManager != null)
+            _difficultyManager.OnDifficultyChanged += OnDifficultyChanged;
     }
     
     protected virtual void OnDisable()
     {
-        _difficultyManager.OnDifficultyChanged -= OnDifficultyChanged;
+        if (_difficultyManager != null)
+            _difficultyManager.OnDifficultyChanged -= OnDifficultyChanged;
+
         if (HealthComponent != null)
             HealthComponent.OnDied -= HandleDeath;
     }

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 9005712761028217957}
   - component: {fileID: 977054563655577146}
   - component: {fileID: 1840654478809651905}
+  - component: {fileID: 944996246951948024}
   m_Layer: 0
   m_Name: AK-47
   m_TagString: Untagged
@@ -115,15 +116,15 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 8
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 12c40104494ed574d849cae51b82f19c, type: 3}
+  m_Sprite: {fileID: -4029819251187114856, guid: 3b5e510e920c141548abd129fdecf789, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 4.76, y: 1.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!82 &977054563655577146
 AudioSource:
@@ -243,3 +244,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   _radiusCircleCheckFreeSpace: 0.3
+--- !u!114 &944996246951948024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6632314179438201137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320fdbdeca7c299b8b27bb055d042ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundSource
+  <SoundRadius>k__BackingField: 5

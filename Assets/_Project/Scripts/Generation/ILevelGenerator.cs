@@ -20,4 +20,6 @@ public interface ILevelGenerator
     bool HasSurfaceBelow(Vector2Int pos, int maxDepth);
     bool IsSurfaceCellUnderAround(Vector2Int pos);
     bool IsDistanceSuitable<T>(Vector2 pos, float minDistance) where T : MonoBehaviour;
+
+    public int GetOccupiedCellsCount();
 } 

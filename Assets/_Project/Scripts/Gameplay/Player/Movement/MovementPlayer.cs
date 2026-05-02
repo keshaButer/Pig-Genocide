@@ -57,8 +57,6 @@ public class MovementPlayer : MonoBehaviour
         startRayRight = pointsTransform.GetChild(2);
         circleStandUp = pointsTransform.GetChild(4);
         _soundSource = transform.GetComponent<SoundSource>();
-        inputConfig = Resources.Load<InputPlayerMovementConfig>("Configs/Player/InputPlayerMovementConfig");
-        config = Resources.Load<PlayerMovementConfig>("Configs/Player/PropertiesPlayerMovement");
     }
 
     private void Update()

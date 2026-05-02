@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 260227639754034393}
   - component: {fileID: 679768073504262371}
   - component: {fileID: 8158772461282534249}
+  - component: {fileID: 3700291462233443700}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -370,6 +371,19 @@ MonoBehaviour:
   _slot2: 50
   _slot3: 51
   _slot4: 52
+--- !u!114 &3700291462233443700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76852695540339604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 320fdbdeca7c299b8b27bb055d042ca5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundSource
+  <SoundRadius>k__BackingField: 5
 --- !u!1 &891507536404783185
 GameObject:
   m_ObjectHideFlags: 0

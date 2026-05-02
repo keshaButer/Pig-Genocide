@@ -48,16 +48,13 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
         SetRandomNoiseOffset();
 
         GenerateWorld();
-        Debug.Log($"totalTiles: {totalTiles}");
 
         SetFreeSurfaceCells();
 
-        playerTransform = playerSpawner.SpawnPlayer(surfaceCells);
-        Debug.Log($"surface cells count: {surfaceCells.Count}");
         medkitSpawner.SpawnBarrels(surfaceCells);
         barrelSpawner.SpawnBarrels(surfaceCells);
         ropeSpawner.SpawnRopes(surfaceCells);
-        // playerTransform = playerSpawner.SpawnPlayer(surfaceCells);
+        playerTransform = playerSpawner.SpawnPlayer(surfaceCells);
 
         _invoker = _invokerFactory.StartRepeatInvoking(disableChunkRate, SetActivationChunks, this);
     }
@@ -66,6 +63,10 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
     {
         _invoker.Stop();
     }
+
+
+    public int GetOccupiedCellsCount() => occupiedCells.Count;
+
 
     private void SetRandomNoiseOffset()
     {
