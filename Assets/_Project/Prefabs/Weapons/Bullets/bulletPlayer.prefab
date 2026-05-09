@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SortingOrder: 6
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1728675515128244700, guid: 98d6bfbc888136561a201d8295ee3825, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.040964432, g: 0.033018887, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -196,8 +196,8 @@ MonoBehaviour:
   IsParry: 0
   _hitMask:
     serializedVersion: 2
-    m_Bits: 648
+    m_Bits: 520
   _force: 2
   _speed: 15
   _delayDestroy: 5
-  _radius: 0.5
+  _radius: 0.67

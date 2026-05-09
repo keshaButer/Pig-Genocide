@@ -1,21 +1,51 @@
+using VContainer;
 using UnityEngine;
 using System.Collections;
 
 public class RopeControl : MonoBehaviour
 {
-    [SerializeField] private float _rideSpeed;
+    [Range(1, 40)]
+    [SerializeField] private float _maxRideSpeed, _minRideSpeed;
     [SerializeField] private float _offsetGetOff;
 
     private Transform graber1, graber2;
     private Transform playerTransform;
     private Coroutine _rideCoroutine;
+    private IPlayerProvider _playerProvider;
+    private float _rideSpeed;
 
-    private void Start()
+    private void OnValidate()
+    {
+        if (_minRideSpeed > _maxRideSpeed)
+        {
+            _maxRideSpeed = _minRideSpeed;
+        }
+    }
+
+    [Inject]
+    public void Construct(IPlayerProvider playerProvider)
     {
         graber1 = transform.GetChild(0);
         graber2 = transform.GetChild(1);
 
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        _playerProvider = playerProvider;
+        _playerProvider.OnPlayerSpawned += OnPlayerSpawned;
+
+        if (_playerProvider.Player != null)
+            OnPlayerSpawned(_playerProvider.Player);
+    }
+    private void OnPlayerSpawned(GameObject playerObj)
+    {
+        graber1 = transform.GetChild(0);
+        graber2 = transform.GetChild(1);
+
+        playerTransform = playerObj.transform;
+
+        _rideSpeed = Random.Range(_minRideSpeed, _maxRideSpeed);
+    }
+    private void OnDestroy()
+    {
+        _playerProvider.OnPlayerSpawned -= OnPlayerSpawned;
     }
     public void UseRope(Transform _graber)
     {

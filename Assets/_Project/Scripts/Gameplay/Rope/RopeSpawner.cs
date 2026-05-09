@@ -64,12 +64,11 @@ public class RopeSpawner : MonoBehaviour
                 Vector2 secondPoint = Vector2.zero;
                 bool secondPointFound = false;
 
-                for (int attempt = 0; attempt < 30; attempt++) 
+                for (int attempt = 0; attempt < 100; attempt++) 
                 {
-                    Vector2 potentialSecond = surfaceCells[Random.Range(0, surfaceCells.Count)];
-                    float dist = Vector2.Distance(firstPoint, potentialSecond);
+                    Vector2 potentialSecond = levelGenerator.GetRandomSurfaceTileInRadius(firstPoint, maxDistanceBetweenGrabers);
 
-                    if (levelGenerator.IsFreeCell(potentialSecond) && dist >= minDistanceBetweenGrabers && dist <= maxDistanceBetweenGrabers)
+                    if (levelGenerator.IsFreeCell(potentialSecond))
                     {
                         secondPoint = potentialSecond;
                         secondPointFound = true;
@@ -91,6 +90,7 @@ public class RopeSpawner : MonoBehaviour
                 }
             }
         }
+        Debug.Log($"{spawnedCount} ropes was spawned.");
     }
 
     private void UpdateActivationRopes()

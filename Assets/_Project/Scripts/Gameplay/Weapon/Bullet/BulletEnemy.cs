@@ -5,7 +5,7 @@ public class BulletEnemy : Bullet
     protected override void HandleHit(Transform other)
     {
         if (_isExplode)
-            return;
+        return;
 
         if (other.GetComponent<ParryCheckBox>())
         {
@@ -13,36 +13,32 @@ public class BulletEnemy : Bullet
             return;
         }
 
-        if (other.GetComponent<Bullet>()) 
-            Explosion();
-
-        if (CanHit(other.gameObject))
+        if (IsParry)
         {
-            if (IsParry)
+            other.GetComponent<IDamagable>()?.ApplyDamage(Damage * 2);
+
+            if (other.GetComponent<Rigidbody2D>())
             {
-                other.GetComponent<IDamagable>()?.ApplyDamage(Damage * 2);
-                if (other.GetComponent<Rigidbody2D>())
-                {
-                    other.GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * _force,
-                     transform.position, ForceMode2D.Impulse);
-                }
-
-                Explosion();
+                other.GetComponent<Rigidbody2D>().AddForceAtPosition(-transform.right * _force,
+                 transform.position, ForceMode2D.Impulse);
             }
-            else
+
+            Explosion();
+        }
+        else
+        {
+            if (other.gameObject.GetComponent<BulletPlayer>()) return;
+            if (other.gameObject.GetComponent<Enemy>()) return;
+
+            other.GetComponent<IDamagable>()?.ApplyDamage(Damage);
+
+            if (other.GetComponent<Rigidbody2D>())
             {
-                if (!other.gameObject.GetComponent<Enemy>())
-                    other.GetComponent<IDamagable>()?.ApplyDamage(Damage);
-
-                if (other.GetComponent<Rigidbody2D>())
-                {
-                    other.GetComponent<Rigidbody2D>().AddForceAtPosition(transform.right * _force,
-                     transform.position, ForceMode2D.Impulse);
-                }
-
-                if(!other.gameObject.GetComponent<Enemy>() && !other.GetComponent<ParryCheckBox>())
-                    Explosion();
+                other.GetComponent<Rigidbody2D>().AddForceAtPosition(transform.right * _force,
+                 transform.position, ForceMode2D.Impulse);
             }
-        } 
+
+            Explosion();
+        }
     }
 }

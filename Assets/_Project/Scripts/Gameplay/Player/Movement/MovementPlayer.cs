@@ -264,8 +264,8 @@ public class MovementPlayer : MonoBehaviour
     {
         if (direction == Vector2.down)
         {
-            if (!Physics2D.BoxCast(transform.position, new Vector2(0.7f, 2.32f), 90, direction,
-                 config.dashRangeDownRay, config.checkDashMask))
+            if (!Physics2D.OverlapBox(transform.position - new Vector3(0, config.dashDistance, 0), new Vector2(0.2f, 2.3f), 90,
+                config.checkDashMask))
             {
                 rb.MovePosition(rb.position + direction * config.dashDistance);
                 _playerMovementEvents.NotifyDash();
@@ -274,8 +274,14 @@ public class MovementPlayer : MonoBehaviour
         }
         else
         {
-            if (!Physics2D.BoxCast(transform.position, new Vector2(0.7f, 2.32f), 90, direction,
-                 config.dashRangeLeftRay, config.checkDashMask))
+            Debug.Log($"direction.normalized.x is: {direction.normalized.x}.");
+            if (direction.normalized.x < 0)
+            {
+                rb.MovePosition(rb.position + direction * config.dashDistance);
+                _playerMovementEvents.NotifyDash();
+            }
+            if (!Physics2D.OverlapBox(transform.position + new Vector3(0, config.dashDistance, 0) * direction.normalized.x, new Vector2(0.7f, 1), 90,
+                config.checkDashMask))
             {
                 rb.MovePosition(rb.position + direction * config.dashDistance);
                 _playerMovementEvents.NotifyDash();

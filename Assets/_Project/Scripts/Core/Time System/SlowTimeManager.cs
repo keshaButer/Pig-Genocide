@@ -6,6 +6,8 @@ public class SlowTimeManager : MonoBehaviour
 {
     public static SlowTimeManager SingleTon;
 
+    [SerializeField] private float _parryStopTimeDuration;
+
     [Inject] private IPlayerCombatEvents _playerCombatEvents;
 
     private void Awake()
@@ -19,7 +21,7 @@ public class SlowTimeManager : MonoBehaviour
 
     public void Initialize()
     {
-        _playerCombatEvents.OnParry += () => SlowTime(0, 0.2f);
+        _playerCombatEvents.OnParry += () => SlowTime(0, _parryStopTimeDuration);
     }
     private IEnumerator SlowTimeCorutine(float timeScale, float duration)
     {

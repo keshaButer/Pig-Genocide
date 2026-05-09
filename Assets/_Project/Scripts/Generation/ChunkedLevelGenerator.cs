@@ -40,9 +40,6 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
     private IInvoker _invoker;
 
 
-    private int totalTiles = 0;
-
-    
     public void Start()
     {
         SetRandomNoiseOffset();
@@ -53,6 +50,7 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
 
         medkitSpawner.SpawnBarrels(surfaceCells);
         barrelSpawner.SpawnBarrels(surfaceCells);
+        Debug.Log($"{surfaceCells.Count} was spawned.");
         ropeSpawner.SpawnRopes(surfaceCells);
         playerTransform = playerSpawner.SpawnPlayer(surfaceCells);
 
@@ -72,7 +70,7 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
     {
         if (seed == 0)
             seed = Random.Range(1, 10000);
-            
+
         Random.InitState(seed);
         xOffset = Random.Range(0f, 1000f);
         yOffset = Random.Range(0f, 1000f);
@@ -88,7 +86,7 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
         {
             GameObject obj = kvp.Value;
 
-            Vector2 chunkCenter =  obj.transform.position + Vector3.one * chunkSizeInCells * cellSize * 0.5f;
+            Vector2 chunkCenter = obj.transform.position + Vector3.one * chunkSizeInCells * cellSize * 0.5f;
             float distance = Vector2.Distance(playerPos, chunkCenter);
             obj.SetActive(distance <= distanceDisableChunk);
         }
@@ -122,7 +120,6 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
                         {
                             tilemap.SetTile(new Vector3Int(x, y, 0), platformTile);
                             filledCellIndices.Add(new Vector2Int(worldX, worldY));
-                            totalTiles++;
                         }
                     }
                 }
@@ -178,7 +175,7 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
     {
         // Радиус в клетках (с учётом cellSize)
         int radiusInCells = Mathf.CeilToInt(radius / cellSize);
-        
+
         // Центр в клеточных координатах
         int centerX = Mathf.FloorToInt(worldCenter.x / cellSize);
         int centerY = Mathf.FloorToInt(worldCenter.y / cellSize);
@@ -217,7 +214,7 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
         {
             for (int dy = -radiusInCells; dy <= radiusInCells; dy++)
             {
-                if (dx*dx + dy*dy > radiusInCells*radiusInCells)
+                if (dx * dx + dy * dy > radiusInCells * radiusInCells)
                     continue;
 
                 int worldIndexX = centerX + dx;
@@ -228,7 +225,7 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
                 if (surfaceCellIndices.Contains(cellIndex))
                 {
                     count++;
-                    
+
                     if (Random.Range(0, count) == 0)
                     {
                         result = new Vector2(worldIndexX * cellSize, worldIndexY * cellSize);
@@ -334,7 +331,7 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
         }
         return false;
     }
-    
+
     public bool IsDistanceSuitable<T>(Vector2 pos, float minDistance) where T : MonoBehaviour
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, minDistance, LayerMask.GetMask("Occupied"));

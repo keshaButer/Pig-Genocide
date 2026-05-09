@@ -33,8 +33,8 @@ MonoBehaviour:
   <minDelayStopFall>k__BackingField: 0.2
   <timeDoubleClick>k__BackingField: 0.1
   <dashDistance>k__BackingField: 1.5
-  <dashRangeLeftRay>k__BackingField: 1.3
-  <dashRangeDownRay>k__BackingField: 1.4
+  <dashRangeLeftRay>k__BackingField: 1
+  <dashRangeDownRay>k__BackingField: 1
   <delayResetRB>k__BackingField: 3
   <fallDeathSpeed>k__BackingField: 1
   <fallDamage>k__BackingField: 1

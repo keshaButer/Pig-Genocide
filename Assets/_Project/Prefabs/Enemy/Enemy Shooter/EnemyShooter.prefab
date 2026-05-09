@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PathFollower
   CurrentSpeed: 0
-  StartSpeed: 0
+  StartSpeed: 1
   _reachDistance: 0.1
   MaxDepthAstar: 30
   FinishedPath: 0
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7b70a0d2896d5fb493ef66eb64317cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  maxHealth: 0
+  maxHealth: 5
 --- !u!114 &2175482862756912251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +369,7 @@ MonoBehaviour:
   minFireInterval: 0.2
   maxFireInterval: 3
   queueInterval: 0.2
-  countComboBullets: 2
+  countComboBullets: 1
   spawnBullet: {fileID: 2366572757721750303}
   weapon: {fileID: 4555160011151700703}
   randomizeValues: 0

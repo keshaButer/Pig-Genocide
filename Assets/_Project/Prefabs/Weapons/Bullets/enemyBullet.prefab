@@ -194,10 +194,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletEnemy
   Damage: 1
   IsParry: 0
+  ParryDirection: {x: -1, y: 0}
   _hitMask:
     serializedVersion: 2
-    m_Bits: 896
+    m_Bits: 1928
   _force: 2
-  _speed: 15
+  _speed: 12
   _delayDestroy: 5
-  _radius: 0.3
+  _radius: 0.67

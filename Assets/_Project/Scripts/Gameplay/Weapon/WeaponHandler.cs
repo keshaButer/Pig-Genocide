@@ -13,6 +13,7 @@ public class WeaponHandler : MonoBehaviour
     [Inject] private IObjectResolver _objectResolver;
 
     public event System.Action<bool> OnExpand;
+    public Vector2 MouseDirection = Vector2.left;
 
     private bool _wasLeft;
     private float _angle;
@@ -104,8 +105,8 @@ public class WeaponHandler : MonoBehaviour
     }
     private void SetDirectionByMouse()
     {
-        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        _angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        MouseDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        _angle = Mathf.Atan2(MouseDirection.y, MouseDirection.x) * Mathf.Rad2Deg;
 
         Quaternion rot = Quaternion.Euler(0, 0, _angle);
         transform.localRotation = Quaternion.Lerp(transform.rotation, rot, _rotateAccelaration);

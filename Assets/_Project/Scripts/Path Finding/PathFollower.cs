@@ -32,8 +32,7 @@ public class PathFollower : MonoBehaviour
     public void MoveAlongPath()
     {
         if (_currentPoint >= _currentPath.Count)
-        {
-            Stop();
+        { Stop();
             return;
         }
 

@@ -6,7 +6,18 @@ public abstract class Bullet : MonoBehaviour
 {
     public int Damage;
     public bool IsParry;
-    public float Speed { get; set; }
+    public Vector2 ParryDirection = Vector2.left;
+    public float Speed
+    {
+        get
+        {
+            return _speed;
+        }
+        set
+        {
+            _speed = value;
+        }
+    }
 
     protected bool _isExplode;
 
@@ -48,7 +59,7 @@ public abstract class Bullet : MonoBehaviour
 
     private void ParryBackRun()
     {
-        transform.Translate(Vector2.left * _speed * Time.deltaTime);
+        transform.Translate(ParryDirection * _speed * Time.deltaTime, Space.World);
     }
 
     private void Explode() => Destroy(gameObject);
