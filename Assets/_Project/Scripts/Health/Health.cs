@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 
-public class Health : MonoBehaviour, IDamagable
+public class Health : MonoBehaviour, IDamagable, IHealth
 {
-    [SerializeField] private int maxHealth;
+    [SerializeField] private int _maxHealth;
+    public int MaxHealth => _maxHealth;
 
     public int CurrentHealth { get; private set; }
     public event Action OnDied;
@@ -11,11 +12,11 @@ public class Health : MonoBehaviour, IDamagable
 
     private bool _isDead;
 
-    private void Awake() => CurrentHealth = maxHealth;
+    private void Awake() => CurrentHealth = _maxHealth;
 
     public void Initialize(int health)
     {
-        maxHealth = health;
+        _maxHealth = health;
         CurrentHealth = health;
         _isDead = false;
     }

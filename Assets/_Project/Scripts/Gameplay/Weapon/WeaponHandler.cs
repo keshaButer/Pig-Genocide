@@ -20,7 +20,15 @@ public class WeaponHandler : MonoBehaviour
     private float _nextTimeFire;
     private bool _needUpdateNextTimeFire = false;
     private Weapon _activeWeapon;
-    private Dictionary<string, Weapon> _mountedWeapons = new Dictionary<string, Weapon>();
+    private Camera _mainCamera;
+    private Dictionary<System.Type, Weapon> _mountedWeapons = new Dictionary<System.Type, Weapon>();
+    private Weapon[] _weaponSlots = new Weapon[5];
+    private int _weaponsCount = 0;
+
+    private void Awake()
+    {
+        _mainCamera = Camera.main;
+    }
 
     private void OnEnable()
     {
@@ -35,18 +43,18 @@ public class WeaponHandler : MonoBehaviour
 
     public void SetActiveWeaponSlot(int index)
     {
-        if (transform.childCount < index)
+        if (_weaponsCount < index)
         {
             Debug.Log("Нет предмета на этой ячейке");
             return;
         }
 
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < _weaponsCount; i++)
         {
-            transform.GetChild(i).gameObject.SetActive(false);
+            _weaponSlots[i].gameObject.SetActive(false);
         }
 
-        Weapon weapon = transform.GetChild(index - 1).GetComponent<Weapon>();
+        Weapon weapon = _weaponSlots[index - 1];
         weapon.gameObject.SetActive(true);
 
         _activeWeapon = weapon;
@@ -67,27 +75,36 @@ public class WeaponHandler : MonoBehaviour
             return;
 
         System.Type type = weaponPrefab.GetType();
-        string key = type.Name;
 
-        if (!_mountedWeapons.ContainsKey(key))
+        if (!_mountedWeapons.ContainsKey(type))
         {
+            if (_weaponsCount >= _weaponSlots.Length)
+            {
+                Debug.Log("В инвентаре нет места для оружия.");
+                return;
+            }
+
             Weapon spawnedWeapon = _objectResolver.Instantiate(weaponPrefab, transform);
             spawnedWeapon.transform.localPosition = Vector3.zero;
             spawnedWeapon.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
             spawnedWeapon.gameObject.SetActive(false);
 
-            _mountedWeapons.Add(key, spawnedWeapon);
+            _mountedWeapons.Add(type, spawnedWeapon);
+
+            _weaponSlots[_weaponsCount] = spawnedWeapon;
+            _weaponsCount++;
+
             _activeWeapon = spawnedWeapon;
 
-            print($"Weapon: {key} was set.");
+            Debug.Log($"Weapon of type: {type}, was set in slot number: {_weaponsCount}.");
         }
         else 
         {
-            Debug.Log("ТАКОЙ ТИП ОРУЖИЯ УЖЕ ЕСТЬ");
+            Debug.Log($"Weapon of type: {type} already in inventory.");
         }
 
-        // FlipSprite();
+        FlipSprite();
     }
     private void FlipSprite()
     {
@@ -105,7 +122,7 @@ public class WeaponHandler : MonoBehaviour
     }
     private void SetDirectionByMouse()
     {
-        MouseDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        MouseDirection = _mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         _angle = Mathf.Atan2(MouseDirection.y, MouseDirection.x) * Mathf.Rad2Deg;
 
         Quaternion rot = Quaternion.Euler(0, 0, _angle);

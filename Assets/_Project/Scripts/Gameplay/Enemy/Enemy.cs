@@ -65,5 +65,6 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    public void SetDifficulty(float playerSkill) => OnDifficultyChanged(playerSkill);
     public abstract void OnDifficultyChanged(float playerSkill);
 }

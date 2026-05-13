@@ -83,7 +83,7 @@ public class EnemySpawner : MonoBehaviour
                 Enemy enemy = _objectResolver.Instantiate(enemyPrefab,
                  cell + Vector2.up * spawnHeightOffset, Quaternion.Euler(0, 0, 0), parentObject);
                 
-                _difficultyManager.UpdateDifficulty();
+                enemy.SetDifficulty(_difficultyManager.CurrentDifficulty);
 
                 enemies.Add(enemy);
                 break;

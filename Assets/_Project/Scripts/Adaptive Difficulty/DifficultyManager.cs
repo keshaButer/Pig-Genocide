@@ -4,13 +4,17 @@ using UnityEngine;
 public class DifficultyManager : IDifficultyManager, IDisposable
 {
     public event Action<float> OnDifficultyChanged;
+    public float CurrentDifficulty { get; private set; }
 
     private IInvokerFactory _invokerFactory;
     private IInvoker _invoker;
-    private DifficultyConfig _config; private HealthPlayer _healthPlayer;
-    private int _killCount;
     private IPlayerProvider _playerProvider;
     private IEnemyEvents _enemyEvents;
+
+    private DifficultyConfig _config; 
+    private IHealth _healthPlayer;
+
+    private int _killCount;
 
     public DifficultyManager(DifficultyConfig config, IPlayerProvider playerProvider, IInvokerFactory invokerFactory, IEnemyEvents enemyEvents)
     {
@@ -41,14 +45,15 @@ public class DifficultyManager : IDifficultyManager, IDisposable
 
     private void OnPlayerSpawned(GameObject player)
     { 
-        _healthPlayer = player.GetComponent<HealthPlayer>();
+        _healthPlayer = player.GetComponent<IHealth>();
 
         _invoker = _invokerFactory.StartRepeatInvoking(_config.ChangeRate, UpdateDifficulty);
     }
 
     public void UpdateDifficulty()
     {
-        OnDifficultyChanged?.Invoke(GetPlayerSkill());
+        CurrentDifficulty = GetPlayerSkill();
+        OnDifficultyChanged?.Invoke(CurrentDifficulty);
     }
 
     private float GetPlayerSkill()

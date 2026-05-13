@@ -246,7 +246,7 @@ public class MovementPlayer : MonoBehaviour
         rb.gravityScale = 0;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         transform.eulerAngles = Vector3.zero;
-        colliderBody.sharedMaterial = GetComponent<HealthPlayer>().alivePhysicsMaterial;
+        // colliderBody.sharedMaterial = GetComponent<HealthPlayer>().alivePhysicsMaterial;
     }
 
     public void ResetRigidBody() => StartCoroutine(ResetRigidBodyCoroutine());
@@ -257,7 +257,7 @@ public class MovementPlayer : MonoBehaviour
         rb.mass = 0.5f;
         rb.gravityScale = 3;
         rb.constraints = RigidbodyConstraints2D.None;
-        colliderBody.sharedMaterial = GetComponent<HealthPlayer>().deadPhysicsMaterial;
+        // colliderBody.sharedMaterial = GetComponent<HealthPlayer>().deadPhysicsMaterial;
     }
 
     private void Dash(Vector2 posRay, Vector2 direction)

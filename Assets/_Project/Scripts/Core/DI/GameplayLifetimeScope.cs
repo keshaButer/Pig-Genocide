@@ -5,12 +5,13 @@ using VContainer.Unity;
 public class GameplayLifetimeScope : LifetimeScope
 {
     [SerializeField] private PlayerSpawner _playerSpawner;
-    [SerializeField] private DifficultyConfig _difficultyConfig;
     [SerializeField] private CoroutineOwner _intervalInvokingPerformer;
     [SerializeField] private ChunkedLevelGenerator _chunkedLevelGenerator;
     [SerializeField] private EnemySpawner _enemySpawner;
-    [SerializeField] private HealthWindow _healthWindow;
     [SerializeField] private SoundManager _soundManager;
+
+    [SerializeField] private DifficultyConfig _difficultyConfig;
+    [SerializeField] private SoundManagerConfig _soundManagerConfig;
 
     protected override void Configure(IContainerBuilder builder)
     {
@@ -35,12 +36,12 @@ public class GameplayLifetimeScope : LifetimeScope
         builder.RegisterComponent(_intervalInvokingPerformer);
         builder.RegisterComponent<ILevelGenerator>(_chunkedLevelGenerator);
         builder.RegisterComponent<ISoundManager>(_soundManager);
-        builder.RegisterComponent<IHealthWindow>(_healthWindow);
     }
 
     private void RegisterInstances(IContainerBuilder builder)
     {
         builder.RegisterInstance(_difficultyConfig);
+        builder.RegisterInstance(_soundManagerConfig);
     }
 
     private void RegisterEventServices(IContainerBuilder builder)
