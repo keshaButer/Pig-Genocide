@@ -11,6 +11,7 @@ public class HealthPlayer : MonoBehaviour, IDamagable, IHealth
     [SerializeField] bool _isImmortalMode;
 
     public event Action<int> OnHealthChanged;
+    public event Action OnDied;
     private int _health;
     private bool _wasDeath;
 
@@ -36,7 +37,11 @@ public class HealthPlayer : MonoBehaviour, IDamagable, IHealth
 
     private void Start() => CurrentHealth = MaxHealth;
 
-    private void Die() => _wasDeath = true;
+    private void Die()
+    {
+        _wasDeath = true;
+        OnDied?.Invoke();
+    }
 
     public void AddHP(int hp) => CurrentHealth += hp;
 

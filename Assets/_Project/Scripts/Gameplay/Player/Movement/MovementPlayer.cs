@@ -9,6 +9,7 @@ public class MovementPlayer : MonoBehaviour
     public PlayerMovementConfig config;
 
     [Inject] private IPlayerMovementEvents _playerMovementEvents;
+    [Inject] private IPlayerCombatEvents _playerCombatEvents;
 
     private Rigidbody2D rb;
     [SerializeField] private WeaponHandler _weaponHandler;
@@ -61,16 +62,15 @@ public class MovementPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.R))
             SceneManager.LoadScene(0);
 
+        UpdateCheckCircles();
+        UpdateDash();
 
-        CheckCircles();
-        DashInput();
-        if (isInput) GetInput();
+        if (isInput) HandleInput();
+
         if (!IsCrouch) SoundStep();
-        if (Input.GetKeyDown(KeyCode.H))
-            PostEffectsController.SingleTon.FlashBang(0.2f);
     }
 
     private void FixedUpdate()
@@ -97,7 +97,7 @@ public class MovementPlayer : MonoBehaviour
         else _timerStepSound = 0;
     }
 
-    private void GetInput()
+    private void HandleInput()
     {
         if (Input.GetKeyDown(inputConfig.crouch) && isGrounded)
         {
@@ -123,7 +123,7 @@ public class MovementPlayer : MonoBehaviour
         else
         {
             _timerGravity += Time.deltaTime;
-            if (_timerGravity >= config.minDelayStopFall)
+            if (_timerGravity >= config.minDelayStopFall && rb.linearVelocity.y != -5.5f)
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, -5.5f);
         }
     }
@@ -138,12 +138,16 @@ public class MovementPlayer : MonoBehaviour
             float direction = Mathf.Sign(horizontalInputDirection);
             float rayDistance = config.stepCheckDistance;
 
-            Vector2 rayOrigin = checkCirclePoint.position + Vector3.up * 0.1f;
+            float halfRange = 0.8f * 0.5f;
+            float xOffset = (halfRange - config.stepCheckDistance) * direction;
+            Vector2 rayOrigin = checkCirclePoint.position + new Vector3(xOffset, 0.01f);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * direction, rayDistance, config.checkGroundMask);
+
+            Debug.DrawLine(rayOrigin, rayOrigin + new Vector2(direction * rayDistance, 0.0f));
 
             if (hit.collider != null)
             {
-                Vector2 stepCheckStart = (Vector2)checkCirclePoint.position + new Vector2(0, config.stepHeight);
+                Vector2 stepCheckStart = rayOrigin - Vector2.up * 0.01f + new Vector2(0, config.stepHeight * 1.5f);
                 RaycastHit2D stepHit = Physics2D.Raycast(stepCheckStart, Vector2.right * direction, rayDistance, config.checkGroundMask);
 
                 if (stepHit.collider == null)
@@ -190,7 +194,7 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
-    private void CheckCircles()
+    private void UpdateCheckCircles()
     {
         if (Physics2D.CircleCast(checkCirclePoint.position, config.checkCircleRadius, Vector2.down, config.checkCircleRadius, config.checkGroundMask))
         {
@@ -289,7 +293,7 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
-    private void DashInput()
+    private void UpdateDash()
     {
         if (staminaControll != null && staminaControll.CurrentStamina >= 1 && !IsCrouch)
         {

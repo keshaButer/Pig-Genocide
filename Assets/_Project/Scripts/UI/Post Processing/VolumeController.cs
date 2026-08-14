@@ -16,10 +16,9 @@ public class VolumeController : MonoBehaviour
 
         _playerCombatEvents.OnParry += HandleParry;
     }
-    private void HandleParry()
-    {
-        StartCoroutine(nameof(ParryCoroutine));
-    }
+
+    private void HandleParry() => StartCoroutine(nameof(ParryCoroutine));
+
     private IEnumerator ParryCoroutine()
     {
         volume.profile = parry;

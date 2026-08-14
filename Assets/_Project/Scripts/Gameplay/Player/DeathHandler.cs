@@ -29,7 +29,7 @@ public class DeathHandler : MonoBehaviour
         _playerHealth = GetComponent<IHealth>();
 
         if (_playerHealth != null)
-            _playerHealth.OnHealthChanged += OnHealthChanged;
+            _playerHealth.OnDied += OnDied;
 
         _movementPlayer = GetComponent<MovementPlayer>();
         _interactPlayer = GetComponent<InteractPlayer>();
@@ -39,10 +39,8 @@ public class DeathHandler : MonoBehaviour
         _collider.sharedMaterial = _aliveMaterial;
     }
 
-    private void OnHealthChanged(int health)
+    private void OnDied()
     {
-        if (health != 0) return;
-
         _movementPlayer.enabled = false;
         _interactPlayer.enabled = false;
         _inventory.enabled = false;
@@ -76,6 +74,6 @@ public class DeathHandler : MonoBehaviour
 
     private void OnDisable()
     {
-        _playerHealth.OnHealthChanged -= OnHealthChanged;
+        _playerHealth.OnDied -= OnDied;
     }
 }

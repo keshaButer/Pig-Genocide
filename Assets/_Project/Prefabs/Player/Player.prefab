@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 679768073504262371}
   - component: {fileID: 8158772461282534249}
   - component: {fileID: 3700291462233443700}
+  - component: {fileID: 5003804940520965243}
+  - component: {fileID: -2471724872763494197}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -230,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7c52bbaf5a6cced8a47677839b0fb2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthPlayer
-  MaxHealth: 15
+  _maxHealth: 10
   _isImmortalMode: 0
 --- !u!114 &2746270157215567941
 MonoBehaviour:
@@ -353,6 +355,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundSource
   <SoundRadius>k__BackingField: 5
+--- !u!114 &5003804940520965243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76852695540339604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a2ce7886527ed19aa5302050ac0c2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathHandler
+  _destroyDelay: 3
+  _aliveMaterial: {fileID: 6200000, guid: a6df6a970e3b865339b6577f9076860b, type: 2}
+  _deadMaterial: {fileID: 6200000, guid: df0cf6dad7b29d58f99f71d7cf8ad1aa, type: 2}
+  _movementPlayer: {fileID: 2508339009296779429}
+  _interactPlayer: {fileID: 2746270157215567941}
+  _inventory: {fileID: 679768073504262371}
+  _weaponHandler: {fileID: 3602877688721470486}
+  _animationController: {fileID: 7226518275905799407}
+--- !u!114 &-2471724872763494197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76852695540339604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0b25aa408425bfa9b02f4a6adcdb63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameRestarter
+  _sceneIndex: 0
 --- !u!1 &891507536404783185
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +509,7 @@ Transform:
   m_GameObject: {fileID: 2326455567811335825}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.002, y: -1.163, z: 0}
+  m_LocalPosition: {x: 0, y: -1.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

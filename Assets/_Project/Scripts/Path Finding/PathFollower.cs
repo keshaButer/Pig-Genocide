@@ -49,20 +49,21 @@ public class PathFollower : MonoBehaviour
         FinishedPath = true;
         _currentPath = null;
     }
-    // private void OnDrawGizmos()
-    // {
-    //     if (_currentPath == null || _currentPath.Count == 0)
-    //         return;
-    //
-    //     Gizmos.color = Color.blue;
-    //     for (int i = 0; i < _currentPath.Count - 1; i++)
-    //     {
-    //         Vector3 start = new Vector3(_currentPath[i].x, _currentPath[i].y, 0);
-    //         Vector3 end = new Vector3(_currentPath[i + 1].x, _currentPath[i + 1].y, 0);
-    //         Gizmos.DrawLine(start, end);
-    //         Gizmos.DrawSphere(start, 0.06f);
-    //     }
-    //     // Последняя точка
-    //     Gizmos.DrawSphere(new Vector3(_currentPath[_currentPath.Count - 1].x, _currentPath[_currentPath.Count - 1].y, 0), 0.1f);
-    // }
+
+    private void OnDrawGizmos()
+    {
+        if (_currentPath == null || _currentPath.Count == 0)
+            return;
+    
+        Gizmos.color = Color.blue;
+        for (int i = 0; i < _currentPath.Count - 1; i++)
+        {
+            Vector3 start = new Vector3(_currentPath[i].x, _currentPath[i].y, 0);
+            Vector3 end = new Vector3(_currentPath[i + 1].x, _currentPath[i + 1].y, 0);
+            Gizmos.DrawLine(start, end);
+            Gizmos.DrawSphere(start, 0.06f);
+        }
+        // Последняя точка
+        Gizmos.DrawSphere(new Vector3(_currentPath[_currentPath.Count - 1].x, _currentPath[_currentPath.Count - 1].y, 0), 0.1f);
+    }
 }
