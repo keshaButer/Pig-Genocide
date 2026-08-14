@@ -124,7 +124,7 @@ public class MovementPlayer : MonoBehaviour
         {
             _timerGravity += Time.deltaTime;
             if (_timerGravity >= config.minDelayStopFall && rb.linearVelocity.y != -5.5f)
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -5.5f);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -6.5f);
         }
     }
 
@@ -152,7 +152,8 @@ public class MovementPlayer : MonoBehaviour
 
                 if (stepHit.collider == null)
                 {
-                    rb.MovePosition(rb.position + new Vector2(horizontalMove * Time.fixedDeltaTime, config.stepHeight));
+                    // rb.MovePosition(rb.position + new Vector2(horizontalMove * Time.fixedDeltaTime, config.stepHeight));
+                    rb.position = new Vector2(rb.position.x, rb.position.y + config.stepHeight);
                 }
                 else
                 {
