@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using VContainer;
@@ -7,9 +8,9 @@ using VContainer.Unity;
 public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
 {
     [Header("Generate settings")]
-    [SerializeField] private int chunkSizeInCells = 20;               // размер чанка в тайлах
-    [SerializeField] private int worldWidthInChunks = 5;        // сколько чанков по X
-    [SerializeField] private int worldHeightInChunks = 3;       // сколько чанков по Y
+    [SerializeField] private int chunkSizeInCells = 20;
+    [SerializeField] private int worldWidthInChunks = 5;
+    [SerializeField] private int worldHeightInChunks = 3;
     [SerializeField] private int seed = 0;
     [SerializeField] private float noiseScale = 20;
     [SerializeField] private float porog = 0.5f;
@@ -18,8 +19,8 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
     [SerializeField] private float distanceDisableChunk = 10;
 
     [Header("Components")]
-    [SerializeField] private TileBase platformTile;              // тайл платформы
-    [SerializeField] private GameObject chunkPrefab;             // префаб с Tilemap, CompositeCollider и т.д.
+    [SerializeField] private TileBase platformTile;
+    [SerializeField] private GameObject chunkPrefab;
     [SerializeField] private List<Vector2> surfaceCells = new List<Vector2>();
 
     [Header("Spawners")]
@@ -27,6 +28,9 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
     [SerializeField] private MedkitSpawner medkitSpawner;
     [SerializeField] private RopeSpawner ropeSpawner;
     [SerializeField] private PlayerSpawner playerSpawner;
+
+    [Header("Objects")]
+    [SerializeField] private GameObject chunksParent;
 
     private float xOffset, yOffset;
     private Dictionary<Vector3, GameObject> chunkObjects = new Dictionary<Vector3, GameObject>();
@@ -94,38 +98,63 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
 
     private void GenerateWorld()
     {
+        TilemapRenderer[] tilemapRenderers = new TilemapRenderer[worldWidthInChunks * worldHeightInChunks];
+
+        int chunkIndex = 0;
         for (int cx = 0; cx < worldWidthInChunks; cx++)
         {
             for (int cy = 0; cy < worldHeightInChunks; cy++)
             {
-                // Создаём чанк
-                GameObject chunkObj = Instantiate(chunkPrefab, transform);
+                Vector3Int[] positions = new Vector3Int[chunkSizeInCells * chunkSizeInCells];
+                TileBase[] tiles = new TileBase[chunkSizeInCells * chunkSizeInCells];
+                int tileIndex = 0;
+
+                GameObject chunkObj = Instantiate(chunkPrefab, chunksParent.transform);
                 chunkObj.name = $"Chunk_{cx}_{cy}";
                 Vector3 chunkObjPosition = new Vector3(cx * chunkSizeInCells * cellSize, cy * chunkSizeInCells * cellSize, 0);
                 chunkObj.transform.position = chunkObjPosition;
 
-                Tilemap tilemap = chunkObj.GetComponentInChildren<Tilemap>();
+                TilemapRenderer tilemapRenderer = chunkObj.transform.GetChild(0).GetComponent<TilemapRenderer>();
+                tilemapRenderer.enabled = false;
+                tilemapRenderers[chunkIndex] = tilemapRenderer;
+                chunkIndex++;
+
+                Tilemap tilemap = chunkObj.transform.GetChild(0).GetComponent<Tilemap>();
                 chunks[new Vector2Int(cx, cy)] = tilemap;
                 chunkObjects[chunkObjPosition] = chunkObj;
 
-                // Генерируем тайлы внутри этого чанка (можно PerlinNoise)
                 for (int x = 0; x < chunkSizeInCells; x++)
                 {
                     for (int y = 0; y < chunkSizeInCells; y++)
                     {
                         int worldX = cx * chunkSizeInCells + x;
                         int worldY = cy * chunkSizeInCells + y;
-                        // Здесь твоя логика генерации (шум, острова и т.п.)
+
                         if (ShouldPlaceTile(worldX, worldY))
                         {
-                            tilemap.SetTile(new Vector3Int(x, y, 0), platformTile);
+                            tiles[tileIndex] = platformTile;
                             filledCellIndices.Add(new Vector2Int(worldX, worldY));
                         }
+                        else
+                        {
+                            tiles[tileIndex] = null;
+                        }
+
+                        positions[tileIndex] = new Vector3Int(x, y, 0);
+                        tileIndex++;
                     }
                 }
+
+                tilemap.SetTiles(positions, tiles);
             }
         }
+
+        foreach (TilemapRenderer renderer in tilemapRenderers)
+        {
+            renderer.enabled = true;
+        }
     }
+
     private bool ShouldPlaceTile(int x, int y)
     {
         float noiseValue = Mathf.PerlinNoise(x / noiseScale + xOffset, y / noiseScale + yOffset);
@@ -136,6 +165,7 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
 
         return false;
     }
+
     public void DestroyTileAtWorldPosition(Vector3Int cellPos)
     {
         int chunkX = Mathf.FloorToInt((float)cellPos.x / chunkSizeInCells);
@@ -152,6 +182,7 @@ public class ChunkedLevelGenerator : MonoBehaviour, IStartable, ILevelGenerator
             chunkTilemap.SetTile(localCell, null);
         }
     }
+
     public void DestroyTileAtWorldPosition(Vector3 worldPos)
     {
         int cellX = Mathf.FloorToInt(worldPos.x / cellSize);

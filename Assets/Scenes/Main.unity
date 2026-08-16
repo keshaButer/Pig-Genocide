@@ -4276,6 +4276,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 104998259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &517720994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 517720995}
+  m_Layer: 0
+  m_Name: World
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &517720995
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517720994}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 512.36597, y: 527.9398, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &522479072
 GameObject:
   m_ObjectHideFlags: 0
@@ -11300,6 +11331,7 @@ MonoBehaviour:
   medkitSpawner: {fileID: 1434720301}
   ropeSpawner: {fileID: 1434720302}
   playerSpawner: {fileID: 1434720304}
+  chunksParent: {fileID: 517720994}
 --- !u!1 &1448821526
 GameObject:
   m_ObjectHideFlags: 0
@@ -15399,7 +15431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2115580975
 Transform:
   m_ObjectHideFlags: 0
@@ -15740,6 +15772,7 @@ SceneRoots:
   - {fileID: 238712369}
   - {fileID: 901543218}
   - {fileID: 1599142546}
+  - {fileID: 517720995}
   - {fileID: 1434720300}
   - {fileID: 2115580975}
   - {fileID: 1666236959}
